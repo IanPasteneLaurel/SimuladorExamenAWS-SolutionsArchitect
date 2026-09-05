@@ -1,0 +1,19 @@
+{
+  "total_questions_parsed": 923,
+  "expected_total": 923,
+  "multi_select_questions": 62,
+  "multi_select_note": "Source markdown records only ONE correct-answer letter even for \"(Select TWO.)\" questions. These are flagged via multi_select=true but scored as single-select against the recorded letter, since that is the only ground truth available in the source data.",
+  "domain_counts": {
+    "Cost-Optimized Architectures": 140,
+    "High-Performing Architectures": 244,
+    "Operationally Excellent Architectures": 61,
+    "Resilient Architectures": 131,
+    "Secure Architectures": 347
+  },
+  "issues_found": 1,
+  "issues": [
+    {
+      "issue": "27 question groups share a near-identical 200-char text prefix. Manual inspection confirmed these are distinct source questions (different IDs, options, and explanations) covering similar scenarios, not parser duplicates. Zero-repetition guarantee is enforced by unique question_id, which holds."
+    }
+  ]
+}
