@@ -31,17 +31,24 @@ const keyPhrases = [
   { pattern: /\blowest cost\b/gi, keyword: 'lowest cost' },
   
   // Operational overhead patterns
-  { pattern: /\bLEAST (operational|management) overhead\b/gi, keyword: 'least operational overhead' },
+  { pattern: /\bLEAST (operational|management|administrative) (overhead|effort)\b/gi, keyword: 'least operational overhead' },
   { pattern: /\bMOST operational(ly)? efficient(ly)?\b/gi, keyword: 'most operationally efficient' },
-  { pattern: /\bminimal (management|operational) (overhead|effort)\b/gi, keyword: 'minimal management overhead' },
+  { pattern: /\bMOST efficient(ly)?\b/gi, keyword: 'most efficient' },
+  { pattern: /\bminimal (management|operational|administrative) (overhead|effort)\b/gi, keyword: 'minimal overhead' },
   { pattern: /\breduce operational complexity\b/gi, keyword: 'reduce operational complexity' },
+  { pattern: /\b(with|using) (the )?LEAST (amount of )?effort\b/gi, keyword: 'least effort' },
+  { pattern: /\bFEWEST (number of )?changes\b/gi, keyword: 'fewest changes' },
+  { pattern: /\bSIMPLEST (solution|approach)\b/gi, keyword: 'simplest solution' },
+  { pattern: /\bLEAST (amount of )?complexity\b/gi, keyword: 'least complexity' },
   
   // Time patterns
   { pattern: /\b(in the )?SHORTEST( amount of)? time\b/gi, keyword: 'shortest time' },
   { pattern: /\bLEAST amount of time\b/gi, keyword: 'least time' },
-  { pattern: /\bimmediate(ly)?\b/gi, keyword: 'immediately' },
+  { pattern: /\bimmediate(ly)? (access|available)\b/gi, keyword: 'immediately available' },
   { pattern: /\bminimal downtime\b/gi, keyword: 'minimal downtime' },
   { pattern: /\bzero downtime\b/gi, keyword: 'zero downtime' },
+  { pattern: /\bWITHOUT (any )?downtime\b/gi, keyword: 'without downtime' },
+  { pattern: /\bWITHOUT (disrupting|affecting|changing)\b/gi, keyword: 'without disruption' },
   
   // Performance patterns
   { pattern: /\bMOST performant\b/gi, keyword: 'most performant' },
@@ -54,6 +61,7 @@ const keyPhrases = [
   { pattern: /\bHIGHLY available\b/gi, keyword: 'highly available' },
   { pattern: /\bmaximum availability\b/gi, keyword: 'maximum availability' },
   { pattern: /\bhigh availability\b/gi, keyword: 'high availability' },
+  { pattern: /\bHIGHEST (level of )?availability\b/gi, keyword: 'highest availability' },
   { pattern: /\bfault[- ]toleran(t|ce)\b/gi, keyword: 'fault tolerant' },
   
   // Security patterns
@@ -61,15 +69,19 @@ const keyPhrases = [
   { pattern: /\benhance security\b/gi, keyword: 'enhance security' },
   { pattern: /\bimprove security posture\b/gi, keyword: 'improve security' },
   { pattern: /\bleast privilege\b/gi, keyword: 'least privilege' },
+  { pattern: /\bBEST practice(s)?\b/gi, keyword: 'best practices' },
   
   // Scalability patterns
   { pattern: /\bMOST scalable\b/gi, keyword: 'most scalable' },
   { pattern: /\bauto[- ]scal(e|ing)\b/gi, keyword: 'auto-scaling' },
   { pattern: /\belastic(ally)?\b/gi, keyword: 'elastically scale' },
+  { pattern: /\bGREATEST flexibility\b/gi, keyword: 'greatest flexibility' },
   
   // Reliability patterns
   { pattern: /\bMOST reliable\b/gi, keyword: 'most reliable' },
   { pattern: /\bMOST resilient\b/gi, keyword: 'most resilient' },
+  { pattern: /\bMOST (fault[- ]tolerant|durable)\b/gi, keyword: 'most fault-tolerant' },
+  { pattern: /\bMAXIMUM (data )?durability\b/gi, keyword: 'maximum durability' },
   { pattern: /\bdisaster recovery\b/gi, keyword: 'disaster recovery' },
   
   // Compliance patterns
@@ -77,9 +89,12 @@ const keyPhrases = [
   { pattern: /\bregulatory requirements?\b/gi, keyword: 'regulatory requirements' },
   { pattern: /\bdata residency\b/gi, keyword: 'data residency' },
   
+  // Appropriateness patterns
+  { pattern: /\bMOST appropriate\b/gi, keyword: 'most appropriate' },
+  { pattern: /\bMOST suitable\b/gi, keyword: 'most suitable' },
+  
   // Other important patterns
   { pattern: /\bwithout disruption\b/gi, keyword: 'without disruption' },
-  { pattern: /\bwithout downtime\b/gi, keyword: 'without downtime' },
   { pattern: /\bwith minimal effort\b/gi, keyword: 'minimal effort' },
   { pattern: /\bautomatically\b/gi, keyword: 'automatically' },
   { pattern: /\breal[- ]time\b/gi, keyword: 'real-time' },
