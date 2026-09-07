@@ -32,7 +32,8 @@
             "dynamodb",
             "support",
             "auto scaling",
-            "resilient architectures"
+            "resilient architectures",
+            "most cost-effectively"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -123,7 +124,8 @@
             "ec2",
             "iam",
             "sso",
-            "secure architectures"
+            "secure architectures",
+            "least privilege"
           ],
           "pattern": null,
           "related_topics": [],
@@ -166,7 +168,8 @@
             "kms",
             "backup",
             "encryption at rest/transit",
-            "resilient architectures"
+            "resilient architectures",
+            "immediately"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -252,7 +255,8 @@
             "ecs",
             "fargate",
             "event-driven architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Event-Driven Architecture",
           "related_topics": [],
@@ -297,7 +301,8 @@
             "s3",
             "eventbridge",
             "macie",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -379,7 +384,9 @@
             "s3",
             "storage gateway",
             "backup",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "minimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -506,7 +513,8 @@
             "dynamodb",
             "vpc",
             "redshift",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -553,7 +561,8 @@
             "cloudfront",
             "backup",
             "content delivery network",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -601,7 +610,8 @@
             "dynamodb",
             "api gateway",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -688,7 +698,8 @@
             "lambda",
             "ec2",
             "sns",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -770,7 +781,8 @@
             "ec2",
             "vpc",
             "fargate",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "minimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -854,7 +866,8 @@
           "keywords": [
             "rds",
             "backup",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -899,7 +912,8 @@
             "dynamodb",
             "efs",
             "caching strategy",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -985,7 +999,8 @@
             "s3",
             "cloudfront",
             "content delivery network",
-            "high-performing architectures"
+            "high-performing architectures",
+            "minimize costs"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -1033,7 +1048,8 @@
             "fargate",
             "support",
             "microservices",
-            "secure architectures"
+            "secure architectures",
+            "highly available"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -1077,7 +1093,8 @@
             "dynamodb",
             "aurora",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -1211,7 +1228,8 @@
             "ecs",
             "fargate",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -1254,7 +1272,8 @@
             "s3",
             "rds",
             "backup",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "most operationally efficient"
           ],
           "pattern": null,
           "related_topics": [],
@@ -1340,7 +1359,8 @@
           "keywords": [
             "vpc",
             "direct connect",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -1437,7 +1457,8 @@
             "nlb",
             "auto scaling",
             "load balancing",
-            "resilient architectures"
+            "resilient architectures",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -1480,7 +1501,8 @@
             "s3",
             "eventbridge",
             "step functions",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -1665,7 +1687,8 @@
             "sqs",
             "kms",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -1818,7 +1841,8 @@
             "auto scaling",
             "support",
             "load balancing",
-            "resilient architectures"
+            "resilient architectures",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -1865,8 +1889,10 @@
             "rds",
             "efs",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "auto-scaling",
+            "elastically scale"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -2179,7 +2205,8 @@
             "iam",
             "athena",
             "aurora",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -2217,7 +2244,8 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "s3",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -2257,7 +2285,8 @@
           "keywords": [
             "dynamodb",
             "support",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most operationally efficient"
           ],
           "pattern": null,
           "related_topics": [],
@@ -2303,8 +2332,8 @@
             "auto scaling",
             "redshift",
             "aurora",
-            "auto scaling",
-            "high-performing architectures"
+            "high-performing architectures",
+            "automatically"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -2353,7 +2382,8 @@
             "ebs",
             "fsx",
             "support",
-            "secure architectures"
+            "secure architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -2481,7 +2511,8 @@
           "keywords": [
             "s3",
             "iam",
-            "secure architectures"
+            "secure architectures",
+            "most scalable"
           ],
           "pattern": null,
           "related_topics": [],
@@ -2716,7 +2747,8 @@
             "kinesis",
             "appsync",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -2942,7 +2974,9 @@
             "ebs",
             "organizations",
             "backup",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -3126,7 +3160,8 @@
             "api gateway",
             "direct connect",
             "global accelerator",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -3171,7 +3206,8 @@
             "alb",
             "auto scaling",
             "caching strategy",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -3306,7 +3342,8 @@
             "cognito",
             "organizations",
             "support",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -3350,7 +3387,8 @@
             "ec2",
             "rds",
             "athena",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -3524,7 +3562,8 @@
             "iam",
             "organizations",
             "support",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -3567,7 +3606,8 @@
             "cloudfront",
             "waf",
             "content delivery network",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -3756,7 +3796,8 @@
             "systems manager",
             "organizations",
             "support",
-            "secure architectures"
+            "secure architectures",
+            "most secure"
           ],
           "pattern": null,
           "related_topics": [],
@@ -3796,7 +3837,8 @@
           "keywords": [
             "s3",
             "iam",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -4065,7 +4107,8 @@
             "iam",
             "eks",
             "microservices",
-            "secure architectures"
+            "secure architectures",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -4113,7 +4156,8 @@
             "ecs",
             "fargate",
             "high availability",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": "High Availability",
           "related_topics": [],
@@ -4202,7 +4246,8 @@
             "rds",
             "aurora",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -4250,7 +4295,8 @@
             "eks",
             "support",
             "microservices",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "automatically"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -4593,7 +4639,8 @@
             "organizations",
             "control tower",
             "resource access manager",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -4638,7 +4685,8 @@
             "efs",
             "backup",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "immediately"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -4682,7 +4730,8 @@
             "s3",
             "cloudfront",
             "caching strategy",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "minimize costs"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -4819,7 +4868,8 @@
             "sns",
             "sqs",
             "serverless architecture",
-            "secure architectures"
+            "secure architectures",
+            "high availability"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -4867,7 +4917,8 @@
             "nlb",
             "eks",
             "microservices",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -4959,7 +5010,8 @@
             "alb",
             "certificate manager",
             "content delivery network",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -5008,7 +5060,8 @@
             "fsx",
             "support",
             "disaster recovery",
-            "resilient architectures"
+            "resilient architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -5046,7 +5099,8 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "global accelerator",
-            "secure architectures"
+            "secure architectures",
+            "real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -5131,7 +5185,8 @@
             "redshift",
             "kms",
             "serverless architecture",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -5262,7 +5317,8 @@
             "iam",
             "athena",
             "aurora",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -5311,7 +5367,8 @@
             "redshift",
             "support",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -5445,7 +5502,8 @@
             "api gateway",
             "alb",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -5499,7 +5557,8 @@
             "ecs",
             "fargate",
             "event-driven architecture",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": "Event-Driven Architecture",
           "related_topics": [],
@@ -5586,7 +5645,8 @@
           "keywords": [
             "snowball",
             "backup",
-            "resilient architectures"
+            "resilient architectures",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -5668,7 +5728,8 @@
           "architectural_concept": "High-Performing Architectures",
           "keywords": [
             "lambda",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -5760,7 +5821,8 @@
             "certificate manager",
             "vpn",
             "encryption at rest/transit",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -5803,7 +5865,8 @@
             "ec2",
             "rds",
             "aurora",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -5862,7 +5925,8 @@
             "emr",
             "aurora",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "highly available"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -5911,8 +5975,8 @@
             "cloudwatch",
             "auto scaling",
             "elasticache",
-            "auto scaling",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -6051,7 +6115,9 @@
             "efs",
             "vpc",
             "datasync",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -6089,7 +6155,8 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "s3",
-            "secure architectures"
+            "secure architectures",
+            "most secure"
           ],
           "pattern": null,
           "related_topics": [],
@@ -6177,8 +6244,10 @@
             "ec2",
             "eventbridge",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most operationally efficient",
+            "improve performance",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -6343,7 +6412,8 @@
           "architectural_concept": "High-Performing Architectures",
           "keywords": [
             "kinesis",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -6385,7 +6455,8 @@
             "step functions",
             "systems manager",
             "x-ray",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "most operationally efficient"
           ],
           "pattern": null,
           "related_topics": [],
@@ -6423,7 +6494,8 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "s3",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "improve performance"
           ],
           "pattern": null,
           "related_topics": [],
@@ -6470,7 +6542,8 @@
             "alb",
             "auto scaling",
             "multi-tier architecture",
-            "secure architectures"
+            "secure architectures",
+            "auto-scaling"
           ],
           "pattern": "Multi-Tier Architecture",
           "related_topics": [],
@@ -6515,7 +6588,8 @@
             "ec2",
             "iam",
             "cloudformation",
-            "secure architectures"
+            "secure architectures",
+            "most secure"
           ],
           "pattern": null,
           "related_topics": [],
@@ -6738,7 +6812,8 @@
             "config",
             "systems manager",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "automatically"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -6998,7 +7073,8 @@
             "dynamodb",
             "elasticache",
             "caching strategy",
-            "high-performing architectures"
+            "high-performing architectures",
+            "minimal management overhead"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -7171,7 +7247,8 @@
           "architectural_concept": "Operationally Excellent Architectures",
           "keywords": [
             "dynamodb",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -7261,7 +7338,8 @@
             "ec2",
             "ebs",
             "fsx",
-            "high-performing architectures"
+            "high-performing architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -7436,7 +7514,8 @@
             "iam",
             "sso",
             "organizations",
-            "secure architectures"
+            "secure architectures",
+            "least privilege"
           ],
           "pattern": null,
           "related_topics": [],
@@ -7526,7 +7605,8 @@
             "iam",
             "cognito",
             "directory service",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -7673,7 +7753,8 @@
             "api gateway",
             "alb",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -7934,7 +8015,9 @@
             "kinesis",
             "athena",
             "emr",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time",
+            "near-real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -7979,7 +8062,8 @@
             "aurora",
             "waf",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -8065,7 +8149,8 @@
             "backup",
             "disaster recovery",
             "caching strategy",
-            "resilient architectures"
+            "resilient architectures",
+            "automatically"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -8158,7 +8243,9 @@
             "efs",
             "fsx",
             "support",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -8199,8 +8286,8 @@
           "keywords": [
             "ec2",
             "auto scaling",
-            "auto scaling",
-            "resilient architectures"
+            "resilient architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -8346,7 +8433,8 @@
             "sqs",
             "kinesis",
             "decoupling pattern",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": "Decoupling Pattern",
           "related_topics": [],
@@ -8477,7 +8565,8 @@
             "ec2",
             "iam",
             "cloudformation",
-            "secure architectures"
+            "secure architectures",
+            "most secure"
           ],
           "pattern": null,
           "related_topics": [],
@@ -8534,7 +8623,8 @@
             "aurora",
             "elasticache",
             "caching strategy",
-            "high-performing architectures"
+            "high-performing architectures",
+            "highly available"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -8624,7 +8714,8 @@
             "lambda",
             "api gateway",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -8768,7 +8859,9 @@
             "shield",
             "global accelerator",
             "content delivery network",
-            "secure architectures"
+            "secure architectures",
+            "real-time",
+            "near-real-time"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -8866,7 +8959,8 @@
             "fargate",
             "aurora",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -8966,7 +9060,8 @@
             "kinesis",
             "global accelerator",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -9102,7 +9197,8 @@
             "route 53",
             "alb",
             "content delivery network",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "automatically"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -9188,7 +9284,9 @@
             "ec2",
             "alb",
             "load balancing",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "optimize costs"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -9324,8 +9422,9 @@
             "auto scaling",
             "aurora",
             "backup",
-            "auto scaling",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -9460,7 +9559,8 @@
             "direct connect",
             "vpn",
             "transit gateway",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -9504,7 +9604,8 @@
             "s3",
             "macie",
             "trusted advisor",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -9549,7 +9650,8 @@
             "eventbridge",
             "auto scaling",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "optimize costs"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -9589,7 +9691,8 @@
           "keywords": [
             "ecs",
             "microservices",
-            "secure architectures"
+            "secure architectures",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -9630,7 +9733,8 @@
           "keywords": [
             "rds",
             "support",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -9671,7 +9775,8 @@
             "s3",
             "cloudfront",
             "content delivery network",
-            "secure architectures"
+            "secure architectures",
+            "most secure"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -9711,7 +9816,8 @@
           "keywords": [
             "elasticache",
             "caching strategy",
-            "resilient architectures"
+            "resilient architectures",
+            "automatically"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -9756,7 +9862,9 @@
             "rds",
             "ebs",
             "support",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -9941,7 +10049,8 @@
             "iam",
             "eks",
             "microservices",
-            "secure architectures"
+            "secure architectures",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -10070,7 +10179,8 @@
           "keywords": [
             "s3",
             "ec2",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -10247,7 +10357,8 @@
             "glue",
             "emr",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -10342,7 +10453,8 @@
             "inspector",
             "macie",
             "microservices",
-            "secure architectures"
+            "secure architectures",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -10388,7 +10500,9 @@
             "alb",
             "auto scaling",
             "load balancing",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -10431,7 +10545,8 @@
             "ec2",
             "rds",
             "iam",
-            "secure architectures"
+            "secure architectures",
+            "least privilege"
           ],
           "pattern": null,
           "related_topics": [],
@@ -10512,7 +10627,9 @@
           "keywords": [
             "ecs",
             "microservices",
-            "secure architectures"
+            "secure architectures",
+            "most secure",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -10702,7 +10819,8 @@
             "emr",
             "support",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -10741,7 +10859,8 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "vpc",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -10862,8 +10981,9 @@
           "keywords": [
             "ec2",
             "auto scaling",
-            "auto scaling",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -10907,7 +11027,8 @@
             "alb",
             "auto scaling",
             "load balancing",
-            "resilient architectures"
+            "resilient architectures",
+            "most cost-effectively"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -10949,7 +11070,8 @@
           "keywords": [
             "rds",
             "support",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -11121,7 +11243,8 @@
             "rds",
             "dynamodb",
             "documentdb",
-            "high-performing architectures"
+            "high-performing architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -11162,7 +11285,8 @@
             "lambda",
             "ec2",
             "event-driven architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": "Event-Driven Architecture",
           "related_topics": [],
@@ -11248,7 +11372,8 @@
           "keywords": [
             "s3",
             "iam",
-            "secure architectures"
+            "secure architectures",
+            "least privilege"
           ],
           "pattern": null,
           "related_topics": [],
@@ -11298,8 +11423,8 @@
             "sqs",
             "step functions",
             "auto scaling",
-            "auto scaling",
-            "resilient architectures"
+            "resilient architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -11342,7 +11467,8 @@
             "lambda",
             "rds",
             "vpc",
-            "secure architectures"
+            "secure architectures",
+            "most secure"
           ],
           "pattern": null,
           "related_topics": [],
@@ -11385,7 +11511,9 @@
             "ec2",
             "kinesis",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time",
+            "near-real-time"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -11437,7 +11565,9 @@
             "auto scaling",
             "datasync",
             "load balancing",
-            "high-performing architectures"
+            "high-performing architectures",
+            "highly available",
+            "high availability"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -11484,7 +11614,8 @@
             "eks",
             "transfer family",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "immediately"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -11577,7 +11708,8 @@
             "s3",
             "ebs",
             "efs",
-            "high-performing architectures"
+            "high-performing architectures",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -11622,7 +11754,8 @@
             "auto scaling",
             "disaster recovery",
             "content delivery network",
-            "secure architectures"
+            "secure architectures",
+            "auto-scaling"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -11900,7 +12033,9 @@
             "fargate",
             "aurora",
             "microservices",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead",
+            "highly available"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -11982,7 +12117,8 @@
           "keywords": [
             "rds",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -12025,7 +12161,8 @@
             "rds",
             "backup",
             "disaster recovery",
-            "resilient architectures"
+            "resilient architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -12122,7 +12259,8 @@
             "eventbridge",
             "api gateway",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -12164,8 +12302,9 @@
           "keywords": [
             "ec2",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -12307,7 +12446,8 @@
           "keywords": [
             "s3",
             "fsx",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -12395,7 +12535,8 @@
             "dynamodb",
             "neptune",
             "secrets manager",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -12434,7 +12575,8 @@
           "keywords": [
             "dynamodb",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "highly available"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -12476,7 +12618,8 @@
             "eks",
             "fargate",
             "microservices",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -12621,7 +12764,9 @@
             "directory service",
             "support",
             "transfer family",
-            "secure architectures"
+            "secure architectures",
+            "optimize costs",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -12747,8 +12892,9 @@
             "ec2",
             "rds",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -12879,8 +13025,8 @@
             "rds",
             "auto scaling",
             "aurora",
-            "auto scaling",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -12927,7 +13073,8 @@
             "sqs",
             "support",
             "serverless architecture",
-            "secure architectures"
+            "secure architectures",
+            "high availability"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -13058,7 +13205,8 @@
             "qldb",
             "timestream",
             "support",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -13187,7 +13335,8 @@
             "auto scaling",
             "disaster recovery",
             "content delivery network",
-            "resilient architectures"
+            "resilient architectures",
+            "auto-scaling"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -13637,7 +13786,8 @@
             "auto scaling",
             "aurora",
             "content delivery network",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -13729,7 +13879,9 @@
             "iam",
             "ecs",
             "microservices",
-            "secure architectures"
+            "secure architectures",
+            "least privilege",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -14173,8 +14325,8 @@
             "ec2",
             "vpc",
             "auto scaling",
-            "auto scaling",
-            "secure architectures"
+            "secure architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -14222,7 +14374,8 @@
             "iam",
             "ecs",
             "microservices",
-            "secure architectures"
+            "secure architectures",
+            "least privilege"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -14261,7 +14414,9 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "s3",
-            "secure architectures"
+            "secure architectures",
+            "most operationally efficient",
+            "immediately"
           ],
           "pattern": null,
           "related_topics": [],
@@ -14303,7 +14458,8 @@
             "lambda",
             "ec2",
             "fargate",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -14341,7 +14497,10 @@
           "architectural_concept": "High-Performing Architectures",
           "keywords": [
             "aurora",
-            "high-performing architectures"
+            "high-performing architectures",
+            "automatically",
+            "real-time",
+            "near-real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -14386,7 +14545,8 @@
             "auto scaling",
             "waf",
             "load balancing",
-            "secure architectures"
+            "secure architectures",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -14427,7 +14587,8 @@
           "keywords": [
             "ec2",
             "efs",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -14514,8 +14675,9 @@
             "rds",
             "efs",
             "auto scaling",
-            "auto scaling",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling",
+            "elastically scale"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -14560,7 +14722,8 @@
             "s3",
             "rds",
             "ebs",
-            "resilient architectures"
+            "resilient architectures",
+            "fault tolerant"
           ],
           "pattern": null,
           "related_topics": [],
@@ -14602,7 +14765,8 @@
             "rds",
             "vpc",
             "vpn",
-            "secure architectures"
+            "secure architectures",
+            "most secure"
           ],
           "pattern": null,
           "related_topics": [],
@@ -14645,7 +14809,8 @@
             "alb",
             "auto scaling",
             "load balancing",
-            "resilient architectures"
+            "resilient architectures",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -14688,7 +14853,8 @@
             "s3",
             "vpc",
             "iam",
-            "secure architectures"
+            "secure architectures",
+            "least privilege"
           ],
           "pattern": null,
           "related_topics": [],
@@ -14908,7 +15074,8 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "s3",
-            "secure architectures"
+            "secure architectures",
+            "high availability"
           ],
           "pattern": null,
           "related_topics": [],
@@ -15045,7 +15212,8 @@
             "efs",
             "fsx",
             "content delivery network",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -15214,7 +15382,8 @@
           "keywords": [
             "s3",
             "iam",
-            "secure architectures"
+            "secure architectures",
+            "least privilege"
           ],
           "pattern": null,
           "related_topics": [],
@@ -15304,7 +15473,8 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "s3",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "immediately"
           ],
           "pattern": null,
           "related_topics": [],
@@ -15558,8 +15728,10 @@
             "redshift",
             "aurora",
             "elasticache",
-            "auto scaling",
-            "high-performing architectures"
+            "high-performing architectures",
+            "high availability",
+            "auto-scaling",
+            "automatically"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -15609,7 +15781,8 @@
             "config",
             "organizations",
             "backup",
-            "secure architectures"
+            "secure architectures",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -15649,8 +15822,8 @@
           "keywords": [
             "ec2",
             "auto scaling",
-            "auto scaling",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -15738,7 +15911,8 @@
             "glue",
             "aurora",
             "etl pattern",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": "ETL Pattern",
           "related_topics": [],
@@ -15881,8 +16055,8 @@
             "sqs",
             "alb",
             "auto scaling",
-            "auto scaling",
-            "resilient architectures"
+            "resilient architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -15926,7 +16100,8 @@
             "api gateway",
             "waf",
             "content delivery network",
-            "secure architectures"
+            "secure architectures",
+            "most operationally efficient"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -16020,7 +16195,8 @@
             "step functions",
             "ecs",
             "microservices",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -16061,7 +16237,9 @@
           "keywords": [
             "rds",
             "dynamodb",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "immediately"
           ],
           "pattern": null,
           "related_topics": [],
@@ -16152,7 +16330,8 @@
             "eks",
             "fargate",
             "event-driven architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Event-Driven Architecture",
           "related_topics": [],
@@ -16199,7 +16378,8 @@
             "support",
             "snowball",
             "microservices",
-            "resilient architectures"
+            "resilient architectures",
+            "high availability"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -16243,7 +16423,8 @@
             "ecs",
             "fargate",
             "microservices",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -16288,7 +16469,8 @@
             "cloudwatch",
             "cloudtrail",
             "x-ray",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -16339,7 +16521,9 @@
             "eks",
             "privatelink",
             "microservices",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -16389,7 +16573,8 @@
             "step functions",
             "api gateway",
             "decoupling pattern",
-            "high-performing architectures"
+            "high-performing architectures",
+            "immediately"
           ],
           "pattern": "Decoupling Pattern",
           "related_topics": [],
@@ -16615,7 +16800,8 @@
             "lambda",
             "s3",
             "sqs",
-            "resilient architectures"
+            "resilient architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -16654,7 +16840,8 @@
           "keywords": [
             "global accelerator",
             "caching strategy",
-            "high-performing architectures"
+            "high-performing architectures",
+            "highly available"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -16829,7 +17016,8 @@
             "cloudtrail",
             "config",
             "organizations",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -17137,7 +17325,8 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "ec2",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -17224,7 +17413,8 @@
             "ecs",
             "fargate",
             "microservices",
-            "resilient architectures"
+            "resilient architectures",
+            "least operational overhead"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -17270,7 +17460,8 @@
             "s3",
             "ec2",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most operationally efficient"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -17407,7 +17598,8 @@
             "rds",
             "backup",
             "disaster recovery",
-            "resilient architectures"
+            "resilient architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -17485,7 +17677,8 @@
           "keywords": [
             "kinesis",
             "neptune",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -17525,7 +17718,8 @@
           "keywords": [
             "lambda",
             "sns",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -17565,7 +17759,8 @@
           "keywords": [
             "lambda",
             "kinesis",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -17651,8 +17846,9 @@
             "ec2",
             "eventbridge",
             "auto scaling",
-            "auto scaling",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -17706,7 +17902,8 @@
             "api gateway",
             "aurora",
             "serverless architecture",
-            "resilient architectures"
+            "resilient architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -17796,7 +17993,8 @@
             "rds",
             "iam",
             "secrets manager",
-            "secure architectures"
+            "secure architectures",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -17888,7 +18086,8 @@
             "ec2",
             "efs",
             "vpc",
-            "high-performing architectures"
+            "high-performing architectures",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -17928,7 +18127,8 @@
           "keywords": [
             "ec2",
             "fsx",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -17972,7 +18172,8 @@
             "ec2",
             "iam",
             "vpn",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -18016,8 +18217,8 @@
             "rds",
             "vpc",
             "auto scaling",
-            "auto scaling",
-            "secure architectures"
+            "secure architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -18156,7 +18357,8 @@
             "ecs",
             "global accelerator",
             "microservices",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -18201,7 +18403,8 @@
             "s3",
             "iam",
             "organizations",
-            "secure architectures"
+            "secure architectures",
+            "most secure"
           ],
           "pattern": null,
           "related_topics": [],
@@ -18287,7 +18490,8 @@
           "keywords": [
             "rds",
             "backup",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -18336,7 +18540,8 @@
             "sqs",
             "api gateway",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most scalable"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -18425,8 +18630,8 @@
             "cloudwatch",
             "auto scaling",
             "support",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -18472,7 +18677,8 @@
             "ecs",
             "eks",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -18609,7 +18815,8 @@
           "keywords": [
             "rds",
             "cloudformation",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -18653,7 +18860,8 @@
             "vpc",
             "vpn",
             "content delivery network",
-            "secure architectures"
+            "secure architectures",
+            "most secure"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -18696,7 +18904,8 @@
             "ec2",
             "ebs",
             "iam",
-            "high-performing architectures"
+            "high-performing architectures",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -18740,7 +18949,8 @@
             "ec2",
             "vpc",
             "direct connect",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "minimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -18785,7 +18995,8 @@
             "alb",
             "auto scaling",
             "load balancing",
-            "secure architectures"
+            "secure architectures",
+            "highly available"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -18869,7 +19080,8 @@
           "keywords": [
             "s3",
             "fsx",
-            "secure architectures"
+            "secure architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -18907,7 +19119,9 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "s3",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively",
+            "immediately"
           ],
           "pattern": null,
           "related_topics": [],
@@ -19034,7 +19248,8 @@
             "route 53",
             "disaster recovery",
             "microservices",
-            "resilient architectures"
+            "resilient architectures",
+            "high availability"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -19086,7 +19301,9 @@
             "athena",
             "support",
             "datasync",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time",
+            "near-real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -19126,7 +19343,8 @@
           "keywords": [
             "vpc",
             "vpn",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -19457,7 +19675,8 @@
             "sqs",
             "support",
             "microservices",
-            "resilient architectures"
+            "resilient architectures",
+            "most operationally efficient"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -19634,7 +19853,8 @@
             "s3",
             "ec2",
             "vpc",
-            "secure architectures"
+            "secure architectures",
+            "most operationally efficient"
           ],
           "pattern": null,
           "related_topics": [],
@@ -19674,7 +19894,8 @@
           "keywords": [
             "ec2",
             "efs",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -19832,7 +20053,8 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "s3",
-            "secure architectures"
+            "secure architectures",
+            "regulatory requirements"
           ],
           "pattern": null,
           "related_topics": [],
@@ -19874,8 +20096,9 @@
             "ec2",
             "rds",
             "auto scaling",
-            "auto scaling",
-            "resilient architectures"
+            "resilient architectures",
+            "most cost-effectively",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -20019,7 +20242,8 @@
             "kms",
             "config",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "elastically scale"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -20064,7 +20288,8 @@
             "cloudformation",
             "backup",
             "disaster recovery",
-            "resilient architectures"
+            "resilient architectures",
+            "most operationally efficient"
           ],
           "pattern": null,
           "related_topics": [],
@@ -20156,7 +20381,8 @@
             "iam",
             "backup",
             "direct connect",
-            "secure architectures"
+            "secure architectures",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -20199,7 +20425,8 @@
             "dynamodb",
             "athena",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -20374,7 +20601,8 @@
             "dynamodb",
             "athena",
             "redshift",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -20414,7 +20642,9 @@
           "keywords": [
             "rds",
             "disaster recovery",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively",
+            "real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -20456,8 +20686,8 @@
             "ec2",
             "ebs",
             "auto scaling",
-            "auto scaling",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -20498,7 +20728,8 @@
           "keywords": [
             "s3",
             "dynamodb",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -20748,7 +20979,8 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "s3",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "minimal management overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -20832,7 +21064,9 @@
           "keywords": [
             "ec2",
             "vpc",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time",
+            "near-real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -20875,7 +21109,9 @@
             "eks",
             "fargate",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead",
+            "elastically scale"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -20957,7 +21193,8 @@
             "route 53",
             "global accelerator",
             "caching strategy",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -21046,7 +21283,8 @@
           "keywords": [
             "vpc",
             "transit gateway",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -21133,7 +21371,8 @@
             "kms",
             "organizations",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "optimize costs"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -21252,7 +21491,9 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "s3",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -21293,7 +21534,8 @@
           "keywords": [
             "s3",
             "iam",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -21384,7 +21626,9 @@
             "auto scaling",
             "aurora",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "highly available",
+            "automatically"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -21477,7 +21721,9 @@
             "dynamodb",
             "documentdb",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "real-time"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -21523,7 +21769,8 @@
             "alb",
             "auto scaling",
             "load balancing",
-            "secure architectures"
+            "secure architectures",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -21572,8 +21819,10 @@
             "auto scaling",
             "kinesis",
             "cloudtrail",
-            "auto scaling",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling",
+            "real-time",
+            "near-real-time"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -21660,7 +21909,8 @@
             "auto scaling",
             "ecs",
             "caching strategy",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -21796,7 +22046,10 @@
             "vpc",
             "datasync",
             "encryption at rest/transit",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available",
+            "fault tolerant",
+            "elastically scale"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -22020,7 +22273,8 @@
             "auto scaling",
             "global accelerator",
             "load balancing",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -22076,7 +22330,8 @@
             "kms",
             "certificate manager",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "elastically scale"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -22125,7 +22380,8 @@
             "efs",
             "support",
             "datasync",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -22287,8 +22543,9 @@
           "keywords": [
             "ec2",
             "auto scaling",
-            "auto scaling",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -22379,7 +22636,8 @@
             "vpc",
             "cloudwatch",
             "vpn",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -22470,7 +22728,8 @@
             "alb",
             "global accelerator",
             "content delivery network",
-            "high-performing architectures"
+            "high-performing architectures",
+            "improve performance"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -22519,7 +22778,8 @@
             "auto scaling",
             "support",
             "content delivery network",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -22558,7 +22818,8 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "iam",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -22600,7 +22861,8 @@
             "lambda",
             "dynamodb",
             "backup",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -22652,7 +22914,9 @@
             "auto scaling",
             "systems manager",
             "load balancing",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -22699,7 +22963,9 @@
             "ebs",
             "backup",
             "disaster recovery",
-            "resilient architectures"
+            "resilient architectures",
+            "most operationally efficient",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -22891,7 +23157,8 @@
             "efs",
             "fsx",
             "support",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -22931,7 +23198,8 @@
           "keywords": [
             "ec2",
             "efs",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -23111,7 +23379,8 @@
             "cloudtrail",
             "support",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "automatically"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -23282,7 +23551,8 @@
             "dynamodb",
             "eventbridge",
             "config",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -23322,7 +23592,9 @@
           "keywords": [
             "ec2",
             "rds",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively",
+            "optimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -23370,7 +23642,10 @@
             "eks",
             "fargate",
             "microservices",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead",
+            "high availability",
+            "automatically"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -23412,7 +23687,8 @@
             "step functions",
             "api gateway",
             "serverless architecture",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -23464,7 +23740,9 @@
             "emr",
             "backup",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time",
+            "near-real-time"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -23635,7 +23913,8 @@
             "ec2",
             "step functions",
             "fargate",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -23775,7 +24054,8 @@
             "glue",
             "emr",
             "etl pattern",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "ETL Pattern",
           "related_topics": [],
@@ -23866,7 +24146,10 @@
             "lambda",
             "s3",
             "eventbridge",
-            "secure architectures"
+            "secure architectures",
+            "automatically",
+            "real-time",
+            "near-real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -23911,7 +24194,8 @@
             "secrets manager",
             "kms",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "elastically scale"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -23961,7 +24245,8 @@
             "fsx",
             "datasync",
             "encryption at rest/transit",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -24099,7 +24384,8 @@
             "nlb",
             "auto scaling",
             "load balancing",
-            "secure architectures"
+            "secure architectures",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -24189,7 +24475,8 @@
             "ecs",
             "fargate",
             "microservices",
-            "high-performing architectures"
+            "high-performing architectures",
+            "automatically"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -24236,7 +24523,8 @@
             "organizations",
             "support",
             "transfer family",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -24318,8 +24606,8 @@
             "ec2",
             "auto scaling",
             "disaster recovery",
-            "auto scaling",
-            "resilient architectures"
+            "resilient architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -24364,8 +24652,8 @@
           "keywords": [
             "ec2",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -24556,7 +24844,8 @@
             "cloudfront",
             "api gateway",
             "microservices",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -24597,7 +24886,8 @@
           "keywords": [
             "ec2",
             "iam",
-            "secure architectures"
+            "secure architectures",
+            "least privilege"
           ],
           "pattern": null,
           "related_topics": [],
@@ -24723,7 +25013,9 @@
             "s3",
             "rds",
             "ebs",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -24771,8 +25063,9 @@
             "auto scaling",
             "aurora",
             "support",
-            "auto scaling",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling",
+            "elastically scale"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -24816,7 +25109,8 @@
             "eks",
             "organizations",
             "microservices",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -24860,7 +25154,8 @@
             "glue",
             "emr",
             "etl pattern",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": "ETL Pattern",
           "related_topics": [],
@@ -24945,7 +25240,8 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "s3",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -25031,7 +25327,8 @@
             "sqs",
             "api gateway",
             "elasticache",
-            "secure architectures"
+            "secure architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -25123,7 +25420,8 @@
             "kms",
             "config",
             "organizations",
-            "secure architectures"
+            "secure architectures",
+            "data residency"
           ],
           "pattern": null,
           "related_topics": [],
@@ -25207,8 +25505,8 @@
             "ec2",
             "auto scaling",
             "cloudformation",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "automatically"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -25252,7 +25550,8 @@
             "ebs",
             "kms",
             "encryption at rest/transit",
-            "high-performing architectures"
+            "high-performing architectures",
+            "elastically scale"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -25354,7 +25653,8 @@
             "auto scaling",
             "redshift",
             "decoupling pattern",
-            "resilient architectures"
+            "resilient architectures",
+            "automatically"
           ],
           "pattern": "Decoupling Pattern",
           "related_topics": [],
@@ -25406,7 +25706,8 @@
             "config",
             "organizations",
             "microservices",
-            "resilient architectures"
+            "resilient architectures",
+            "least operational overhead"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -25452,7 +25753,8 @@
             "secrets manager",
             "kms",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -25580,7 +25882,8 @@
             "s3",
             "aurora",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -25682,7 +25985,9 @@
             "shield",
             "support",
             "content delivery network",
-            "secure architectures"
+            "secure architectures",
+            "real-time",
+            "near-real-time"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -25859,7 +26164,8 @@
           "keywords": [
             "lambda",
             "s3",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -26046,7 +26352,8 @@
             "auto scaling",
             "support",
             "load balancing",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -26090,7 +26397,9 @@
             "auto scaling",
             "eks",
             "microservices",
-            "high-performing architectures"
+            "high-performing architectures",
+            "elastically scale",
+            "automatically"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -26182,7 +26491,8 @@
             "rds",
             "dynamodb",
             "serverless architecture",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -26272,7 +26582,8 @@
             "ecs",
             "fargate",
             "serverless architecture",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -26568,7 +26879,8 @@
           "keywords": [
             "s3",
             "iam",
-            "secure architectures"
+            "secure architectures",
+            "most secure"
           ],
           "pattern": null,
           "related_topics": [],
@@ -26653,7 +26965,8 @@
             "s3",
             "cloudfront",
             "content delivery network",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively"
           ],
           "pattern": "Content Delivery Network",
           "related_topics": [],
@@ -26697,7 +27010,8 @@
             "ec2",
             "auto scaling",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "optimize costs"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -26740,7 +27054,8 @@
             "rds",
             "secrets manager",
             "kms",
-            "secure architectures"
+            "secure architectures",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -26999,8 +27314,9 @@
           "keywords": [
             "ec2",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "least operational overhead",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -27050,7 +27366,8 @@
             "systems manager",
             "trusted advisor",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -27176,7 +27493,8 @@
           "keywords": [
             "aurora",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -27265,7 +27583,8 @@
           "keywords": [
             "emr",
             "support",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -27309,7 +27628,8 @@
             "secrets manager",
             "systems manager",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -27359,7 +27679,8 @@
             "fargate",
             "config",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "elastically scale"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -27409,7 +27730,8 @@
             "alb",
             "auto scaling",
             "load balancing",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -27546,7 +27868,8 @@
             "ec2",
             "rds",
             "secrets manager",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -27720,7 +28043,8 @@
           "architectural_concept": "High-Performing Architectures",
           "keywords": [
             "lambda",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -27814,7 +28138,8 @@
             "alb",
             "auto scaling",
             "caching strategy",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -27908,7 +28233,8 @@
             "sns",
             "api gateway",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -27953,7 +28279,8 @@
             "iam",
             "eks",
             "microservices",
-            "secure architectures"
+            "secure architectures",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -28082,7 +28409,8 @@
             "s3",
             "cloudwatch",
             "cloudtrail",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -28178,7 +28506,8 @@
             "alb",
             "auto scaling",
             "load balancing",
-            "resilient architectures"
+            "resilient architectures",
+            "most cost-effectively"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -28301,7 +28630,8 @@
             "iam",
             "cloudtrail",
             "config",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -28342,7 +28672,9 @@
             "aurora",
             "kms",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead",
+            "compliance requirements"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -28475,7 +28807,9 @@
             "rds",
             "aurora",
             "support",
-            "high-performing architectures"
+            "high-performing architectures",
+            "highly available",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -28563,7 +28897,8 @@
           "keywords": [
             "aurora",
             "support",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -28604,7 +28939,8 @@
             "vpc",
             "nlb",
             "load balancing",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "high availability"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -28746,7 +29082,8 @@
             "kinesis",
             "athena",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -28794,7 +29131,9 @@
             "auto scaling",
             "elastic beanstalk",
             "load balancing",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead",
+            "elastically scale"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -29104,7 +29443,8 @@
             "dynamodb",
             "elasticache",
             "caching strategy",
-            "high-performing architectures"
+            "high-performing architectures",
+            "improve performance"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -29376,7 +29716,9 @@
             "rds",
             "dynamodb",
             "ebs",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -29425,7 +29767,8 @@
             "ecs",
             "fargate",
             "microservices",
-            "resilient architectures"
+            "resilient architectures",
+            "without downtime"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -29509,7 +29852,8 @@
           "aws_services": [],
           "architectural_concept": "Secure Architectures",
           "keywords": [
-            "secure architectures"
+            "secure architectures",
+            "most operationally efficient"
           ],
           "pattern": null,
           "related_topics": [],
@@ -29548,7 +29892,8 @@
             "lambda",
             "ec2",
             "event-driven architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Event-Driven Architecture",
           "related_topics": [],
@@ -29590,7 +29935,8 @@
           "keywords": [
             "ec2",
             "efs",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -29767,7 +30113,8 @@
             "rds",
             "athena",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "least operational overhead"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -29808,8 +30155,9 @@
           "keywords": [
             "ec2",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "fault tolerant"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -29858,7 +30206,9 @@
             "eventbridge",
             "guardduty",
             "macie",
-            "secure architectures"
+            "secure architectures",
+            "immediately",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -29904,7 +30254,8 @@
             "lambda",
             "s3",
             "transfer family",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -29992,7 +30343,9 @@
             "ec2",
             "fargate",
             "support",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively",
+            "real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -30081,7 +30434,8 @@
             "s3",
             "glue",
             "aurora",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -30131,7 +30485,9 @@
             "sqs",
             "kinesis",
             "elasticache",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead",
+            "real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -30176,7 +30532,8 @@
             "cloudfront",
             "api gateway",
             "caching strategy",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -30223,7 +30580,8 @@
             "eventbridge",
             "secrets manager",
             "systems manager",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -30263,8 +30621,8 @@
           "keywords": [
             "ec2",
             "auto scaling",
-            "auto scaling",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -30447,7 +30805,8 @@
             "sns",
             "eventbridge",
             "macie",
-            "secure architectures"
+            "secure architectures",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -30619,7 +30978,8 @@
           "architectural_concept": "High-Performing Architectures",
           "keywords": [
             "emr",
-            "high-performing architectures"
+            "high-performing architectures",
+            "reduce operational complexity"
           ],
           "pattern": null,
           "related_topics": [],
@@ -30711,7 +31071,8 @@
           "keywords": [
             "ebs",
             "fsx",
-            "secure architectures"
+            "secure architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -30753,8 +31114,10 @@
             "ec2",
             "efs",
             "auto scaling",
-            "auto scaling",
-            "resilient architectures"
+            "resilient architectures",
+            "optimize costs",
+            "auto-scaling",
+            "elastically scale"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -30797,7 +31160,9 @@
             "ec2",
             "ebs",
             "efs",
-            "resilient architectures"
+            "resilient architectures",
+            "most operationally efficient",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -31063,7 +31428,9 @@
             "sso",
             "organizations",
             "serverless architecture",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead",
+            "least privilege"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -31102,7 +31469,8 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "secrets manager",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -31192,7 +31560,8 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "s3",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -31278,7 +31647,8 @@
           "keywords": [
             "dynamodb",
             "aurora",
-            "high-performing architectures"
+            "high-performing architectures",
+            "minimal downtime"
           ],
           "pattern": null,
           "related_topics": [],
@@ -31358,7 +31728,8 @@
           "keywords": [
             "ec2",
             "fargate",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -31403,7 +31774,8 @@
             "snowball",
             "storage gateway",
             "backup",
-            "resilient architectures"
+            "resilient architectures",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -31447,8 +31819,9 @@
             "ec2",
             "efs",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "least operational overhead",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -31578,7 +31951,8 @@
             "lambda",
             "efs",
             "vpc",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -31616,7 +31990,8 @@
           "architectural_concept": "High-Performing Architectures",
           "keywords": [
             "kinesis",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -31711,7 +32086,9 @@
             "fsx",
             "ecs",
             "microservices",
-            "high-performing architectures"
+            "high-performing architectures",
+            "most cost-effectively",
+            "high availability"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -31832,7 +32209,8 @@
             "vpc",
             "nlb",
             "load balancing",
-            "secure architectures"
+            "secure architectures",
+            "real-time"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -31969,7 +32347,8 @@
             "s3",
             "ec2",
             "vpc",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -32014,7 +32393,8 @@
             "cloudformation",
             "kms",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -32185,7 +32565,8 @@
             "cloudwatch",
             "athena",
             "cloudtrail",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -32231,7 +32612,8 @@
             "cloudwatch",
             "inspector",
             "systems manager",
-            "high-performing architectures"
+            "high-performing architectures",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -32278,7 +32660,8 @@
             "aurora",
             "elasticache",
             "caching strategy",
-            "secure architectures"
+            "secure architectures",
+            "highly available"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -32317,7 +32700,9 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "iam",
-            "secure architectures"
+            "secure architectures",
+            "most operationally efficient",
+            "least privilege"
           ],
           "pattern": null,
           "related_topics": [],
@@ -32363,7 +32748,8 @@
           "keywords": [
             "ec2",
             "sqs",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -32404,7 +32790,8 @@
           "keywords": [
             "iam",
             "kms",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -32461,7 +32848,8 @@
             "aurora",
             "support",
             "serverless architecture",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -32551,7 +32939,9 @@
             "rds",
             "iam",
             "serverless architecture",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead",
+            "least privilege"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -32590,7 +32980,8 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "rds",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -32725,7 +33116,8 @@
             "sns",
             "sqs",
             "decoupling pattern",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time"
           ],
           "pattern": "Decoupling Pattern",
           "related_topics": [],
@@ -32770,7 +33162,9 @@
             "systems manager",
             "support",
             "vpn",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "minimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -32815,7 +33209,9 @@
             "backup",
             "disaster recovery",
             "caching strategy",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available",
+            "fault tolerant"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -32936,7 +33332,9 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "organizations",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "immediately",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -33033,7 +33431,8 @@
             "elasticache",
             "support",
             "caching strategy",
-            "secure architectures"
+            "secure architectures",
+            "auto-scaling"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -33072,7 +33471,8 @@
           "architectural_concept": "High-Performing Architectures",
           "keywords": [
             "ec2",
-            "high-performing architectures"
+            "high-performing architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -33156,7 +33556,8 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "sns",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -33201,7 +33602,8 @@
             "sns",
             "support",
             "event-driven architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "immediately"
           ],
           "pattern": "Event-Driven Architecture",
           "related_topics": [],
@@ -33247,7 +33649,8 @@
             "kms",
             "support",
             "encryption at rest/transit",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -33286,7 +33689,8 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "athena",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -33376,7 +33780,9 @@
             "aurora",
             "support",
             "backup",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead",
+            "regulatory requirements"
           ],
           "pattern": null,
           "related_topics": [],
@@ -33637,7 +34043,8 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "s3",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -33757,7 +34164,10 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "s3",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "immediately",
+            "high availability"
           ],
           "pattern": null,
           "related_topics": [],
@@ -33846,7 +34256,8 @@
             "ec2",
             "fargate",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -34072,7 +34483,8 @@
             "inspector",
             "backup",
             "multi-tier architecture",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "auto-scaling"
           ],
           "pattern": "Multi-Tier Architecture",
           "related_topics": [],
@@ -34198,7 +34610,8 @@
             "api gateway",
             "support",
             "serverless architecture",
-            "secure architectures"
+            "secure architectures",
+            "immediately"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -34241,7 +34654,8 @@
             "lambda",
             "dynamodb",
             "elasticache",
-            "high-performing architectures"
+            "high-performing architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -34387,8 +34801,9 @@
             "auto scaling",
             "secrets manager",
             "cloudtrail",
-            "auto scaling",
-            "secure architectures"
+            "secure architectures",
+            "auto-scaling",
+            "automatically"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -34657,7 +35072,10 @@
             "nlb",
             "auto scaling",
             "load balancing",
-            "resilient architectures"
+            "resilient architectures",
+            "most cost-effectively",
+            "highly available",
+            "automatically"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -34702,7 +35120,9 @@
             "iam",
             "eventbridge",
             "config",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "minimal management overhead",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -34831,7 +35251,8 @@
             "s3",
             "dynamodb",
             "emr",
-            "high-performing architectures"
+            "high-performing architectures",
+            "minimal management overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -34919,8 +35340,8 @@
           "keywords": [
             "cloudwatch",
             "auto scaling",
-            "auto scaling",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -35098,7 +35519,8 @@
             "ecs",
             "fargate",
             "decoupling pattern",
-            "high-performing architectures"
+            "high-performing architectures",
+            "without downtime"
           ],
           "pattern": "Decoupling Pattern",
           "related_topics": [],
@@ -35139,7 +35561,8 @@
           "keywords": [
             "iam",
             "organizations",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -35179,7 +35602,8 @@
           "keywords": [
             "direct connect",
             "vpn",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -35215,7 +35639,9 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "microservices",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead",
+            "automatically"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -35401,8 +35827,9 @@
           "keywords": [
             "ec2",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -35541,7 +35968,9 @@
             "cloudtrail",
             "support",
             "microservices",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "most operationally efficient",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -35587,7 +36016,8 @@
             "iam",
             "kms",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "least privilege"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -35675,7 +36105,8 @@
             "ecs",
             "fargate",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -35810,7 +36241,8 @@
             "lambda",
             "s3",
             "cognito",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -35857,7 +36289,8 @@
             "ecs",
             "eks",
             "microservices",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -35902,7 +36335,9 @@
             "s3",
             "dynamodb",
             "kinesis",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time",
+            "near-real-time"
           ],
           "pattern": null,
           "related_topics": [],
@@ -35944,7 +36379,8 @@
             "fsx",
             "datasync",
             "transfer family",
-            "resilient architectures"
+            "resilient architectures",
+            "fault tolerant"
           ],
           "pattern": null,
           "related_topics": [],
@@ -36117,7 +36553,8 @@
             "kinesis",
             "support",
             "microservices",
-            "high-performing architectures"
+            "high-performing architectures",
+            "real-time"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -36162,8 +36599,10 @@
             "ebs",
             "efs",
             "auto scaling",
-            "auto scaling",
-            "secure architectures"
+            "secure architectures",
+            "highly available",
+            "auto-scaling",
+            "elastically scale"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -36254,7 +36693,8 @@
             "support",
             "backup",
             "disaster recovery",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -36296,8 +36736,8 @@
             "ec2",
             "sqs",
             "auto scaling",
-            "auto scaling",
-            "resilient architectures"
+            "resilient architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -36336,7 +36776,8 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "direct connect",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -36383,7 +36824,8 @@
             "aurora",
             "global accelerator",
             "multi-tier architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling"
           ],
           "pattern": "Multi-Tier Architecture",
           "related_topics": [],
@@ -36424,7 +36866,8 @@
           "keywords": [
             "dynamodb",
             "backup",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -36515,7 +36958,9 @@
           "keywords": [
             "ecs",
             "microservices",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most operationally efficient",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -36680,7 +37125,8 @@
           "keywords": [
             "dynamodb",
             "aurora",
-            "high-performing architectures"
+            "high-performing architectures",
+            "minimal downtime"
           ],
           "pattern": null,
           "related_topics": [],
@@ -36940,7 +37386,8 @@
             "ec2",
             "rds",
             "disaster recovery",
-            "resilient architectures"
+            "resilient architectures",
+            "fault tolerant"
           ],
           "pattern": null,
           "related_topics": [],
@@ -37035,7 +37482,9 @@
             "auto scaling",
             "aurora",
             "load balancing",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -37123,7 +37572,8 @@
             "lambda",
             "rds",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -37205,8 +37655,9 @@
           "keywords": [
             "ec2",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "optimize costs",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -37249,8 +37700,8 @@
             "lambda",
             "ec2",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -37298,7 +37749,8 @@
             "kinesis",
             "elasticache",
             "caching strategy",
-            "secure architectures"
+            "secure architectures",
+            "most cost-effectively"
           ],
           "pattern": "Caching Strategy",
           "related_topics": [],
@@ -37614,7 +38066,8 @@
             "lambda",
             "s3",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -37793,7 +38246,10 @@
             "dynamodb",
             "api gateway",
             "serverless architecture",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead",
+            "real-time",
+            "near-real-time"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -37881,7 +38337,8 @@
             "alb",
             "auto scaling",
             "load balancing",
-            "high-performing architectures"
+            "high-performing architectures",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -37922,7 +38379,8 @@
           "keywords": [
             "iam",
             "cloudtrail",
-            "secure architectures"
+            "secure architectures",
+            "most secure"
           ],
           "pattern": null,
           "related_topics": [],
@@ -37960,7 +38418,9 @@
           "architectural_concept": "Cost-Optimized Architectures",
           "keywords": [
             "ec2",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "optimize costs"
           ],
           "pattern": null,
           "related_topics": [],
@@ -38049,7 +38509,8 @@
             "lambda",
             "dynamodb",
             "vpc",
-            "secure architectures"
+            "secure architectures",
+            "most secure"
           ],
           "pattern": null,
           "related_topics": [],
@@ -38146,7 +38607,8 @@
             "waf",
             "support",
             "load balancing",
-            "secure architectures"
+            "secure architectures",
+            "auto-scaling"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -38199,7 +38661,8 @@
             "iam",
             "sqs",
             "organizations",
-            "secure architectures"
+            "secure architectures",
+            "least privilege"
           ],
           "pattern": null,
           "related_topics": [],
@@ -38287,7 +38750,8 @@
             "organizations",
             "support",
             "transit gateway",
-            "resilient architectures"
+            "resilient architectures",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
@@ -38335,7 +38799,8 @@
             "ebs",
             "efs",
             "fsx",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -38511,7 +38976,9 @@
             "dynamodb",
             "eks",
             "microservices",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available",
+            "elastically scale"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -38556,7 +39023,8 @@
             "rds",
             "eks",
             "microservices",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "least operational overhead"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -38687,7 +39155,8 @@
             "sns",
             "sqs",
             "eventbridge",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -38727,7 +39196,8 @@
           "keywords": [
             "vpc",
             "direct connect",
-            "resilient architectures"
+            "resilient architectures",
+            "highly available"
           ],
           "pattern": null,
           "related_topics": [],
@@ -38861,8 +39331,9 @@
             "ec2",
             "efs",
             "auto scaling",
-            "auto scaling",
-            "resilient architectures"
+            "resilient architectures",
+            "optimize costs",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -38951,8 +39422,8 @@
             "ec2",
             "efs",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -38998,7 +39469,8 @@
             "alb",
             "auto scaling",
             "load balancing",
-            "secure architectures"
+            "secure architectures",
+            "automatically"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -39177,7 +39649,8 @@
             "security hub",
             "cloudtrail",
             "control tower",
-            "operationally excellent architectures"
+            "operationally excellent architectures",
+            "minimal management overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -39271,7 +39744,8 @@
             "sns",
             "eventbridge",
             "datasync",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": null,
           "related_topics": [],
@@ -39409,7 +39883,8 @@
             "s3",
             "iam",
             "athena",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -39503,8 +39978,8 @@
             "ec2",
             "dynamodb",
             "auto scaling",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -39635,7 +40110,8 @@
           "architectural_concept": "Secure Architectures",
           "keywords": [
             "fargate",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -39858,7 +40334,9 @@
             "ecs",
             "eks",
             "microservices",
-            "high-performing architectures"
+            "high-performing architectures",
+            "least operational overhead",
+            "highly available"
           ],
           "pattern": "Microservices",
           "related_topics": [],
@@ -39949,7 +40427,8 @@
             "efs",
             "alb",
             "load balancing",
-            "resilient architectures"
+            "resilient architectures",
+            "most cost-effectively"
           ],
           "pattern": "Load Balancing",
           "related_topics": [],
@@ -39996,7 +40475,8 @@
             "fsx",
             "support",
             "backup",
-            "high-performing architectures"
+            "high-performing architectures",
+            "automatically"
           ],
           "pattern": null,
           "related_topics": [],
@@ -40039,7 +40519,9 @@
             "ec2",
             "eventbridge",
             "serverless architecture",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "immediately",
+            "automatically"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -40166,7 +40648,9 @@
             "ebs",
             "kms",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead",
+            "elastically scale"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -40205,7 +40689,8 @@
           "architectural_concept": "Resilient Architectures",
           "keywords": [
             "rds",
-            "resilient architectures"
+            "resilient architectures",
+            "least operational overhead"
           ],
           "pattern": null,
           "related_topics": [],
@@ -40294,7 +40779,8 @@
             "iam",
             "support",
             "etl pattern",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "minimal management overhead"
           ],
           "pattern": "ETL Pattern",
           "related_topics": [],
@@ -40506,7 +40992,9 @@
             "kms",
             "cloudtrail",
             "encryption at rest/transit",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead",
+            "compliance requirements"
           ],
           "pattern": "Encryption at Rest/Transit",
           "related_topics": [],
@@ -40550,7 +41038,8 @@
             "athena",
             "glue",
             "serverless architecture",
-            "secure architectures"
+            "secure architectures",
+            "least operational overhead"
           ],
           "pattern": "Serverless Architecture",
           "related_topics": [],
@@ -40863,8 +41352,10 @@
             "efs",
             "auto scaling",
             "support",
-            "auto scaling",
-            "cost-optimized architectures"
+            "cost-optimized architectures",
+            "most cost-effectively",
+            "highly available",
+            "auto-scaling"
           ],
           "pattern": "Auto Scaling",
           "related_topics": [],
@@ -40907,7 +41398,8 @@
             "sns",
             "sqs",
             "organizations",
-            "secure architectures"
+            "secure architectures",
+            "least privilege"
           ],
           "pattern": null,
           "related_topics": [],
@@ -40991,7 +41483,8 @@
             "ec2",
             "efs",
             "backup",
-            "resilient architectures"
+            "resilient architectures",
+            "elastically scale"
           ],
           "pattern": null,
           "related_topics": [],
