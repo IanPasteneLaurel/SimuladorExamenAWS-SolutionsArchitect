@@ -1,0 +1,215 @@
+[
+  {
+    "question_id": 36,
+    "domain": "Cost-Optimized Architectures",
+    "multi_select": false,
+    "question_en": "A company runs a Python script on an employee’s laptop to transform and update data that is stored in an Amazon RDS database. The company wants to migrate the transformation workload to the AWS Cloud. The solution must run the Python script every 30 minutes. Each run of the script takes approximately 20 seconds to update the data in the RDS database.\n\n\n\nWhich solution will meet these requirements MOST cost-effectively?",
+    "options": {
+      "A": "Launch an Amazon EC2 On-Demand Instance to run the Python script. Configure the EC2 instance to access the RDS database. Configure a cron job to invoke the Python script.",
+      "B": "Launch an Amazon EC2 Spot Instance to run the Python script. Configure the EC2 instance to access the RDS database. Configure a cron job to invoke the Python script.",
+      "C": "Configure an AWS Lambda function to access the RDS database. Use Amazon EventBridge Scheduler to invoke the Lambda function.",
+      "D": "Configure an AWS Lambda function to access the RDS database. Configure the Lambda function with provisioned concurrency. Use an Amazon API Gateway HTTP API to invoke the Lambda function."
+    },
+    "correct_answer": "C",
+    "explanation": {
+      "full_text": "AWS Lambda with Amazon EventBridge Scheduler is the most cost-effective solution because the workload is short, periodic, and does not require a continuously running server. The Python script runs every 30 minutes and takes only about 20 seconds, so paying for EC2 capacity that remains mostly idle would waste money. Lambda charges based on requests and execution duration, which fits this intermittent workload well. EventBridge Scheduler can invoke the Lambda function on a recurring schedule. Provisioned concurrency is unnecessary because this is not a latency-sensitive user-facing workload. API Gateway is also unnecessary because the script does not need an HTTP endpoint. Spot Instances reduce EC2 cost but still add instance management and interruption risk.",
+      "why_correct": "AWS Lambda with Amazon EventBridge Scheduler is the most cost-effective solution because the workload is short, periodic, and does not require a continuously running server.  The Python script runs every 30 minutes and takes only about 20 seconds, so paying for EC2 capacity that remains mostly idle would waste money.",
+      "why_wrong": {
+        "A": "[PENDIENTE: Explicar por qué A no es correcta]",
+        "B": "[PENDIENTE: Explicar por qué B no es correcta]",
+        "D": "[PENDIENTE: Explicar por qué D no es correcta]"
+      },
+      "aws_services": [
+        "Lambda",
+        "EC2",
+        "RDS",
+        "EventBridge",
+        "API Gateway"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures",
+      "keywords": [
+        "lambda",
+        "ec2",
+        "rds",
+        "eventbridge",
+        "api gateway",
+        "serverless architecture",
+        "cost-optimized architectures"
+      ],
+      "pattern": "Serverless Architecture",
+      "related_topics": [],
+      "exam_tips": "Lambda es ideal para cargas de trabajo event-driven y de corta duración.",
+      "memorize": [
+        "Servicios clave: Lambda, EC2, RDS",
+        "Patrón: Serverless Architecture"
+      ],
+      "difficulty_rating": 3
+    }
+  },
+  {
+    "question_id": 43,
+    "domain": "Cost-Optimized Architectures",
+    "multi_select": false,
+    "question_en": "A company runs multiple workloads in separate AWS environments. The company wants to optimize its AWS costs but must maintain the same level of performance for the environments. The company ' s production environment requires resources to be highly available. The other environments do not require highly available resources. Each environment has the same set of networking components, including the following: • 1 VPC • 1 Application Load Balancer • 4 subnets distributed across 2 Availability Zones (2 public subnets and 2 private subnets)\n\n\n\n• 2 NAT gateways (1 in each public subnet) • 1 internet gateway Which solution will meet these requirements?",
+    "options": {
+      "A": "Do not change the production environment workload. For each non-production workload, remove one NAT gateway and update the route tables for private subnets to target the remaining NAT gateway for the destination 0.0.0.0/0.",
+      "B": "Reduce the number of Availability Zones that all workloads in all environments use.",
+      "C": "Replace every NAT gateway with a t4g.large NAT instance. Update the route tables for each private subnet to target the NAT instance that is in the same Availability Zone for the destination 0.0.0.0/0.",
+      "D": "In each environment, create one transit gateway and remove one NAT gateway. Configure routing on the transit gateway to forward traffic for the destination 0.0.0.0/0 to the remaining NAT gateway. Update private subnet route tables to target the transit gateway for the destination 0.0.0.0/0."
+    },
+    "correct_answer": "A",
+    "explanation": {
+      "full_text": "Maintaining two NAT gateways for production ensures high availability. Reducing to one NAT gateway in non-production environments lowers cost while maintaining necessary connectivity. This approach is recommended by AWS for cost optimization in non-critical environments. Reference Extract: \" For environments that do not require high availability, you can reduce costs by using a single NAT gateway and updating route tables accordingly. \" Source: AWS Certified Solutions Architect – Official Study Guide, Cost Optimization and NAT Gateway section.",
+      "why_correct": "Maintaining two NAT gateways for production ensures high availability.  Reducing to one NAT gateway in non-production environments lowers cost while maintaining necessary connectivity.",
+      "why_wrong": {
+        "B": "[PENDIENTE: Explicar por qué B no es correcta]",
+        "C": "[PENDIENTE: Explicar por qué C no es correcta]",
+        "D": "[PENDIENTE: Explicar por qué D no es correcta]"
+      },
+      "aws_services": [
+        "VPC"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures",
+      "keywords": [
+        "vpc",
+        "cost-optimized architectures"
+      ],
+      "pattern": null,
+      "related_topics": [],
+      "exam_tips": "En VPC, security groups son stateful, NACLs son stateless.",
+      "memorize": [
+        "Servicios clave: VPC"
+      ],
+      "difficulty_rating": 3
+    }
+  },
+  {
+    "question_id": 45,
+    "domain": "Cost-Optimized Architectures",
+    "multi_select": false,
+    "question_en": "A company ' s expense tracking application gives users the ability to upload images of receipts. The application analyzes the receipts to extract information and stores the raw images in Amazon S3. The application is written in Java and runs on Amazon EC2 On-Demand Instances in an Auto Scaling group behind an Application Load Balancer. The compute costs and storage costs have increased with the popularity of the application. Which solution will provide the MOST cost savings without affecting application performance?",
+    "options": {
+      "A": "Purchase a Compute Savings Plan for the maximum number of necessary EC2 instances. Store the uploaded files in Amazon Elastic File System (Amazon EFS).",
+      "B": "Decrease the minimum number of EC2 instances in the Auto Scaling group. Use On-Demand Instances for peak scaling. Store the uploaded files in Amazon Elastic File System (Amazon EFS).",
+      "C": "Decrease the maximum number of EC2 instances in the Auto Scaling group. Set up S3 Lifecycle policies to archive the raw images to lower-cost storage tiers after 30 days.",
+      "D": "Purchase a Compute Savings Plan for the minimum number of necessary EC2 instances. Use OnDemand Instances for peak scaling. Set up S3 Lifecycle policies to archive the raw images to lowercost storage tiers after 30 days."
+    },
+    "correct_answer": "D",
+    "explanation": {
+      "full_text": "The question asks for the most cost savings while not affecting application performance, and it explicitly calls out both compute costs and storage costs increasing. The best answer is the option that optimizes both cost drivers without reducing capacity needed for peak performance. Option D accomplishes this by combining two well-established cost optimization mechanisms: a Compute Savings Plan for baseline compute usage and S3 Lifecycle policies for lower-cost storage of older receipt images. A Compute Savings Plan is best applied to the steady, always-needed portion of compute capacity. In an Auto Scaling group, there is typically a predictable minimum footprint that runs continuously. Purchasing a Savings Plan for that baseline delivers substantial discounts compared with On-Demand pricing while keeping performance unchanged. For traffic spikes, continuing to use On-Demand Instances is operationally simple and preserves scaling behavior and customer experience. This avoids the risk that reducing minimum capacity could introduce slower scale-out or insufficient resources during sudden load. On the storage side, raw receipt images are stored in Amazon S3, and many applications access the newest objects most frequently. Using S3 Lifecycle policies to transition objects after 30 days to lower-cost tiers (such as infrequent access or archival tiers as appropriate for retrieval needs) reduces storage spend without changing how new uploads are handled or processed. It also keeps the application fast for recent receipts, where performance typically matters most. Options A and B move storage to EFS, which is generally more expensive than S3 for object storage patterns and does not align with “stored as objects.” Option C reduces the maximum Auto Scaling capacity, which can directly harm performance during demand surges. Therefore, D provides the largest cost reduction while preserving performance and scaling characteristics.",
+      "why_correct": "The question asks for the most cost savings while not affecting application performance, and it explicitly calls out both compute costs and storage costs increasing.  The best answer is the option that optimizes both cost drivers without reducing capacity needed for peak performance.",
+      "why_wrong": {
+        "A": "[PENDIENTE: Explicar por qué A no es correcta]",
+        "B": "[PENDIENTE: Explicar por qué B no es correcta]",
+        "C": "[PENDIENTE: Explicar por qué C no es correcta]"
+      },
+      "aws_services": [
+        "S3",
+        "EC2",
+        "EFS",
+        "Auto Scaling"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures",
+      "keywords": [
+        "s3",
+        "ec2",
+        "efs",
+        "auto scaling",
+        "auto scaling",
+        "cost-optimized architectures"
+      ],
+      "pattern": "Auto Scaling",
+      "related_topics": [],
+      "exam_tips": "Recuerda las diferencias entre S3 Storage Classes y cuándo usar cada una.",
+      "memorize": [
+        "Servicios clave: S3, EC2, EFS",
+        "Patrón: Auto Scaling"
+      ],
+      "difficulty_rating": 4
+    }
+  },
+  {
+    "question_id": 46,
+    "domain": "Cost-Optimized Architectures",
+    "multi_select": false,
+    "question_en": "A company needs to create an AWS Lambda function that will run in a VPC in the company ' s primary AWS account. The Lambda function needs to access files that the company stores in an Amazon Elastic File System (Amazon EFS) file system. The EFS file system is located in a secondary AWS account. As the company adds files to the file system, the solution must scale to meet the demand. Which solution will meet these requirements MOST cost-effectively?",
+    "options": {
+      "A": "Create a new EFS file system in the primary account. Use AWS DataSync to copy the contents of the original EFS file system to the new EFS file system.",
+      "B": "Create a VPC peering connection between the VPCs that are in the primary account and the secondary account.",
+      "C": "Create a second Lambda function in the secondary account that has a mount that is configured for the file system. Use the primary account ' s Lambda function to invoke the secondary account ' s Lambda function.",
+      "D": "Move the contents of the file system to a Lambda layer. Configure the Lambda layer ' s permissions to allow the company ' s secondary account to use the Lambda layer."
+    },
+    "correct_answer": "B",
+    "explanation": {
+      "full_text": "Amazon EFS is a regional, elastic file system that “scales to petabytes” and can be accessed from “thousands of compute instances” concurrently. You can mount EFS across VPCs and across AWS accounts by providing network connectivity (e.g., VPC peering) to the EFS mount targets and allowing NFS (TCP 2049) in the mount target security group, optionally using EFS access points and a file system policy for cross-account access control. VPC peering has no hourly charge and minimal operational overhead, and EFS automatically scales as files are added—meeting the scalability and cost goals. Option A duplicates data, incurs DataSync and extra storage costs, and adds sync lag. Option C adds an extra Lambda hop and complexity without exposing a shared filesystem to the primary function. Option D is impractical: Lambda layers are immutable artifacts with tight size limits (up to 50 MB compressed /250 MB uncompressed) and are not suited for dynamic, growing file sets. References: Amazon EFS User Guide — “Accessing EFS across VPCs and accounts,” “Mount targets and security groups,” “EFS access points,” and “EFS automatically scales to petabytes.”",
+      "why_correct": "Amazon EFS is a regional, elastic file system that “scales to petabytes” and can be accessed from “thousands of compute instances” concurrently.  You can mount EFS across VPCs and across AWS accounts by providing network connectivity (e.",
+      "why_wrong": {
+        "A": "[PENDIENTE: Explicar por qué A no es correcta]",
+        "C": "[PENDIENTE: Explicar por qué C no es correcta]",
+        "D": "[PENDIENTE: Explicar por qué D no es correcta]"
+      },
+      "aws_services": [
+        "Lambda",
+        "EFS",
+        "VPC",
+        "DataSync"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures",
+      "keywords": [
+        "lambda",
+        "efs",
+        "vpc",
+        "datasync",
+        "cost-optimized architectures"
+      ],
+      "pattern": null,
+      "related_topics": [],
+      "exam_tips": "Lambda es ideal para cargas de trabajo event-driven y de corta duración.",
+      "memorize": [
+        "Servicios clave: Lambda, EFS, VPC"
+      ],
+      "difficulty_rating": 3
+    }
+  },
+  {
+    "question_id": 47,
+    "domain": "Cost-Optimized Architectures",
+    "multi_select": false,
+    "question_en": "A company deploys a stateful application on Amazon EC2 On-Demand Instances in multiple Availability Zones behind an Application Load Balancer (ALB). The application workload is predictable, and the company has not received any CPU usage alerts. The company expects to run the application for at least 1 year. The company expects CPU usage to increase by 50% during an upcoming 2-week holiday period. The company wants to optimize costs for the application for both the holiday period and normal operations. Which solution will meet these requirements in the MOST cost-effective way?",
+    "options": {
+      "A": "Continue to use On-Demand Instances to handle the existing workload. Purchase additional OnDemand Instances to handle the capacity requirement for the upcoming holiday period.",
+      "B": "Purchase a 12-month EC2 Instance Savings Plan to handle the existing workload. Use On-Demand Instances to handle the additional capacity requirement for the upcoming holiday period.",
+      "C": "Purchase a 12-month Compute Savings Plan to handle the existing workload. Use Spot Instances to handle the additional capacity requirement for the upcoming holiday period.",
+      "D": "Purchase a 12-month Compute Savings Plan to handle both the existing workload and the additional capacity requirement for the upcoming holiday period."
+    },
+    "correct_answer": "B",
+    "explanation": {
+      "full_text": "The correct answer isBbecause the company has apredictable baseline workloadthat will run forat least 1 year, plus atemporary 2-week increasein demand during a holiday period. The most cost-effective approach is to use a long-term discount option for the steady-state workload and a flexible pricing model for the short-term burst capacity. AnEC2 Instance Savings Planis a strong fit for the existing workload because it provides cost savings for committed EC2 usage while matching a stable, predictable application footprint. Since the company is already using EC2 and the workload pattern is known, this is an efficient commitment for the baseline capacity. For the additional temporary holiday demand,On-Demand Instancesare appropriate because the extra capacity is needed only for a short duration. This avoids overcommitting to capacity that will not be used after the holiday period ends. Option A is less cost-effective because it misses the savings opportunity for the predictable baseline workload. Option C is incorrect because the application is described asstateful, which makesSpot Instancesa poor fit due to potential interruption. Option D is incorrect because purchasing a 12-month commitment for both the normal workload and the temporary holiday increase would likely result in paying for excess committed usage after the 2-week peak ends. AWS cost optimization guidance recommends usingdiscounted commitment models for steady-state usageandOn-Demandfor short-lived, temporary spikes. Therefore, the best answer is to use anEC2 Instance Savings Planfor the baseline andOn-Demand Instancesfor the seasonal increase.",
+      "why_correct": "The correct answer isBbecause the company has apredictable baseline workloadthat will run forat least 1 year, plus atemporary 2-week increasein demand during a holiday period.  The most cost-effective approach is to use a long-term discount option for the steady-state workload and a flexible pricing model for the short-term burst capacity.",
+      "why_wrong": {
+        "A": "[PENDIENTE: Explicar por qué A no es correcta]",
+        "C": "[PENDIENTE: Explicar por qué C no es correcta]",
+        "D": "[PENDIENTE: Explicar por qué D no es correcta]"
+      },
+      "aws_services": [
+        "EC2",
+        "ALB"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures",
+      "keywords": [
+        "ec2",
+        "alb",
+        "load balancing",
+        "cost-optimized architectures"
+      ],
+      "pattern": "Load Balancing",
+      "related_topics": [],
+      "exam_tips": "En el examen, \"cost-effective\" usualmente favorece serverless o managed services.",
+      "memorize": [
+        "Servicios clave: EC2, ALB",
+        "Patrón: Load Balancing"
+      ],
+      "difficulty_rating": 3
+    }
+  }
+]

@@ -5,6 +5,8 @@ import { useQuestions } from '../hooks/useQuestions';
 import { useTimer } from '../hooks/useTimer';
 import { useScoring } from '../hooks/useScoring';
 import { useProgress } from '../hooks/useProgress';
+import { useLanguage } from '../contexts/LanguageContext';
+import { LanguageIcon } from '../components/LanguageToggle';
 import QuestionView from '../components/QuestionView';
 import ExplanationView from '../components/ExplanationView';
 import ProgressBar from '../components/ProgressBar';
@@ -27,20 +29,27 @@ export default function ExamMode() {
 }
 
 function ExamSelector({ metadata, onSelect, onBack }) {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <div className="max-w-3xl mx-auto px-4 py-10">
-        <button
-          type="button"
-          onClick={onBack}
-          className="flex items-center gap-1 text-sm text-gray-600 hover:text-aws-blue mb-6 min-h-[44px]"
-        >
-          <ArrowLeft size={16} /> Volver al inicio
-        </button>
-        <h1 className="text-2xl font-bold text-aws-dark mb-2">Examen Completo</h1>
+        <div className="flex items-center justify-between mb-6">
+          <button
+            type="button"
+            onClick={onBack}
+            className="flex items-center gap-1 text-sm text-gray-600 hover:text-aws-blue min-h-[44px]"
+          >
+            <ArrowLeft size={16} /> {t('Volver al inicio', 'Back to Home')}
+          </button>
+          <LanguageIcon />
+        </div>
+        <h1 className="text-2xl font-bold text-aws-dark mb-2">{t('Examen Completo', 'Full Exam')}</h1>
         <p className="text-gray-600 mb-6">
-          Elige uno de los {metadata.total_exams} examenes disponibles (66 preguntas, 132 minutos, sin
-          repeticion entre examenes).
+          {t(
+            `Elige uno de los ${metadata.total_exams} exámenes disponibles (66 preguntas, 132 minutos, sin repetición entre exámenes).`,
+            `Choose one of ${metadata.total_exams} available exams (66 questions, 132 minutes, no repetition between exams).`
+          )}
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {metadata.exams.map((exam) => (
@@ -50,8 +59,8 @@ function ExamSelector({ metadata, onSelect, onBack }) {
               onClick={() => onSelect(exam.exam_id)}
               className="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md hover:-translate-y-0.5 transition-all min-h-[44px]"
             >
-              <p className="text-lg font-bold text-aws-blue">Examen {exam.exam_id}</p>
-              <p className="text-xs text-gray-500">{exam.question_count} preguntas</p>
+              <p className="text-lg font-bold text-aws-blue">{t('Examen', 'Exam')} {exam.exam_id}</p>
+              <p className="text-xs text-gray-500">{exam.question_count} {t('preguntas', 'questions')}</p>
             </button>
           ))}
         </div>
@@ -142,6 +151,22 @@ function ExamRunner({ examId, getExam, saveExamResult, navigate }) {
         secondsLeft={timer.secondsLeft}
       />
       <div className="max-w-2xl mx-auto pt-14">
+        {/* Cancel Exam Button */}
+        <div className="mb-4 flex justify-between items-center">
+          <button
+            type="button"
+            onClick={() => {
+              if (window.confirm('¿Estás seguro de que quieres cancelar este examen? Se perderá tu progreso actual.')) {
+                navigate('/');
+              }
+            }}
+            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all min-h-[44px]"
+          >
+            <ArrowLeft size={16} />
+            Cancelar examen
+          </button>
+        </div>
+        
         <div className="mb-4">
           <ProgressBar current={currentIndex + (showExplanation ? 1 : 0)} total={questions.length} />
         </div>

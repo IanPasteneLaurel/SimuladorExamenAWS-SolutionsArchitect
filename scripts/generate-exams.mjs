@@ -18,9 +18,9 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const QUESTIONS_FILE = path.join(__dirname, '..', 'data', 'SAA-C03-QuestionBank-923.json');
-const EXAMS_FULL_FILE = path.join(__dirname, '..', 'data', 'exams-full.json');
-const EXAMS_META_FILE = path.join(__dirname, '..', 'data', 'exams-metadata.json');
+const QUESTIONS_FILE = path.join(__dirname, '..', 'app', 'src', 'data', 'SAA-C03-QuestionBank-923-enriched.json');
+const EXAMS_FULL_FILE = path.join(__dirname, '..', 'app', 'src', 'data', 'exams-full.json');
+const EXAMS_META_FILE = path.join(__dirname, '..', 'app', 'src', 'data', 'exams-metadata.json');
 
 const TOTAL_EXAMS = 14;
 const EXAM_SIZES = Array.from({ length: TOTAL_EXAMS }, (_, i) => (i < 13 ? 66 : 65)); // 13x66 + 1x65 = 923

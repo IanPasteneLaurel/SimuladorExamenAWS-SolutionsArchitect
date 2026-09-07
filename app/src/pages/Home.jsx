@@ -2,11 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import { BookOpen, Zap, BarChart3, GraduationCap } from 'lucide-react';
 import { useQuestions } from '../hooks/useQuestions';
 import { useProgress } from '../hooks/useProgress';
+import LanguageToggle from '../components/LanguageToggle';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Home() {
   const navigate = useNavigate();
   const { totalQuestions, totalExams } = useQuestions();
   const { progress } = useProgress();
+  const { t } = useLanguage();
 
   const examsCompleted = progress.examsCompleted.length;
   const avgScore = examsCompleted
@@ -21,39 +24,44 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <div className="max-w-4xl mx-auto px-4 py-10 md:py-16">
+        {/* Language Toggle - Top Right */}
+        <div className="flex justify-end mb-6">
+          <LanguageToggle variant="compact" />
+        </div>
+
         <div className="text-center mb-10">
           <GraduationCap className="text-aws-blue mx-auto mb-3" size={48} />
           <h1 className="text-3xl md:text-4xl font-bold text-aws-dark">
-            SAA-C03 Exam Simulator
+            {t('SAA-C03 Exam Simulator', 'SAA-C03 Exam Simulator')}
           </h1>
           <p className="text-gray-600 mt-2">
-            {totalQuestions} preguntas reales &middot; {totalExams} examenes completos &middot; sin repeticion
+            {totalQuestions} {t('preguntas reales', 'real questions')} &middot; {totalExams} {t('exámenes completos', 'complete exams')} &middot; {t('sin repetición', 'no repetition')}
           </p>
         </div>
 
         <div className="grid grid-cols-3 gap-4 mb-10">
-          <StatCard label="Examenes realizados" value={examsCompleted} />
-          <StatCard label="Score promedio" value={avgScore || '-'} />
-          <StatCard label="% de aciertos" value={progress.totalAnswered ? `${totalCorrectPct}%` : '-'} />
+          <StatCard label={t('Exámenes realizados', 'Exams Completed')} value={examsCompleted} />
+          <StatCard label={t('Score promedio', 'Average Score')} value={avgScore || '-'} />
+          <StatCard label={t('% de aciertos', 'Accuracy %')} value={progress.totalAnswered ? `${totalCorrectPct}%` : '-'} />
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
           <ActionCard
             icon={<BookOpen size={28} className="text-aws-blue" />}
-            title="Examen Completo"
-            description={`Simulacro cronometrado de 66 preguntas (132 min). ${totalExams} examenes disponibles.`}
+            title={t('Examen Completo', 'Full Exam')}
+            description={t(`Simulacro cronometrado de 66 preguntas (132 min). ${totalExams} exámenes disponibles.`, `Timed mock exam with 66 questions (132 min). ${totalExams} exams available.`)}
             onClick={() => navigate('/exam')}
           />
           <ActionCard
             icon={<Zap size={28} className="text-aws-purple" />}
-            title="Flash Study"
-            description="Sesiones rapidas de 10, 20 o 30 preguntas sin cronometro."
+            title={t('Flash Study', 'Flash Study')}
+            description={t('Sesiones rápidas de 10, 20 o 30 preguntas sin cronómetro.', 'Quick sessions of 10, 20 or 30 questions without timer.')}
             onClick={() => navigate('/flash')}
           />
           <ActionCard
             icon={<BarChart3 size={28} className="text-aws-green" />}
-            title="Mi Progreso"
-            description="Estadisticas, graficos de evolucion y desempeno por dominio."
+            title={t('Mi Progreso', 'My Progress')}
+            description={t('Estadísticas, gráficos de evolución y desempeño por dominio.', 'Statistics, evolution charts and performance by domain.')}
             onClick={() => navigate('/progress')}
             fullWidth
           />

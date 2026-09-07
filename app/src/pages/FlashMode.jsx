@@ -4,6 +4,8 @@ import { ArrowLeft } from 'lucide-react';
 import { useQuestions } from '../hooks/useQuestions';
 import { useScoring } from '../hooks/useScoring';
 import { useProgress } from '../hooks/useProgress';
+import { useLanguage } from '../contexts/LanguageContext';
+import { LanguageIcon } from '../components/LanguageToggle';
 import QuestionView from '../components/QuestionView';
 import ExplanationView from '../components/ExplanationView';
 import ProgressBar from '../components/ProgressBar';
@@ -14,21 +16,25 @@ const SESSION_SIZES = [10, 20, 30];
 export default function FlashMode() {
   const { count } = useParams();
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   if (!count) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="max-w-2xl mx-auto px-4 py-10">
-          <button
-            type="button"
-            onClick={() => navigate('/')}
-            className="flex items-center gap-1 text-sm text-gray-600 hover:text-aws-blue mb-6 min-h-[44px]"
-          >
-            <ArrowLeft size={16} /> Volver al inicio
-          </button>
-          <h1 className="text-2xl font-bold text-aws-dark mb-2">Flash Study</h1>
+          <div className="flex items-center justify-between mb-6">
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              className="flex items-center gap-1 text-sm text-gray-600 hover:text-aws-blue min-h-[44px]"
+            >
+              <ArrowLeft size={16} /> {t('Volver al inicio', 'Back to Home')}
+            </button>
+            <LanguageIcon />
+          </div>
+          <h1 className="text-2xl font-bold text-aws-dark mb-2">{t('Flash Study', 'Flash Study')}</h1>
           <p className="text-gray-600 mb-6">
-            Sesiones rapidas sin cronometro, con preguntas aleatorias de todo el banco.
+            {t('Sesiones rápidas sin cronómetro, con preguntas aleatorias de todo el banco.', 'Quick sessions without timer, with random questions from the entire bank.')}
           </p>
           <div className="grid grid-cols-3 gap-4">
             {SESSION_SIZES.map((size) => (
@@ -39,7 +45,7 @@ export default function FlashMode() {
                 className="bg-white rounded-xl shadow-sm p-6 text-center hover:shadow-md hover:-translate-y-0.5 transition-all min-h-[44px]"
               >
                 <p className="text-3xl font-bold text-aws-purple">{size}</p>
-                <p className="text-xs text-gray-500 mt-1">preguntas</p>
+                <p className="text-xs text-gray-500 mt-1">{t('preguntas', 'questions')}</p>
               </button>
             ))}
           </div>
@@ -113,6 +119,22 @@ function FlashRunner({ count, navigate }) {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-2xl mx-auto">
+        {/* Cancel Session Button */}
+        <div className="mb-4 flex justify-between items-center">
+          <button
+            type="button"
+            onClick={() => {
+              if (window.confirm('¿Estás seguro de que quieres cancelar esta sesión? Se perderá tu progreso actual.')) {
+                navigate('/');
+              }
+            }}
+            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all min-h-[44px]"
+          >
+            <ArrowLeft size={16} />
+            Cancelar sesión
+          </button>
+        </div>
+        
         <div className="mb-4">
           <ProgressBar current={currentIndex + (showExplanation ? 1 : 0)} total={questions.length} />
         </div>

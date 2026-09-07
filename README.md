@@ -26,6 +26,7 @@
 
 - **923 Preguntas Reales** del examen SAA-C03
 - **14 Exámenes Completos** (66 preguntas cada uno, sin repetición)
+- **🌍 Soporte Bilingüe** - Español e Inglés con alternancia instantánea
 - **Cronómetro Real** de 132 minutos por examen
 - **Explicaciones Detalladas** estilo instructor para cada pregunta
 - **Modo Flash Study** con sesiones rápidas de 10, 20 o 30 preguntas
@@ -286,6 +287,41 @@ VITE_APP_VERSION=1.0.0
 - **Preguntas por examen:** 66 (excepto el último con 65)
 - **Sin repetición:** Cada pregunta aparece en un solo examen
 - **Distribución:** Balanceada por dominio AWS
+
+## 🌍 Sistema de Traducción
+
+El simulador incluye **soporte completo bilingüe** (Español/Inglés) con alternancia instantánea.
+
+### Características
+
+- ✅ Toggle de idioma en todas las páginas
+- ✅ Persistencia automática de preferencia
+- ✅ Fallback inteligente a inglés si falta traducción
+- ✅ Nombres de servicios AWS mantenidos en inglés
+- ✅ Sistema extensible para futuros idiomas
+
+### Uso Rápido
+
+El toggle de idioma aparece en la esquina superior derecha de cada página. Click para alternar entre 🇺🇸 English y 🇪🇸 Español.
+
+### Para Desarrolladores
+
+```jsx
+import { useLanguage, useTranslatedQuestion } from './contexts/LanguageContext';
+
+// Traducir texto estático
+const { t } = useLanguage();
+<h1>{t('Bienvenido', 'Welcome')}</h1>
+
+// Traducir pregunta completa
+const { questionText, options, explanation } = useTranslatedQuestion(question);
+```
+
+### Estado Actual
+
+- **Infraestructura**: ✅ 100% completa
+- **Contenido traducido**: Sistema de fallback a inglés activo
+- **Sistema funcional**: ✅ Con fallback automático a inglés
 
 ## 🧪 Testing
 

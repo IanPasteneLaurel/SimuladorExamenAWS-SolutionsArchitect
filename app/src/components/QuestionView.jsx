@@ -1,14 +1,39 @@
+import { useState, useEffect } from 'react';
 import { CheckCircle2, Circle } from 'lucide-react';
+import { useTranslatedQuestion } from '../contexts/LanguageContext';
 
 const OPTION_ORDER = ['A', 'B', 'C', 'D', 'E', 'F'];
 
 /**
  * Renders a single question with its answer options.
- * Once `selected` is set, options are locked and correctness is highlighted.
+ * User selects an option, then must confirm before submitting.
+ * Supports bilingual display with automatic fallback to English.
  */
 export default function QuestionView({ question, selected, onSelect, questionNumber, totalQuestions }) {
+  const [tempSelected, setTempSelected] = useState(null);
+  const { questionText, options } = useTranslatedQuestion(question);
   const optionLetters = OPTION_ORDER.filter((letter) => question.options[letter] !== undefined);
   const hasAnswered = selected !== undefined && selected !== null;
+
+  // Reset tempSelected when question changes or when answer is cleared
+  useEffect(() => {
+    setTempSelected(null);
+  }, [question.question_id, selected]);
+
+  const handleOptionClick = (letter) => {
+    if (hasAnswered) return;
+    setTempSelected(letter);
+  };
+
+  const handleConfirm = () => {
+    if (tempSelected) {
+      onSelect(tempSelected);
+    }
+  };
+
+  const handleCancel = () => {
+    setTempSelected(null);
+  };
 
   return (
     <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
@@ -24,11 +49,12 @@ export default function QuestionView({ question, selected, onSelect, questionNum
       )}
 
       <p className="text-base md:text-lg text-aws-dark leading-relaxed mb-6 whitespace-pre-line">
-        {question.question_en}
+        {questionText}
       </p>
 
       <div className="space-y-3">
         {optionLetters.map((letter) => {
+          const isTempSelected = tempSelected === letter;
           const isSelected = selected === letter;
           const isCorrectAnswer = question.correct_answer === letter;
           const showResult = hasAnswered;
@@ -42,8 +68,8 @@ export default function QuestionView({ question, selected, onSelect, questionNum
             } else {
               stateClasses = 'border-gray-200 opacity-70';
             }
-          } else if (isSelected) {
-            stateClasses = 'border-aws-blue bg-blue-50';
+          } else if (isTempSelected) {
+            stateClasses = 'border-aws-blue bg-blue-100 ring-2 ring-aws-blue ring-offset-2';
           }
 
           return (
@@ -51,9 +77,9 @@ export default function QuestionView({ question, selected, onSelect, questionNum
               key={letter}
               type="button"
               disabled={hasAnswered}
-              onClick={() => onSelect(letter)}
-              aria-pressed={isSelected}
-              className={`w-full text-left flex items-start gap-3 p-4 rounded-lg border-2 transition-colors duration-200 min-h-[44px] ${stateClasses} ${
+              onClick={() => handleOptionClick(letter)}
+              aria-pressed={isTempSelected}
+              className={`w-full text-left flex items-start gap-3 p-4 rounded-lg border-2 transition-all duration-200 min-h-[44px] ${stateClasses} ${
                 hasAnswered ? 'cursor-default' : 'cursor-pointer'
               }`}
             >
@@ -62,19 +88,46 @@ export default function QuestionView({ question, selected, onSelect, questionNum
                   <CheckCircle2 className="text-aws-green" size={20} />
                 ) : (
                   <Circle
-                    className={isSelected ? 'text-aws-blue' : 'text-gray-400'}
+                    className={isTempSelected ? 'text-aws-blue fill-aws-blue' : isSelected ? 'text-aws-blue' : 'text-gray-400'}
                     size={20}
                   />
                 )}
               </span>
               <span className="text-sm md:text-base text-aws-dark">
                 <strong className="mr-2">{letter})</strong>
-                {question.options[letter]}
+                {options[letter]}
               </span>
             </button>
           );
         })}
       </div>
+
+      {/* Confirm/Cancel buttons */}
+      {!hasAnswered && tempSelected && (
+        <div className="mt-6 flex gap-3 justify-end border-t pt-4">
+          <button
+            type="button"
+            onClick={handleCancel}
+            className="px-6 py-2.5 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            onClick={handleConfirm}
+            className="px-6 py-2.5 bg-aws-blue text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+          >
+            Confirmar respuesta
+          </button>
+        </div>
+      )}
+
+      {/* Helper text */}
+      {!hasAnswered && !tempSelected && (
+        <p className="mt-4 text-sm text-gray-500 text-center">
+          Selecciona una opción y luego confirma tu respuesta
+        </p>
+      )}
     </div>
   );
 }

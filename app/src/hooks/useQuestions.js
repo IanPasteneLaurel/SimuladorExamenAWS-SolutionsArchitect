@@ -1,11 +1,12 @@
 import { useMemo } from 'react';
-import questionBank from '../data/SAA-C03-QuestionBank-923.json';
+import questionBank from '../data/SAA-C03-QuestionBank-923-enriched.json';
 import examsFull from '../data/exams-full.json';
 import examsMetadata from '../data/exams-metadata.json';
 
 /**
  * Provides access to the static question bank and exam datasets.
  * All data is bundled at build time (no backend, no fetch).
+ * Questions are now enriched with full explanation metadata.
  */
 export function useQuestions() {
   const allQuestions = useMemo(() => questionBank, []);
