@@ -1,4 +1,4 @@
-import { CheckCircle2, XCircle, Lightbulb, Award, AlertCircle, BookOpen, Star, Brain, TrendingUp } from 'lucide-react';
+import { CheckCircle2, XCircle, Lightbulb, Award, AlertCircle, BookOpen, Star, Brain, TrendingUp, Key } from 'lucide-react';
 
 /**
  * Instructor-style explanation panel shown after a question is answered.
@@ -73,7 +73,8 @@ export default function ExplanationView({ question, selected, onNext, isLastQues
       concept: explanation.architectural_concept || question.domain || '',
       tips: explanation.exam_tips || null,
       memorize: explanation.memorize || [],
-      additionalContext: explanation.additional_context || null
+      additionalContext: explanation.additional_context || null,
+      keywords: explanation.keywords || []
     };
 
     // Enhanced parsing when structured data is not available
@@ -230,6 +231,55 @@ export default function ExplanationView({ question, selected, onNext, isLastQues
 
       {/* Main Content */}
       <div className="space-y-6">
+        {/* Keywords Section - Show critical exam keywords */}
+        {parsed.keywords.length > 0 && (
+          <div className="bg-gradient-to-r from-yellow-50 to-amber-50 p-5 rounded-xl border-l-4 border-yellow-500">
+            <div className="flex items-center gap-2 mb-3">
+              <Key className="text-yellow-600" size={24} />
+              <h3 className="font-bold text-lg text-aws-dark">
+                🔑 Palabras Clave en esta Pregunta
+              </h3>
+            </div>
+            <p className="text-sm text-gray-600 mb-3">
+              Estas palabras clave te ayudan a identificar rápidamente la solución correcta en el examen:
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {parsed.keywords.map((keyword, idx) => {
+                // Color mapping for keyword types
+                const typeColors = {
+                  optimization: 'bg-green-100 text-green-800 border-green-300',
+                  operational: 'bg-blue-100 text-blue-800 border-blue-300',
+                  time_constraint: 'bg-purple-100 text-purple-800 border-purple-300',
+                  latency: 'bg-pink-100 text-pink-800 border-pink-300',
+                  schedule: 'bg-indigo-100 text-indigo-800 border-indigo-300',
+                  resilience: 'bg-orange-100 text-orange-800 border-orange-300',
+                  security: 'bg-red-100 text-red-800 border-red-300',
+                  performance: 'bg-cyan-100 text-cyan-800 border-cyan-300',
+                  data_volume: 'bg-teal-100 text-teal-800 border-teal-300',
+                  data_type: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+                  pattern: 'bg-violet-100 text-violet-800 border-violet-300',
+                  constraint: 'bg-gray-100 text-gray-800 border-gray-300'
+                };
+                
+                const colorClass = typeColors[keyword.type] || 'bg-gray-100 text-gray-800 border-gray-300';
+                
+                return (
+                  <span 
+                    key={idx}
+                    className={`px-3 py-2 ${colorClass} border-2 rounded-lg text-sm font-semibold shadow-sm`}
+                    title={`Type: ${keyword.type}`}
+                  >
+                    {keyword.text}
+                  </span>
+                );
+              })}
+            </div>
+            <p className="text-xs text-gray-500 mt-3 italic">
+              💡 En el examen SAA-C03, identificar estas palabras clave te ayuda a eliminar opciones incorrectas en menos de 30 segundos.
+            </p>
+          </div>
+        )}
+
         {/* Correct Answer Section */}
         <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-5 rounded-xl border-l-4 border-aws-green">
           <div className="flex items-center gap-2 mb-3">
