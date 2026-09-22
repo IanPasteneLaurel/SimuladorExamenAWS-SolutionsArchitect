@@ -40,3 +40,35 @@ coverage/
 # System files
 Thumbs.db
 desktop.ini
+
+# Backup files
+*.backup*.json
+
+# Scripts temporales
+scripts/enriched-*.json
+scripts/improved-*.json
+scripts/batch-*.json
+scripts/generic-question-ids.json
+scripts/sample-*.json
+scripts/temp-*.json
+scripts/batches-ready/
+scripts/mass-processing/
+scripts/correction-report.txt
+scripts/explanation-quality-report.txt
+
+# Documentos temporales
+*INFORME*.txt
+*RESUMEN*.md
+*PLAN*.md
+*IMPLEMENTACION*.md
+*GUIA*.md
+*ENTREGA*.md
+*QUICK-START*.md
+*TEST-PLAN*.md
+*CHANGELOG*.md
+*SESION*.md
+*.py
+analyze_questions.py
+verify_multiple_choice.py
+final_analysis.py
+generate_final_report.py

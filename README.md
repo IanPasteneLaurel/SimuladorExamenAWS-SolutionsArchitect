@@ -25,6 +25,8 @@
 ### 🎯 Core Features
 
 - **923 Preguntas Reales** del examen SAA-C03
+  - **838 preguntas** de selección simple (1 respuesta)
+  - **85 preguntas** de selección múltiple (2 o 3 respuestas)
 - **14 Exámenes Completos** (66 preguntas cada uno, sin repetición)
 - **🌍 Soporte Bilingüe** - Español e Inglés con alternancia instantánea
 - **Cronómetro Real** de 132 minutos por examen
@@ -247,8 +249,30 @@ VITE_APP_VERSION=1.0.0
 ### Banco de Preguntas
 
 - **Total:** 923 preguntas únicas
+- **Distribución por tipo:**
+  - **838 preguntas** de selección simple (1 respuesta correcta)
+  - **85 preguntas** de selección múltiple:
+    - **67 preguntas** con 2 respuestas correctas (Select TWO)
+    - **18 preguntas** con 3 respuestas correctas (Select THREE)
 - **Fuente:** Preguntas reales del examen SAA-C03
 - **Formato:** JSON estructurado
+
+### Tipos de Preguntas
+
+#### Preguntas de Selección Simple (838 preguntas)
+- **Interfaz:** Radio buttons (⭕)
+- **Respuestas correctas:** 1
+- **Comportamiento:** El usuario debe seleccionar exactamente una opción
+
+#### Preguntas de Selección Múltiple (85 preguntas)
+- **Interfaz:** Checkboxes (☑️)
+- **Respuestas correctas:** 2 o 3
+- **Indicador visual:** "(Select TWO)" o "(Select THREE)"
+- **Comportamiento:** 
+  - El usuario debe seleccionar el número exacto de opciones requeridas
+  - No se puede confirmar sin completar el número requerido
+  - No se puede seleccionar más del límite permitido
+- **Validación:** Solo se considera correcta si TODAS las opciones son correctas
 
 ### Estructura de Pregunta
 
@@ -257,6 +281,7 @@ VITE_APP_VERSION=1.0.0
   "question_id": 36,
   "domain": "Cost-Optimized Architectures",
   "difficulty": 2,
+  "multi_select": false,
   "question_en": "A company runs a multi-tier application...",
   "options": {
     "A": "Use Amazon EC2 instances...",
@@ -277,6 +302,26 @@ VITE_APP_VERSION=1.0.0
     "architectural_concept": "Cost Optimization",
     "exam_tips": "AWS uses COST-EFFECTIVE when...",
     "memorize": ["Key point 1", "Key point 2"]
+  }
+}
+```
+
+**Ejemplo de pregunta múltiple:**
+```json
+{
+  "question_id": 12,
+  "domain": "Secure Architectures",
+  "multi_select": true,
+  "required_selections": 3,
+  "correct_answer": ["A", "C", "F"],
+  "question_en": "Which combination of steps will meet these requirements? (Select THREE.)",
+  "options": {
+    "A": "Create a resource policy...",
+    "B": "Use server-side encryption...",
+    "C": "Create a resource policy for the encryption key...",
+    "D": "Specify the Lambda function ARN...",
+    "E": "Associate an API Gateway...",
+    "F": "Configure a Lambda execution role..."
   }
 }
 ```
