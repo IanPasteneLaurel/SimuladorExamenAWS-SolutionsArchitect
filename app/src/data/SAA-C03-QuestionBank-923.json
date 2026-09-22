@@ -6056,14 +6056,19 @@
     },
     "correct_answer": "A",
     "explanation": {
-      "why_correct": "S3 Use an Amazon DynamoDB table to store the session data—meeting all specified requirements. This architecture aligns with AWS Well-Architected Framework best practices for cost-optimized architectures.",
+      "why_correct": "DynamoDB provides single-digit millisecond latency at any scale—critical for real-time session data that updates frequently. DynamoDB Streams captures all item changes in order, enabling near-real-time analytics. Fully managed serverless—no capacity planning or server management. S3 has eventual consistency delays and higher GET latency (tens of milliseconds), unsuitable for sub-second session updates.",
       "why_wrong": {
-        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "C": "Missing key requirement: optimal service selection.",
-        "D": "Missing key requirement: optimal service selection."
+        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
-      "memorize": "S3 + DynamoDB pattern for Cost-Optimized Architectures",
+      "exam_tips": "For cost optimization questions: compare per-GB pricing (S3 $0.023, EFS $0.30, EBS $0.10). Consider data transfer costs. Serverless often cheapest for variable workloads. Always check for \"operational overhead\" keywords suggesting managed services.",
+      "memorize": [
+        "DynamoDB: single-digit ms latency, fully managed serverless",
+        "DynamoDB Streams: captures item changes in order for analytics",
+        "S3 eventual consistency: unsuitable for sub-second session updates",
+        "Session data pattern: frequent updates = key-value store (DynamoDB)"
+      ],
       "aws_services": [
         "S3",
         "DynamoDB"
@@ -6245,16 +6250,23 @@
     },
     "correct_answer": "B",
     "explanation": {
-      "why_correct": "S3 Create an S3 directory bucket that uses the S3 Express One Zone storage class—meeting all specified requirements.",
+      "why_correct": "S3 Intelligent-Tiering automatically moves objects between access tiers (Frequent, Infrequent, Archive Instant, Archive, Deep Archive) based on usage patterns. No retrieval fees. No operational overhead—fully automatic. Monitoring cost: $0.0025 per 1,000 objects. S3 Lifecycle policies require manual tier definitions and schedules. Glacier requires explicit retrieval (latency + cost). Intelligent-Tiering optimizes cost for unknown access patterns.",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
-        "C": "Missing key requirement: optimal service selection.",
-        "D": "Missing key requirement: optimal service selection."
+        "A": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie.",
+        "C": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "D": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
-      "memorize": "Key pattern: optimization with performance",
+      "exam_tips": "Unknown access patterns + cost optimization = S3 Intelligent-Tiering. No retrieval fees (unlike Glacier). Automatic—no manual tier management. Monitoring fee negligible: $0.0025 per 1K objects.",
+      "memorize": [
+        "S3 Intelligent-Tiering: automatic tier optimization, no retrieval fees",
+        "Tiers: Frequent, Infrequent, Archive Instant, Archive, Deep Archive",
+        "Monitoring cost: $0.0025 per 1,000 objects",
+        "Best for: unknown or changing access patterns"
+      ],
       "aws_services": [
-        "S3"
+        "S3",
+        "S3 Intelligent-Tiering",
+        "S3 Lifecycle"
       ],
       "architectural_concept": "Performance",
       "keywords": [
@@ -7440,14 +7452,19 @@
     },
     "correct_answer": "C",
     "explanation": {
-      "why_correct": "S3 Store the data in an Amazon S3 Standard bucket—meeting all specified requirements. This architecture aligns with AWS Well-Architected Framework best practices for high-performing architectures.",
+      "why_correct": "S3 Standard provides unlimited scalability and 11 nines durability—ideal for user-generated media. Cost-effective at $0.023/GB/month. EFS ($0.30/GB) and EBS ($0.10/GB + limited to single AZ) cost significantly more. S3 integrates natively with CloudFront for global content delivery and supports lifecycle policies for automatic cost optimization as data ages.",
       "why_wrong": {
-        "A": "Missing key requirement: durability.",
-        "B": "Missing key requirement: durability.",
-        "D": "Missing key requirement: durability."
+        "A": "EBS volumes attach to single EC2 instance in single AZ. Cannot be shared across multiple instances or accessed globally. Requires instance management and lacks S3 durability features.",
+        "B": "EFS costs $0.30/GB/month (13x more than S3 Standard $0.023/GB). Designed for shared file access across EC2 instances, overkill for object storage workloads where S3 suffices.",
+        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
-      "memorize": "S3 + EBS + EFS pattern for High-Performing Architectures",
+      "exam_tips": "Identify key requirements first (cost, performance, operational overhead). Eliminate options violating hard constraints. Choose simplest solution meeting all requirements—AWS favors managed services and operational simplicity.",
+      "memorize": [
+        "S3 Standard: $0.023/GB/month, unlimited scale, 11 nines durability",
+        "EFS: $0.30/GB/month (13x more than S3), for shared file access",
+        "EBS: $0.10/GB/month + single AZ limitation",
+        "S3 integrates natively with CloudFront for CDN delivery"
+      ],
       "aws_services": [
         "S3",
         "EBS",
@@ -9362,14 +9379,19 @@
     },
     "correct_answer": "D",
     "explanation": {
-      "why_correct": "S3 Create an Amazon FSx for Windows File Server file system—meeting all specified requirements. This architecture aligns with AWS Well-Architected Framework best practices for high-performing architectures.",
+      "why_correct": "FSx for Windows File Server provides native SMB protocol support and Windows NTFS features (ACLs, user quotas, DFS namespaces) required by media applications. Multi-AZ deployment for high availability. Integrates with Active Directory for centralized authentication. S3 lacks SMB protocol and NTFS features. EFS uses NFS (not SMB), incompatible with Windows-native media workflows.",
       "why_wrong": {
-        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "B": "Missing key requirement: optimal service selection.",
-        "C": "Missing key requirement: optimal service selection."
+        "A": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
-      "memorize": "S3 + EC2 + FSx pattern for High-Performing Architectures",
+      "exam_tips": "Windows workloads: FSx for Windows (SMB, NTFS, AD integration). FSx for Lustre = Linux/HPC. EFS = NFS (Linux). S3 = object storage (no file system semantics). Match protocol to workload.",
+      "memorize": [
+        "FSx for Windows: SMB protocol, NTFS features, AD integration",
+        "FSx for Lustre: HPC/Linux workloads, POSIX, not Windows-compatible",
+        "EFS: NFS protocol (Linux), not SMB",
+        "Multi-AZ deployment for high availability in media workflows"
+      ],
       "aws_services": [
         "S3",
         "EC2",
@@ -9499,16 +9521,23 @@
     },
     "correct_answer": "A",
     "explanation": {
-      "why_correct": "EC2 Configure the EC2 instances to be part of a cluster placement group—meeting all specified requirements.",
+      "why_correct": "EC2 C5 compute-optimized instances provide highest compute performance for CPU-intensive video encoding. Spot Instances reduce costs up to 90% vs On-Demand—suitable for fault-tolerant encoding jobs. Auto Scaling replaces interrupted Spot instances automatically. S3 for input/output storage. Lambda 15-min limit unsuitable for long-encoding jobs. Fargate costs more than Spot EC2 for sustained compute.",
       "why_wrong": {
-        "B": "Missing key requirement: optimal service selection.",
+        "B": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
         "C": "Spot Instances can be interrupted with 2-minute warning. Without fault-tolerance design, interruptions could break critical operations mid-execution.",
-        "D": "Missing key requirement: optimal service selection."
+        "D": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie."
       },
-      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
-      "memorize": "Key pattern: architecture with performance",
+      "exam_tips": "Compute-intensive + cost = Spot Instances. Video encoding = fault-tolerant (can retry). Lambda 15-min limit rules out long processing. C5/C6i instances for CPU-heavy workloads.",
+      "memorize": [
+        "C5 instances: compute-optimized for CPU-intensive workloads",
+        "Spot Instances: up to 90% discount, suitable for fault-tolerant jobs",
+        "Lambda 15-min limit: unsuitable for long video encoding"
+      ],
       "aws_services": [
-        "EC2"
+        "EC2",
+        "EC2 Spot",
+        "Auto Scaling",
+        "S3"
       ],
       "architectural_concept": "Performance"
     }
@@ -11977,14 +12006,19 @@
     },
     "correct_answer": "A",
     "explanation": {
-      "why_correct": "Lambda Auto-scales per request (1-1000+ concurrent executions). This architecture aligns with AWS Well-Architected Framework best practices for high-performing architectures.",
+      "why_correct": "Lambda auto-scales per request (1-10,000 concurrent executions) without capacity planning. Requests taking <5 seconds fit Lambda perfectly—no idle time costs. API Gateway + Lambda eliminates server management entirely. EC2/ECS require always-on instances even during zero traffic, wasting cost. SQS adds unnecessary queuing latency when synchronous processing is acceptable for 1,000 daily requests.",
       "why_wrong": {
-        "B": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability.",
-        "D": "Missing key requirement: scalability."
+        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
       },
-      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
-      "memorize": "EC2 + Lambda + ECS pattern for High-Performing Architectures",
+      "exam_tips": "Migration patterns: Application Migration Service (servers/VMs), Database Migration Service (databases), DataSync (file data), Snow Family (petabyte-scale). Match tool to data type and volume.",
+      "memorize": [
+        "Lambda: auto-scales per request, 1-10,000 concurrent executions",
+        "Lambda limits: 15 min max, 10GB memory, 512MB /tmp",
+        "<5 second requests = Lambda perfect fit (no idle costs)",
+        "API Gateway + Lambda = fully serverless (zero server management)"
+      ],
       "aws_services": [
         "EC2",
         "Lambda",
@@ -22623,14 +22657,19 @@
       "F"
     ],
     "explanation": {
-      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de secure architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_correct": "This solution implements comprehensive security controls across multiple layers. WAF protects against common web exploits (SQL injection, XSS) at edge. IAM enforces least privilege access with role-based permissions and MFA. KMS manages encryption keys for data at rest with automatic rotation. Cognito provides user authentication with built-in security features (passwordpolicies, account recovery, suspicious activity detection). Multi-layered security follows AWS defense-in-depth best practices.",
       "why_wrong": {
-        "B": "Missing key requirement: encryption.",
-        "D": "Missing key requirement: encryption.",
-        "E": "Missing key requirement: encryption."
+        "B": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "D": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "E": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution."
       },
       "exam_tips": "Identifica keywords del dominio Secure Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
-      "memorize": "Seguridad + acceso = servicios managed AWS.",
+      "memorize": [
+        "Multi-layer security: WAF (edge) + IAM (access) + KMS (encryption) + Cognito (auth)",
+        "Defense in depth: each layer provides independent protection",
+        "KMS automatic key rotation: every 365 days (configurable)",
+        "Cognito: user pools (authentication) + identity pools (AWS access)"
+      ],
       "aws_services": [
         "AWS WAF",
         "AWS IAM",
@@ -22949,14 +22988,19 @@
       "E"
     ],
     "explanation": {
-      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de secure architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_correct": "This solution implements comprehensive security controls across multiple layers. WAF protects against common web exploits (SQL injection, XSS) at edge. IAM enforces least privilege access with role-based permissions and MFA. KMS manages encryption keys for data at rest with automatic rotation. Cognito provides user authentication with built-in security features (passwordpolicies, account recovery, suspicious activity detection). Multi-layered security follows AWS defense-in-depth best practices.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "B": "Missing key requirement: scalability.",
-        "D": "Missing key requirement: scalability."
+        "A": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "B": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "D": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution."
       },
       "exam_tips": "Identifica keywords del dominio Secure Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
-      "memorize": "Seguridad + acceso = servicios managed AWS.",
+      "memorize": [
+        "Multi-layer security: WAF (edge) + IAM (access) + KMS (encryption) + Cognito (auth)",
+        "Defense in depth: each layer provides independent protection",
+        "KMS automatic key rotation: every 365 days (configurable)",
+        "Cognito: user pools (authentication) + identity pools (AWS access)"
+      ],
       "aws_services": [
         "AWS WAF",
         "AWS IAM",
@@ -23180,14 +23224,19 @@
     },
     "correct_answer": "B",
     "explanation": {
-      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de secure architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_correct": "This solution implements comprehensive security controls across multiple layers. WAF protects against common web exploits (SQL injection, XSS) at edge. IAM enforces least privilege access with role-based permissions and MFA. KMS manages encryption keys for data at rest with automatic rotation. Cognito provides user authentication with built-in security features (passwordpolicies, account recovery, suspicious activity detection). Multi-layered security follows AWS defense-in-depth best practices.",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
-        "C": "Missing key requirement: optimal service selection.",
-        "D": "Missing key requirement: optimal service selection."
+        "A": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "C": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "D": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie."
       },
       "exam_tips": "Identifica keywords del dominio Secure Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
-      "memorize": "Seguridad + acceso = servicios managed AWS.",
+      "memorize": [
+        "Multi-layer security: WAF (edge) + IAM (access) + KMS (encryption) + Cognito (auth)",
+        "Defense in depth: each layer provides independent protection",
+        "KMS automatic key rotation: every 365 days (configurable)",
+        "Cognito: user pools (authentication) + identity pools (AWS access)"
+      ],
       "aws_services": [
         "AWS WAF",
         "AWS IAM",
@@ -23220,14 +23269,19 @@
     },
     "correct_answer": "C",
     "explanation": {
-      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de secure architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_correct": "This solution implements comprehensive security controls across multiple layers. WAF protects against common web exploits (SQL injection, XSS) at edge. IAM enforces least privilege access with role-based permissions and MFA. KMS manages encryption keys for data at rest with automatic rotation. Cognito provides user authentication with built-in security features (passwordpolicies, account recovery, suspicious activity detection). Multi-layered security follows AWS defense-in-depth best practices.",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
-        "B": "Missing key requirement: optimal service selection.",
-        "D": "Missing key requirement: optimal service selection."
+        "A": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "B": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "D": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution."
       },
       "exam_tips": "Identifica keywords del dominio Secure Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
-      "memorize": "Seguridad + acceso = servicios managed AWS.",
+      "memorize": [
+        "Multi-layer security: WAF (edge) + IAM (access) + KMS (encryption) + Cognito (auth)",
+        "Defense in depth: each layer provides independent protection",
+        "KMS automatic key rotation: every 365 days (configurable)",
+        "Cognito: user pools (authentication) + identity pools (AWS access)"
+      ],
       "aws_services": [
         "AWS WAF",
         "AWS IAM",
@@ -23256,14 +23310,19 @@
     },
     "correct_answer": "D",
     "explanation": {
-      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de secure architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_correct": "This solution implements comprehensive security controls across multiple layers. WAF protects against common web exploits (SQL injection, XSS) at edge. IAM enforces least privilege access with role-based permissions and MFA. KMS manages encryption keys for data at rest with automatic rotation. Cognito provides user authentication with built-in security features (passwordpolicies, account recovery, suspicious activity detection). Multi-layered security follows AWS defense-in-depth best practices.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "B": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability."
+        "A": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "B": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie.",
+        "C": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution."
       },
       "exam_tips": "Identifica keywords del dominio Secure Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
-      "memorize": "Seguridad + acceso = servicios managed AWS.",
+      "memorize": [
+        "Multi-layer security: WAF (edge) + IAM (access) + KMS (encryption) + Cognito (auth)",
+        "Defense in depth: each layer provides independent protection",
+        "KMS automatic key rotation: every 365 days (configurable)",
+        "Cognito: user pools (authentication) + identity pools (AWS access)"
+      ],
       "aws_services": [
         "AWS WAF",
         "AWS IAM",
@@ -23336,14 +23395,19 @@
       "D"
     ],
     "explanation": {
-      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de secure architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_correct": "This solution implements comprehensive security controls across multiple layers. WAF protects against common web exploits (SQL injection, XSS) at edge. IAM enforces least privilege access with role-based permissions and MFA. KMS manages encryption keys for data at rest with automatic rotation. Cognito provides user authentication with built-in security features (passwordpolicies, account recovery, suspicious activity detection). Multi-layered security follows AWS defense-in-depth best practices.",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
-        "C": "Missing key requirement: optimal service selection.",
-        "E": "Missing key requirement: optimal service selection."
+        "A": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "C": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "E": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution."
       },
       "exam_tips": "Identifica keywords del dominio Secure Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
-      "memorize": "Seguridad + acceso = servicios managed AWS.",
+      "memorize": [
+        "Multi-layer security: WAF (edge) + IAM (access) + KMS (encryption) + Cognito (auth)",
+        "Defense in depth: each layer provides independent protection",
+        "KMS automatic key rotation: every 365 days (configurable)",
+        "Cognito: user pools (authentication) + identity pools (AWS access)"
+      ],
       "aws_services": [
         "AWS WAF",
         "AWS IAM",
@@ -23373,14 +23437,19 @@
     },
     "correct_answer": "B",
     "explanation": {
-      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de secure architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_correct": "This solution implements comprehensive security controls across multiple layers. WAF protects against common web exploits (SQL injection, XSS) at edge. IAM enforces least privilege access with role-based permissions and MFA. KMS manages encryption keys for data at rest with automatic rotation. Cognito provides user authentication with built-in security features (passwordpolicies, account recovery, suspicious activity detection). Multi-layered security follows AWS defense-in-depth best practices.",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
+        "A": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "D": "Missing key requirement: optimal service selection."
+        "D": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution."
       },
       "exam_tips": "Identifica keywords del dominio Secure Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
-      "memorize": "Seguridad + acceso = servicios managed AWS.",
+      "memorize": [
+        "Multi-layer security: WAF (edge) + IAM (access) + KMS (encryption) + Cognito (auth)",
+        "Defense in depth: each layer provides independent protection",
+        "KMS automatic key rotation: every 365 days (configurable)",
+        "Cognito: user pools (authentication) + identity pools (AWS access)"
+      ],
       "aws_services": [
         "AWS WAF",
         "AWS IAM",
@@ -23409,14 +23478,19 @@
     },
     "correct_answer": "A",
     "explanation": {
-      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de secure architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_correct": "This solution implements comprehensive security controls across multiple layers. WAF protects against common web exploits (SQL injection, XSS) at edge. IAM enforces least privilege access with role-based permissions and MFA. KMS manages encryption keys for data at rest with automatic rotation. Cognito provides user authentication with built-in security features (passwordpolicies, account recovery, suspicious activity detection). Multi-layered security follows AWS defense-in-depth best practices.",
       "why_wrong": {
-        "B": "Missing key requirement: optimal service selection.",
-        "C": "Missing key requirement: optimal service selection.",
+        "B": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "C": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
       "exam_tips": "Identifica keywords del dominio Secure Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
-      "memorize": "Seguridad + acceso = servicios managed AWS.",
+      "memorize": [
+        "Multi-layer security: WAF (edge) + IAM (access) + KMS (encryption) + Cognito (auth)",
+        "Defense in depth: each layer provides independent protection",
+        "KMS automatic key rotation: every 365 days (configurable)",
+        "Cognito: user pools (authentication) + identity pools (AWS access)"
+      ],
       "aws_services": [
         "AWS WAF",
         "AWS IAM",
@@ -25458,14 +25532,19 @@
     },
     "correct_answer": "A",
     "explanation": {
-      "why_correct": "Lambda Create two custom AWS WAF rules—meeting all specified requirements. This architecture aligns with AWS Well-Architected Framework best practices for secure architectures.",
+      "why_correct": "Custom AWS WAF rules use rate-based rules (block IPs exceeding request thresholds) and IP set rules (block specific IPs/ranges). Rule groups combine multiple rules for centralized management across multiple CloudFront distributions. WAF integrates natively with CloudFront at edge locations—blocks malicious traffic before reaching origin. Shield Advanced protects against DDoS but does not provide custom IP blocking or rate limiting granularity.",
       "why_wrong": {
-        "B": "Missing key requirement: optimal service selection.",
-        "C": "Missing key requirement: optimal service selection.",
-        "D": "Missing key requirement: optimal service selection."
+        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
       },
-      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
-      "memorize": "Lambda + WAF + Shield pattern for Secure Architectures",
+      "exam_tips": "AWS WAF = custom rules (rate limiting, IP blocking, geo-blocking). Shield = automatic DDoS protection. GuardDuty = threat detection (ML-based). Security Groups = instance-level firewall. Layer choice matters.",
+      "memorize": [
+        "AWS WAF custom rules: rate-based (request thresholds), IP sets",
+        "WAF at CloudFront edge = blocks before reaching origin",
+        "Shield Advanced: DDoS protection, not granular IP/rate control",
+        "Rule groups: centralized management across distributions"
+      ],
       "aws_services": [
         "Lambda",
         "WAF",
@@ -25959,14 +26038,19 @@
     },
     "correct_answer": "B",
     "explanation": {
-      "why_correct": "S3 create an IAM role that trusts Account A—meeting all specified requirements. This architecture aligns with AWS Well-Architected Framework best practices for secure architectures.",
+      "why_correct": "IAM role in Account B with trust relationship to Account A enables secure cross-account access without sharing credentials. Analysts in Account A assume the role using STS AssumeRole. S3 bucket policy grants permissions to the IAM role. This pattern follows AWS security best practices: temporary credentials, least privilege, and no long-term access keys. Resource policies on individual objects are harder to manage and audit at scale.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
-        "C": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "A": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
-      "memorize": "S3 + IAM pattern for Secure Architectures",
+      "exam_tips": "Cross-account access patterns: IAM role + trust relationship (temporary credentials). Resource-based policies (S3, SQS, SNS). Avoid sharing IAM access keys. Always use AssumeRole for security.",
+      "memorize": [
+        "Cross-account: IAM role + trust relationship + bucket policy",
+        "STS AssumeRole: temporary credentials (no long-term keys)",
+        "Analysts assume role, S3 bucket policy grants role permissions",
+        "Security best practice: no shared credentials between accounts"
+      ],
       "aws_services": [
         "S3",
         "IAM"
@@ -26097,14 +26181,19 @@
     },
     "correct_answer": "B",
     "explanation": {
-      "why_correct": "S3 Use Amazon Transcribe for multiple speaker recognition—meeting all specified requirements. This architecture aligns with AWS Well-Architected Framework best practices for secure architectures.",
+      "why_correct": "Amazon Transcribe provides real-time speech-to-text with speaker identification and custom vocabulary. Handles multiple speakers in same audio stream—critical for call center conversations between agent and customer. PII redaction removes sensitive information (credit cards, SSN) from transcripts automatically. Integrates with S3 for audio storage and supports streaming audio for live transcription. Comprehend analyzes text but does not transcribe audio.",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
-        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "D": "Missing key requirement: optimal service selection."
+        "A": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
-      "memorize": "S3 + Athena pattern for Secure Architectures",
+      "exam_tips": "Identify key requirements first (cost, performance, operational overhead). Eliminate options violating hard constraints. Choose simplest solution meeting all requirements—AWS favors managed services and operational simplicity.",
+      "memorize": [
+        "Transcribe: real-time speech-to-text with speaker identification",
+        "PII redaction: auto-removes credit cards, SSN from transcripts",
+        "Supports streaming audio for live transcription",
+        "Custom vocabulary: improves accuracy for industry terms"
+      ],
       "aws_services": [
         "S3",
         "Athena"
@@ -26415,14 +26504,18 @@
     },
     "correct_answer": "B",
     "explanation": {
-      "why_correct": "EC2 This architecture aligns with AWS Well-Architected Framework best practices for secure architectures.",
+      "why_correct": "CloudFront geo-restriction blocks content delivery to specific countries at edge—preventing access before requests reach origin servers. Field-level encryption protects sensitive form data end-to-end. Origin Access Identity (OAI) restricts S3 bucket access to only CloudFront. WAF integration at CloudFront adds application-layer protection. EC2-based proxy lacks global edge presence and requires manual scaling/patching.",
       "why_wrong": {
-        "A": "Missing key requirement: low-latency.",
+        "A": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "D": "Missing key requirement: low-latency."
+        "D": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution."
       },
-      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
-      "memorize": "EC2 + CloudFront pattern for Secure Architectures",
+      "exam_tips": "Security questions: identify \"compliance\", \"immutable\", \"audit trail\", \"least privilege\" keywords. Multi-layered defense = multiple security services. Preventive controls (block) > detective controls (alert). CloudTrail + Config = audit foundation.",
+      "memorize": [
+        "CloudFront geo-restriction: blocks at edge (450+ locations)",
+        "OAI: restricts S3 to only CloudFront access",
+        "Field-level encryption: protects sensitive form data end-to-end"
+      ],
       "aws_services": [
         "EC2",
         "CloudFront"
@@ -27981,9 +28074,12 @@
         "E": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
         "F": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
-      "exam_tips": "Multi-select question—select ALL correct answers (3 required).",
+      "exam_tips": "Migration patterns: Application Migration Service (servers/VMs), Database Migration Service (databases), DataSync (file data), Snow Family (petabyte-scale). Match tool to data type and volume.",
       "memorize": [
-        "Pattern for Secure Architectures"
+        "Application Migration Service: automated lift-and-shift",
+        "Continuous replication: minimal downtime during cutover",
+        "Supports VMware, Hyper-V, physical servers",
+        "CloudEndure rebranded to Application Migration Service (MGN)"
       ],
       "aws_services": [
         "AWS"
@@ -28609,14 +28705,19 @@
     },
     "correct_answer": "A",
     "explanation": {
-      "why_correct": "S3 This architecture aligns with AWS Well-Architected Framework best practices for secure architectures.",
+      "why_correct": "S3 provides unlimited storage with 99.999999999% durability for engineering files. CloudFront caches files at 450+ edge locations globally—reduces latency for distributed teams viewing large CAD/blueprint files. S3 Intelligent-Tiering automatically optimizes costs as files age without performance impact. EBS limited to single EC2 instance (not globally accessible). Glacier requires hours for retrieval—blocks immediate viewing access.",
       "why_wrong": {
-        "B": "Missing key requirement: optimal service selection.",
-        "C": "Missing key requirement: optimal service selection.",
-        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "C": "EBS volumes attach to single EC2 instance in single AZ. Cannot be shared across multiple instances or accessed globally. Requires instance management and lacks S3 durability features.",
+        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
-      "memorize": "S3 + CloudFront + EBS pattern for Secure Architectures",
+      "exam_tips": "Identify key requirements first (cost, performance, operational overhead). Eliminate options violating hard constraints. Choose simplest solution meeting all requirements—AWS favors managed services and operational simplicity.",
+      "memorize": [
+        "S3: unlimited storage, 11 nines durability, global access",
+        "CloudFront: 450+ edge locations, caches large files globally",
+        "S3 Intelligent-Tiering: auto cost optimization without performance hit",
+        "EBS: single instance/AZ only, not globally accessible"
+      ],
       "aws_services": [
         "S3",
         "CloudFront",
@@ -28916,12 +29017,17 @@
     "explanation": {
       "why_correct": "KMS Create a symmetric customer managed KMS key—meeting all specified requirements. This architecture aligns with AWS Well-Architected Framework best practices for secure architectures.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
-        "B": "Missing key requirement: encryption.",
-        "D": "Missing key requirement: encryption."
+        "A": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "B": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "D": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
-      "memorize": "Key pattern: architecture with security",
+      "memorize": [
+        "KMS customer-managed keys: full control over policies and rotation",
+        "Automatic rotation: every 365 days (background process, no downtime)",
+        "CloudTrail logs: every KMS API call for audit",
+        "Multi-region keys: same key ID across regions"
+      ],
       "aws_services": [
         "KMS"
       ],
@@ -29386,14 +29492,19 @@
     },
     "correct_answer": "A",
     "explanation": {
-      "why_correct": "S3 Create a gateway VPC endpoint for Amazon S3 in each VPC—meeting all specified requirements. This architecture aligns with AWS Well-Architected Framework best practices for secure architectures.",
+      "why_correct": "Gateway VPC endpoint for S3 enables private connectivity from VPC to S3 without traversing internet gateway or NAT gateway. Free—no data transfer charges for S3 traffic staying within AWS network. Route tables automatically route S3 API calls through endpoint. Interface VPC endpoints charge $0.01/hour + data processing fees. VPC peering connects VPCs but does not provide S3 access control. IAM policies alone do not eliminate internet routing.",
       "why_wrong": {
-        "B": "Missing key requirement: access-control.",
-        "C": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
-      "memorize": "S3 + VPC + IAM pattern for Secure Architectures",
+      "exam_tips": "Identify key requirements first (cost, performance, operational overhead). Eliminate options violating hard constraints. Choose simplest solution meeting all requirements—AWS favors managed services and operational simplicity.",
+      "memorize": [
+        "Gateway VPC endpoint for S3: free, no data transfer charges",
+        "Private connectivity: no internet/NAT gateway traversal",
+        "Interface endpoint: $0.01/hour + data processing fees",
+        "Route tables: auto-route S3 API calls through endpoint"
+      ],
       "aws_services": [
         "S3",
         "VPC",
@@ -30094,16 +30205,23 @@
     },
     "correct_answer": "B",
     "explanation": {
-      "why_correct": "S3 enable compliance mode—meeting all specified requirements. This architecture aligns with AWS Well-Architected Framework best practices for secure architectures.",
+      "why_correct": "S3 Object Lock in compliance mode provides Write-Once-Read-Many (WORM) storage for regulatory compliance. Compliance mode prevents deletion or modification by ANY user (including root account) until retention period expires—meets SEC, FINRA, HIPAA requirements. Legal hold can extend retention indefinitely without changing retention period. Governance mode allows users with special permissions to delete objects, failing compliance requirements. Versioning must be enabled with Object Lock.",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
-        "C": "Missing key requirement: optimal service selection.",
-        "D": "Missing key requirement: optimal service selection."
+        "A": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
-      "memorize": "Key pattern: implementation with compliance",
+      "exam_tips": "Regulatory compliance keywords: \"immutable\", \"WORM\", \"cannot delete/modify\" = S3 Object Lock compliance mode. Governance mode allows deletion with permissions—not true compliance. Legal hold = indefinite retention.",
+      "memorize": [
+        "S3 Object Lock compliance mode: WORM (Write-Once-Read-Many)",
+        "Prevents deletion by ANY user including root until retention expires",
+        "Meets SEC 17a-4, FINRA, CFTC regulatory requirements",
+        "Legal hold: indefinite retention without changing period",
+        "Governance mode: allows deletion with permissions (not true compliance)"
+      ],
       "aws_services": [
-        "S3"
+        "S3",
+        "S3 Object Lock"
       ],
       "architectural_concept": "Secure Architectures",
       "keywords": [
@@ -30346,16 +30464,24 @@
     },
     "correct_answer": "B",
     "explanation": {
-      "why_correct": "S3 Enable S3 Object Lock in compliance mode—meeting all specified requirements. This architecture aligns with AWS Well-Architected Framework best practices for secure architectures.",
+      "why_correct": "S3 Object Lock in compliance mode enforces fixed retention period—no deletion or modification until period expires, even by root account. Meets regulatory requirements for immutable storage (SEC 17a-4, FINRA, CFTC). S3 Versioning required with Object Lock—preserves all versions. Vault Lock for Glacier is for archival data with retrieval delays, not immediate-access compliance. S3 Lifecycle policies can delete old versions but Object Lock protections remain on locked objects.",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
-        "C": "Missing key requirement: optimal service selection.",
-        "D": "Missing key requirement: optimal service selection."
+        "A": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
-      "memorize": "Key pattern: architecture with compliance",
+      "exam_tips": "Regulatory compliance keywords: \"immutable\", \"WORM\", \"cannot delete/modify\" = S3 Object Lock compliance mode. Governance mode allows deletion with permissions—not true compliance. Legal hold = indefinite retention.",
+      "memorize": [
+        "S3 Object Lock compliance mode: WORM (Write-Once-Read-Many)",
+        "Prevents deletion by ANY user including root until retention expires",
+        "Meets SEC 17a-4, FINRA, CFTC regulatory requirements",
+        "Legal hold: indefinite retention without changing period",
+        "Governance mode: allows deletion with permissions (not true compliance)"
+      ],
       "aws_services": [
-        "S3"
+        "S3",
+        "S3 Object Lock",
+        "S3 Versioning"
       ],
       "architectural_concept": "Secure Architectures"
     }
@@ -30373,17 +30499,24 @@
     },
     "correct_answer": "D",
     "explanation": {
-      "why_correct": "EC2 This architecture aligns with AWS Well-Architected Framework best practices for secure architectures.",
+      "why_correct": "Security Hub aggregates findings from GuardDuty, Inspector, Macie, IAM Access Analyzer, and Firewall Manager into single dashboard. Continuous compliance checks against CIS AWS Foundations Benchmark, PCI DSS. Automated remediation via EventBridge + Lambda + Systems Manager. Cross-account aggregation spans entire AWS Organization. CloudWatch monitors metrics—not security findings. Config tracks resource configuration—does not aggregate security tools.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
+        "A": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
         "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "C": "Missing key requirement: access-control."
+        "C": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution."
       },
-      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
-      "memorize": "EC2 + IAM pattern for Secure Architectures",
+      "exam_tips": "Security questions: identify \"compliance\", \"immutable\", \"audit trail\", \"least privilege\" keywords. Multi-layered defense = multiple security services. Preventive controls (block) > detective controls (alert). CloudTrail + Config = audit foundation.",
+      "memorize": [
+        "Security Hub: aggregates findings from GuardDuty, Inspector, Macie, IAM Analyzer",
+        "CIS AWS Foundations Benchmark: automated compliance checks",
+        "EventBridge + Lambda: automated remediation",
+        "Cross-account aggregation: entire AWS Organization"
+      ],
       "aws_services": [
-        "EC2",
-        "IAM"
+        "Security Hub",
+        "GuardDuty",
+        "Config",
+        "CloudWatch"
       ],
       "architectural_concept": "Security",
       "keywords": [
@@ -30745,17 +30878,23 @@
     },
     "correct_answer": "A",
     "explanation": {
-      "why_correct": "S3 enabled on the DynamoDB tables—meeting all specified requirements. This architecture aligns with AWS Well-Architected Framework best practices for secure architectures.",
+      "why_correct": "DynamoDB point-in-time recovery (PITR) enabled allows export to S3 at any point within 35-day retention window. Export to S3 does NOT consume read capacity units—no impact on production workload. Exports in DynamoDB JSON or Amazon Ion format. On-demand backups create full table snapshot but require manual triggering. DynamoDB Streams capture item changes but require custom Lambda processing to export full table state.",
       "why_wrong": {
-        "B": "Missing key requirement: optimal service selection.",
-        "C": "Missing key requirement: optimal service selection.",
-        "D": "Missing key requirement: optimal service selection."
+        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
-      "memorize": "S3 + DynamoDB pattern for Secure Architectures",
+      "exam_tips": "Identify key requirements first (cost, performance, operational overhead). Eliminate options violating hard constraints. Choose simplest solution meeting all requirements—AWS favors managed services and operational simplicity.",
+      "memorize": [
+        "DynamoDB PITR export: no read capacity consumed",
+        "Export to S3: DynamoDB JSON or Amazon Ion format",
+        "Point-in-time: any moment within 35-day retention window",
+        "On-demand backups: manual trigger, full table snapshot"
+      ],
       "aws_services": [
         "S3",
-        "DynamoDB"
+        "DynamoDB",
+        "DynamoDB PITR"
       ],
       "architectural_concept": "Secure Architectures",
       "keywords": [
@@ -31108,18 +31247,19 @@
     },
     "correct_answer": "B",
     "explanation": {
-      "why_correct": "EC2 Configure IAM policies by using the aws:RequestedRegion condition—meeting all specified requirements.",
+      "why_correct": "Systems Manager Session Manager provides shell access to EC2/on-premises without SSH keys, bastion hosts, or open inbound ports. Session logs stored in S3/CloudWatch for auditing. IAM policies control who can start sessions. Config continuously audits Session Manager usage. Eliminates need for managing SSH keys and bastion infrastructure. Agent-based—works with on-premises hybrid environments.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
-        "C": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "A": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie.",
+        "C": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie.",
+        "D": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie."
       },
-      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "exam_tips": "Security questions: identify \"compliance\", \"immutable\", \"audit trail\", \"least privilege\" keywords. Multi-layered defense = multiple security services. Preventive controls (block) > detective controls (alert). CloudTrail + Config = audit foundation.",
       "memorize": "EC2 + IAM + Config pattern for Secure Architectures",
       "aws_services": [
         "EC2",
         "IAM",
-        "Config"
+        "Config",
+        "Systems Manager"
       ],
       "architectural_concept": "Security",
       "keywords": [
@@ -31186,17 +31326,19 @@
     },
     "correct_answer": "B",
     "explanation": {
-      "why_correct": "ALB Deploy a transit gateway in the account that hosts the new application—meeting all specified requirements.",
+      "why_correct": "VPC Flow Logs capture network traffic metadata (source/dest IP, ports, protocol, packets, bytes) for ENIs. Publishes to CloudWatch Logs or S3. Enables security analysis, network troubleshooting, traffic pattern analysis. ALB access logs capture application-layer requests but not network-layer traffic. VPC Traffic Mirroring replicates ALL packets (high cost), overkill for metadata analysis.",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
-        "C": "Missing key requirement: optimal service selection.",
-        "D": "Missing key requirement: optimal service selection."
+        "A": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "C": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
+        "D": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie."
       },
-      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "exam_tips": "Security questions: identify \"compliance\", \"immutable\", \"audit trail\", \"least privilege\" keywords. Multi-layered defense = multiple security services. Preventive controls (block) > detective controls (alert). CloudTrail + Config = audit foundation.",
       "memorize": "VPC + ALB pattern for Secure Architectures",
       "aws_services": [
         "VPC",
-        "ALB"
+        "ALB",
+        "CloudWatch",
+        "S3"
       ],
       "architectural_concept": "Security",
       "keywords": [
@@ -31254,17 +31396,18 @@
     },
     "correct_answer": "D",
     "explanation": {
-      "why_correct": "S3 This architecture aligns with AWS Well-Architected Framework best practices for secure architectures.",
+      "why_correct": "S3 Block Public Access enforces organization-wide policy preventing accidental public exposure—overrides bucket/object ACLs. Works at account and organization level. IAM policy denies s3:PutBucketPublicAccessBlock disabling action. Config rule detects violations but does not prevent. CloudWatch monitors metrics—does not enforce security policies. Preventive control superior to detective-only approaches.",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
-        "B": "Missing key requirement: optimal service selection.",
+        "A": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie.",
+        "B": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "exam_tips": "Security questions: identify \"compliance\", \"immutable\", \"audit trail\", \"least privilege\" keywords. Multi-layered defense = multiple security services. Preventive controls (block) > detective controls (alert). CloudTrail + Config = audit foundation.",
       "memorize": "S3 + IAM pattern for Secure Architectures",
       "aws_services": [
         "S3",
-        "IAM"
+        "IAM",
+        "Config"
       ],
       "architectural_concept": "Secure Architectures",
       "keywords": [
@@ -31657,17 +31800,19 @@
     },
     "correct_answer": "D",
     "explanation": {
-      "why_correct": "Route 53 Create an Amazon Route 53 Resolver inbound endpoint in the VPC—meeting all specified requirements.",
+      "why_correct": "VPC endpoint for S3 enables private connectivity from VPC without internet gateway. Route 53 Resolver DNS Firewall blocks DNS queries to known malicious domains—prevents data exfiltration and C&C communication. Network Firewall provides stateful inspection of VPC traffic. Multi-layer protection: endpoint (network isolation) + DNS firewall (domain blocking) + network firewall (deep packet inspection).",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
-        "B": "Missing key requirement: optimal service selection.",
+        "A": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie.",
+        "B": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
-      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "exam_tips": "Security questions: identify \"compliance\", \"immutable\", \"audit trail\", \"least privilege\" keywords. Multi-layered defense = multiple security services. Preventive controls (block) > detective controls (alert). CloudTrail + Config = audit foundation.",
       "memorize": "VPC + Route 53 pattern for Secure Architectures",
       "aws_services": [
         "VPC",
-        "Route 53"
+        "Route 53",
+        "S3",
+        "Network Firewall"
       ],
       "architectural_concept": "Secure Architectures",
       "keywords": [
@@ -31695,18 +31840,20 @@
     },
     "correct_answer": "C",
     "explanation": {
-      "why_correct": "S3 Use AWS Lake Formation to provide the specified IAM roles access to the PII data—meeting all specified requirements.",
+      "why_correct": "CloudTrail logs API calls across AWS services to S3 with integrity validation. Glue ETL transforms logs into queryable format. Athena provides SQL interface for log analysis without database infrastructure. Macie detects sensitive data (PII) in S3 logs. Lambda for parsing adds operational overhead—Glue handles ETL at scale. QuickSight visualizes but does not query raw logs.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
-        "B": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "A": "IAM policies control access but can be modified by privileged users. Not immutable. Does not provide WORM guarantees required for compliance.",
+        "B": "IAM policies control access but can be modified by privileged users. Not immutable. Does not provide WORM guarantees required for compliance.",
+        "D": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "exam_tips": "Security questions: identify \"compliance\", \"immutable\", \"audit trail\", \"least privilege\" keywords. Multi-layered defense = multiple security services. Preventive controls (block) > detective controls (alert). CloudTrail + Config = audit foundation.",
       "memorize": "S3 + IAM + Glue pattern for Secure Architectures",
       "aws_services": [
         "S3",
         "IAM",
-        "Glue"
+        "Glue",
+        "CloudTrail",
+        "Athena"
       ],
       "architectural_concept": "Security",
       "keywords": [
@@ -32107,16 +32254,18 @@
     },
     "correct_answer": "B",
     "explanation": {
-      "why_correct": "Optimizes performance by: caching reduces latency for frequently accessed data. Reduces operational overhead:",
+      "why_correct": "S3 Object Lock with retention period prevents object deletion/modification for compliance (SEC, FINRA). Legal hold extends retention indefinitely without changing period. Versioning required—preserves all versions immutably. MFA Delete requires MFA token for version deletion (additional protection). WORM storage meets regulatory requirements. Bucket policies and IAM alone can be changed—not immutable.",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
+        "A": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "D": "Missing key requirement: optimal service selection."
+        "D": "This option does not fully address the specified requirements or introduces unnecessary operational complexity compared to the correct solution."
       },
-      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "exam_tips": "Security questions: identify \"compliance\", \"immutable\", \"audit trail\", \"least privilege\" keywords. Multi-layered defense = multiple security services. Preventive controls (block) > detective controls (alert). CloudTrail + Config = audit foundation.",
       "memorize": "Key pattern: architecture with performance, operational_efficiency",
       "aws_services": [
-        "S3"
+        "S3",
+        "S3 Object Lock",
+        "MFA Delete"
       ],
       "architectural_concept": "Performance",
       "keywords": [
@@ -33567,16 +33716,18 @@
     },
     "correct_answer": "C",
     "explanation": {
-      "why_correct": "This solution implements security best practices: encryption protects data at rest and in transit.",
+      "why_correct": "CloudFront signed URLs provide time-limited access to private content without making S3 bucket public. URL expires after specified duration. Trusted key groups/signers control who can create signed URLs. S3 bucket remains private—only CloudFront OAI has access. Presigned S3 URLs expose S3 endpoint directly (no CDN caching/edge benefits). Public bucket violates security requirement.",
       "why_wrong": {
-        "A": "Missing key requirement: optimal service selection.",
-        "B": "Missing key requirement: optimal service selection.",
-        "D": "Missing key requirement: optimal service selection."
+        "A": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie.",
+        "B": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie.",
+        "D": "Config tracks resource configuration changes and compliance status. Does not aggregate findings from security services like GuardDuty, Inspector, Macie."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "Key pattern: architecture_design with security",
       "aws_services": [
-        "CloudFront"
+        "CloudFront",
+        "S3",
+        "CloudFront OAI"
       ],
       "architectural_concept": "Security",
       "keywords": [

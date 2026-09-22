@@ -1,20 +1,20 @@
 {
   "summary": {
     "total": 923,
-    "average_score": 11.18851570964247,
+    "average_score": 11.458288190682557,
     "max_score": 17,
-    "excellent": 262,
-    "very_good": 375,
-    "good": 256,
-    "fair": 30,
+    "excellent": 291,
+    "very_good": 376,
+    "good": 246,
+    "fair": 10,
     "poor": 0,
     "very_poor": 0
   },
   "common_issues": {
-    "All why_wrong genéricos": 40,
-    "memorize genérico": 11,
+    "All why_wrong genéricos": 30,
+    "memorize genérico": 10,
     "Solo servicio genérico [AWS]": 3,
-    "why_correct genérico": 96
+    "why_correct genérico": 88
   },
   "top_20": [
     {
@@ -332,112 +332,163 @@
   ],
   "bottom_20": [
     {
-      "question_id": 54,
+      "question_id": 566,
       "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
+      "score": 7,
+      "category": "GOOD",
       "issues": [
-        "why_correct genérico"
+        "memorize genérico"
       ],
       "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
+        "S3"
       ],
-      "why_correct_length": 166,
+      "why_correct_length": 146,
       "memorize_type": "string",
-      "memorize_length": 43
+      "memorize_length": 39
     },
     {
-      "question_id": 55,
+      "question_id": 581,
       "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
+      "score": 7,
+      "category": "GOOD",
       "issues": [
-        "why_correct genérico"
+        "memorize genérico"
       ],
       "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
+        "S3"
       ],
-      "why_correct_length": 166,
+      "why_correct_length": 176,
       "memorize_type": "string",
-      "memorize_length": 43
+      "memorize_length": 39
     },
     {
-      "question_id": 60,
+      "question_id": 621,
       "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
+      "score": 7,
+      "category": "GOOD",
       "issues": [
-        "why_correct genérico"
+        "All why_wrong genéricos"
       ],
       "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
+        "EC2",
+        "KMS",
+        "ALB",
+        "Secrets Manager",
+        "GuardDuty",
+        "Shield",
+        "EBS"
       ],
-      "why_correct_length": 166,
+      "why_correct_length": 108,
       "memorize_type": "string",
-      "memorize_length": 43
+      "memorize_length": 48
     },
     {
-      "question_id": 61,
+      "question_id": 673,
       "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
+      "score": 7,
+      "category": "GOOD",
       "issues": [
-        "why_correct genérico"
+        "All why_wrong genéricos"
       ],
       "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
+        "KMS"
       ],
-      "why_correct_length": 166,
+      "why_correct_length": 189,
       "memorize_type": "string",
-      "memorize_length": 43
+      "memorize_length": 46
     },
     {
-      "question_id": 62,
+      "question_id": 679,
       "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [
-        "why_correct genérico"
-      ],
+      "score": 7,
+      "category": "GOOD",
+      "issues": [],
       "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
+        "Lambda",
+        "IAM",
+        "API Gateway"
       ],
-      "why_correct_length": 166,
+      "why_correct_length": 114,
       "memorize_type": "string",
-      "memorize_length": 43
+      "memorize_length": 59
     },
     {
-      "question_id": 242,
+      "question_id": 715,
       "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
+      "score": 7,
+      "category": "GOOD",
       "issues": [],
       "services": [
         "EC2",
+        "IAM"
+      ],
+      "why_correct_length": 116,
+      "memorize_type": "string",
+      "memorize_length": 42
+    },
+    {
+      "question_id": 716,
+      "domain": "Secure Architectures",
+      "score": 7,
+      "category": "GOOD",
+      "issues": [],
+      "services": [
+        "S3",
         "CloudFront"
+      ],
+      "why_correct_length": 114,
+      "memorize_type": "string",
+      "memorize_length": 48
+    },
+    {
+      "question_id": 780,
+      "domain": "Secure Architectures",
+      "score": 7,
+      "category": "GOOD",
+      "issues": [],
+      "services": [
+        "S3",
+        "EC2",
+        "EBS"
+      ],
+      "why_correct_length": 118,
+      "memorize_type": "string",
+      "memorize_length": 47
+    },
+    {
+      "question_id": 830,
+      "domain": "Secure Architectures",
+      "score": 7,
+      "category": "GOOD",
+      "issues": [],
+      "services": [
+        "EC2",
+        "RDS",
+        "VPC"
       ],
       "why_correct_length": 105,
       "memorize_type": "string",
-      "memorize_length": 49
+      "memorize_length": 48
     },
     {
-      "question_id": 466,
+      "question_id": 919,
       "domain": "Secure Architectures",
+      "score": 7,
+      "category": "GOOD",
+      "issues": [],
+      "services": [
+        "S3",
+        "EC2",
+        "IAM",
+        "SQS"
+      ],
+      "why_correct_length": 115,
+      "memorize_type": "string",
+      "memorize_length": 47
+    },
+    {
+      "question_id": 714,
+      "domain": "Cost-Optimized Architectures",
       "score": 6,
       "category": "FAIR",
       "issues": [
@@ -445,224 +496,175 @@
         "memorize genérico"
       ],
       "services": [
-        "KMS"
-      ],
-      "why_correct_length": 185,
-      "memorize_type": "string",
-      "memorize_length": 39
-    },
-    {
-      "question_id": 586,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "EC2",
-        "IAM"
-      ],
-      "why_correct_length": 105,
-      "memorize_type": "string",
-      "memorize_length": 42
-    },
-    {
-      "question_id": 626,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "EC2",
-        "IAM",
-        "Config"
-      ],
-      "why_correct_length": 105,
-      "memorize_type": "string",
-      "memorize_length": 51
-    },
-    {
-      "question_id": 634,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "VPC",
-        "ALB"
-      ],
-      "why_correct_length": 110,
-      "memorize_type": "string",
-      "memorize_length": 42
-    },
-    {
-      "question_id": 638,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "S3",
-        "IAM"
-      ],
-      "why_correct_length": 104,
-      "memorize_type": "string",
-      "memorize_length": 41
-    },
-    {
-      "question_id": 669,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "VPC",
-        "Route 53"
-      ],
-      "why_correct_length": 107,
-      "memorize_type": "string",
-      "memorize_length": 47
-    },
-    {
-      "question_id": 697,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
         "S3"
       ],
-      "why_correct_length": 109,
+      "why_correct_length": 121,
       "memorize_type": "string",
-      "memorize_length": 66
+      "memorize_length": 36
     },
     {
-      "question_id": 799,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "CloudFront"
-      ],
-      "why_correct_length": 98,
-      "memorize_type": "string",
-      "memorize_length": 46
-    },
-    {
-      "question_id": 903,
-      "domain": "Cost-Optimized Architectures",
-      "score": 5,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "S3"
-      ],
-      "why_correct_length": 116,
-      "memorize_type": "string",
-      "memorize_length": 42
-    },
-    {
-      "question_id": 339,
+      "question_id": 276,
       "domain": "High-Performing Architectures",
-      "score": 5,
+      "score": 6,
       "category": "FAIR",
       "issues": [],
       "services": [
-        "EC2"
-      ],
-      "why_correct_length": 107,
-      "memorize_type": "string",
-      "memorize_length": 42
-    },
-    {
-      "question_id": 12,
-      "domain": "Secure Architectures",
-      "score": 5,
-      "category": "FAIR",
-      "issues": [
-        "why_correct genérico",
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
-      ],
-      "why_correct_length": 166,
-      "memorize_type": "string",
-      "memorize_length": 43
-    },
-    {
-      "question_id": 32,
-      "domain": "Secure Architectures",
-      "score": 5,
-      "category": "FAIR",
-      "issues": [
-        "why_correct genérico",
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
-      ],
-      "why_correct_length": 166,
-      "memorize_type": "string",
-      "memorize_length": 43
-    },
-    {
-      "question_id": 56,
-      "domain": "Secure Architectures",
-      "score": 5,
-      "category": "FAIR",
-      "issues": [
-        "why_correct genérico",
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
-      ],
-      "why_correct_length": 166,
-      "memorize_type": "string",
-      "memorize_length": 43
-    },
-    {
-      "question_id": 670,
-      "domain": "Secure Architectures",
-      "score": 5,
-      "category": "FAIR",
-      "issues": [
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "S3",
-        "IAM",
-        "Glue"
+        "VPC"
       ],
       "why_correct_length": 119,
       "memorize_type": "string",
-      "memorize_length": 48
+      "memorize_length": 49
+    },
+    {
+      "question_id": 351,
+      "domain": "High-Performing Architectures",
+      "score": 6,
+      "category": "FAIR",
+      "issues": [],
+      "services": [
+        "RDS"
+      ],
+      "why_correct_length": 114,
+      "memorize_type": "string",
+      "memorize_length": 64
+    },
+    {
+      "question_id": 556,
+      "domain": "High-Performing Architectures",
+      "score": 6,
+      "category": "FAIR",
+      "issues": [],
+      "services": [
+        "RDS"
+      ],
+      "why_correct_length": 114,
+      "memorize_type": "string",
+      "memorize_length": 64
+    },
+    {
+      "question_id": 524,
+      "domain": "Resilient Architectures",
+      "score": 6,
+      "category": "FAIR",
+      "issues": [
+        "why_correct genérico",
+        "All why_wrong genéricos"
+      ],
+      "services": [
+        "Auto Scaling",
+        "Application Load Balancer",
+        "Amazon RDS",
+        "Amazon Aurora"
+      ],
+      "why_correct_length": 169,
+      "memorize_type": "string",
+      "memorize_length": 58
+    },
+    {
+      "question_id": 571,
+      "domain": "Resilient Architectures",
+      "score": 6,
+      "category": "FAIR",
+      "issues": [
+        "why_correct genérico",
+        "All why_wrong genéricos"
+      ],
+      "services": [
+        "Auto Scaling",
+        "Application Load Balancer",
+        "Amazon RDS",
+        "Amazon Aurora"
+      ],
+      "why_correct_length": 169,
+      "memorize_type": "string",
+      "memorize_length": 58
+    },
+    {
+      "question_id": 871,
+      "domain": "Resilient Architectures",
+      "score": 6,
+      "category": "FAIR",
+      "issues": [
+        "why_correct genérico",
+        "All why_wrong genéricos"
+      ],
+      "services": [
+        "Auto Scaling",
+        "Application Load Balancer",
+        "Amazon RDS",
+        "Amazon Aurora"
+      ],
+      "why_correct_length": 169,
+      "memorize_type": "string",
+      "memorize_length": 58
+    },
+    {
+      "question_id": 2,
+      "domain": "Secure Architectures",
+      "score": 6,
+      "category": "FAIR",
+      "issues": [
+        "why_correct genérico"
+      ],
+      "services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "why_correct_length": 166,
+      "memorize_type": "string",
+      "memorize_length": 43
+    },
+    {
+      "question_id": 7,
+      "domain": "Secure Architectures",
+      "score": 6,
+      "category": "FAIR",
+      "issues": [
+        "why_correct genérico"
+      ],
+      "services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "why_correct_length": 166,
+      "memorize_type": "string",
+      "memorize_length": 43
+    },
+    {
+      "question_id": 26,
+      "domain": "Secure Architectures",
+      "score": 6,
+      "category": "FAIR",
+      "issues": [
+        "why_correct genérico"
+      ],
+      "services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "why_correct_length": 166,
+      "memorize_type": "string",
+      "memorize_length": 43
     }
   ],
   "by_domain": {
     "Cost-Optimized Architectures": {
       "total": 140,
-      "sum": 2007,
-      "excellent": 109,
+      "sum": 2020,
+      "excellent": 111,
       "generic_issues": 2
     },
     "High-Performing Architectures": {
       "total": 244,
-      "sum": 2626,
-      "excellent": 23,
-      "generic_issues": 8
+      "sum": 2652,
+      "excellent": 27,
+      "generic_issues": 6
     },
     "Resilient Architectures": {
       "total": 131,
@@ -678,9 +680,9 @@
     },
     "Secure Architectures": {
       "total": 347,
-      "sum": 3393,
-      "excellent": 17,
-      "generic_issues": 61
+      "sum": 3603,
+      "excellent": 40,
+      "generic_issues": 48
     }
   },
   "all_questions": [
@@ -2307,6 +2309,40 @@
       "memorize_length": 63
     },
     {
+      "question_id": 339,
+      "domain": "High-Performing Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "EC2",
+        "EC2 Spot",
+        "Auto Scaling",
+        "S3"
+      ],
+      "why_correct_length": 402,
+      "memorize_type": "array",
+      "memorize_length": 3
+    },
+    {
+      "question_id": 531,
+      "domain": "High-Performing Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "EC2",
+        "Lambda",
+        "ECS",
+        "ALB",
+        "Auto Scaling",
+        "API Gateway"
+      ],
+      "why_correct_length": 399,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
       "question_id": 603,
       "domain": "High-Performing Architectures",
       "score": 15,
@@ -2799,6 +2835,195 @@
       "memorize_length": 58
     },
     {
+      "question_id": 12,
+      "domain": "Secure Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "why_correct_length": 500,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 32,
+      "domain": "Secure Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "why_correct_length": 500,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 54,
+      "domain": "Secure Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "why_correct_length": 500,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 55,
+      "domain": "Secure Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "why_correct_length": 500,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 56,
+      "domain": "Secure Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "why_correct_length": 500,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 60,
+      "domain": "Secure Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "why_correct_length": 500,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 61,
+      "domain": "Secure Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "why_correct_length": 500,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 62,
+      "domain": "Secure Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "why_correct_length": 500,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 568,
+      "domain": "Secure Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "S3 Object Lock"
+      ],
+      "why_correct_length": 492,
+      "memorize_type": "array",
+      "memorize_length": 5
+    },
+    {
+      "question_id": 585,
+      "domain": "Secure Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "S3 Object Lock",
+        "S3 Versioning"
+      ],
+      "why_correct_length": 479,
+      "memorize_type": "array",
+      "memorize_length": 5
+    },
+    {
+      "question_id": 586,
+      "domain": "Secure Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "Security Hub",
+        "GuardDuty",
+        "Config",
+        "CloudWatch"
+      ],
+      "why_correct_length": 454,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 626,
+      "domain": "Secure Architectures",
+      "score": 15,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "EC2",
+        "IAM",
+        "Config",
+        "Systems Manager"
+      ],
+      "why_correct_length": 396,
+      "memorize_type": "string",
+      "memorize_length": 51
+    },
+    {
       "question_id": 104,
       "domain": "Cost-Optimized Architectures",
       "score": 14,
@@ -2922,6 +3147,35 @@
       "memorize_length": 65
     },
     {
+      "question_id": 877,
+      "domain": "Cost-Optimized Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "DynamoDB"
+      ],
+      "why_correct_length": 405,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 903,
+      "domain": "Cost-Optimized Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "S3 Intelligent-Tiering",
+        "S3 Lifecycle"
+      ],
+      "why_correct_length": 450,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
       "question_id": 92,
       "domain": "High-Performing Architectures",
       "score": 14,
@@ -2940,6 +3194,21 @@
       "why_correct_length": 180,
       "memorize_type": "string",
       "memorize_length": 59
+    },
+    {
+      "question_id": 133,
+      "domain": "High-Performing Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "EBS",
+        "EFS"
+      ],
+      "why_correct_length": 360,
+      "memorize_type": "array",
+      "memorize_length": 4
     },
     {
       "question_id": 221,
@@ -2993,6 +3262,21 @@
       "why_correct_length": 190,
       "memorize_type": "string",
       "memorize_length": 59
+    },
+    {
+      "question_id": 321,
+      "domain": "High-Performing Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "EC2",
+        "FSx"
+      ],
+      "why_correct_length": 381,
+      "memorize_type": "array",
+      "memorize_length": 4
     },
     {
       "question_id": 384,
@@ -4428,6 +4712,21 @@
       "memorize_length": 57
     },
     {
+      "question_id": 185,
+      "domain": "Secure Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "Lambda",
+        "WAF",
+        "Shield"
+      ],
+      "why_correct_length": 447,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
       "question_id": 204,
       "domain": "Secure Architectures",
       "score": 14,
@@ -4442,6 +4741,48 @@
       "why_correct_length": 148,
       "memorize_type": "string",
       "memorize_length": 63
+    },
+    {
+      "question_id": 210,
+      "domain": "Secure Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "IAM"
+      ],
+      "why_correct_length": 437,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 224,
+      "domain": "Secure Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "Athena"
+      ],
+      "why_correct_length": 458,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 242,
+      "domain": "Secure Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "EC2",
+        "CloudFront"
+      ],
+      "why_correct_length": 422,
+      "memorize_type": "array",
+      "memorize_length": 3
     },
     {
       "question_id": 262,
@@ -4513,6 +4854,21 @@
       "memorize_length": 47
     },
     {
+      "question_id": 430,
+      "domain": "Secure Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "CloudFront",
+        "EBS"
+      ],
+      "why_correct_length": 437,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
       "question_id": 486,
       "domain": "Secure Architectures",
       "score": 14,
@@ -4526,6 +4882,21 @@
       "why_correct_length": 293,
       "memorize_type": "string",
       "memorize_length": 51
+    },
+    {
+      "question_id": 516,
+      "domain": "Secure Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "VPC",
+        "IAM"
+      ],
+      "why_correct_length": 446,
+      "memorize_type": "array",
+      "memorize_length": 4
     },
     {
       "question_id": 551,
@@ -4561,6 +4932,37 @@
       "memorize_length": 51
     },
     {
+      "question_id": 609,
+      "domain": "Secure Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "DynamoDB",
+        "DynamoDB PITR"
+      ],
+      "why_correct_length": 421,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
+      "question_id": 634,
+      "domain": "Secure Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "VPC",
+        "ALB",
+        "CloudWatch",
+        "S3"
+      ],
+      "why_correct_length": 392,
+      "memorize_type": "string",
+      "memorize_length": 42
+    },
+    {
       "question_id": 654,
       "domain": "Secure Architectures",
       "score": 14,
@@ -4575,6 +4977,54 @@
       "why_correct_length": 152,
       "memorize_type": "string",
       "memorize_length": 57
+    },
+    {
+      "question_id": 669,
+      "domain": "Secure Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "VPC",
+        "Route 53",
+        "S3",
+        "Network Firewall"
+      ],
+      "why_correct_length": 403,
+      "memorize_type": "string",
+      "memorize_length": 47
+    },
+    {
+      "question_id": 670,
+      "domain": "Secure Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "IAM",
+        "Glue",
+        "CloudTrail",
+        "Athena"
+      ],
+      "why_correct_length": 376,
+      "memorize_type": "string",
+      "memorize_length": 48
+    },
+    {
+      "question_id": 697,
+      "domain": "Secure Architectures",
+      "score": 14,
+      "category": "EXCELLENT",
+      "issues": [],
+      "services": [
+        "S3",
+        "S3 Object Lock",
+        "MFA Delete"
+      ],
+      "why_correct_length": 404,
+      "memorize_type": "string",
+      "memorize_length": 66
     },
     {
       "question_id": 732,
@@ -5752,6 +6202,36 @@
       "memorize_length": 50
     },
     {
+      "question_id": 638,
+      "domain": "Secure Architectures",
+      "score": 13,
+      "category": "VERY_GOOD",
+      "issues": [],
+      "services": [
+        "S3",
+        "IAM",
+        "Config"
+      ],
+      "why_correct_length": 406,
+      "memorize_type": "string",
+      "memorize_length": 41
+    },
+    {
+      "question_id": 799,
+      "domain": "Secure Architectures",
+      "score": 13,
+      "category": "VERY_GOOD",
+      "issues": [],
+      "services": [
+        "CloudFront",
+        "S3",
+        "CloudFront OAI"
+      ],
+      "why_correct_length": 384,
+      "memorize_type": "string",
+      "memorize_length": 46
+    },
+    {
       "question_id": 816,
       "domain": "Secure Architectures",
       "score": 13,
@@ -6626,6 +7106,21 @@
       "memorize_length": 50
     },
     {
+      "question_id": 352,
+      "domain": "Secure Architectures",
+      "score": 12,
+      "category": "VERY_GOOD",
+      "issues": [
+        "Solo servicio genérico [AWS]"
+      ],
+      "services": [
+        "AWS"
+      ],
+      "why_correct_length": 183,
+      "memorize_type": "array",
+      "memorize_length": 4
+    },
+    {
       "question_id": 355,
       "domain": "Secure Architectures",
       "score": 12,
@@ -6653,6 +7148,19 @@
       "why_correct_length": 138,
       "memorize_type": "string",
       "memorize_length": 78
+    },
+    {
+      "question_id": 466,
+      "domain": "Secure Architectures",
+      "score": 12,
+      "category": "VERY_GOOD",
+      "issues": [],
+      "services": [
+        "KMS"
+      ],
+      "why_correct_length": 185,
+      "memorize_type": "array",
+      "memorize_length": 4
     },
     {
       "question_id": 495,
@@ -8516,20 +9024,6 @@
       "memorize_length": 58
     },
     {
-      "question_id": 877,
-      "domain": "Cost-Optimized Architectures",
-      "score": 10,
-      "category": "VERY_GOOD",
-      "issues": [],
-      "services": [
-        "S3",
-        "DynamoDB"
-      ],
-      "why_correct_length": 203,
-      "memorize_type": "string",
-      "memorize_length": 54
-    },
-    {
       "question_id": 29,
       "domain": "High-Performing Architectures",
       "score": 10,
@@ -8808,21 +9302,6 @@
       "why_correct_length": 209,
       "memorize_type": "string",
       "memorize_length": 57
-    },
-    {
-      "question_id": 321,
-      "domain": "High-Performing Architectures",
-      "score": 10,
-      "category": "VERY_GOOD",
-      "issues": [],
-      "services": [
-        "S3",
-        "EC2",
-        "FSx"
-      ],
-      "why_correct_length": 206,
-      "memorize_type": "string",
-      "memorize_length": 56
     },
     {
       "question_id": 342,
@@ -10066,21 +10545,6 @@
       "memorize_length": 47
     },
     {
-      "question_id": 352,
-      "domain": "Secure Architectures",
-      "score": 10,
-      "category": "VERY_GOOD",
-      "issues": [
-        "Solo servicio genérico [AWS]"
-      ],
-      "services": [
-        "AWS"
-      ],
-      "why_correct_length": 183,
-      "memorize_type": "array",
-      "memorize_length": 1
-    },
-    {
       "question_id": 437,
       "domain": "Secure Architectures",
       "score": 10,
@@ -10825,26 +11289,6 @@
       "memorize_length": 3
     },
     {
-      "question_id": 531,
-      "domain": "High-Performing Architectures",
-      "score": 9,
-      "category": "GOOD",
-      "issues": [
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "EC2",
-        "Lambda",
-        "ECS",
-        "ALB",
-        "Auto Scaling",
-        "API Gateway"
-      ],
-      "why_correct_length": 174,
-      "memorize_type": "string",
-      "memorize_length": 60
-    },
-    {
       "question_id": 699,
       "domain": "High-Performing Architectures",
       "score": 9,
@@ -11145,21 +11589,6 @@
       "why_correct_length": 177,
       "memorize_type": "array",
       "memorize_length": 3
-    },
-    {
-      "question_id": 185,
-      "domain": "Secure Architectures",
-      "score": 9,
-      "category": "GOOD",
-      "issues": [],
-      "services": [
-        "Lambda",
-        "WAF",
-        "Shield"
-      ],
-      "why_correct_length": 176,
-      "memorize_type": "string",
-      "memorize_length": 54
     },
     {
       "question_id": 198,
@@ -12059,23 +12488,6 @@
       "memorize_length": 60
     },
     {
-      "question_id": 133,
-      "domain": "High-Performing Architectures",
-      "score": 8,
-      "category": "GOOD",
-      "issues": [
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "S3",
-        "EBS",
-        "EFS"
-      ],
-      "why_correct_length": 196,
-      "memorize_type": "string",
-      "memorize_length": 56
-    },
-    {
       "question_id": 134,
       "domain": "High-Performing Architectures",
       "score": 8,
@@ -12736,20 +13148,6 @@
       "memorize_length": 39
     },
     {
-      "question_id": 224,
-      "domain": "Secure Architectures",
-      "score": 8,
-      "category": "GOOD",
-      "issues": [],
-      "services": [
-        "S3",
-        "Athena"
-      ],
-      "why_correct_length": 195,
-      "memorize_type": "string",
-      "memorize_length": 44
-    },
-    {
       "question_id": 263,
       "domain": "Secure Architectures",
       "score": 8,
@@ -12942,20 +13340,6 @@
       "why_correct_length": 104,
       "memorize_type": "string",
       "memorize_length": 48
-    },
-    {
-      "question_id": 609,
-      "domain": "Secure Architectures",
-      "score": 8,
-      "category": "GOOD",
-      "issues": [],
-      "services": [
-        "S3",
-        "DynamoDB"
-      ],
-      "why_correct_length": 171,
-      "memorize_type": "string",
-      "memorize_length": 46
     },
     {
       "question_id": 624,
@@ -14145,22 +14529,6 @@
       "memorize_length": 48
     },
     {
-      "question_id": 210,
-      "domain": "Secure Architectures",
-      "score": 7,
-      "category": "GOOD",
-      "issues": [
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "S3",
-        "IAM"
-      ],
-      "why_correct_length": 181,
-      "memorize_type": "string",
-      "memorize_length": 41
-    },
-    {
       "question_id": 246,
       "domain": "Secure Architectures",
       "score": 7,
@@ -14230,21 +14598,6 @@
       "memorize_length": 1
     },
     {
-      "question_id": 430,
-      "domain": "Secure Architectures",
-      "score": 7,
-      "category": "GOOD",
-      "issues": [],
-      "services": [
-        "S3",
-        "CloudFront",
-        "EBS"
-      ],
-      "why_correct_length": 104,
-      "memorize_type": "string",
-      "memorize_length": 54
-    },
-    {
       "question_id": 441,
       "domain": "Secure Architectures",
       "score": 7,
@@ -14287,23 +14640,6 @@
       "why_correct_length": 184,
       "memorize_type": "string",
       "memorize_length": 39
-    },
-    {
-      "question_id": 516,
-      "domain": "Secure Architectures",
-      "score": 7,
-      "category": "GOOD",
-      "issues": [
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "S3",
-        "VPC",
-        "IAM"
-      ],
-      "why_correct_length": 196,
-      "memorize_type": "string",
-      "memorize_length": 47
     },
     {
       "question_id": 561,
@@ -14355,19 +14691,6 @@
       "memorize_length": 39
     },
     {
-      "question_id": 568,
-      "domain": "Secure Architectures",
-      "score": 7,
-      "category": "GOOD",
-      "issues": [],
-      "services": [
-        "S3"
-      ],
-      "why_correct_length": 163,
-      "memorize_type": "string",
-      "memorize_length": 43
-    },
-    {
       "question_id": 581,
       "domain": "Secure Architectures",
       "score": 7,
@@ -14381,19 +14704,6 @@
       "why_correct_length": 176,
       "memorize_type": "string",
       "memorize_length": 39
-    },
-    {
-      "question_id": 585,
-      "domain": "Secure Architectures",
-      "score": 7,
-      "category": "GOOD",
-      "issues": [],
-      "services": [
-        "S3"
-      ],
-      "why_correct_length": 181,
-      "memorize_type": "string",
-      "memorize_length": 41
     },
     {
       "question_id": 621,
@@ -14685,325 +14995,6 @@
       "why_correct_length": 166,
       "memorize_type": "string",
       "memorize_length": 43
-    },
-    {
-      "question_id": 54,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [
-        "why_correct genérico"
-      ],
-      "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
-      ],
-      "why_correct_length": 166,
-      "memorize_type": "string",
-      "memorize_length": 43
-    },
-    {
-      "question_id": 55,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [
-        "why_correct genérico"
-      ],
-      "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
-      ],
-      "why_correct_length": 166,
-      "memorize_type": "string",
-      "memorize_length": 43
-    },
-    {
-      "question_id": 60,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [
-        "why_correct genérico"
-      ],
-      "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
-      ],
-      "why_correct_length": 166,
-      "memorize_type": "string",
-      "memorize_length": 43
-    },
-    {
-      "question_id": 61,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [
-        "why_correct genérico"
-      ],
-      "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
-      ],
-      "why_correct_length": 166,
-      "memorize_type": "string",
-      "memorize_length": 43
-    },
-    {
-      "question_id": 62,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [
-        "why_correct genérico"
-      ],
-      "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
-      ],
-      "why_correct_length": 166,
-      "memorize_type": "string",
-      "memorize_length": 43
-    },
-    {
-      "question_id": 242,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "EC2",
-        "CloudFront"
-      ],
-      "why_correct_length": 105,
-      "memorize_type": "string",
-      "memorize_length": 49
-    },
-    {
-      "question_id": 466,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [
-        "All why_wrong genéricos",
-        "memorize genérico"
-      ],
-      "services": [
-        "KMS"
-      ],
-      "why_correct_length": 185,
-      "memorize_type": "string",
-      "memorize_length": 39
-    },
-    {
-      "question_id": 586,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "EC2",
-        "IAM"
-      ],
-      "why_correct_length": 105,
-      "memorize_type": "string",
-      "memorize_length": 42
-    },
-    {
-      "question_id": 626,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "EC2",
-        "IAM",
-        "Config"
-      ],
-      "why_correct_length": 105,
-      "memorize_type": "string",
-      "memorize_length": 51
-    },
-    {
-      "question_id": 634,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "VPC",
-        "ALB"
-      ],
-      "why_correct_length": 110,
-      "memorize_type": "string",
-      "memorize_length": 42
-    },
-    {
-      "question_id": 638,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "S3",
-        "IAM"
-      ],
-      "why_correct_length": 104,
-      "memorize_type": "string",
-      "memorize_length": 41
-    },
-    {
-      "question_id": 669,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "VPC",
-        "Route 53"
-      ],
-      "why_correct_length": 107,
-      "memorize_type": "string",
-      "memorize_length": 47
-    },
-    {
-      "question_id": 697,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "S3"
-      ],
-      "why_correct_length": 109,
-      "memorize_type": "string",
-      "memorize_length": 66
-    },
-    {
-      "question_id": 799,
-      "domain": "Secure Architectures",
-      "score": 6,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "CloudFront"
-      ],
-      "why_correct_length": 98,
-      "memorize_type": "string",
-      "memorize_length": 46
-    },
-    {
-      "question_id": 903,
-      "domain": "Cost-Optimized Architectures",
-      "score": 5,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "S3"
-      ],
-      "why_correct_length": 116,
-      "memorize_type": "string",
-      "memorize_length": 42
-    },
-    {
-      "question_id": 339,
-      "domain": "High-Performing Architectures",
-      "score": 5,
-      "category": "FAIR",
-      "issues": [],
-      "services": [
-        "EC2"
-      ],
-      "why_correct_length": 107,
-      "memorize_type": "string",
-      "memorize_length": 42
-    },
-    {
-      "question_id": 12,
-      "domain": "Secure Architectures",
-      "score": 5,
-      "category": "FAIR",
-      "issues": [
-        "why_correct genérico",
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
-      ],
-      "why_correct_length": 166,
-      "memorize_type": "string",
-      "memorize_length": 43
-    },
-    {
-      "question_id": 32,
-      "domain": "Secure Architectures",
-      "score": 5,
-      "category": "FAIR",
-      "issues": [
-        "why_correct genérico",
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
-      ],
-      "why_correct_length": 166,
-      "memorize_type": "string",
-      "memorize_length": 43
-    },
-    {
-      "question_id": 56,
-      "domain": "Secure Architectures",
-      "score": 5,
-      "category": "FAIR",
-      "issues": [
-        "why_correct genérico",
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "AWS WAF",
-        "AWS IAM",
-        "AWS KMS",
-        "Amazon Cognito"
-      ],
-      "why_correct_length": 166,
-      "memorize_type": "string",
-      "memorize_length": 43
-    },
-    {
-      "question_id": 670,
-      "domain": "Secure Architectures",
-      "score": 5,
-      "category": "FAIR",
-      "issues": [
-        "All why_wrong genéricos"
-      ],
-      "services": [
-        "S3",
-        "IAM",
-        "Glue"
-      ],
-      "why_correct_length": 119,
-      "memorize_type": "string",
-      "memorize_length": 48
     }
   ]
 }
