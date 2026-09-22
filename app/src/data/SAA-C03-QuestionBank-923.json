@@ -251,7 +251,7 @@
       "why_wrong": {
         "A": "Glacier Deep Archive requires 12+ hours for standard retrieval. Does NOT provide immediate access. Would need to predict which objects need fast access—contradicts 'unpredictable' pattern.",
         "C": "Glacier Flexible Retrieval: expedited = 1-5 minutes + $0.03/GB retrieval cost. Not truly immediate. Retrieval fees add up with unpredictable access. Designed for archival, not active use.",
-        "D": "EFS IA is for file system access, not object storage. More expensive than S3. External resources would need VPN/Direct Connect for access—complex and costly."
+        "D": "EFS provides POSIX file system semantics. S3 requires application changes to use object API."
       },
       "exam_tips": "Key phrase: 'unpredictable frequency' + 'immediate access' = S3 Intelligent-Tiering. Glacier classes = NOT immediate (minutes to hours retrieval). Intelligent-Tiering has NO retrieval fees and NO operational overhead.",
       "memorize": [
@@ -392,7 +392,7 @@
       "full_text": "A mixed Auto Scaling group with both On-Demand and Spot Instances is the best answer because AWS documents that mixed instances groups let you launch and automatically scale a fleet of On-Demand and Spot Instances in a single Auto Scaling group to optimize cost while maintaining scale and performance.",
       "why_correct": "Mixed Auto Scaling group balances cost (Spot = up to 90% discount) with reliability (On-Demand base capacity). Can tolerate 'occasional disruptions' per requirements. Single ASG simplifies management. AWS handles Spot interruptions gracefully with automatic replacement.",
       "why_wrong": {
-        "A": "Moving entire architecture to EKS + Fargate Spot is major re-architecture. High migration effort. Fargate Spot still has interruptions—doesn't reduce disruption risk vs mixed EC2. More expensive than EC2 Spot (Fargate overhead).",
+        "A": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
         "B": "100% Spot means ALL instances can be interrupted simultaneously during capacity constraints. No guaranteed baseline capacity. 'Spot Instance placement score' helps select instances, but doesn't prevent interruptions.",
         "D": "Reserved Instances require 1-3 year commitment. Question says 'variable usage patterns'—RI is for predictable workloads. Won't optimize costs for variable usage as effectively as Spot."
       },
@@ -434,7 +434,7 @@
       "full_text": "EBS gp3 volumes allow you to independently configure IOPS and throughput, up to 16,000 IOPS, regardless of the volume size, and at a lower cost compared to io1/io2 provisioned IOPS volumes. This meets the requirement for cost-effective, predictable IOPS performance for Amazon RDS for PostgreSQL.",
       "why_correct": "gp3 decouples IOPS from storage capacity—provision exactly 15,000 IOPS regardless of volume size. Cheaper than io1 (~20% cost reduction). Baseline 3,000 IOPS free, then $0.005/provisioned IOPS/month. Meets 'independent of capacity' requirement directly.",
       "why_wrong": {
-        "A": "gp2 IOPS tied to volume size: 3 IOPS/GB. For 15,000 IOPS need 5,000GB (5TiB). Wastes storage capacity if actual data is smaller. More expensive than gp3 for same IOPS.",
+        "A": "Attached to single EC2 instance in same AZ. Multi-Attach limited to Provisioned IOPS volumes and specific instance types.",
         "B": "io1 supports 15,000 IOPS but costs ~50% more than gp3 for same performance. io1/io2 designed for >16,000 IOPS or sub-millisecond latency needs—overkill here.",
         "D": "Magnetic volumes (HDD) max out at ~500 IOPS. Cannot achieve 15,000 IOPS. Legacy storage type—AWS doesn't recommend for new workloads."
       },
@@ -485,7 +485,7 @@
       "why_correct": "A: S3 Standard-IA (infrequent access first 30 days) → Glacier Flexible (long-term archive) → Expire at 360 days = optimized storage progression. B: KMS customer managed key with imported key material = company controls keys. Manual 90-day rotation via re-import meets rotation requirement.",
       "why_wrong": {
         "C": "S3 Intelligent-Tiering costs more than S3 Standard-IA for data with KNOWN infrequent access pattern (first 30 days). Intelligent-Tiering is for UNKNOWN patterns. Wastes monitoring fees ($0.0025/1000 objects).",
-        "D": "EFS + Lambda deletion: operational complexity (schedule Lambda, handle failures), costs more than S3 Lifecycle (automatic, free). EFS storage more expensive than S3 ($0.30/GB vs $0.023/GB).",
+        "D": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
         "E": "Secrets Manager is for credentials/secrets (database passwords, API keys), NOT for S3 encryption keys. S3 uses KMS keys, not secrets. Wrong service for encryption key management."
       },
       "exam_tips": "Multi-select pattern: look for complementary pieces (storage strategy + encryption strategy). KMS imported key material = manual rotation (re-import new material). AWS managed keys auto-rotate yearly. S3 Standard-IA minimum 30-day charge—matches access pattern perfectly.",
@@ -550,7 +550,7 @@
       "why_wrong": {
         "A": "EC2 with SQL Server AMIs: still pay Microsoft licensing (included in AMI price or BYOL). Requires instance management (patching, backups, HA setup). More expensive and operational overhead than managed services.",
         "C": "PostgreSQL on EC2: requires application rewrites (T-SQL → PostgreSQL SQL), manual schema conversion, code changes. High migration risk and effort. Self-managed = operational burden.",
-        "D": "RDS for SQL Server: eliminates management but still includes Microsoft licensing costs in pricing. 3-10x more expensive than Aurora PostgreSQL for equivalent capacity."
+        "D": "Standard RDS lacks Aurora's fast automated failover (< 30 seconds) and up to 15 read replicas."
       },
       "exam_tips": "SQL Server cost optimization = Babelfish (eliminates licensing). Babelfish supports T-SQL, stored procedures, and SQL Server drivers—minimal app changes. Key phrase: 'migrate' + 'optimize costs' from SQL Server = Babelfish. RDS for SQL Server = easier but not cost-optimized.",
       "memorize": [
@@ -649,7 +649,7 @@
       "full_text": "Amazon EFS allows automatic transitions to Infrequent Access (IA) and back to Standard when accessed again using the lifecycle policy. By specifying the bursting throughput mode, throughput scales automatically with file system size.",
       "why_correct": "TransitionToIA after 30 days saves costs (IA = $0.025/GB vs Standard $0.30/GB). Transition BACK to Standard on access ensures performance for active files. Bursting throughput scales with file system size automatically—no manual provisioning. Perfect for variable file sizes.",
       "why_wrong": {
-        "A": "Option text corrupted/incomplete in source data.",
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
         "B": "Provisioned throughput requires manually setting throughput level independent of storage—adds cost and operational overhead. Question wants throughput to 'adjust based on file system size' = bursting mode.",
         "D": "Missing the transition BACK to Standard on access. Files would stay in IA even when accessed for reports, causing higher latency (milliseconds vs microseconds) for active usage."
       },
@@ -868,7 +868,7 @@
       "full_text": "AWS Lambda is event driven and scales automatically with the number of requests, charging per request and compute duration in milliseconds. For a 10-second, once-per-hour job, Lambda eliminates instance idle time, providing the lowest cost and no servers to manage.",
       "why_correct": "Lambda charges: 48 executions/day × 10 sec × $0.0000166667/GB-sec = ~$0.02/day. EventBridge Scheduler = free. No idle time costs. 1GB memory provides proportional CPU for 10-sec burst. Fully managed, no infrastructure.",
       "why_wrong": {
-        "A": "Fargate: 1-minute minimum billing. For 10-sec job = billed 1 min/hour = ~$0.04/day (2x Lambda cost). Still better than EC2 but more expensive than Lambda for <1min jobs.",
+        "A": "ECS requires managing task definitions, clusters, and scaling policies. Lambda simplifies to just code.",
         "C": "Keeping container in AMI + managing stop/start adds operational complexity. Still need EC2 instance running part-time or orchestration. Not cost-optimized vs serverless.",
         "D": "Stop/start EC2 adds ~2-3 minutes boot time per start. For hourly 10-sec job, spend more time booting than working. Complex orchestration. Still pay for stopped EBS volumes. Lambda is simpler and cheaper."
       },
@@ -920,8 +920,8 @@
       "why_correct": "Aurora Serverless v2 scales from 0.5 ACU to 128 ACU automatically. Charges per ACU-second (like Lambda for databases). Dev environments used 8hrs/day = pay for 8hrs only. Test environments used 2hrs/day = pay for 2hrs only. Huge savings vs always-on instances.",
       "why_wrong": {
         "B": "RDS Single/Multi-AZ instances run 24/7 and charge full time even when idle. Dev envs idle 16hrs/day, test envs idle 22hrs/day. Paying for ~70-90% unused capacity. Multi-AZ adds cost for test env that doesn't need HA.",
-        "C": "Aurora provisioned clusters charge for minimum 1 instance 24/7. Multiple developers = multiple clusters = multiple always-on charges. Much more expensive than serverless for intermittent usage.",
-        "D": "Aurora Global Database = multi-region replication for disaster recovery. Massive overkill for dev/test. Charges for instances in multiple regions + replication. 10-20x more expensive than needed."
+        "C": "Requires provisioned capacity planning. Aurora Serverless v2 takes time to scale up during sudden traffic spikes.",
+        "D": "Requires provisioned capacity planning. Aurora Serverless v2 takes time to scale up during sudden traffic spikes."
       },
       "exam_tips": "Dev/test + intermittent usage + 'cost-effective' = Aurora Serverless v2. Scales to zero when inactive (v2 scales to 0.5 ACU minimum, v1 scales to zero). Provisioned RDS/Aurora = for 24/7 production workloads. Key phrase: 'used for X hours per day' = serverless.",
       "memorize": [
@@ -1201,9 +1201,9 @@
       "full_text": "S3 Glacier Flexible Retrieval is designed for infrequently accessed data that must still be retrievable quickly. It provides substantially lower storage cost than EBS snapshots or EFS while supporting expedited retrievals, which can return data within minutes when required for audits.",
       "why_correct": "Glacier Flexible Retrieval: $0.0036/GB storage (vs EBS snapshots $0.05/GB). Expedited retrieval = 1-5 minutes (meets 'within minutes' requirement). Standard retrieval = 3-5 hours, Bulk = 5-12 hours. Expedited costs $0.03/GB but used rarely for audits.",
       "why_wrong": {
-        "A": "EBS snapshots stored in S3 backend but charged at $0.05/GB—much more expensive than Glacier for 12-year 2.5TB dataset (~$1,500/year vs ~$100/year). Snapshots better for active backup/restore, not long-term archival.",
+        "A": "EBS provides block storage for OS and databases. S3 object storage is for shared files and backups.",
         "B": "Glacier Deep Archive: $0.00099/GB (cheapest) but 12-48 hour retrieval. Does NOT meet 'within minutes' requirement. Designed for data accessed once or twice per year with flexible retrieval times.",
-        "D": "EFS: $0.30/GB Standard or $0.025/GB IA. For 2.5TB = $750/month Standard or $62.50/month IA. Much more expensive than Glacier Flexible ($0.0036/GB = $9/month). EFS is for active file systems, not archival."
+        "D": "EFS provides POSIX file system semantics. S3 requires application changes to use object API."
       },
       "exam_tips": "'Long-term + low cost + retrieval in minutes' = Glacier Flexible Retrieval with expedited. Deep Archive = cheapest but hours retrieval. S3 Standard-IA = millisecond retrieval but more expensive. Map storage cost vs retrieval time requirements carefully.",
       "memorize": [
@@ -1249,7 +1249,7 @@
       "why_wrong": {
         "B": "OpenSearch: requires cluster (min 3 nodes × $0.10/hr = $216/month). Better for real-time search and frequent low-latency queries. Overkill and expensive for 'occasional querying and analytics'.",
         "C": "RDS: designed for OLTP, not log analytics. Poor performance for large log queries. 50GB/day = 1.5TB/month quickly exceeds reasonable RDS size. Expensive and wrong tool for log analytics.",
-        "D": "CloudWatch Logs: $0.50/GB ingestion + $0.03/GB storage beyond 5GB. 50GB/day = $25/day ingestion = $750/month. Plus storage costs. 10-20x more expensive than S3. CW Logs designed for operational monitoring, not long-term analytics."
+        "D": "Standard resolution is 1-minute intervals. High-resolution metrics (1-second) cost more."
       },
       "exam_tips": "'Occasional querying' + 'log analytics' = S3 + Athena. OpenSearch = for real-time search, high-frequency queries. CloudWatch Logs = for operational monitoring, expensive for long-term storage. Athena = serverless SQL on S3, pay per query.",
       "memorize": [
@@ -1294,7 +1294,7 @@
       "full_text": "Amazon EFS is a fully managed, elastic, shared file system that provides NFSv4 access across many EC2 instances and AZs, ideal for lift-and-shift of Linux NFS workloads. AWS DataSync automates moving data between on-premises NFS servers and Amazon EFS, performing incremental, parallel transfers with encryption and integrity checks.",
       "why_correct": "B: EFS = managed NFS, multi-resource access, scales automatically. E: DataSync migrates NFS→EFS with minimal disruption (incremental sync + cutover). Together: NFS compatibility maintained, multiple AWS resources access via NFS, cost-effective for 200GB.",
       "why_wrong": {
-        "A": "FSx for Lustre: high-performance filesystem for HPC, ML, media processing. Overkill for 200GB NFS share. More expensive than EFS. Integrates with S3, not designed as general NFS replacement.",
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
         "C": "S3 is object storage—not directly mountable as NFS by multiple EC2 instances. Would require gateway or application changes to use. Violates 'multiple resources must access via NFS protocol'.",
         "D": "FSx for Windows: provides SMB/CIFS protocol for Windows, NOT NFS. Source is Linux NFS server. Protocol mismatch."
       },
@@ -1701,7 +1701,7 @@
       "why_wrong": {
         "A": "EFS + AWS Backup: EFS costs $0.30/GB vs S3 $0.023/GB. AWS Backup for 'storage' is wrong concept—Backup is for recovery, not primary storage. PITR not needed for photo sharing app.",
         "C": "DynamoDB stores structured data, not optimized for storing large binary photos. 400KB item limit problematic. AWS Backup + PITR designed for database recovery, not photo storage.",
-        "D": "FSx for Lustre = high-performance filesystem for HPC/ML ($0.14-2.40/GB/month). Massive overkill for photo storage. 10-100x more expensive than S3."
+        "D": "FSx provides sub-millisecond file system latency. S3 API has higher latency for small file operations."
       },
       "exam_tips": "'Photos/media/files' + 'infrequent after X days' + 'retain indefinitely' = S3 + Intelligent-Tiering or Lifecycle. EFS/FSx = for file system access patterns. DynamoDB = structured data, not large binaries. AWS Backup = disaster recovery, not primary storage.",
       "memorize": [
@@ -2022,7 +2022,7 @@
       "full_text": "File Gateway provides NFS interface backed by S3. Glacier Deep Archive for lowest-cost archival with days retrieval tolerance.",
       "why_correct": "File Gateway = NFS mount point on-premises, zero application changes. Files auto-upload to S3. Lifecycle after 5 days → Glacier Deep Archive ($0.00099/GB) = cheapest long-term storage. 'Few days retrieval' acceptable = 12-48hr standard retrieval matches.",
       "why_wrong": {
-        "A": "S3 Standard-IA = $0.0125/GB (12x more expensive than Deep Archive). Good for monthly access, wasteful for multi-year backup archival.",
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "B": "Volume Gateway = iSCSI block storage, NOT NFS. Would require changing on-prem application from file to block interface. Violates 'minimal changes' requirement.",
         "C": "Tape Gateway = VTL for backup software (Veeam, Veritas, Commvault). Emulates tape libraries. Adds complexity when simple NFS file backup needed."
       },
@@ -2071,7 +2071,7 @@
       "full_text": "File Gateway provides local NFS mount for legacy app, transparently uploads to S3. Web app reads from S3. Minimal changes, cost-effective.",
       "why_correct": "File Gateway = NFS mount point for legacy batch process. Zero code changes to nightly export. Files appear in S3 automatically. Web app reads S3 directly via SDK. ~1GB/night = $0.70/month storage + transfer costs only.",
       "why_wrong": {
-        "A": "Outposts = full AWS infrastructure rack on-premises ($10K+ upfront, maintenance). Massive overkill for 1GB/night file transfer. 100x more expensive than File Gateway appliance.",
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "B": "Volume Gateway = iSCSI block volumes, NOT NFS file mounts. Legacy app uses NFS—would require rewriting to use block storage.",
         "C": "S3 interface endpoint = VPC private connectivity, doesn't help on-premises app. 'Reconfigure legacy app to use S3 API' violates 'minimal changes' requirement. Would need major app rewrite."
       },
@@ -2162,9 +2162,9 @@
       "full_text": "EventBridge event-driven pattern invokes Lambda immediately when order arrives. Lambda processes and stores in DynamoDB. Most cost-effective serverless solution.",
       "why_correct": "EventBridge = monitors ecommerce platform events in real-time. Lambda invoked only on actual orders—no polling waste. DynamoDB = NoSQL, scales automatically, stores processing history with low latency. Fully serverless = no idle costs, auto-scales to global traffic.",
       "why_wrong": {
-        "A": "Lambda every minute polling = 1,440 invocations/day even with zero orders. Polling introduces latency (up to 60s delay). Aurora = relational DB overkill and more expensive than DynamoDB for event logs.",
+        "A": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
         "C": "EC2 polling = 24/7 instance costs (~$180/mo minimum t3.small). Manual scaling needed. CloudWatch Logs = not queryable database, lacks structured storage for history.",
-        "D": "SQS doesn't 'invoke' Lambda—Lambda polls SQS (different model). EFS = file storage not suited for structured order processing history. More expensive than DynamoDB for this use case."
+        "D": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations."
       },
       "exam_tips": "'Immediately' + 'event-driven' + 'history' = EventBridge + Lambda + DynamoDB. Polling (cron, EC2 checking) = anti-pattern for event-driven. DynamoDB = event/activity logging. Aurora = complex transactional queries. CloudWatch Logs = monitoring, not app database.",
       "memorize": [
@@ -2216,7 +2216,7 @@
       "full_text": "S3 event notification invokes Lambda on upload. Lambda generates thumbnail, uploads to second bucket. Serverless, pay-per-use, most cost-effective.",
       "why_correct": "S3 event triggers Lambda automatically on upload. Lambda runs only for 150 photos/day (~5-10 seconds each). Cost: ~$0.03/month Lambda + negligible S3 events. Zero idle costs. No infrastructure to manage.",
       "why_wrong": {
-        "A": "EMR = big data processing cluster (Hadoop/Spark). Minimum 3 nodes ~$0.15/hr = $108/month continuously running. 1000x more expensive than Lambda for 150 photos/day.",
+        "A": "Manual processes are error-prone, not scalable, and require human intervention which increases operational overhead.",
         "B": "Always-on EC2 = 24/7 costs (~$7.50/mo t3.micro minimum). Idle 99.9% of time for 150 photos/day. Lambda 100x cheaper for sporadic workloads.",
         "D": "S3 Storage Lens = analytics/reporting tool, NOT event processing. Cannot trigger Lambda. Wrong tool category (monitoring vs compute)."
       },
@@ -2405,7 +2405,7 @@
       "why_wrong": {
         "B": "ECS with EC2 = manage cluster instances, scaling, patching. EC2 costs even when idle (23hrs/day). Higher operational overhead than Fargate serverless.",
         "C": "Lambda max execution = 15 minutes. Job takes 1 hour. Lambda would timeout after 15 min and fail. Wrong compute service for long-running tasks.",
-        "D": "Complex orchestration: Lambda to start/stop EC2 + cron on instance. Multiple components = more failure points. EC2 boot time (~2 min) adds overhead. More expensive than Fargate Spot when factoring operational complexity."
+        "D": "Lambda has package size limits (50MB zipped, 250MB unzipped). Containerized workloads need ECS."
       },
       "exam_tips": "Job duration decision: <15min = Lambda, 15min-hours = Fargate, always-on = EC2. 'Critical' + 'nightly' + 'flexible' = Fargate Spot acceptable. Spot = up to 90% discount EC2, 70% Fargate. Long-running batch = Fargate/Batch, not Lambda.",
       "memorize": [
@@ -2455,7 +2455,7 @@
       "why_wrong": {
         "A": "Manual termination/launch = high operational overhead. Human error risk. Delays in morning startup. Violates 'LEAST operational overhead' requirement. Auto Scaling exists to automate this.",
         "C": "Spot Instances = 2-minute termination notice risk. Could interrupt application DURING business hours when demand spikes. Violates 'cannot allow interruptions' requirement. Spot good for fault-tolerant workloads only.",
-        "D": "Reserved Instances for maximum = paying 24/7 for capacity used only ~8hrs/day. Wastes 67% of reservation on idle time. More expensive than scheduled On-Demand. RIs need consistent usage."
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "'Predictable schedule' + 'business hours only' = scheduled scaling. 'Cannot tolerate interruptions' = exclude Spot. Manual operations = avoid when automation exists. RIs = for 24/7 or multi-shift workloads. Scheduled scaling supports cron expressions.",
       "memorize": [
@@ -2586,7 +2586,7 @@
       "why_correct": "EC2 On-Demand = 100% uptime guaranteed (no interruptions). Auto Scaling = handles traffic variations automatically. Lambda = triggered by S3 upload event, runs extraction, pays only per execution. Event-driven = efficient, no polling. 'No code changes' = existing portal continues unchanged, Lambda added as backend service.",
       "why_wrong": {
         "B": "Spot for web portal = interruption risk violates '100% uptime' requirement. Spot for document extraction = acceptable but adds complexity. Web portal must be always available—Spot unacceptable.",
-        "C": "Savings Plan = reduces cost but doesn't address architecture. Running extraction program in Auto Scaling group = always-on costs for infrequent workload. Less efficient than Lambda event-driven model.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution.",
         "D": "Migrate portal to S3 static hosting + API Gateway = MAJOR architectural change. Violates 'minimal changes' and 'no code changes' requirements. Would need complete portal rewrite as SPA."
       },
       "exam_tips": "'100% uptime' = exclude Spot. 'Infrequent on-demand' = Lambda. 'No code changes' = keep existing architecture, add services. S3 event → Lambda = standard pattern. Spot acceptable for: batch jobs, fault-tolerant apps, dev/test.",
@@ -2622,7 +2622,7 @@
       "full_text": "Tape Gateway emulates physical tapes as virtual tapes in VTL. Migrate to Glacier Deep Archive for 7-year retention at lowest cost.",
       "why_correct": "Tape Gateway = virtual tape library (VTL), compatible with existing backup software (Veeam, Veritas, NetBackup). No software changes needed. Deep Archive = $0.00099/GB/month (cheapest storage class). 1-week retrieval = standard retrieval 12-48 hours meets requirement. VTL → Deep Archive = automatic archival lifecycle.",
       "why_wrong": {
-        "A": "DataSync migrates data, doesn't create VTL for backup software. Standard-IA = $0.0125/GB (12x more expensive than Deep Archive). Cannot 'change target to S3 Standard-IA'—backup software expects tape protocol.",
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "B": "'Convert physical to virtual tapes' = manual process not offered by AWS. Backup software needs VTL interface, not direct S3 API. Glacier Flexible = $0.004/GB (4x more than Deep Archive).",
         "D": "Snowball Edge = one-time migration device, not ongoing backup solution. Cannot 'change backup target to Glacier'—software needs tape interface. Manual conversion + one-time transfer doesn't solve ongoing backups."
       },
@@ -2673,7 +2673,7 @@
       "why_wrong": {
         "A": "AWS managed key vs customer managed = same API call frequency. Both call KMS per object without Bucket Keys. Price identical ($0.03/10K requests). Switching key type doesn't reduce call volume.",
         "B": "Removing encryption = violates 'must use AWS managed service' requirement. Bucket policy cannot encrypt data—policies control access, not encryption. Security/compliance violation.",
-        "C": "CloudHSM = $1.45/hr per HSM ($1,044/mo) + setup complexity. More expensive than current KMS + adds operational overhead. Doesn't reduce API call frequency—same issue persists."
+        "C": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "'Excessive KMS costs' + 'many S3 objects' = enable Bucket Keys. Bucket Keys compatible with: SSE-KMS only (not SSE-S3 or SSE-C). Reduces costs for: ML pipelines, ETL jobs, high-volume reads. AWS/Customer managed = same call pattern without Bucket Keys.",
       "memorize": [
@@ -2851,7 +2851,7 @@
       "why_correct": "Instance Connect Endpoint = AWS managed service, connects to private EC2 via SSH using IAM credentials. No public IP needed, no NAT gateway needed, no agent installation. Traffic stays within AWS network. Cost: free (no hourly charges). 'Decommission NAT gateways' = if only used for admin access, saves $32/mo per NAT gateway.",
       "why_wrong": {
         "B": "Systems Manager Session Manager = requires SSM Agent on instances. Violates 'not support installing agents' requirement. Otherwise valid solution for this use case.",
-        "C": "Bastion hosts = EC2 instances requiring management, patching, scaling. Network Load Balancer = $0.0225/hr ($16/mo) + bastion instance costs. 'Restrict by source IP' = requires inbound internet access (violates requirements). More expensive than Instance Connect Endpoint (free).",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution.",
         "D": "Client VPN = $0.10/hr per connection ($72/mo) + $0.05/GB. Complex setup (certificates, CIDR routing). 'Keep one NAT gateway' = still paying $32/mo. More expensive and complex than Instance Connect Endpoint."
       },
       "exam_tips": "'Private instance access' + 'no agent' + 'no public IP' = Instance Connect Endpoint. Session Manager = requires agent. Bastion = requires inbound access + instance management. Client VPN = for persistent connectivity. Instance Connect Endpoint = launched 2023, exam favorite for this scenario.",
@@ -2903,7 +2903,7 @@
       "full_text": "Throughput Optimized HDD (st1) provides 500 MBps throughput for sequential log file processing at lowest HDD cost.",
       "why_correct": "st1 = designed for sequential, throughput-intensive workloads. Max throughput: 500 MBps (matches requirement exactly). Cost: $0.045/GB (vs gp3 $0.08/GB = 44% cheaper). Ideal for: log processing, big data, data warehouses. 'Minimal change' = EBS preserves block storage model from SAN.",
       "why_wrong": {
-        "A": "gp3 = general purpose SSD, good for mixed workloads. Cost: $0.08/GB + $0.006/provisioned IOPS. More expensive than st1 for sequential throughput workload. SSD premium unnecessary for log processing (doesn't need low latency).",
+        "A": "Attached to single EC2 instance in same AZ. Multi-Attach limited to Provisioned IOPS volumes and specific instance types.",
         "C": "sc1 (Cold HDD) = $0.015/GB cheapest but designed for infrequent access. Max throughput: 250 MBps (only half required 500 MBps). Would not meet performance requirement. For archival/cold storage.",
         "D": "io1 = Provisioned IOPS SSD, premium tier. Cost: $0.125/GB + $0.065/provisioned IOPS. Most expensive option. Designed for databases needing high IOPS (not throughput). Overkill for log processing."
       },
@@ -3034,7 +3034,7 @@
       "why_wrong": {
         "A": "Lambda max execution = 15 minutes. Video processing = 20 minutes. Lambda would timeout and fail. 'Split into chunks + Step Functions' = major architectural change, adds complexity, still hits Lambda limits for large files.",
         "B": "EKS = Kubernetes, more operational overhead than ECS. Correct use of Fargate but EKS complexity unnecessary for simple parallel task pattern. ECS simpler for event-driven single-task workloads.",
-        "C": "EC2 On-Demand Auto Scaling = managing instances. Always-on minimum capacity vs serverless pay-per-use. More expensive than Fargate Spot. Operational overhead (AMIs, patching, scaling policies)."
+        "C": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "'> 15 minutes' = exclude Lambda. 'Stateless parallel container' = Fargate. 'Cost-effective container' = Fargate Spot. ECS vs EKS: ECS = simpler, AWS-native; EKS = Kubernetes portability. EventBridge → ECS RunTask = standard event-driven pattern.",
       "memorize": [
@@ -3087,7 +3087,7 @@
       "full_text": "S3 event notification triggers Lambda on each photo upload. Lambda generates thumbnail and stores in second bucket.",
       "why_correct": "S3 event notification = free, automatic trigger on PUT object. Lambda = executes only when photo uploaded, 150 invocations/day. Cost: 150 * 5 seconds * 512MB = ~$0.01/month Lambda + negligible S3 events. Serverless, auto-scales, no idle costs. Perfect event-driven pattern.",
       "why_wrong": {
-        "A": "EMR = Hadoop/Spark cluster for big data (petabyte scale). Minimum 3 nodes ~$0.50/hr = $360/month continuously. 36,000x more expensive than Lambda for 150 photos/day. Massive overkill.",
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "B": "Memory-optimized EC2 always-on = $48/month minimum (r6i.large). Idle 99.9% of time (150 photos in 1,440 minutes = 1 photo per 9.6 minutes). Polling script inefficient vs event-driven. 4,800x more expensive.",
         "D": "S3 Storage Lens = analytics dashboard for storage metrics (access patterns, cost optimization recommendations). NOT an event trigger mechanism. Cannot invoke Lambda. Wrong category of tool."
       },
@@ -3325,9 +3325,9 @@
       "full_text": "S3 Standard for first 30 days of frequent access, then Glacier Deep Archive for 7-year retention at lowest cost.",
       "why_correct": "S3 Standard = frequent access, low latency ($0.023/GB). Glacier Deep Archive = lowest storage cost ($0.00099/GB = 96% cheaper). 'Rarely accessed after 30 days' + '7-year retention' = perfect match for Deep Archive. Lifecycle policy automates transition. Retrieval = 12-48 hours acceptable for rare access.",
       "why_wrong": {
-        "A": "EFS = file system for EC2 instances ($0.30/GB). Not designed for long-term archive. 15x more expensive than Deep Archive. Manual migration to Glacier = complex (need to copy to S3 first, then Glacier).",
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "B": "Standard-IA = $0.0125/GB (12x more than Deep Archive). Good for monthly access, wasteful for rare 7-year retention. 90-day minimum charge. Better choice if accessed quarterly, not annually.",
-        "D": "EBS volumes = block storage attached to EC2 ($0.08-0.125/GB). Not designed for archival. Requires running EC2 instance to access. 80-125x more expensive than Deep Archive. Wrong storage type."
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "'Frequent first 30 days' = Standard. 'Rarely after' + 'long retention' = Deep Archive. Standard-IA = monthly access. Flexible Retrieval = quarterly access. Deep Archive = annual or compliance. Lifecycle = automates transitions. EFS/EBS = not for archives.",
       "memorize": [
@@ -3560,8 +3560,8 @@
       "full_text": "Migrate from EFS to S3 Intelligent-Tiering. Update application to use S3 APIs. Automated cost optimization for varying access patterns.",
       "why_correct": "S3 Intelligent-Tiering = automatic storage class transitions based on access. No retrieval fees. Tiers: Frequent ($0.023/GB), Infrequent ($0.0125/GB), Archive Instant ($0.004/GB), Deep Archive ($0.00099/GB). EFS Standard-IA = $0.025/GB vs S3 Intelligent best tier $0.00099/GB. Application change = S3 SDK calls instead of file I/O.",
       "why_wrong": {
-        "B": "FSx for Windows = SMB file server, Active Directory integration. More expensive than S3: $0.013-0.20/GB/month. Unnecessary features (Windows, AD) for Linux application. Doesn't optimize costs—similar or higher than EFS.",
-        "C": "FSx for OpenZFS = high-performance NFS, snapshots, compression. Cost: $0.15-0.54/GB/month. Good for low-latency workloads but more expensive than S3. Doesn't provide tiering like S3 Intelligent-Tiering.",
+        "B": "FSx provides sub-millisecond file system latency. S3 API has higher latency for small file operations.",
+        "C": "FSx provides sub-millisecond file system latency. S3 API has higher latency for small file operations.",
         "D": "Glacier Flexible Retrieval = manual storage class, not automatic. Retrieval = 3-5 hours, not suitable for application serving files. Would need application redesign to handle async retrieval. S3 API changes required anyway—Intelligent-Tiering better."
       },
       "exam_tips": "'Optimize storage costs' + 'unpredictable access' = S3 Intelligent-Tiering. EFS = shared file system for EC2. FSx = managed file servers (Windows/Lustre/NetApp/OpenZFS). S3 = object storage, lowest cost at scale. File to object = application changes required.",
@@ -3755,9 +3755,9 @@
       "full_text": "CloudFront with ALB origin in single region. Cache at edge locations globally for low latency, optimized data transfer costs.",
       "why_correct": "CloudFront = CDN with 400+ edge locations globally. Caches content near users = low latency worldwide. ALB in single region = simpler infrastructure, lower operational cost. Data transfer: origin to CloudFront discounted, CloudFront to users = $0.085/GB (cheaper than direct S3/ALB). Cache reduces origin load and transfer costs.",
       "why_wrong": {
-        "B": "Multi-region ALBs = complex deployment, higher costs (infrastructure in each region). Route 53 latency routing = works but more expensive than CloudFront caching. Inter-region data transfer = $0.02/GB. No caching benefits.",
+        "B": "ALB operates at regional level. CloudFront provides global edge caching and DDoS protection.",
         "C": "Transit Gateway = $0.05/hr per attachment + $0.02/GB. Wrong use case—Transit Gateway for VPC/on-prem connectivity, not user-facing content distribution. Multi-region = unnecessary complexity and cost.",
-        "D": "Global Accelerator = $0.025/hr per accelerator + $0.015/GB. Anycast static IPs, routes to nearest healthy endpoint. No caching. More expensive than CloudFront for cacheable content. Better for non-HTTP/gaming/VoIP."
+        "D": "ALB operates at regional level. CloudFront provides global edge caching and DDoS protection."
       },
       "exam_tips": "'Global users' + 'low latency' + 'optimize costs' = CloudFront. Global Accelerator = non-cacheable/TCP/UDP. Multi-region = when need data residency or >50ms CloudFront latency. CloudFront caching = reduces origin costs significantly. Static/dynamic content = CloudFront handles both.",
       "memorize": [
@@ -3798,7 +3798,7 @@
       "why_correct": "Glacier Instant Retrieval = immediate access (milliseconds), $0.01/GB. 'Real-time when necessary' + 'once per year' = perfect match. Deep Archive = $0.00099/GB, lowest cost. 'Flexible retrieval' (12-48 hours) acceptable for rare image access. Different requirements = different storage classes.",
       "why_wrong": {
         "A": "Both in Deep Archive = reports cannot meet 'real-time access' requirement. Deep Archive retrieval = 12-48 hours standard. Would fail compliance or operational needs for immediate report access.",
-        "C": "Intelligent-Tiering for reports = $0.023/GB frequent tier (initially). Monitoring fee $0.0025/1K objects. More expensive than Instant Retrieval ($0.01/GB). IT optimizes over time but reports already predictable (once/year) = Instant Retrieval better fit.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "D": "Flexible Retrieval for reports = 3-5 hour retrieval time. Violates 'real-time access' requirement. Less expensive than Instant ($0.004 vs $0.01/GB) but doesn't meet SLA."
       },
       "exam_tips": "'Real-time' + 'archive' = Glacier Instant Retrieval (new in 2021). 'Flexible retrieval' = Glacier Flexible or Deep Archive. 'Once per year' = archive tier appropriate. Intelligent-Tiering = unpredictable access patterns. Match access requirements to storage class.",
@@ -4148,7 +4148,7 @@
       "why_wrong": {
         "A": "Reducing AZs to 2 = impacts application availability. Question asks optimize costs for architecture, not reduce redundancy. ALB + Auto Scaling designed for 4 AZs. NAT costs reduced but availability compromised.",
         "B": "Smaller VPC = no cost benefit. VPC itself free, IP addresses free. Migration effort high (redeploy entire stack). Doesn't address actual cost driver (NAT gateway traffic). Wrong optimization target.",
-        "D": "S3 Interface Endpoint = $0.01/hr per AZ ($29/month for 4 AZs) + $0.01/GB data processing. More expensive than Gateway Endpoint (free). Interface = for services without Gateway support (SSM, SNS, etc). S3 supports Gateway."
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "'VPC to S3' + 'optimize costs' = Gateway Endpoint (free). Gateway = S3 + DynamoDB only. Interface = other AWS services ($0.01/hr + data). Gateway Endpoint = updates route table, no ENI. Interface Endpoint = ENI in subnet with private IP.",
       "memorize": [
@@ -4200,9 +4200,9 @@
       "full_text": "Reserved Instances for 24/7 frontend nodes. Spot Instances for intermittent, restartable backend processing. Maximum cost savings.",
       "why_correct": "Frontend 24/7 = steady usage, perfect for Reserved Instances (up to 72% discount, 1-3 year commitment). Backend = asynchronous, queued, restartable jobs = ideal Spot workload. Spot = 60-90% discount, 2-minute warning acceptable for fault-tolerant jobs. Queue-based = jobs reprocessed if interrupted. Lowest cost combination.",
       "why_wrong": {
-        "A": "Reserved for frontend = correct. Fargate for backend = more expensive than EC2 Spot for large batch workloads. Fargate good for simplicity, but question asks 'most cost-effective' and backend processing likely high-volume compute.",
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
         "C": "Spot for frontend = 2-minute interruptions unacceptable. Frontend = user-facing, must be always available. Spot termination = downtime for users. Reserved for backend = wastes commitment on short-duration intermittent workload.",
-        "D": "Spot for frontend = same problem as C (interruptions). Fargate for backend = simpler but more expensive than Spot. Double failure: wrong purchasing for both tiers."
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "'24/7 + steady' = Reserved or Savings Plans. 'Intermittent + restartable' = Spot. 'Queue-based' = Spot ideal (jobs requeue). Frontend = critical availability. Backend = fault-tolerant batch. Fargate = serverless containers, more expensive than self-managed Spot.",
       "memorize": [
@@ -4246,7 +4246,7 @@
       "full_text": "AWS DMS migrates database to S3 in Parquet format. Store in Glacier Flexible Retrieval. Query with Athena without provisioning infrastructure.",
       "why_correct": "DMS = migrates databases to S3 directly, supports Parquet columnar format (optimized for analytics). Glacier Flexible Retrieval = $0.004/GB, 3-5 hour retrieval acceptable for annual reports. Athena = serverless SQL query engine, reads Parquet in S3 directly. Zero infrastructure management. Pay only for queries ($5/TB scanned). Lowest operational overhead.",
       "why_wrong": {
-        "A": "RDS stopped state = still charged for storage (~$0.115/GB/month). Stopped max 7 days, auto-restarts after. Annual report = need longer retention. Manual start/stop overhead. More expensive than Glacier long-term.",
+        "A": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines).",
         "B": "EC2 database replication + snapshot = operational overhead (manage replication, EC2 instance). Stopped EC2 = still pay for EBS snapshots. Less cost-effective than S3 Glacier. Manual restore process.",
         "C": "DataSync to S3 + Glacier Deep Archive = correct archival. BUT restoring to EC2 for reports = slow (12-48hr Deep Archive retrieval), operational overhead (provision EC2, install DB). Not serverless, more complex than Athena direct queries."
       },
@@ -4341,7 +4341,7 @@
       "full_text": "EFS with Elastic throughput mode and Intelligent-Tiering lifecycle. Auto-scales capacity and performance, native tiering, no provisioning.",
       "why_correct": "EFS = Linux-native NFS, perfect for containers. Elastic throughput (2021+) = automatically scales to GB/s based on workload, no provisioning. Intelligent-Tiering lifecycle = automatic transitions between Standard and IA based on access patterns. 'Varying access patterns' = Intelligent-Tiering ideal. Scalable to petabytes, highly available across AZs.",
       "why_wrong": {
-        "A": "FSx for NetApp ONTAP = advanced enterprise features (snapshots, clones, SnapMirror). Capacity pool = manual tiering. More expensive than EFS: $0.15-0.20/GB/month SSD vs EFS $0.30/GB Standard (but EFS IA $0.025/GB with Intelligent-Tiering auto-optimization). Linux app doesn't need ONTAP features.",
+        "A": "FSx for Windows provides SMB, NTFS, AD integration. EFS is NFS-only for Linux workloads.",
         "C": "FSx for Windows = SMB protocol, Active Directory. Linux application = NFS needed. SSD + HDD = manual tier management, not automatic. Two separate file systems = application complexity.",
         "D": "Self-managed file share on EC2 + EBS = operational overhead (patching, HA, backups). Manual provisioning required. Single EC2 instance = SPOF. EBS max 64TB per volume. Not scalable or highly available without significant effort."
       },
@@ -4388,7 +4388,7 @@
       "why_correct": "JavaScript runs in browser = static web app (HTML/JS/CSS). S3 Static Website Hosting = cheapest option ($0.023/GB storage). CloudFront = 400+ edge locations, caches globally, low latency. CloudFront + S3 = data transfer discounted, origin requests minimized. ACM certificate in us-east-1 = required for CloudFront custom domains (us-east-1 only). Cost: ~$1-5/month for thousands of users.",
       "why_wrong": {
         "A": "CloudFront + ALB origin = still running EC2 instances behind ALB. Unnecessary compute costs for static content. ALB = $16+/month, EC2 = $7.50+/month per instance. CloudFront certificate must be us-east-1, cannot reuse existing (likely us-west-2).",
-        "B": "Multi-region stacks = complex deployment, high cost (ALB + EC2 in each region). Geolocation routing = works but expensive. No caching benefits. ~10x more expensive than CloudFront solution.",
+        "B": "DNS changes depend on TTL values. Low TTL increases query costs but allows faster updates.",
         "C": "Multi-region S3 buckets = unnecessary. CloudFront caches globally from single origin. ACM certificate per bucket = unnecessary (CloudFront needs one cert). Geolocation = manual region selection, CloudFront automatic edge routing better."
       },
       "exam_tips": "'Static content' + 'global users' = S3 + CloudFront. CloudFront ACM = us-east-1 only for custom domains. ALB/EC2 origin = for dynamic apps. Multi-region = data residency or >50ms CloudFront latency (rare). S3 static hosting = $0.023/GB + requests.",
@@ -4567,7 +4567,7 @@
       "full_text": "Spot Instances with price-capacity-optimized allocation strategy and instance type overrides. Balances low cost with minimized interruptions, flexibility for latest generations.",
       "why_correct": "Spot = 60-90% savings for interruptible workloads. Price-capacity-optimized (2022+) = AWS recommendation, balances lowest price AND lowest interruption risk (better than capacity-optimized alone when cost primary concern). Instance type overrides = diversify across families/generations, improves capacity availability, enables adopting newer instance types annually.",
       "why_wrong": {
-        "A": "Convertible RIs 3-year = locked commitment, 54-66% discount. 48hrs/week = 29% utilization, wastes 71% of reservation. 3-year = can't easily adopt latest generations (exchange possible but reduces flexibility). More expensive than Spot for part-time usage.",
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
         "B": "Standard RIs 1-year = locked to specific instance family/type. Cannot use latest generations without buying new RIs. 29% utilization = poor value. 40-72% discount but commitment wasteful for part-time workload.",
         "D": "Capacity-optimized = minimizes interruptions, ignores price. Price-capacity-optimized = better balance (prioritizes capacity BUT considers price). Question says 'minimize interruptions' but ALSO 'most cost-effective way'—price-capacity-optimized achieves both goals."
       },
@@ -4905,9 +4905,9 @@
     "explanation": {
       "why_correct": "S3 Use AWS DataSync to migrate the data from the on-premises location to an S3 bucket—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
-        "C": "Missing key requirement: encryption.",
-        "D": "Missing key requirement: encryption."
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "Key pattern: migration with security",
@@ -5782,7 +5782,7 @@
       "why_wrong": {
         "A": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "C": "Missing key requirement: scalability."
+        "C": "Glue has 15-minute minimum runtime. Lambda is cheaper for ETL jobs completing in seconds."
       },
       "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + EC2 + Lambda pattern for Cost-Optimized Architectures",
@@ -6058,9 +6058,9 @@
     "explanation": {
       "why_correct": "DynamoDB provides single-digit millisecond latency at any scale—critical for real-time session data that updates frequently. DynamoDB Streams captures all item changes in order, enabling near-real-time analytics. Fully managed serverless—no capacity planning or server management. S3 has eventual consistency delays and higher GET latency (tens of milliseconds), unsuitable for sub-second session updates.",
       "why_wrong": {
-        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "For cost optimization questions: compare per-GB pricing (S3 $0.023, EFS $0.30, EBS $0.10). Consider data transfer costs. Serverless often cheapest for variable workloads. Always check for \"operational overhead\" keywords suggesting managed services.",
       "memorize": [
@@ -6293,8 +6293,8 @@
       "why_correct": "Lambda Set up an Amazon API Gateway HTTP API to receive the data—meeting all specified requirements.",
       "why_wrong": {
         "B": "Spot Instances can be interrupted with 2-minute warning. Without fault-tolerance design, interruptions could break critical operations mid-execution.",
-        "C": "Missing key requirement: low-latency.",
-        "D": "Missing key requirement: low-latency."
+        "C": "EKS requires Kubernetes expertise, cluster management, and higher costs than Lambda.",
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + EC2 + Lambda pattern for High-Performing Architectures",
@@ -6455,9 +6455,9 @@
     "explanation": {
       "why_correct": "S3 Scales automatically to handle traffic spikes. Use Amazon FSx for Lustre as a high-performance file system—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
+        "A": "Higher per-GB cost than EBS or S3. Throughput scales with total storage size in Bursting mode.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "D": "Missing key requirement: scalability."
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + EC2 + Auto Scaling pattern for High-Performing Architectures",
@@ -6576,7 +6576,7 @@
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
         "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "D": "Missing key requirement: durability."
+        "D": "Attached to single EC2 instance in same AZ. Multi-Attach limited to Provisioned IOPS volumes and specific instance types."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": "Key pattern: architecture_design with scalability, performance",
@@ -6601,8 +6601,8 @@
     "explanation": {
       "why_correct": "S3 Scales automatically to handle traffic spikes. Create an Amazon CloudFront distribution—meeting all specified requirements.",
       "why_wrong": {
-        "B": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability.",
+        "B": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
@@ -7243,7 +7243,7 @@
     "explanation": {
       "why_correct": "Lambda combined with S3 and EventBridge provides comprehensive solution. Delivers optimal performance through efficient resource utilization and service integration.",
       "why_wrong": {
-        "B": "Missing key requirement: low-latency.",
+        "B": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
@@ -7420,9 +7420,9 @@
     "explanation": {
       "why_correct": "EC2 Scales automatically to handle traffic spikes. Create a warm pool for the Auto Scaling group—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability.",
-        "D": "Missing key requirement: scalability."
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": "EC2 + Auto Scaling pattern for High-Performing Architectures",
@@ -7456,7 +7456,7 @@
       "why_wrong": {
         "A": "EBS volumes attach to single EC2 instance in single AZ. Cannot be shared across multiple instances or accessed globally. Requires instance management and lacks S3 durability features.",
         "B": "EFS costs $0.30/GB/month (13x more than S3 Standard $0.023/GB). Designed for shared file access across EC2 instances, overkill for object storage workloads where S3 suffices.",
-        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Identify key requirements first (cost, performance, operational overhead). Eliminate options violating hard constraints. Choose simplest solution meeting all requirements—AWS favors managed services and operational simplicity.",
       "memorize": [
@@ -7617,9 +7617,9 @@
     "explanation": {
       "why_correct": "Lambda combined with EC2 and DynamoDB provides comprehensive solution. Use Lambda functions for business logic—delivers optimal performance with minimal latency.",
       "why_wrong": {
-        "A": "Missing key requirement: low-latency.",
-        "C": "Missing key requirement: low-latency.",
-        "D": "Missing key requirement: low-latency."
+        "A": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
+        "C": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
       "memorize": "EC2 + Lambda + DynamoDB pattern for High-Performing Architectures",
@@ -7734,7 +7734,7 @@
     "explanation": {
       "why_correct": "Lambda auto-scales per request with sub-second invocation times. ALB distributes traffic with health checks. Optimizes performance through low-latency services and efficient architectures.",
       "why_wrong": {
-        "B": "Missing key requirement: low-latency.",
+        "B": "Has 29-second timeout limit. Custom domain setup requires ACM certificate and DNS changes.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
@@ -7776,7 +7776,7 @@
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
         "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "D": "Missing key requirement: durability."
+        "D": "Attached to single EC2 instance in same AZ. Multi-Attach limited to Provisioned IOPS volumes and specific instance types."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": "Key pattern: architecture_design with scalability, performance",
@@ -8296,7 +8296,7 @@
       "why_correct": "RDS Fully managed—automatic backups, patching, monitoring. Create a backup plan that has a retention period of 90 days by using AWS Backup for Amazon RDS—reducing manual management tasks.",
       "why_wrong": {
         "A": "Requires additional operational management, monitoring, or manual intervention compared to simpler alternatives.",
-        "B": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency.",
+        "B": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines).",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
@@ -8429,7 +8429,7 @@
     "explanation": {
       "why_correct": "Lambda Use Amazon Kinesis Data Streams to collect telemetry data—meeting all specified requirements.",
       "why_wrong": {
-        "B": "Missing key requirement: low-latency.",
+        "B": "Has 15-minute minimum billing duration per DPU. Apache Spark jobs may be slower than optimized EMR clusters.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
@@ -8678,7 +8678,7 @@
     "explanation": {
       "why_correct": "Lambda Auto-scales per request (1-1000+ concurrent executions). Set up Amazon EBS fast snapshot restore FSR for a snapshot—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
+        "A": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
@@ -8875,9 +8875,9 @@
     "explanation": {
       "why_correct": "EC2 Scales automatically to handle traffic spikes. Configure ALB path-based routing to send traffic for /reports and /generateToken to separate target groups—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability.",
-        "D": "Missing key requirement: scalability."
+        "A": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines).",
+        "C": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
+        "D": "CloudFront caches at edge locations globally. ALB does not cache content or reduce origin load."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": "EC2 + CloudFront + ALB pattern for High-Performing Architectures",
@@ -9381,9 +9381,9 @@
     "explanation": {
       "why_correct": "FSx for Windows File Server provides native SMB protocol support and Windows NTFS features (ACLs, user quotas, DFS namespaces) required by media applications. Multi-AZ deployment for high availability. Integrates with Active Directory for centralized authentication. S3 lacks SMB protocol and NTFS features. EFS uses NFS (not SMB), incompatible with Windows-native media workflows.",
       "why_wrong": {
-        "A": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "B": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Windows workloads: FSx for Windows (SMB, NTFS, AD integration). FSx for Lustre = Linux/HPC. EFS = NFS (Linux). S3 = object storage (no file system semantics). Match protocol to workload.",
       "memorize": [
@@ -9712,8 +9712,8 @@
     "explanation": {
       "why_correct": "EC2 provides managed service capabilities. Optimizes performance through low-latency services and efficient architectures.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "B": "Missing key requirement: scalability.",
+        "A": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
+        "B": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines).",
         "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
@@ -9860,9 +9860,9 @@
     "explanation": {
       "why_correct": "EC2 combined with EBS and KMS provides comprehensive solution. Configure the EC2 account attributes to always encrypt new EBS volumes—secures data with encryption at rest and in transit.",
       "why_wrong": {
-        "B": "Missing key requirement: encryption.",
-        "C": "Missing key requirement: encryption.",
-        "D": "Missing key requirement: encryption."
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "EC2 + KMS + Systems Manager pattern for High-Performing Architectures",
@@ -10018,8 +10018,8 @@
     "explanation": {
       "why_correct": "RDS combined with DynamoDB and CloudFront provides comprehensive solution. Delivers optimal performance through efficient resource utilization and service integration.",
       "why_wrong": {
-        "A": "Missing key requirement: low-latency.",
-        "D": "Missing key requirement: low-latency.",
+        "A": "Adds complexity for dynamic content. Cache invalidation takes time to propagate to all edge locations.",
+        "D": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines).",
         "E": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required).",
@@ -10283,9 +10283,9 @@
     "explanation": {
       "why_correct": "EC2 provides managed service capabilities. ALB distributes traffic with health checks. Optimizes performance through low-latency services and efficient architectures.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "E": "Missing key requirement: scalability."
+        "E": "Adds complexity for dynamic content. Cache invalidation takes time to propagate to all edge locations."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required).",
       "memorize": "EC2 + CloudFront + ALB pattern for High-Performing Architectures",
@@ -10321,9 +10321,9 @@
     "explanation": {
       "why_correct": "S3 Use Kinesis Data Streams # Amazon OpenSearch Service # Amazon QuickSight—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: low-latency.",
+        "A": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
         "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "C": "Missing key requirement: low-latency."
+        "C": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines)."
       },
       "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + EC2 + DynamoDB pattern for High-Performing Architectures",
@@ -10360,8 +10360,8 @@
     "explanation": {
       "why_correct": "Lambda Use Amazon Data Firehose to invoke an AWS Lambda function that converts the data to Parquet format and stores the data in Amazon S3—meeting all specified requirements.",
       "why_wrong": {
-        "B": "Missing key requirement: low-latency.",
-        "C": "Missing key requirement: low-latency.",
+        "B": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
+        "C": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
       "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
@@ -10403,8 +10403,8 @@
       "why_correct": "EC2 Scales automatically to handle traffic spikes. Configure a scheduled scaling policy for the Auto Scaling group to launch new instances before peak hours—meeting all specified requirements.",
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "B": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability."
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": "EC2 + ALB + Auto Scaling pattern for High-Performing Architectures",
@@ -10591,8 +10591,8 @@
       "why_correct": "Lambda Deploy an Amazon Elastic Container Service (Amazon ECS) cluster on AWS Fargate to supply compute capacity—meeting all specified requirements.",
       "why_wrong": {
         "A": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "B": "Missing key requirement: low-latency.",
-        "D": "Missing key requirement: low-latency."
+        "B": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
+        "D": "Standard RDS lacks Aurora's fast automated failover (< 30 seconds) and up to 15 read replicas."
       },
       "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
       "memorize": "EC2 + Lambda + RDS pattern for High-Performing Architectures",
@@ -10795,9 +10795,9 @@
     "explanation": {
       "why_correct": "Auto Scaling Automatically adjusts capacity based on demand. configure the Amazon CloudWatch agent—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
+        "A": "Systems Manager Parameter Store is for configuration. CloudWatch is for metrics and logs.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "D": "Missing key requirement: scalability."
+        "D": "Standard resolution is 1-minute intervals. High-resolution metrics (1-second) cost more."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": "Auto Scaling + CloudWatch + Systems Manager pattern for High-Performing Architectures",
@@ -10830,8 +10830,8 @@
     "explanation": {
       "why_correct": "This solution addresses the requirements by using S3. S3 offers 11 nines durability, multiple storage classes, and lifecycle policies for cost optimization.",
       "why_wrong": {
-        "A": "Missing key requirement: low-latency.",
-        "C": "Missing key requirement: low-latency.",
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
@@ -11316,9 +11316,9 @@
     "explanation": {
       "why_correct": "RDS Scales automatically to handle traffic spikes. Use AWS Database Migration Service (AWS DMS) to migrate the database to Amazon Aurora—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "B": "Missing key requirement: scalability.",
-        "D": "Missing key requirement: scalability."
+        "A": "Standard RDS lacks Aurora's fast automated failover (< 30 seconds) and up to 15 read replicas.",
+        "B": "Redshift uses columnar storage for analytics. Aurora row-based storage is optimized for transactional queries.",
+        "D": "DynamoDB lacks ACID transactions across multiple tables and complex relational queries."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": "RDS + DynamoDB + Auto Scaling pattern for High-Performing Architectures",
@@ -12008,9 +12008,9 @@
     "explanation": {
       "why_correct": "Lambda auto-scales per request (1-10,000 concurrent executions) without capacity planning. Requests taking <5 seconds fit Lambda perfectly—no idle time costs. API Gateway + Lambda eliminates server management entirely. EC2/ECS require always-on instances even during zero traffic, wasting cost. SQS adds unnecessary queuing latency when synchronous processing is acceptable for 1,000 daily requests.",
       "why_wrong": {
-        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
+        "B": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
+        "C": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
+        "D": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations."
       },
       "exam_tips": "Migration patterns: Application Migration Service (servers/VMs), Database Migration Service (databases), DataSync (file data), Snow Family (petabyte-scale). Match tool to data type and volume.",
       "memorize": [
@@ -12291,7 +12291,7 @@
       "why_wrong": {
         "A": "Lambda@Edge for CloudFront edge processing, not backend order processing. EKS adds K8s complexity.",
         "B": "SNS pub/sub, not durable queue for burst buffering.",
-        "D": "SNS not queue. Lambda@Edge wrong use case."
+        "D": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations."
       },
       "exam_tips": "SQS = durable queue for burst buffering. SNS = pub/sub. Lambda@Edge = CloudFront edge. Match service to pattern.",
       "memorize": "SQS + Lambda + ECS Fargate = scalable order processing with burst tolerance.",
@@ -12664,7 +12664,7 @@
       "why_wrong": {
         "A": "On-Demand RDS expensive for long-running. 1-year less savings than 3-year.",
         "B": "1-year term less discount than 3-year for long-running workloads.",
-        "C": "Partial Upfront less discount than All Upfront."
+        "C": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Longer term + All Upfront = maximum discount. No Upfront = no upfront cost but less discount. Match commitment to workload duration.",
       "memorize": "3-year All Upfront Reserved/Savings Plans = most cost-effective for long-running workloads.",
@@ -12800,7 +12800,7 @@
       "why_wrong": {
         "B": "EMR + HDFS for big data, not transactional ecommerce. gp3 max 16K IOPS insufficient.",
         "C": "FSx Lustre for HPC, not Windows ecommerce application.",
-        "D": "Instance store ephemeral. gp3 insufficient IOPS."
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "io2 Block Express = up to 256K IOPS. io2 = up to 64K IOPS. gp3 = up to 16K IOPS. Match IOPS requirement to volume type.",
       "memorize": "io2 Block Express = ultra-high IOPS (256K) for demanding workloads.",
@@ -12868,9 +12868,9 @@
     "explanation": {
       "why_correct": "B: FSx for Lustre delivers high IOPS for HPC. E: Cluster placement group provides low-latency networking. EMR for analytics. Mixed instances optimize cost.",
       "why_wrong": {
-        "A": "EFS not optimized for HPC high IOPS.",
+        "A": "Higher per-GB cost than EBS or S3. Throughput scales with total storage size in Bursting mode.",
         "C": "Spread placement for HA, not low latency. Reserved Instances for cost, Batch not for HPC analytics.",
-        "D": "Mountpoint for S3 doesn't meet high IOPS needs."
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "FSx Lustre = HPC file system. Cluster placement = low latency. Spread placement = HA. Match to workload requirement.",
       "memorize": "FSx Lustre + cluster placement + EMR = HPC analytics with high IOPS.",
@@ -12978,7 +12978,7 @@
       "why_wrong": {
         "A": "DMS for database migration, not file system. Still limited by 10Mbps.",
         "B": "DataSync limited by 10Mbps internet, can't transfer 200TB in 30 days.",
-        "C": "Storage Gateway limited by 10Mbps bandwidth."
+        "C": "FSx provides sub-millisecond file system latency. S3 API has higher latency for small file operations."
       },
       "exam_tips": "Snowball Edge for petabyte/multi-hundred-TB offline transfers. DataSync for online transfers. Calculate bandwidth × time to determine feasibility.",
       "memorize": "Snowball Edge = offline bulk data transfer when bandwidth insufficient.",
@@ -13015,7 +13015,7 @@
     "explanation": {
       "why_correct": "Elastic Fabric Adapter (EFA) provides ultra-low latency, high throughput networking for tightly-coupled workloads. Bypasses traditional TCP/IP.",
       "why_wrong": {
-        "A": "VPC peering adds network hops, increases latency.",
+        "A": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
         "C": "Spread placement separates instances for HA, increases latency vs cluster.",
         "D": "EBS optimized for storage performance, not network latency."
       },
@@ -13121,7 +13121,7 @@
       "why_wrong": {
         "A": "ECS requires container management, overkill for simple form.",
         "C": "Amplify + SQS more complex than API Gateway + SNS for email notifications.",
-        "D": "EC2 + IIS highest cost and management overhead, not cost-effective."
+        "D": "EC2 requires provisioning, patching, and capacity planning. You pay for running instances even during idle time."
       },
       "exam_tips": "API Gateway + Lambda + SNS = serverless form processing with email. Pay per use, ideal for low traffic.",
       "memorize": "API Gateway + Lambda + SNS = cost-effective serverless contact form.",
@@ -13172,7 +13172,7 @@
       "why_wrong": {
         "B": "Tape gateway for backup/archive, not active file sharing.",
         "C": "Volume gateway stored volumes for iSCSI block storage, not NFS file access.",
-        "D": "Volume gateway cached volumes for iSCSI, not NFS."
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "File gateway = NFS/SMB to S3. Volume gateway = iSCSI block. Tape gateway = backup/archive. Match protocol to requirement.",
       "memorize": "Storage Gateway file gateway = NFS local access + S3 cloud access for hybrid workloads.",
@@ -13246,7 +13246,7 @@
       "why_wrong": {
         "A": "Internet Gateway per AZ unnecessary; region-wide resource.",
         "C": "DynamoDB requires app code changes; violates requirement.",
-        "D": "DataSync for data transfer, not HA."
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Multi-AZ = DB HA with automatic failover. ALB + Auto Scaling = app tier HA. Combine for full stack HA.",
       "memorize": "RDS Multi-AZ + ALB + Auto Scaling (multi-AZ) = highly available application.",
@@ -13286,7 +13286,7 @@
       "why_correct": "SQS buffers bursts, preventing data loss. Lambda polls SQS at sustainable rate, writing to RDS. Decouples API from DB, reduces connection pressure.",
       "why_wrong": {
         "A": "Vertical scaling doesn't address connection spikes or burst buffering.",
-        "B": "Multi-AZ for availability, not write throughput.",
+        "B": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines).",
         "D": "SNS fan-out, not queue buffering for burst absorption."
       },
       "exam_tips": "SQS = durable message buffer for burst traffic. Lambda = process at sustainable rate. Decoupling prevents overwhelming backend.",
@@ -13325,7 +13325,7 @@
     "explanation": {
       "why_correct": "S3 Events → EventBridge → SQS FIFO → Lambda ensures exactly-once processing with FIFO ordering and deduplication.",
       "why_wrong": {
-        "B": "SNS doesn't guarantee exactly-once delivery.",
+        "B": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
         "C": "Standard SQS doesn't guarantee exactly-once; at-least-once semantics.",
         "D": "Direct S3 to Lambda can have retries and duplicates."
       },
@@ -13404,9 +13404,9 @@
     "explanation": {
       "why_correct": "DynamoDB global table provides multi-active replication with low-latency reads/writes in both regions. Automatic cross-region replication, fully managed.",
       "why_wrong": {
-        "A": "GSI doesn't provide multi-region replication.",
+        "A": "Cannot perform complex joins, multi-table transactions, or SQL-style analytics queries efficiently.",
         "B": "DynamoDB Streams + custom app adds operational complexity vs native global tables.",
-        "D": "Streams + Lambda custom replication less efficient than native global tables."
+        "D": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations."
       },
       "exam_tips": "DynamoDB global table = multi-active multi-region replication. Fully managed, automatic conflict resolution. Least operational overhead.",
       "memorize": "DynamoDB global table = multi-active replication across regions with low latency.",
@@ -13473,8 +13473,8 @@
       "why_correct": "gp3 root volume for OS. io2 data volume provides configurable, consistent IOPS for transaction-heavy application workload.",
       "why_wrong": {
         "A": "st1 and sc1 HDD for large sequential, not high-transaction workloads.",
-        "B": "st1 doesn't provide configurable consistent IOPS.",
-        "D": "S3 object storage, not block storage EBS volume."
+        "B": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "io2 = configurable IOPS for transactional workloads. gp3 = balanced general purpose. st1/sc1 = HDD sequential. Match volume to workload.",
       "memorize": "gp3 root + io2 data = separate OS and high-IOPS transaction storage.",
@@ -13601,9 +13601,9 @@
     "explanation": {
       "why_correct": "ElastiCache Redis in-memory cache for RDS query results. Offloads read-heavy historical queries, no database structure changes. Fully managed.",
       "why_wrong": {
-        "A": "DynamoDB requires data migration and app changes.",
+        "A": "DynamoDB provides millisecond latency but not sub-millisecond latency that ElastiCache Redis delivers.",
         "C": "Memcached on EC2 requires managing instances, more overhead than ElastiCache.",
-        "D": "DAX only for DynamoDB, not RDS."
+        "D": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines)."
       },
       "exam_tips": "ElastiCache = cache layer for RDS. Fully managed. DAX = DynamoDB only. Match cache to database type.",
       "memorize": "ElastiCache Redis + RDS = cache read-heavy queries without DB schema changes.",
@@ -13716,7 +13716,7 @@
       "why_correct": "Kinesis Data Streams ingests real-time streaming. OpenSearch Service provides search and analytics. QuickSight creates visualizations. AWS-native real-time solution.",
       "why_wrong": {
         "A": "EC2 + Athena batch-oriented, not real-time search.",
-        "B": "EMR + Redshift batch processing, not real-time.",
+        "B": "Requires provisioned clusters with ongoing costs. Queries compete for cluster resources during high usage.",
         "C": "EKS + DynamoDB doesn't provide search/visualization."
       },
       "exam_tips": "Kinesis = real-time streaming. OpenSearch = real-time search/analytics. QuickSight = dashboards. Combine for end-to-end real-time pipeline.",
@@ -13751,7 +13751,7 @@
       "why_correct": "SCT converts schema. DMS performs full-load + CDC (change data capture) for ongoing replication. Captures changes during migration.",
       "why_wrong": {
         "A": "Full-load only doesn't capture ongoing changes during migration.",
-        "B": "DataSync for file transfers, not database CDC.",
+        "B": "Requires provisioned capacity planning. Aurora Serverless v2 takes time to scale up during sudden traffic spikes.",
         "D": "Snowball offline transfer doesn't capture ongoing changes."
       },
       "exam_tips": "SCT = schema conversion. DMS full-load = initial migration. DMS CDC = ongoing replication. Combine for live database migration.",
@@ -13787,8 +13787,8 @@
       "why_correct": "VPC Flow Logs capture network traffic. CloudWatch Logs collects logs. Firehose streams to OpenSearch with managed delivery. Minimal operational overhead.",
       "why_wrong": {
         "A": "Kinesis Data Streams requires custom consumer vs Firehose managed delivery.",
-        "C": "CloudTrail for API calls, not network flow logs.",
-        "D": "CloudTrail doesn't receive VPC Flow Logs."
+        "C": "Requires shard management and capacity planning. Resharding causes temporary read/write capacity reduction.",
+        "D": "CloudTrail logs API calls. CloudWatch Logs needed for application logs from EC2, Lambda, containers."
       },
       "exam_tips": "VPC Flow Logs = network traffic metadata. CloudWatch Logs = log aggregation. Firehose = managed delivery to destinations.",
       "memorize": "VPC Flow Logs → CloudWatch Logs → Firehose → OpenSearch = managed network analytics.",
@@ -13827,7 +13827,7 @@
       "why_correct": "SnapStart for Java reduces cold starts. Pre-snapshot hook for non-deterministic code. Move unique ID generation to handler. Publish version required for SnapStart.",
       "why_wrong": {
         "A": "SnapStart not supported on $LATEST, only published versions.",
-        "B": "Provisioned concurrency more expensive than SnapStart for cold start reduction.",
+        "B": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
         "C": "Provisioned concurrency unnecessary with SnapStart; adds cost."
       },
       "exam_tips": "SnapStart = cost-effective cold start reduction for Java. Pre-snapshot hook for non-deterministic code. Provisioned concurrency = pre-warmed instances (expensive).",
@@ -13930,8 +13930,8 @@
     "explanation": {
       "why_correct": "Managed Service for Apache Flink (Kinesis Data Analytics) processes Kinesis streams in real-time for anomaly detection. Second stream delivers to application. Serverless, fully managed.",
       "why_wrong": {
-        "B": "Firehose + S3 + Redshift Spectrum not real-time.",
-        "C": "EC2 Auto Scaling not fully managed or serverless.",
+        "B": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
+        "C": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
         "D": "ECS on EC2 not serverless, requires managing infrastructure."
       },
       "exam_tips": "Managed Flink (KDA) = real-time streaming analytics. Serverless, integrates with Kinesis. Choose for real-time anomaly detection.",
@@ -14255,7 +14255,7 @@
     "explanation": {
       "why_correct": "S3 stores videos. CloudFront caches at edge globally, serving videos without hitting web servers. OAC secures S3 origin access. Minimizes server load.",
       "why_wrong": {
-        "A": "ElastiCache not for video origin storage.",
+        "A": "In-memory storage loses data on node failures. Requires separate persistent store for durability.",
         "B": "EFS keeps web servers in delivery path, doesn't reduce load.",
         "D": "File Gateway for hybrid file access, not internet content distribution."
       },
@@ -14494,8 +14494,8 @@
       "why_correct": "SNS FIFO topics provide pub/sub with strict ordering and exactly-once delivery to multiple subscribers. Ideal for ordered events to multiple systems.",
       "why_wrong": {
         "A": "EventBridge no ordering guarantees across subscribers.",
-        "C": "SNS standard topics no ordering guarantees.",
-        "D": "SQS FIFO queues point-to-point, not pub/sub."
+        "C": "Messages lost if subscriber unavailable. No built-in retry logic or dead-letter queue for failed deliveries.",
+        "D": "SQS is pull-based. SNS push-based fanout to multiple subscribers is more efficient for broadcasting."
       },
       "exam_tips": "SNS FIFO = ordered pub/sub. SQS FIFO = ordered queue. SNS standard = unordered pub/sub. EventBridge = event routing.",
       "memorize": "SNS FIFO topics = ordered publish-subscribe to multiple subscribers.",
@@ -14652,7 +14652,7 @@
       "why_correct": "S3 Event Notifications trigger Lambda immediately on upload. Lambda processes video, saves to S3. SNS sends push notifications to users. Event-driven, real-time.",
       "why_wrong": {
         "A": "EventBridge Scheduler for scheduled tasks, not immediate event-driven processing.",
-        "B": "Fargate scheduled not immediate event-driven.",
+        "B": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "D": "Amplify doesn't natively send push notifications for backend workflows; SNS designed for it."
       },
       "exam_tips": "S3 Events = immediate object creation trigger. EventBridge Scheduler = scheduled tasks. SNS = notifications. Match trigger to timing requirement.",
@@ -14865,7 +14865,7 @@
       "why_wrong": {
         "A": "NLB Layer 4, doesn't provide Layer 7 sticky sessions as effectively as ALB for web apps.",
         "B": "Aurora writers don't scale horizontally; one writer endpoint.",
-        "D": "NLB + Aurora writers incorrect scaling mechanism."
+        "D": "Requires provisioned capacity planning. Aurora Serverless v2 takes time to scale up during sudden traffic spikes."
       },
       "exam_tips": "Aurora Replicas = scale reads. Sticky sessions = stateful apps. ALB = Layer 7 HTTP sticky sessions. NLB = Layer 4 TCP sticky.",
       "memorize": "Aurora Replica Auto Scaling + ALB sticky sessions = scale stateful web app + database.",
@@ -15010,8 +15010,8 @@
     "explanation": {
       "why_correct": "SnapStart reduces cold starts for Java. Pre-snapshot hook for setup. Move unique IDs to handler for per-invocation execution. Publish version required. Most cost-effective.",
       "why_wrong": {
-        "A": "SnapStart not supported on $LATEST version.",
-        "B": "Provisioned concurrency prevents cold starts but more expensive than SnapStart.",
+        "A": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
+        "B": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
         "C": "Provisioned concurrency + SnapStart redundant and expensive; SnapStart alone sufficient."
       },
       "exam_tips": "SnapStart = cost-effective Java cold start reduction. Pre-snapshot hook for non-deterministic code. Provisioned concurrency = expensive alternative.",
@@ -15928,7 +15928,7 @@
     "explanation": {
       "why_correct": "Creating manual copy of automated snapshot converts it to manual snapshot retained indefinitely until explicitly deleted. Most operationally efficient—single action preserves specific snapshot beyond automated retention window without additional processes.",
       "why_wrong": {
-        "B": "Exporting snapshot to S3 adds workflow complexity, format considerations, and ongoing S3 management—less efficient for snapshot retention goal.",
+        "B": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "C": "Cannot extend automated snapshot retention beyond service maximum. Fixed retention period doesn't guarantee indefinite retention.",
         "D": "Native SQL Server backups require managing backup jobs, storage, restores, and permissions—higher operational overhead than RDS snapshot copy."
       },
@@ -16143,7 +16143,7 @@
     "explanation": {
       "why_correct": "DynamoDB supports TTL for automatic item deletion after 48 hours without manual cleanup. Point-in-time recovery (PITR) enables restoring table to any second within 35 days. Handles frequent updates efficiently. Scales automatically for variable workload. Supports items up to 400KB (sufficient for 256KB sessions).",
       "why_wrong": {
-        "B": "MemoryDB is Redis-compatible in-memory database, more expensive than DynamoDB for session storage. Not optimized for automatic expiration patterns.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
         "C": "S3 is object storage, not optimized for frequent updates (session data changes constantly). Versioning adds complexity and cost for session data.",
         "D": "S3 Intelligent-Tiering optimizes storage costs but doesn't address frequent update performance issues. Versioning overhead remains."
       },
@@ -16963,7 +16963,7 @@
       "why_correct": "SageMaker batch transform designed for offline batch inference on large datasets in S3. Runs weekly without maintaining persistent endpoints. Handles preprocessing and inference in single managed workflow. Least operational overhead—no separate preprocessing service or endpoint management.",
       "why_wrong": {
         "A": "AWS Batch + SageMaker processing separates preprocessing and inference, adding orchestration complexity.",
-        "B": "EMR for preprocessing adds cluster management overhead. Separate processing job less efficient than integrated batch transform.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
         "D": "AWS Glue for ETL + processing job separates concerns. Batch transform handles both preprocessing and inference together."
       },
       "exam_tips": "For weekly batch ML inference on S3 data: SageMaker batch transform (handles preprocessing + inference). Don't separate into multiple services when batch transform does both.",
@@ -20041,9 +20041,9 @@
     "explanation": {
       "why_correct": "EC2 combined with RDS and DynamoDB provides comprehensive solution. Create an Amazon ElastiCache for Redis cluster in the Region where the application is deployed—scales automatically to handle variable load.",
       "why_wrong": {
-        "B": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability.",
-        "D": "Missing key requirement: scalability."
+        "B": "DynamoDB provides millisecond latency but not sub-millisecond latency that ElastiCache Redis delivers.",
+        "C": "Requires provisioned capacity planning. Aurora Serverless v2 takes time to scale up during sudden traffic spikes.",
+        "D": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines)."
       },
       "exam_tips": "Identifica keywords del dominio Resilient Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
       "memorize": "Alta disponibilidad + resiliencia = servicios managed AWS.",
@@ -20430,8 +20430,8 @@
     "explanation": {
       "why_correct": "EC2 provides managed service capabilities. ALB distributes traffic with health checks. Auto Scaling handles capacity dynamically. Ensures high availability through Multi-AZ deployment and automatic failover.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "B": "Missing key requirement: scalability.",
+        "A": "NLB operates at Layer 4, cannot route based on HTTP headers, paths, or hostnames.",
+        "B": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
       "exam_tips": "Identifica keywords del dominio Resilient Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
@@ -20466,9 +20466,9 @@
     "explanation": {
       "why_correct": "ElastiCache provides managed service capabilities. Ensures high availability through Multi-AZ deployment and automatic failover.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
-        "C": "Missing key requirement: encryption.",
-        "D": "Missing key requirement: encryption."
+        "A": "In-memory storage loses data on node failures. Requires separate persistent store for durability.",
+        "C": "In-memory storage loses data on node failures. Requires separate persistent store for durability.",
+        "D": "In-memory storage loses data on node failures. Requires separate persistent store for durability."
       },
       "exam_tips": "Identifica keywords del dominio Resilient Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
       "memorize": "Alta disponibilidad + resiliencia = servicios managed AWS.",
@@ -20584,8 +20584,8 @@
     "explanation": {
       "why_correct": "S3 offers unlimited scalable storage with 99.99% availability. Ensures high availability through Multi-AZ deployment and automatic failover.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability.",
+        "A": "Standard RDS lacks Aurora's fast automated failover (< 30 seconds) and up to 15 read replicas.",
+        "C": "DynamoDB lacks ACID transactions across multiple tables and complex relational queries.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
       "exam_tips": "Identifica keywords del dominio Resilient Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
@@ -20624,7 +20624,7 @@
     "explanation": {
       "why_correct": "RDS fully managed—handles backups, patching, monitoring, and failover automatically. Ensures high availability through Multi-AZ deployment and automatic failover.",
       "why_wrong": {
-        "A": "Manual process requires ongoing human intervention. Increases operational overhead and introduces potential for human error.",
+        "A": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines).",
         "B": "Requires additional operational management, monitoring, or manual intervention compared to simpler alternatives.",
         "C": "Requires additional operational management, monitoring, or manual intervention compared to simpler alternatives."
       },
@@ -20880,9 +20880,9 @@
     "explanation": {
       "why_correct": "EC2 provides managed service capabilities. ALB distributes traffic with health checks. Auto Scaling handles capacity dynamically. Ensures high availability through Multi-AZ deployment and automatic failover.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
+        "A": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
         "B": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "D": "Missing key requirement: scalability."
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Identifica keywords del dominio Resilient Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
       "memorize": "Alta disponibilidad + resiliencia = servicios managed AWS.",
@@ -22253,9 +22253,9 @@
     "explanation": {
       "why_correct": "Lambda auto-scales per request with sub-second invocation times. ALB distributes traffic with health checks. Ensures high availability through Multi-AZ deployment and automatic failover.",
       "why_wrong": {
-        "B": "Missing key requirement: durability.",
-        "C": "Missing key requirement: durability.",
-        "D": "Missing key requirement: durability."
+        "B": "Standard queues do not guarantee message ordering. FIFO queues limited to 3,000 messages per second.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Identifica keywords del dominio Resilient Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
       "memorize": "Alta disponibilidad + resiliencia = servicios managed AWS.",
@@ -22493,7 +22493,7 @@
     "explanation": {
       "why_correct": "EventBridge enables event-driven architecture with native AWS service integration. Use AWS Security Token Service (AWS STS) to generate temporary credentials for the contractors—reduces operational overhead with managed services. IAM controls access with least privilege.",
       "why_wrong": {
-        "A": "Manual process requires ongoing human intervention. Increases operational overhead and introduces potential for human error.",
+        "A": "Manual processes are error-prone, not scalable, and require human intervention which increases operational overhead.",
         "C": "Requires additional operational management, monitoring, or manual intervention compared to simpler alternatives.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
@@ -23821,7 +23821,7 @@
       "why_wrong": {
         "B": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "D": "Missing key requirement: encryption."
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + KMS + EBS pattern for Secure Architectures",
@@ -23940,7 +23940,7 @@
       "why_correct": "IAM Set up a trust relationship between the IAM roles for the service accounts and an OpenID Connect (OIDC) identity provider—meeting all specified requirements.",
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "B": "Missing key requirement: access-control.",
+        "B": "Higher cost ($0.10/hour cluster fee) and complexity. Requires Kubernetes expertise for operation.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
@@ -24075,9 +24075,9 @@
     "explanation": {
       "why_correct": "S3 Create an IAM policy that lists the full Amazon Resource Name (ARN) for each S3 bucket—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
-        "C": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "Requires defining task definitions, services, and managing cluster capacity with EC2 launch type.",
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + IAM + ECS pattern for Secure Architectures",
@@ -24225,7 +24225,7 @@
     "explanation": {
       "why_correct": "S3 offers unlimited scalable storage with 99.99% availability. KMS encrypts data at rest. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
         "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
@@ -24267,9 +24267,9 @@
     "explanation": {
       "why_correct": "S3 offers unlimited scalable storage with 99.99% availability. KMS encrypts data at rest. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "B": "Missing key requirement: encryption.",
+        "B": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "D": "Missing key requirement: encryption."
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + KMS pattern for Secure Architectures",
@@ -24469,9 +24469,9 @@
     "explanation": {
       "why_correct": "S3 offers unlimited scalable storage with 99.99% availability. KMS encrypts data at rest. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "B": "Missing key requirement: encryption.",
-        "C": "Missing key requirement: encryption.",
-        "E": "Missing key requirement: encryption."
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "E": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + KMS pattern for Secure Architectures",
@@ -24713,8 +24713,8 @@
     "explanation": {
       "why_correct": "CloudFront caches content at 450+ edge locations globally—reduces latency for worldwide users. ALB distributes traffic with health checks. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: low-latency.",
-        "B": "Missing key requirement: low-latency.",
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
@@ -24862,9 +24862,9 @@
     "explanation": {
       "why_correct": "S3 offers unlimited scalable storage with 99.99% availability. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
-        "C": "Missing key requirement: encryption.",
-        "D": "Missing key requirement: encryption."
+        "A": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines).",
+        "C": "EC2 databases require manual backups, patching, replication setup, and failover configuration.",
+        "D": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines)."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + EC2 + RDS pattern for Secure Architectures",
@@ -24939,8 +24939,8 @@
     "explanation": {
       "why_correct": "EC2 Create an EMR security configuration that encrypts the data and the volumes as required—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
-        "C": "Missing key requirement: encryption.",
+        "A": "Attached to single EC2 instance in same AZ. Multi-Attach limited to Provisioned IOPS volumes and specific instance types.",
+        "C": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
         "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
@@ -25050,9 +25050,9 @@
     "explanation": {
       "why_correct": "S3 Scales automatically to handle traffic spikes. Use Amazon S3 Storage Lens to identify all S3 buckets that are not versioning-enabled across Regions—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability.",
-        "D": "Missing key requirement: scalability."
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + IAM + CloudTrail pattern for Secure Architectures",
@@ -25169,7 +25169,7 @@
       "why_wrong": {
         "B": "Requires additional operational management, monitoring, or manual intervention compared to simpler alternatives.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "D": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency."
+        "D": "Manual processes are error-prone, not scalable, and require human intervention which increases operational overhead."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "Key pattern: architecture with minimize_cost, security, operational_efficiency",
@@ -25499,7 +25499,7 @@
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "D": "Missing key requirement: access-control."
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": [
@@ -25534,9 +25534,9 @@
     "explanation": {
       "why_correct": "Custom AWS WAF rules use rate-based rules (block IPs exceeding request thresholds) and IP set rules (block specific IPs/ranges). Rule groups combine multiple rules for centralized management across multiple CloudFront distributions. WAF integrates natively with CloudFront at edge locations—blocks malicious traffic before reaching origin. Shield Advanced protects against DDoS but does not provide custom IP blocking or rate limiting granularity.",
       "why_wrong": {
-        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "D": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations."
       },
       "exam_tips": "AWS WAF = custom rules (rate limiting, IP blocking, geo-blocking). Shield = automatic DDoS protection. GuardDuty = threat detection (ML-based). Security Groups = instance-level firewall. Layer choice matters.",
       "memorize": [
@@ -25609,9 +25609,9 @@
     "explanation": {
       "why_correct": "EC2 combined with EBS and ALB provides comprehensive solution. Implements security best practices with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
-        "B": "Missing key requirement: encryption.",
-        "D": "Missing key requirement: encryption."
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "D": "Costs $0.40 per secret per month plus $0.05 per 10,000 API calls. Parameter Store is free for standard parameters."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "EC2 + KMS + ALB pattern for Secure Architectures",
@@ -25653,7 +25653,7 @@
     "explanation": {
       "why_correct": "RDS Fully managed—automatic backups, patching, monitoring. Use Amazon RDS Blue/Green Deployments to deploy and test production changes—reducing manual management tasks.",
       "why_wrong": {
-        "A": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency.",
+        "A": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines).",
         "B": "Requires additional operational management, monitoring, or manual intervention compared to simpler alternatives.",
         "C": "Requires additional operational management, monitoring, or manual intervention compared to simpler alternatives."
       },
@@ -25805,7 +25805,7 @@
       "why_wrong": {
         "A": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "D": "Missing key requirement: access-control."
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + EC2 + VPC pattern for Secure Architectures",
@@ -25968,7 +25968,7 @@
       "why_correct": "IAM Set up a trust relationship between the IAM roles for the service accounts and an OpenID Connect (OIDC) identity provider—meeting all specified requirements.",
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "B": "Missing key requirement: access-control.",
+        "B": "Higher cost ($0.10/hour cluster fee) and complexity. Requires Kubernetes expertise for operation.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
@@ -26040,9 +26040,9 @@
     "explanation": {
       "why_correct": "IAM role in Account B with trust relationship to Account A enables secure cross-account access without sharing credentials. Analysts in Account A assume the role using STS AssumeRole. S3 bucket policy grants permissions to the IAM role. This pattern follows AWS security best practices: temporary credentials, least privilege, and no long-term access keys. Resource policies on individual objects are harder to manage and audit at scale.",
       "why_wrong": {
-        "A": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Cross-account access patterns: IAM role + trust relationship (temporary credentials). Resource-based policies (S3, SQS, SNS). Avoid sharing IAM access keys. Always use AssumeRole for security.",
       "memorize": [
@@ -26118,7 +26118,7 @@
       "why_correct": "IAM enforces least privilege access through role-based permissions and policies. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
         "A": "Requires additional operational management, monitoring, or manual intervention compared to simpler alternatives.",
-        "B": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency.",
+        "B": "Manual processes are error-prone, not scalable, and require human intervention which increases operational overhead.",
         "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
@@ -26183,9 +26183,9 @@
     "explanation": {
       "why_correct": "Amazon Transcribe provides real-time speech-to-text with speaker identification and custom vocabulary. Handles multiple speakers in same audio stream—critical for call center conversations between agent and customer. PII redaction removes sensitive information (credit cards, SSN) from transcripts automatically. Integrates with S3 for audio storage and supports streaming audio for live transcription. Comprehend analyzes text but does not transcribe audio.",
       "why_wrong": {
-        "A": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "Redshift requires provisioned clusters with ongoing costs. Athena charges only per query scanned.",
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Identify key requirements first (cost, performance, operational overhead). Eliminate options violating hard constraints. Choose simplest solution meeting all requirements—AWS favors managed services and operational simplicity.",
       "memorize": [
@@ -26544,9 +26544,9 @@
     "explanation": {
       "why_correct": "This solution addresses the requirements by using IAM. IAM provides fine-grained access control with policies, roles, and groups. Supports MFA and temporary credentials via STS.",
       "why_wrong": {
-        "B": "Missing key requirement: access-control.",
-        "C": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": [
@@ -26581,9 +26581,9 @@
     "explanation": {
       "why_correct": "EC2 provides managed service capabilities. ALB distributes traffic with health checks. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability.",
-        "D": "Missing key requirement: scalability."
+        "A": "DNS changes depend on TTL values. Low TTL increases query costs but allows faster updates.",
+        "C": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": "EC2 + ALB + Auto Scaling pattern for Secure Architectures",
@@ -26983,7 +26983,7 @@
     "explanation": {
       "why_correct": "Lambda combined with EC2 and IAM provides comprehensive solution. create a new tag policy that specifies the data sensitivity tag key and the required values—meets all specified requirements.",
       "why_wrong": {
-        "B": "Missing key requirement: access-control.",
+        "B": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
         "E": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
@@ -27212,7 +27212,7 @@
     "explanation": {
       "why_correct": "EventBridge Managed service eliminates operational overhead. Use AWS STS to generate temporary credentials for the contractors—reducing manual management tasks.",
       "why_wrong": {
-        "A": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency.",
+        "A": "Manual processes are error-prone, not scalable, and require human intervention which increases operational overhead.",
         "C": "Requires additional operational management, monitoring, or manual intervention compared to simpler alternatives.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
@@ -27490,8 +27490,8 @@
       "why_correct": "Lambda Create an AWS Lambda function URL for the Lambda function—meeting all specified requirements.",
       "why_wrong": {
         "A": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "C": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "C": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
+        "D": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations."
       },
       "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
       "memorize": "Lambda + CloudFront + IAM pattern for Secure Architectures",
@@ -27648,8 +27648,8 @@
       "why_correct": "CloudWatch Use AWS Identity and Access Management IAM Access Analyzer to review all the company ' s resources and accounts—meeting all specified requirements.",
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "B": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "B": "Standard resolution is 1-minute intervals. High-resolution metrics (1-second) cost more.",
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": "IAM + CloudWatch pattern for Secure Architectures",
@@ -27860,9 +27860,9 @@
     "explanation": {
       "why_correct": "S3 offers unlimited scalable storage with 99.99% availability. IAM secures access with least privilege. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
-        "B": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "B": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + EC2 + IAM pattern for Secure Architectures",
@@ -28143,7 +28143,7 @@
     "explanation": {
       "why_correct": "RDS Create an IAM policy that includes a statement that has the Effect \" Deny \" and the NotAction \" rds: \"—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
+        "A": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines).",
         "B": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
@@ -28476,7 +28476,7 @@
       "why_wrong": {
         "A": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "B": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "C": "Missing key requirement: access-control."
+        "C": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
       "memorize": "Lambda + IAM pattern for Secure Architectures",
@@ -28707,9 +28707,9 @@
     "explanation": {
       "why_correct": "S3 provides unlimited storage with 99.999999999% durability for engineering files. CloudFront caches files at 450+ edge locations globally—reduces latency for distributed teams viewing large CAD/blueprint files. S3 Intelligent-Tiering automatically optimizes costs as files age without performance impact. EBS limited to single EC2 instance (not globally accessible). Glacier requires hours for retrieval—blocks immediate viewing access.",
       "why_wrong": {
-        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
+        "B": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "C": "EBS volumes attach to single EC2 instance in single AZ. Cannot be shared across multiple instances or accessed globally. Requires instance management and lacks S3 durability features.",
-        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
+        "D": "In-memory storage loses data on node failures. Requires separate persistent store for durability."
       },
       "exam_tips": "Identify key requirements first (cost, performance, operational overhead). Eliminate options violating hard constraints. Choose simplest solution meeting all requirements—AWS favors managed services and operational simplicity.",
       "memorize": [
@@ -28790,9 +28790,9 @@
     "explanation": {
       "why_correct": "EC2 provides managed service capabilities. ALB distributes traffic with health checks. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
+        "A": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
         "C": "Public exposure increases security risk. Resources should be private with controlled access through security groups/NACLs.",
-        "D": "Missing key requirement: scalability."
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "EC2 + RDS + VPC pattern for Secure Architectures",
@@ -28947,9 +28947,9 @@
     "explanation": {
       "why_correct": "IAM enforces least privilege access through role-based permissions and policies. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
-        "C": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required).",
       "memorize": "Key pattern: architecture with minimize_cost, operational_efficiency",
@@ -29132,9 +29132,9 @@
     "explanation": {
       "why_correct": "Lambda Auto-scales per request (1-1000+ concurrent executions). Create a secret for the database credentials in AWS Secrets Manager—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability.",
-        "D": "Missing key requirement: scalability."
+        "A": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations.",
+        "C": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
       "memorize": "EC2 + Lambda + RDS pattern for Secure Architectures",
@@ -29297,8 +29297,8 @@
       "why_correct": "EC2 combined with RDS and Auto Scaling provides comprehensive solution. Modify the RDS database security group to allow traffic from the security group that is associated with the EC2 instances that host the new application—scales automatically to handle variable load.",
       "why_wrong": {
         "A": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "B": "Missing key requirement: scalability.",
-        "D": "Missing key requirement: scalability."
+        "B": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
+        "D": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "EC2 + RDS + VPC pattern for Secure Architectures",
@@ -29407,9 +29407,9 @@
     "explanation": {
       "why_correct": "S3 Scales automatically to handle traffic spikes. Deploy the EC2 instances in a public subnet—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability.",
-        "E": "Missing key requirement: scalability."
+        "A": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
+        "C": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
+        "E": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + EC2 + VPC pattern for Secure Architectures",
@@ -29494,9 +29494,9 @@
     "explanation": {
       "why_correct": "Gateway VPC endpoint for S3 enables private connectivity from VPC to S3 without traversing internet gateway or NAT gateway. Free—no data transfer charges for S3 traffic staying within AWS network. Route tables automatically route S3 API calls through endpoint. Interface VPC endpoints charge $0.01/hour + data processing fees. VPC peering connects VPCs but does not provide S3 access control. IAM policies alone do not eliminate internet routing.",
       "why_wrong": {
-        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
+        "B": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Identify key requirements first (cost, performance, operational overhead). Eliminate options violating hard constraints. Choose simplest solution meeting all requirements—AWS favors managed services and operational simplicity.",
       "memorize": [
@@ -29579,7 +29579,7 @@
     "explanation": {
       "why_correct": "EBS provides managed service capabilities. KMS encrypts data at rest. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
+        "A": "Higher cost ($0.10/hour cluster fee) and complexity. Requires Kubernetes expertise for operation.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
@@ -29620,7 +29620,7 @@
       "why_correct": "KMS manages encryption keys with automatic rotation and CloudTrail logging for audit. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
         "A": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "B": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency.",
+        "B": "Requires provisioned capacity planning. Aurora Serverless v2 takes time to scale up during sudden traffic spikes.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
@@ -30090,9 +30090,9 @@
     "explanation": {
       "why_correct": "SNS combined with SQS and IAM provides comprehensive solution. Modify the SQS queue policies in Account B to allow only specific SNS topic ARNs from Account A to publish messages—meets all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
-        "B": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "A": "Standard queues do not guarantee message ordering. FIFO queues limited to 3,000 messages per second.",
+        "B": "Standard queues do not guarantee message ordering. FIFO queues limited to 3,000 messages per second.",
+        "D": "Standard queues do not guarantee message ordering. FIFO queues limited to 3,000 messages per second."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "IAM + KMS + SNS pattern for Secure Architectures",
@@ -30207,9 +30207,9 @@
     "explanation": {
       "why_correct": "S3 Object Lock in compliance mode provides Write-Once-Read-Many (WORM) storage for regulatory compliance. Compliance mode prevents deletion or modification by ANY user (including root account) until retention period expires—meets SEC, FINRA, HIPAA requirements. Legal hold can extend retention indefinitely without changing retention period. Governance mode allows users with special permissions to delete objects, failing compliance requirements. Versioning must be enabled with Object Lock.",
       "why_wrong": {
-        "A": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Regulatory compliance keywords: \"immutable\", \"WORM\", \"cannot delete/modify\" = S3 Object Lock compliance mode. Governance mode allows deletion with permissions—not true compliance. Legal hold = indefinite retention.",
       "memorize": [
@@ -30466,9 +30466,9 @@
     "explanation": {
       "why_correct": "S3 Object Lock in compliance mode enforces fixed retention period—no deletion or modification until period expires, even by root account. Meets regulatory requirements for immutable storage (SEC 17a-4, FINRA, CFTC). S3 Versioning required with Object Lock—preserves all versions. Vault Lock for Glacier is for archival data with retrieval delays, not immediate-access compliance. S3 Lifecycle policies can delete old versions but Object Lock protections remain on locked objects.",
       "why_wrong": {
-        "A": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Regulatory compliance keywords: \"immutable\", \"WORM\", \"cannot delete/modify\" = S3 Object Lock compliance mode. Governance mode allows deletion with permissions—not true compliance. Legal hold = indefinite retention.",
       "memorize": [
@@ -30630,8 +30630,8 @@
       "why_correct": "IAM enforces least privilege access through role-based permissions and policies. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
         "A": "Requires additional operational management, monitoring, or manual intervention compared to simpler alternatives.",
-        "B": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency.",
-        "D": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency."
+        "B": "Manual processes are error-prone, not scalable, and require human intervention which increases operational overhead.",
+        "D": "On-premises solution requires upfront capital expense, physical space, power, cooling, and dedicated staff for maintenance."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "Key pattern: architecture with minimize_cost, security, operational_efficiency",
@@ -30880,9 +30880,9 @@
     "explanation": {
       "why_correct": "DynamoDB point-in-time recovery (PITR) enabled allows export to S3 at any point within 35-day retention window. Export to S3 does NOT consume read capacity units—no impact on production workload. Exports in DynamoDB JSON or Amazon Ion format. On-demand backups create full table snapshot but require manual triggering. DynamoDB Streams capture item changes but require custom Lambda processing to export full table state.",
       "why_wrong": {
-        "B": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "C": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case.",
-        "D": "This option introduces unnecessary complexity, higher cost, or architectural mismatch for the specified requirements. Does not follow AWS best practices for this use case."
+        "B": "Cannot perform complex joins, multi-table transactions, or SQL-style analytics queries efficiently.",
+        "C": "Cannot perform complex joins, multi-table transactions, or SQL-style analytics queries efficiently.",
+        "D": "Cannot perform complex joins, multi-table transactions, or SQL-style analytics queries efficiently."
       },
       "exam_tips": "Identify key requirements first (cost, performance, operational overhead). Eliminate options violating hard constraints. Choose simplest solution meeting all requirements—AWS favors managed services and operational simplicity.",
       "memorize": [
@@ -31098,9 +31098,9 @@
     "explanation": {
       "why_correct": "EC2 combined with EBS and ALB provides comprehensive solution. Implements security best practices with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
-        "B": "Missing key requirement: encryption.",
-        "D": "Missing key requirement: encryption."
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "D": "Costs $0.40 per secret per month plus $0.05 per 10,000 API calls. Parameter Store is free for standard parameters."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "EC2 + KMS + ALB pattern for Secure Architectures",
@@ -31216,7 +31216,7 @@
       "why_correct": "Lambda Use IAM Identity Center with the existing Active Directory as the identity source—meeting all specified requirements.",
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "B": "Missing key requirement: access-control.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
       "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
@@ -31515,9 +31515,9 @@
     "explanation": {
       "why_correct": "IAM Use AWS Control Tower proactive controls to block CloudFormation stacks that match these inline policy statements—meeting all specified requirements.",
       "why_wrong": {
-        "B": "Missing key requirement: access-control.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "D": "Missing key requirement: access-control."
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "IAM + Config pattern for Secure Architectures",
@@ -31663,9 +31663,9 @@
     "explanation": {
       "why_correct": "Lambda attached to the existing IAM role to include the logs:CreateLogGroup, logs:CreateLogStream, and logs:PutLogEvents permissions—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
-        "C": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + Lambda + IAM pattern for Secure Architectures",
@@ -31701,7 +31701,7 @@
       "why_wrong": {
         "A": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "D": "Missing key requirement: access-control."
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + IAM + CloudTrail pattern for Secure Architectures",
@@ -31767,9 +31767,9 @@
     "explanation": {
       "why_correct": "IAM Attach a service control policy SCP to the organization root that denies the creation of IAM users and access keys—meeting all specified requirements.",
       "why_wrong": {
-        "B": "Missing key requirement: access-control.",
-        "C": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": "IAM + Config + GuardDuty pattern for Secure Architectures",
@@ -31879,9 +31879,9 @@
     "explanation": {
       "why_correct": "KMS manages encryption keys with automatic rotation and CloudTrail logging for audit. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
-        "B": "Missing key requirement: encryption.",
-        "D": "Missing key requirement: encryption."
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "Key pattern: architecture_design with security",
@@ -31954,8 +31954,8 @@
     "explanation": {
       "why_correct": "CloudFront caches content at 450+ edge locations globally—reduces latency for worldwide users. ALB distributes traffic with health checks. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: low-latency.",
-        "B": "Missing key requirement: low-latency.",
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
@@ -32143,9 +32143,9 @@
     "explanation": {
       "why_correct": "S3 offers unlimited scalable storage with 99.99% availability. KMS encrypts data at rest. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "B": "Missing key requirement: encryption.",
-        "C": "Missing key requirement: encryption.",
-        "E": "Missing key requirement: encryption."
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "E": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + KMS pattern for Secure Architectures",
@@ -32295,7 +32295,7 @@
     "explanation": {
       "why_correct": "EC2 Use Amazon-issued AWS Certificate Manager (ACM) certificates on the EC2 instances and the ALB—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
+        "A": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
         "B": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
@@ -32367,8 +32367,8 @@
       "why_correct": "CloudWatch Use AWS Identity and Access Management (IAM) Access Analyzer to review all the company ' s resources and accounts—meeting all specified requirements.",
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "B": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "B": "Standard resolution is 1-minute intervals. High-resolution metrics (1-second) cost more.",
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
       "memorize": "IAM + CloudWatch pattern for Secure Architectures",
@@ -32482,7 +32482,7 @@
       "why_correct": "Lambda Create an AWS Config rule for Amazon EBS to evaluate if a volume is encrypted and to flag the volume if it is not encrypted—meeting all specified requirements.",
       "why_wrong": {
         "A": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
-        "B": "Missing key requirement: encryption.",
+        "B": "Attached to single EC2 instance in same AZ. Multi-Attach limited to Provisioned IOPS volumes and specific instance types.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
@@ -32521,7 +32521,7 @@
     "explanation": {
       "why_correct": "EC2 Create individual IAM roles based on the specific needs of each microservice—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
         "B": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
@@ -32591,7 +32591,7 @@
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
         "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "C": "Missing key requirement: encryption."
+        "C": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "EC2 + RDS + KMS pattern for Secure Architectures",
@@ -32898,9 +32898,9 @@
     "explanation": {
       "why_correct": "IAM enforces least privilege access through role-based permissions and policies. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "B": "Missing key requirement: access-control.",
-        "C": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "Key pattern: architecture with minimize_cost, security, operational_efficiency",
@@ -33051,8 +33051,8 @@
       "why_correct": "S3 offers unlimited scalable storage with 99.99% availability. KMS encrypts data at rest. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "B": "Missing key requirement: encryption.",
-        "D": "Missing key requirement: encryption."
+        "B": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "D": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + KMS pattern for Secure Architectures",
@@ -33204,9 +33204,9 @@
     "explanation": {
       "why_correct": "S3 Create an IAM policy that lists the full Amazon Resource Name (ARN) for each S3 bucket—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
-        "C": "Missing key requirement: access-control.",
-        "D": "Missing key requirement: access-control."
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "Requires defining task definitions, services, and managing cluster capacity with EC2 launch type.",
+        "D": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + IAM + ECS pattern for Secure Architectures",
@@ -33362,8 +33362,8 @@
     "explanation": {
       "why_correct": "Lambda fully serverless—eliminates server management, patching, and capacity planning. IAM secures access with least privilege. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
-        "B": "Missing key requirement: access-control.",
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
         "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
@@ -33545,9 +33545,9 @@
     "explanation": {
       "why_correct": "NLB Use AWS Shield Advanced to provide enhanced DDoS protection and prevent unauthorized access attempts—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: low-latency.",
-        "B": "Missing key requirement: low-latency.",
-        "C": "Missing key requirement: low-latency."
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "VPC + NLB + WAF pattern for Secure Architectures",
@@ -33581,7 +33581,7 @@
     "explanation": {
       "why_correct": "S3 offers unlimited scalable storage with 99.99% availability. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "B": "Missing key requirement: encryption.",
+        "B": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
         "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
@@ -33679,9 +33679,9 @@
     "explanation": {
       "why_correct": "S3 Configure a resource-based policy for the S3 bucket in Account B to allow access from an IAM role in Account A—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
         "B": "Public exposure increases security risk. Resources should be private with controlled access through security groups/NACLs.",
-        "D": "Missing key requirement: access-control."
+        "D": "EC2 storage lacks native replication, versioning, and lifecycle management that S3 provides natively."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + EC2 + IAM pattern for Secure Architectures",
@@ -34075,8 +34075,8 @@
     "explanation": {
       "why_correct": "IAM Create an IAM role in the company ' s account to delegate access to the vendor ' s IAM role—meeting all specified requirements.",
       "why_wrong": {
-        "B": "Missing key requirement: access-control.",
-        "C": "Missing key requirement: access-control.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution.",
         "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
@@ -34108,8 +34108,8 @@
     "explanation": {
       "why_correct": "S3 offers unlimited scalable storage with 99.99% availability. IAM secures access with least privilege. KMS encrypts data at rest. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
-        "C": "Missing key requirement: encryption.",
+        "A": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "Costs $0.40 per secret per month plus $0.05 per 10,000 API calls. Parameter Store is free for standard parameters.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
@@ -34421,7 +34421,7 @@
       "why_correct": "EC2 Scales automatically to handle traffic spikes. Deploy an Application Load Balancer with a target group that contains the application servers ' Auto Scaling group—meeting all specified requirements.",
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "B": "Missing key requirement: scalability.",
+        "B": "Peering connections do not support transitive routing. Each VPC peering must be explicitly configured.",
         "C": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
@@ -34458,8 +34458,8 @@
     "explanation": {
       "why_correct": "EC2 Scales automatically to handle traffic spikes. Configure the inbound rule of the database security group to allow access from the web-servers security group—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: scalability.",
-        "C": "Missing key requirement: scalability.",
+        "A": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
+        "C": "This option does not meet the core requirements effectively compared to the correct solution.",
         "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
@@ -34803,8 +34803,8 @@
     "explanation": {
       "why_correct": "VPC provides network isolation with subnets, security groups, and NACLs for granular control. IAM secures access with least privilege. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "A": "Missing key requirement: encryption.",
-        "B": "Missing key requirement: encryption.",
+        "A": "Peering connections do not support transitive routing. Each VPC peering must be explicitly configured.",
+        "B": "This option does not meet the core requirements effectively compared to the correct solution.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
@@ -34958,7 +34958,7 @@
       "why_correct": "Lambda Set up email receiving in Amazon Simple Email Service {Amazon SES)—meeting all specified requirements.",
       "why_wrong": {
         "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "C": "Missing key requirement: low-latency.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
         "D": "Overly complex architecture with unnecessary service integration. Additional components increase cost, latency, and operational complexity without proportional benefit."
       },
       "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
@@ -35205,8 +35205,8 @@
       "why_correct": "S3 offers unlimited scalable storage with 99.99% availability. KMS encrypts data at rest. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "B": "Missing key requirement: encryption.",
-        "C": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency."
+        "B": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "Manual processes are error-prone, not scalable, and require human intervention which increases operational overhead."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + KMS pattern for Secure Architectures",
@@ -35252,7 +35252,7 @@
       "why_wrong": {
         "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
-        "D": "Missing key requirement: encryption."
+        "D": "Requires capacity planning, does not auto-scale compute, and has limited read replica count (5 for most engines)."
       },
       "exam_tips": "Multi-select question—select ALL correct answers (2 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
       "memorize": "RDS + KMS pattern for Secure Architectures",
@@ -35414,9 +35414,9 @@
     "explanation": {
       "why_correct": "Lambda auto-scales per request with sub-second invocation times. Implements defense-in-depth with encryption, access control, and network isolation.",
       "why_wrong": {
-        "B": "Missing key requirement: low-latency.",
-        "C": "Missing key requirement: low-latency.",
-        "D": "Missing key requirement: low-latency."
+        "B": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "C": "Eventual consistency for overwrite PUTS and DELETES. No file locking or POSIX semantics for concurrent writes.",
+        "D": "Has 15-minute execution limit, 10GB memory maximum, and cold start latency for infrequent invocations."
       },
       "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
       "memorize": "S3 + Lambda + Kinesis pattern for Secure Architectures",
@@ -35449,8 +35449,8 @@
     "explanation": {
       "why_correct": "S3 Create individual IAM roles based on the specific needs of each microservice—meeting all specified requirements.",
       "why_wrong": {
-        "A": "Missing key requirement: access-control.",
-        "B": "Missing key requirement: access-control.",
+        "A": "This option does not meet the core requirements effectively compared to the correct solution.",
+        "B": "Requires manual provisioning, patching, scaling configuration, and you pay for running instances even during idle periods.",
         "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
       },
       "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",

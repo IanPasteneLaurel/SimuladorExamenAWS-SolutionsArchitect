@@ -3,7 +3,9 @@ const fs = require('fs');
 console.log('🔍 ANÁLISIS ESTRICTO DE PERSONALIZACIÓN - 923 PREGUNTAS\n');
 console.log('Criterios más rigurosos enfocados en DETALLE y PERSONALIZACIÓN\n');
 
-const data = JSON.parse(fs.readFileSync('../app/src/data/SAA-C03-QuestionBank-923.json', 'utf8'));
+const path = require('path');
+const dbPath = path.join(__dirname, '../app/src/data/SAA-C03-QuestionBank-923.json');
+const data = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
 
 // Patrones de texto genérico a detectar
 const genericPatterns = {
