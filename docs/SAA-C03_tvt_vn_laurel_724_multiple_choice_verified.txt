@@ -1,0 +1,111 @@
+VERIFICACIÓN DE PREGUNTAS DE SELECCIÓN MÚLTIPLE
+================================================================================
+
+Total de preguntas verificadas: 85
+Confirmadas como selección múltiple: 85
+Con respuesta única: 0
+No encontradas: 0
+
+DISTRIBUCIÓN FINAL:
+--------------------------------------------------------------------------------
+Preguntas de selección simple: 838
+Preguntas de selección múltiple: 85
+Total: 923
+
+PREGUNTAS DE SELECCIÓN MÚLTIPLE POR NÚMERO DE RESPUESTAS:
+================================================================================
+
+
+2 respuestas correctas (4 preguntas):
+--------------------------------------------------------------------------------
+Pregunta #60: B,D
+Pregunta #645: B,E
+Pregunta #770: C,D
+Pregunta #796: C,E
+
+3 respuestas correctas (64 preguntas):
+--------------------------------------------------------------------------------
+Pregunta #16: B,C,E
+Pregunta #18: B,E,E
+Pregunta #26: B,D,E
+Pregunta #32: C,E,E
+Pregunta #42: A,B,E
+Pregunta #64: A,E,E
+Pregunta #85: A,B,E
+Pregunta #91: D,E,E
+Pregunta #98: A,D,E
+Pregunta #99: A,D,E
+Pregunta #101: B,E,E
+Pregunta #103: B,C,E
+Pregunta #107: A,D,E
+Pregunta #114: A,E,E
+Pregunta #126: A,D,E
+Pregunta #137: A,C,E
+Pregunta #139: B,D,E
+Pregunta #153: B,E,E
+Pregunta #176: A,B,E
+Pregunta #188: C,E,E
+Pregunta #198: A,D,E
+Pregunta #207: D,E,E
+Pregunta #208: B,E,E
+Pregunta #215: C,D,E
+Pregunta #229: A,D,E
+Pregunta #273: A,D,E
+Pregunta #275: B,D,E
+Pregunta #278: A,B,E
+Pregunta #293: A,D,E
+Pregunta #334: C,D,E
+Pregunta #343: B,C,E
+Pregunta #385: B,C,E
+Pregunta #401: B,D,E
+Pregunta #419: B,D,E
+Pregunta #441: A,E,E
+Pregunta #447: A,C,E
+Pregunta #451: A,C,E
+Pregunta #463: B,E,E
+Pregunta #484: B,E,E
+Pregunta #501: B,D,E
+Pregunta #505: C,D,E
+Pregunta #557: B,C,E
+Pregunta #617: B,C,E
+Pregunta #621: C,E,E
+Pregunta #640: A,E,E
+Pregunta #664: B,E,E
+Pregunta #678: A,B,D
+Pregunta #688: A,D,E
+Pregunta #689: A,C,E
+Pregunta #699: B,E,E
+Pregunta #722: A,B,E
+Pregunta #736: A,E,E
+Pregunta #751: B,C,E
+Pregunta #754: B,D,E
+Pregunta #757: B,E,E
+Pregunta #772: A,D,E
+Pregunta #805: B,E,E
+Pregunta #821: B,E,E
+Pregunta #830: A,C,E
+Pregunta #840: D,E,E
+Pregunta #884: B,E,E
+Pregunta #893: A,C,E
+Pregunta #905: B,E,E
+Pregunta #922: B,C,E
+
+4 respuestas correctas (17 preguntas):
+--------------------------------------------------------------------------------
+Pregunta #12: A,C,F,E
+Pregunta #132: A,C,E,E
+Pregunta #274: A,C,E,E
+Pregunta #296: A,D,E,E
+Pregunta #297: A,B,C,E
+Pregunta #352: B,C,D,E
+Pregunta #368: A,B,C,E
+Pregunta #412: A,B,F,E
+Pregunta #445: A,D,F,E
+Pregunta #517: A,C,E,E
+Pregunta #525: A,B,C,E
+Pregunta #676: A,C,D,E
+Pregunta #760: B,D,F,E
+Pregunta #766: A,D,F,E
+Pregunta #767: A,B,D,E
+Pregunta #778: B,C,E,E
+Pregunta #885: A,C,E,E

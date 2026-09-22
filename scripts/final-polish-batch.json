@@ -1,0 +1,515 @@
+[
+  {
+    "question_id": 868,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3. S3 offers 11 nines durability, multiple storage classes, and lifecycle policies for cost optimization.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": [
+        "S3 Standard: 99.99% availability, 11 nines durability",
+        "S3 lifecycle transitions: free operation",
+        "Reserved capacity: 1-3 year commitment for savings",
+        "Serverless: pay only for what you use",
+        "Pattern for Cost-Optimized Architectures"
+      ],
+      "aws_services": [
+        "S3"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures"
+    }
+  },
+  {
+    "question_id": 870,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using . Cost optimization involves right-sizing resources, using reserved capacity for steady workloads, and leveraging serverless for variable demand.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "Reserved capacity: 1-3 year commitment for savings",
+        "Serverless: pay only for what you use",
+        "Pattern for Cost-Optimized Architectures"
+      ],
+      "aws_services": [
+        "Direct Connect"
+      ],
+      "architectural_concept": "Performance"
+    }
+  },
+  {
+    "question_id": 887,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3. S3 offers 11 nines durability, multiple storage classes, and lifecycle policies for cost optimization.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": [
+        "S3 Standard: 99.99% availability, 11 nines durability",
+        "S3 lifecycle transitions: free operation",
+        "Reserved capacity: 1-3 year commitment for savings",
+        "Serverless: pay only for what you use",
+        "Pattern for Cost-Optimized Architectures"
+      ],
+      "aws_services": [
+        "S3"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures"
+    }
+  },
+  {
+    "question_id": 893,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using . Cost optimization involves right-sizing resources, using reserved capacity for steady workloads, and leveraging serverless for variable demand.",
+      "why_wrong": {
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "E": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (2 required).",
+      "memorize": [
+        "Reserved capacity: 1-3 year commitment for savings",
+        "Serverless: pay only for what you use",
+        "Pattern for Cost-Optimized Architectures"
+      ],
+      "aws_services": [
+        "AWS"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures"
+    }
+  },
+  {
+    "question_id": 40,
+    "explanation": {
+      "why_correct": "Optimizes performance by: Performance optimization uses caching layers, read replicas, content delivery networks, and in-memory databases for low latency.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "RDS Multi-AZ: automatic failover ~60 seconds",
+        "RDS Read Replicas: async replication, up to 5 per primary",
+        "Pattern for High-Performing Architectures"
+      ],
+      "aws_services": [
+        "RDS"
+      ],
+      "architectural_concept": "Performance"
+    }
+  },
+  {
+    "question_id": 50,
+    "explanation": {
+      "why_correct": "Optimizes performance by: Performance optimization uses caching layers, read replicas, content delivery networks, and in-memory databases for low latency.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "Pattern for High-Performing Architectures"
+      ],
+      "aws_services": [
+        "AWS"
+      ],
+      "architectural_concept": "Performance"
+    }
+  },
+  {
+    "question_id": 71,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using SQS. Performance optimization uses caching layers, read replicas, content delivery networks, and in-memory databases for low latency.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "Pattern for High-Performing Architectures"
+      ],
+      "aws_services": [
+        "SQS"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 95,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using . Performance optimization uses caching layers, read replicas, content delivery networks, and in-memory databases for low latency.",
+      "why_wrong": {
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "Pattern for High-Performing Architectures"
+      ],
+      "aws_services": [
+        "Aurora"
+      ],
+      "architectural_concept": "Real-time Processing"
+    }
+  },
+  {
+    "question_id": 220,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using DynamoDB. DynamoDB delivers single-digit millisecond latency with automatic scaling and built-in replication.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "DynamoDB: single-digit ms latency, 400KB item size limit",
+        "DynamoDB auto-scaling: target utilization 70%",
+        "Pattern for High-Performing Architectures"
+      ],
+      "aws_services": [
+        "DynamoDB"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 346,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using Athena. Performance optimization uses caching layers, read replicas, content delivery networks, and in-memory databases for low latency.",
+      "why_wrong": {
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "Pattern for High-Performing Architectures"
+      ],
+      "aws_services": [
+        "Athena"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 347,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using VPC. VPC provides network isolation with subnets, security groups, NACLs, and route tables for traffic control.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "VPC: 5 VPCs per region default, can request increase",
+        "Security Groups: stateful, NACLs: stateless",
+        "Pattern for High-Performing Architectures"
+      ],
+      "aws_services": [
+        "VPC"
+      ],
+      "architectural_concept": "Performance"
+    }
+  },
+  {
+    "question_id": 434,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3. S3 offers 11 nines durability, multiple storage classes, and lifecycle policies for cost optimization.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": [
+        "S3 Standard: 99.99% availability, 11 nines durability",
+        "S3 lifecycle transitions: free operation",
+        "Pattern for High-Performing Architectures"
+      ],
+      "aws_services": [
+        "S3"
+      ],
+      "architectural_concept": "Real-time Processing"
+    }
+  },
+  {
+    "question_id": 464,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using VPC. VPC provides network isolation with subnets, security groups, NACLs, and route tables for traffic control.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "VPC: 5 VPCs per region default, can request increase",
+        "Security Groups: stateful, NACLs: stateless",
+        "Pattern for High-Performing Architectures"
+      ],
+      "aws_services": [
+        "VPC"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 497,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using DynamoDB. DynamoDB delivers single-digit millisecond latency with automatic scaling and built-in replication.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "DynamoDB: single-digit ms latency, 400KB item size limit",
+        "DynamoDB auto-scaling: target utilization 70%",
+        "Pattern for High-Performing Architectures"
+      ],
+      "aws_services": [
+        "DynamoDB"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 80,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2. Security best practices include encryption at rest and in transit, least privilege access, network segmentation, and audit logging.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "EC2 Reserved: 1 or 3 year terms, up to 72% savings",
+        "EC2 Spot: up to 90% savings, 2-minute interruption notice",
+        "Pattern for Secure Architectures"
+      ],
+      "aws_services": [
+        "EC2"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 106,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using IAM. IAM provides fine-grained access control with policies, roles, and groups. Supports MFA and temporary credentials via STS.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "IAM: Free service, supports 5000 users/account default limit",
+        "IAM roles provide temporary credentials via STS",
+        "Pattern for Secure Architectures"
+      ],
+      "aws_services": [
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 183,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using IAM. IAM provides fine-grained access control with policies, roles, and groups. Supports MFA and temporary credentials via STS.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "IAM: Free service, supports 5000 users/account default limit",
+        "IAM roles provide temporary credentials via STS",
+        "Pattern for Secure Architectures"
+      ],
+      "aws_services": [
+        "IAM"
+      ],
+      "architectural_concept": "Security"
+    }
+  },
+  {
+    "question_id": 246,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using IAM. IAM provides fine-grained access control with policies, roles, and groups. Supports MFA and temporary credentials via STS.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "IAM: Free service, supports 5000 users/account default limit",
+        "IAM roles provide temporary credentials via STS",
+        "Pattern for Secure Architectures"
+      ],
+      "aws_services": [
+        "IAM"
+      ],
+      "architectural_concept": "Security"
+    }
+  },
+  {
+    "question_id": 263,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using Kinesis. Security best practices include encryption at rest and in transit, least privilege access, network segmentation, and audit logging.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "Pattern for Secure Architectures"
+      ],
+      "aws_services": [
+        "Kinesis"
+      ],
+      "architectural_concept": "Performance"
+    }
+  },
+  {
+    "question_id": 280,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using . Security best practices include encryption at rest and in transit, least privilege access, network segmentation, and audit logging.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "Pattern for Secure Architectures"
+      ],
+      "aws_services": [
+        "Step Functions"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 352,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using . Security best practices include encryption at rest and in transit, least privilege access, network segmentation, and audit logging.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "E": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "F": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (3 required).",
+      "memorize": [
+        "Pattern for Secure Architectures"
+      ],
+      "aws_services": [
+        "AWS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 414,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using Route 53. Route 53 offers multiple routing policies (weighted, latency, geolocation) with health checks for failover.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "Pattern for Secure Architectures"
+      ],
+      "aws_services": [
+        "Route 53"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 683,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using IAM. IAM provides fine-grained access control with policies, roles, and groups. Supports MFA and temporary credentials via STS.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "IAM: Free service, supports 5000 users/account default limit",
+        "IAM roles provide temporary credentials via STS",
+        "Pattern for Secure Architectures"
+      ],
+      "aws_services": [
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 743,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using VPC. VPC provides network isolation with subnets, security groups, NACLs, and route tables for traffic control.",
+      "why_wrong": {
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": [
+        "VPC: 5 VPCs per region default, can request increase",
+        "Security Groups: stateful, NACLs: stateless",
+        "Pattern for Secure Architectures"
+      ],
+      "aws_services": [
+        "VPC"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 884,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2. Security best practices include encryption at rest and in transit, least privilege access, network segmentation, and audit logging.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (2 required).",
+      "memorize": [
+        "EC2 Reserved: 1 or 3 year terms, up to 72% savings",
+        "EC2 Spot: up to 90% savings, 2-minute interruption notice",
+        "Pattern for Secure Architectures"
+      ],
+      "aws_services": [
+        "EC2"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  }
+]

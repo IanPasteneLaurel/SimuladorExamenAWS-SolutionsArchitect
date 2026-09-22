@@ -1,0 +1,613 @@
+[
+  {
+    "question_id": 50,
+    "domain": "High-Performing Architectures",
+    "multi_select": false,
+    "question_en": "A company ' s SAP application has a backend SQL Server database in an on-premises environment. The company wants to migrate its on-premises application and database server to AWS. The company needs an instance type that meets the high demands of its SAP database. On-premises performance data shows that both the SAP application and the database have high memory utilization. Which solution will meet these requirements?",
+    "options": {
+      "A": "Use the compute optimized Instance family for the application Use the memory optimized instance family for the database.",
+      "B": "Use the storage optimized instance family for both the application and the database",
+      "C": "Use the memory optimized instance family for both the application and the database",
+      "D": "Use the high performance computing (HPC) optimized instance family for the application. Use the memory optimized instance family for the database."
+    },
+    "correct_answer": "C",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados. Mejora rendimiento y reduce latencia.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "Pattern para High-Performing Architectures",
+      "aws_services": [
+        "AWS"
+      ],
+      "architectural_concept": "Performance"
+    }
+  },
+  {
+    "question_id": 150,
+    "domain": "High-Performing Architectures",
+    "multi_select": false,
+    "question_en": "A company has 15 employees. The company stores employee start dates in an Amazon DynamoDB table. The company wants to send an email message to each employee on the day of the employee ' s work anniversary.\n\n\n\nWhich solution will meet these requirements with the MOST operational efficiency?",
+    "options": {
+      "A": "Create a script that scans the DynamoDB table and uses Amazon Simple Notification Service (Amazon SNS) to send email messages to employees when necessary. Use a cron job to run this script every day on an Amazon EC2 instance.",
+      "B": "Create a script that scans the DynamoDB table and uses Amazon Simple Queue Service {Amazon SQS) to send email messages to employees when necessary. Use a cron job to run this script every day on an Amazon EC2 instance.",
+      "C": "Create an AWS Lambda function that scans the DynamoDB table and uses Amazon Simple Notification Service (Amazon SNS) to send email messages to employees when necessary. Schedule this Lambda function to run every day.",
+      "D": "Create an AWS Lambda function that scans the DynamoDB table and uses Amazon Simple Queue Service (Amazon SQS) to send email messages to employees when necessary Schedule this Lambda function to run every day."
+    },
+    "correct_answer": "C",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "EC2 + Lambda + DynamoDB para High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "Lambda",
+        "DynamoDB",
+        "SNS",
+        "SQS"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 250,
+    "domain": "Resilient Architectures",
+    "multi_select": false,
+    "question_en": "A company wants to use AWS to scale up the number of its long-running critical simulations. The company wants to perform large-scale parallel simulations that run for days. The simulations cannot be stopped. The company must store the output for later review by using durable and fault-tolerant storage. The output includes structured and unstructured data. The structured data includes simulation results. The unstructured data includes images up to 1 MB in size. Which solution will meet these requirements?",
+    "options": {
+      "A": "Use AWS Lambda functions to perform simulations. Store structured data in Amazon RDS. Store unstructured data in Amazon S3.",
+      "B": "Use AWS Batch to perform simulations. Store structured data in Amazon RDS. Store unstructured data in Amazon S3.",
+      "C": "Use Amazon EC2 Spot Instances to perform simulations. Store structured data in Amazon RDS. Store unstructured data in Amazon DynamoDB.",
+      "D": "Use AWS Batch to perform simulations. Store all data in an Amazon EBS volume."
+    },
+    "correct_answer": "B",
+    "explanation": {
+      "why_correct": "AWS Batch designed for long-running parallel simulations—manages job scheduling, compute environments, queues. RDS provides durable, fault-tolerant relational storage for structured simulation results. S3 offers highly durable (11 nines) object storage for unstructured images. Reliable capacity for non-interruptible jobs.",
+      "why_wrong": {
+        "A": "Lambda 15-minute maximum execution time insufficient for simulations running days. Can't use Lambda for long-running workloads.",
+        "C": "Spot Instances can be interrupted—violates 'cannot be stopped' requirement. DynamoDB 400KB item limit potentially inadequate for simulation data.",
+        "D": "Single EBS volume not durable shared storage across parallel workers. EBS single-AZ—lacks fault tolerance for critical data."
+      },
+      "exam_tips": "For long-running parallel compute: AWS Batch (not Lambda <15 min). For non-interruptible: avoid Spot (can interrupt). Structured data → RDS, unstructured → S3. Lambda max 15 min, Batch for days.",
+      "memorize": "Long parallel simulations = AWS Batch + RDS (structured) + S3 (unstructured)",
+      "aws_services": [
+        "AWS Batch",
+        "Amazon RDS",
+        "Amazon S3"
+      ],
+      "architectural_concept": "Batch Computing with Mixed Storage"
+    }
+  },
+  {
+    "question_id": 350,
+    "domain": "Resilient Architectures",
+    "multi_select": false,
+    "question_en": "A company runs a non-production application on an Amazon EC2 instance that has the Amazon CloudWatch agent installed. The CloudWatch agent monitors application processes and sends custom metrics to CloudWatch. The application has a critical bug that causes crashes that require an instance reboot. The company does not currently have the resources to address the bug, but the server needs to remain as operational as possible. The company manually reboots the instance several times each day. The company needs a solution to automate the instance reboots until the company can address the root cause of the bug. Which solution will meet this requirement with the LEAST amount of operational overhead?",
+    "options": {
+      "A": "Use a CloudWatch alarm state change event to invoke Amazon EventBridge to run AWS Systems Manager Run Command to restart the instance.",
+      "B": "Use a CloudWatch alarm to invoke an AWS Lambda function to run AWS Systems Manager Run Command to restart the instance.",
+      "C": "Use a CloudWatch alarm to invoke an Amazon SNS topic that notifies the operations team to restart the instance.",
+      "D": "Use a CloudWatch alarm to invoke an AWS Lambda function that automatically notifies the company through chat to restart the instance."
+    },
+    "correct_answer": "A",
+    "explanation": {
+      "why_correct": "CloudWatch alarm state changes se publican automáticamente a EventBridge. EventBridge puede invocar Systems Manager Run Command para reiniciar instancias EC2 remotamente. Esta solución es completamente serverless, sin código custom Lambda, mínima overhead operacional y usa servicios nativos AWS.",
+      "why_wrong": {
+        "B": "Funcional pero agrega Lambda innecesario. Menos eficiente que integración directa EventBridge → SSM Run Command. Más overhead operacional.",
+        "C": "SNS requiere intervención humana para reiniciar. No cumple requisito de automatización.",
+        "D": "Similar a C: notificación vía chat requiere acción manual. No automatiza el reinicio."
+      },
+      "exam_tips": "'Least operational overhead' con automatización = servicios nativos integrados sin custom code. CloudWatch → EventBridge → SSM es patrón común. Lambda agrega overhead a menos que se requiera lógica custom.",
+      "memorize": "CloudWatch alarm → EventBridge → SSM Run Command = reinicio automático sin Lambda.",
+      "aws_services": [
+        "Amazon CloudWatch",
+        "Amazon EventBridge",
+        "AWS Systems Manager",
+        "AWS Lambda"
+      ],
+      "architectural_concept": "Event-Driven Automation"
+    }
+  },
+  {
+    "question_id": 450,
+    "domain": "High-Performing Architectures",
+    "multi_select": false,
+    "question_en": "A company is developing a rating system for its ecommerce web application. The company needs a solution to save ratings that users submit in an Amazon DynamoDB table. The company wants to ensure that developers do not need to interact directly with the DynamoDB table. The solution must be scalable and reusable. Which solution will meet these requirements with the LEAST operational overhead?",
+    "options": {
+      "A": "Create an Application Load Balancer (ALB). Create an AWS Lambda function, and set the function as a target group in the ALB. Invoke the Lambda function by using the put_item method through the ALB.",
+      "B": "Create an AWS Lambda function. Configure the Lambda function to interact with the DynamoDB table by using the put-item method from Boto3. Invoke the Lambda function from the web application.",
+      "C": "Create an Amazon Simple Queue Service (Amazon SQS) queue and an AWS Lambda function that has an SQS trigger type. Instruct the developers to add customer ratings to the SQS queue as JSON messages. Configure the Lambda function to fetch the ratings from the queue and store the ratings in DynamoDB.",
+      "D": "Create an Amazon API Gateway REST API Define a resource and create a new POST method Choose AWS as the integration type, and select DynamoDB as the service. Set the action to PutItem."
+    },
+    "correct_answer": "D",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "C": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "Lambda + DynamoDB + ALB para Scalability",
+      "aws_services": [
+        "Lambda",
+        "DynamoDB",
+        "ALB",
+        "SQS",
+        "API Gateway"
+      ],
+      "architectural_concept": "Scalability"
+    }
+  },
+  {
+    "question_id": 550,
+    "domain": "High-Performing Architectures",
+    "multi_select": false,
+    "question_en": "A company wants to build a generative AI (GenAI) model for a medical use case. The company has 50 TB of medical image data that is stored in an Amazon S3 bucket. The company plans to train the GenAI model by using Amazon SageMaker AI with multiple GPU-powered instances. The company needs a storage solution that helps ensure that the data can be loaded from storage fast enough to avoid GPU instance idle time. The storage solution needs to achieve tens of gigabits per second (Gbps) of throughput. Which solution will meet these requirements?",
+    "options": {
+      "A": "Configure the existing S3 bucket as the SageMaker AI data source by using file mode.",
+      "B": "Create an Amazon FSx for Lustre file system. Move the data from Amazon S3 to Lustre by using data repository association. Mount the file system on the instances.",
+      "C": "Configure the existing S3 bucket as the SageMaker AI data source by using fast file mode.",
+      "D": "Move the data to the S3 Glacier Flexible Retrieval storage class. Configure the S3 bucket as the SageMaker AI data source by using fast file mode."
+    },
+    "correct_answer": "B",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "C": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "S3 para Performance",
+      "aws_services": [
+        "S3"
+      ],
+      "architectural_concept": "Performance"
+    }
+  },
+  {
+    "question_id": 650,
+    "domain": "High-Performing Architectures",
+    "multi_select": false,
+    "question_en": "A solutions architect needs to implement a solution that can handle up to 5,000 messages per second. The solution must publish messages as events to multiple consumers. The messages are up to 500 KB in size. The message consumers need to have the ability to use multiple programming languages to consume the messages with minimal latency. The solution must retain published messages for more than 3 months. The solution must enforce strict ordering of the messages.",
+    "options": {
+      "A": "Publish messages to an Amazon Kinesis Data Streams data stream. Enable enhanced fan-out. Ensure that consumers ingest the data stream by using dedicated throughput.",
+      "B": "Publish messages to an Amazon Simple Notification Service (Amazon SNS) topic. Ensure that consumers use an Amazon Simple Queue Service (Amazon SQS) FIFO queue to subscribe to the topic.",
+      "C": "Publish messages to Amazon EventBridge. Allow each consumer to create rules to deliver messages to the consumer ' s own target.",
+      "D": "Publish messages to an Amazon Simple Notification Service (Amazon SNS) topic. Ensure that consumers use Amazon Data Firehose to subscribe to the topic."
+    },
+    "correct_answer": "A",
+    "explanation": {
+      "why_correct": "Kinesis Data Streams supports 5K msgs/sec, 500KB messages, strict ordering per shard, 365-day retention. Enhanced fan-out for multiple consumers with dedicated throughput.",
+      "why_wrong": {
+        "B": "SNS doesn't enforce ordering. SQS FIFO 256KB limit, lower throughput.",
+        "C": "EventBridge no ordering guarantees, 24-hour retention only.",
+        "D": "SNS + Firehose batch-oriented, no strict ordering."
+      },
+      "exam_tips": "Kinesis = high throughput + ordering + long retention + multi-consumer. SQS FIFO = ordering but lower scale. Choose based on requirements.",
+      "memorize": "Kinesis Data Streams = 5K msgs/sec + ordering + 365-day retention + enhanced fan-out.",
+      "aws_services": [
+        "Kinesis Data Streams",
+        "Enhanced Fan-Out"
+      ],
+      "architectural_concept": "High-Throughput Ordered Streaming"
+    }
+  },
+  {
+    "question_id": 750,
+    "domain": "Resilient Architectures",
+    "multi_select": false,
+    "question_en": "A company runs business applications on AWS. The company uses 50 AWS accounts, thousands of VPCs, and three AWS Regions across the United States and Europe. The company has an existing AWS Direct Connect connection that connects an on-premises data center to a single Region. A solutions architect needs to establish network connectivity between the on-premises data center and the remaining two Regions. The solutions architect must also establish connectivity between the VPCs. Onpremises users and applications must be able to connect to applications that run in the VPCs. The solutions architect creates a transit gateway in each Region and configures the transit gateways as inter-Region peers. What should the solutions architect do next to meet these requirements?",
+    "options": {
+      "A": "Create a private virtual interface (VIF) with a gateway type of virtual private gateway. Configure the private VIF to use a virtual private gateway that is associated with one of the VPCs.",
+      "B": "Create a private virtual interface (VIF) to a new Direct Connect gateway. Associate the new Direct Connect gateway with a virtual private gateway in each VPC.",
+      "C": "Create a transit virtual interface (VIF) with a gateway association to a new Direct Connect gateway. Associate each transit gateway with the new Direct Connect gateway.",
+      "D": "Create an AWS Site-to-Site VPN connection that uses a public virtual interface (VIF) for the Direct Connect connection. Attach the Site-to-Site VPN connection to the transit gateways."
+    },
+    "correct_answer": "C",
+    "explanation": {
+      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de resilient architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_wrong": {
+        "A": "No cumple requisitos clave del escenario o usa servicio subóptimo.",
+        "B": "No cumple requisitos clave del escenario o usa servicio subóptimo.",
+        "D": "No cumple requisitos clave del escenario o usa servicio subóptimo."
+      },
+      "exam_tips": "Identifica keywords del dominio Resilient Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
+      "memorize": "Alta disponibilidad + resiliencia = servicios managed AWS.",
+      "aws_services": [
+        "Auto Scaling",
+        "Application Load Balancer",
+        "Amazon RDS",
+        "Amazon Aurora"
+      ],
+      "architectural_concept": "Resilient Architectures"
+    }
+  },
+  {
+    "question_id": 123,
+    "domain": "Cost-Optimized Architectures",
+    "multi_select": false,
+    "question_en": "A solutions architect is creating a data processing job that runs once daily and can take up to 2 hours to complete. If the job is interrupted, it has to restart from the beginning. How should the solutions architect address this issue in the MOST cost-effective manner?",
+    "options": {
+      "A": "Create a script that runs locally on an Amazon EC2 Reserved Instance that is triggered by a cron job.",
+      "B": "Create an AWS Lambda function triggered by an Amazon EventBridge scheduled event.",
+      "C": "Use an Amazon Elastic Container Service (Amazon ECS) Fargate task triggered by an Amazon EventBridge scheduled event.",
+      "D": "Use an Amazon Elastic Container Service (Amazon ECS) task running on Amazon EC2 triggered by an Amazon EventBridge scheduled event."
+    },
+    "correct_answer": "C",
+    "explanation": {
+      "full_text": "AWS Fargate with Amazon ECS is a serverless, fully managed compute engine for containers. Fargate eliminates the need to provision or manage servers, and is ideal for periodic, long-running batch jobs. You only pay for the resources consumed during job execution, making it cost-effective for jobs that run infrequently.",
+      "why_correct": "Fargate supports up to 2 hours easily (no 15-min limit like Lambda). Serverless—no EC2 management. Pay-per-use pricing (per-second, 1-min minimum). EventBridge schedules daily execution. If interrupted, container restarts from beginning (requirement stated).",
+      "why_wrong": {
+        "A": "Reserved Instances require 1-3 year commitment for workload running once daily for 2 hours. Wastes 22 hours/day of paid capacity. RI optimizes for 24/7 workloads, not scheduled batch jobs.",
+        "B": "Lambda maximum execution time = 15 minutes. Job takes up to 2 hours. Lambda would timeout and fail. Wrong compute service for long-running tasks.",
+        "D": "ECS on EC2 requires provisioning, patching, and managing EC2 instances. Higher operational overhead than Fargate. Still pay for EC2 instance hours even when job not running (22hrs/day waste)."
+      },
+      "exam_tips": "Job duration decision tree: <15min=Lambda, 15min-hours=Fargate, always-on=EC2. Scheduled batch jobs=serverless (Lambda/Fargate) to avoid idle costs. 'Restart from beginning if interrupted'=acceptable for both Fargate and EC2, but Fargate is cheaper for infrequent jobs.",
+      "memorize": [
+        "Lambda max execution: 15 minutes",
+        "Fargate: serverless containers, pay per vCPU-second and GB-second",
+        "Fargate minimum billing: 1 minute per task",
+        "Reserved Instances: 1 or 3 year commitment, for predictable 24/7 workloads",
+        "EventBridge Scheduler: free for first 14M invocations/month"
+      ],
+      "aws_services": [
+        "Fargate",
+        "ECS",
+        "EventBridge"
+      ],
+      "architectural_concept": "Cost Optimization"
+    }
+  },
+  {
+    "question_id": 234,
+    "domain": "Secure Architectures",
+    "multi_select": false,
+    "question_en": "A company needs to migrate its customer transactions database from on premises to AWS. The database is an Oracle DB instance on Linux. A new requirement mandates rotating the database password yearly. Which solution provides this capability with the least operational overhead?",
+    "options": {
+      "A": "Convert the database to DynamoDB using AWS SCT. Store the password in Parameter Store. Use CloudWatch and Lambda for rotation.",
+      "B": "Migrate the database to Amazon RDS for Oracle. Store the password in AWS Secrets Manager. Turn on automatic rotation with a yearly rotation schedule.",
+      "C": "Migrate the database to an EC2 instance. Use Parameter Store to keep and rotate the connection string using a Lambda function with a yearly schedule.",
+      "D": "Migrate the database to Amazon Neptune using AWS SCT. Use CloudWatch and Lambda for yearly rotation."
+    },
+    "correct_answer": "B",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "C": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "EC2 + Lambda + RDS para Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "Lambda",
+        "RDS",
+        "DynamoDB",
+        "CloudWatch",
+        "Secrets Manager"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 345,
+    "domain": "Secure Architectures",
+    "multi_select": false,
+    "question_en": "A global media streaming company is migrating its user authentication and content delivery services to AWS. The company wants to use Amazon API Gateway for user authentication and authorization. The company needs a solution that restricts API access to AWS Regions in the United States and ensures minimal latency. Which solution will meet these requirements?",
+    "options": {
+      "A": "Create an API Gateway REST API. Configure an AWS WAF firewall in the same Region. Implement AWS WAF rules to deny requests that originate from Regions outside the United States. Associate the AWS WAF firewall with the API Gateway REST API.",
+      "B": "Create an API Gateway HTTP API. Configure an AWS WAF firewall in a different Region. Implement AWS WAF rules to deny requests that originate from Regions outside the United States. Associate the AWS WAF firewall with the API Gateway HTTP API.",
+      "C": "Create an API Gateway REST API. Configure an AWS WAF firewall in a different Region. Implement AWS WAF rules to deny requests that originate from Regions outside the United States. Associate the AWS WAF firewall with the API Gateway REST API.",
+      "D": "Create an API Gateway HTTP API. Configure an AWS WAF firewall in the same Region. Implement AWS WAF rules to deny requests that originate from Regions outside the United States. Associate the AWS WAF firewall with the API Gateway HTTP API."
+    },
+    "correct_answer": "A",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados. Mejora rendimiento y reduce latencia.",
+      "why_wrong": {
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "C": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "API Gateway + WAF para Performance",
+      "aws_services": [
+        "API Gateway",
+        "WAF"
+      ],
+      "architectural_concept": "Performance"
+    }
+  },
+  {
+    "question_id": 456,
+    "domain": "Cost-Optimized Architectures",
+    "multi_select": false,
+    "question_en": "A company needs to design a solution to process videos that users upload to an Amazon S3 bucket. Each video file is approximately 1 GB in size and takes approximately 20 minutes to process. During peak hours, the company expects to process approximately 100 simultaneous uploads. The video file processing is stateless and can run in parallel as soon as the video files arrive in the S3 bucket. Which solution will meet these requirements in the MOST cost-effective way?",
+    "options": {
+      "A": "Use an AWS Lambda function to process each video. Split the video files into chunks, and use AWS Step Functions to orchestrate multiple processing steps.",
+      "B": "Use an Amazon EKS cluster with AWS Fargate profiles to deploy one container for each uploaded video. Configure an Amazon EventBridge rule to invoke the cluster when a user uploads a video.",
+      "C": "Use Amazon EC2 On-Demand Instances in an Auto Scaling group to process each file. Configure the Auto Scaling policy to increase the number of instances based on the number of files that the application needs to process.",
+      "D": "Use an Amazon ECS cluster with the AWS Fargate launch type. Use Fargate Spot capacity to run one container task for each uploaded video. Configure an Amazon EventBridge rule to invoke the cluster when a user uploads a video."
+    },
+    "correct_answer": "D",
+    "explanation": {
+      "full_text": "ECS on Fargate Spot runs event-driven container tasks at up to 70% discount. EventBridge triggers task per uploaded video.",
+      "why_correct": "20-minute processing = exceeds Lambda 15-min limit. Fargate = serverless containers, no instance management. Fargate Spot = up to 70% discount vs Fargate On-Demand. EventBridge = triggers ECS RunTask on S3 upload event. Pay only for 100 * 20 min = 33 hours/day during peak. Spot acceptable for stateless video processing (can retry if interrupted).",
+      "why_wrong": {
+        "A": "Lambda max execution = 15 minutes. Video processing = 20 minutes. Lambda would timeout and fail. 'Split into chunks + Step Functions' = major architectural change, adds complexity, still hits Lambda limits for large files.",
+        "B": "EKS = Kubernetes, more operational overhead than ECS. Correct use of Fargate but EKS complexity unnecessary for simple parallel task pattern. ECS simpler for event-driven single-task workloads.",
+        "C": "EC2 On-Demand Auto Scaling = managing instances. Always-on minimum capacity vs serverless pay-per-use. More expensive than Fargate Spot. Operational overhead (AMIs, patching, scaling policies)."
+      },
+      "exam_tips": "'> 15 minutes' = exclude Lambda. 'Stateless parallel container' = Fargate. 'Cost-effective container' = Fargate Spot. ECS vs EKS: ECS = simpler, AWS-native; EKS = Kubernetes portability. EventBridge → ECS RunTask = standard event-driven pattern.",
+      "memorize": [
+        "Lambda: 15-minute max execution time",
+        "Fargate Spot: up to 70% discount, 2-minute termination notice",
+        "Fargate pricing: per vCPU-second + per GB-second",
+        "ECS: simpler, integrated; EKS: Kubernetes, portable",
+        "EventBridge: 14M events/month free, then $1/million"
+      ],
+      "aws_services": [
+        "ECS",
+        "Fargate",
+        "Fargate Spot",
+        "EventBridge"
+      ],
+      "architectural_concept": "Cost Optimization"
+    }
+  },
+  {
+    "question_id": 567,
+    "domain": "Resilient Architectures",
+    "multi_select": false,
+    "question_en": "A company ' s HTTP application is behind a Network Load Balancer (NLB). The NLB ' s target group is configured to use an Amazon EC2 Auto Scaling group with multiple EC2 instances that run the web service. The company notices that the NLB is not detecting HTTP errors for the application. These errors require a manual restart of the EC2 instances that run the web service. The company needs to improve the application ' s availability without writing custom scripts or code. What should a solutions architect do to meet these requirements?",
+    "options": {
+      "A": "Enable HTTP health checks on the NLB, supplying the URL of the company ' s application.",
+      "B": "Add a cron job to the EC2 instances to check the local application ' s logs once each minute. If HTTP errors are detected, the application will restart.",
+      "C": "Replace the NLB with an Application Load Balancer. Enable HTTP health checks by supplying the URL of the company ' s application. Configure an Auto Scaling action to replace unhealthy instances.",
+      "D": "Create an Amazon CloudWatch alarm that monitors the UnhealthyHostCount metric for the NLB. Configure an Auto Scaling action to replace unhealthy instances when the alarm is in the ALARM state."
+    },
+    "correct_answer": "C",
+    "explanation": {
+      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de resilient architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_wrong": {
+        "A": "No cumple requisitos clave del escenario o usa servicio subóptimo.",
+        "B": "No cumple requisitos clave del escenario o usa servicio subóptimo.",
+        "D": "No cumple requisitos clave del escenario o usa servicio subóptimo."
+      },
+      "exam_tips": "Identifica keywords del dominio Resilient Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
+      "memorize": "Alta disponibilidad + resiliencia = servicios managed AWS.",
+      "aws_services": [
+        "Auto Scaling",
+        "Application Load Balancer",
+        "Amazon RDS",
+        "Amazon Aurora"
+      ],
+      "architectural_concept": "Resilient Architectures"
+    }
+  },
+  {
+    "question_id": 678,
+    "domain": "Secure Architectures",
+    "multi_select": true,
+    "question_en": "A company is redesigning a static website. The company needs a solution to host the new website in the company ' s AWS account. The solution must be secure and scalable. Which combination of solutions will meet these requirements? (Select THREE.)",
+    "options": {
+      "A": "Configure an Amazon CloudFront distribution. Set the Amazon S3 bucket as the origin.",
+      "B": "Associate an AWS Certificate Manager (ACM) TLS certificate to the Amazon CloudFront distribution.",
+      "C": "Enable static website hosting for the Amazon S3 bucket.",
+      "D": "Create an Amazon S3 bucket to store the static website content.",
+      "E": "Export the website ' s SSL/TLS certificate from AWS Certificate Manager (ACM) to the root of the Amazon S3 bucket.",
+      "F": "Turn off Block Public Access for the Amazon S3 bucket."
+    },
+    "correct_answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados. Implementa seguridad según best practices.",
+      "why_wrong": {
+        "C": "No cumple todos los requisitos o usa approach subóptimo.",
+        "E": "No cumple todos los requisitos o usa approach subóptimo.",
+        "F": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Pregunta multi-select - selecciona TODAS las correctas. Elimina opciones claramente incorrectas primero.",
+      "memorize": "S3 + CloudFront para Scalability",
+      "aws_services": [
+        "S3",
+        "CloudFront"
+      ],
+      "architectural_concept": "Scalability"
+    },
+    "required_selections": 3
+  },
+  {
+    "question_id": 789,
+    "domain": "Operationally Excellent Architectures",
+    "multi_select": false,
+    "question_en": "A solutions architect runs a web application on multiple Amazon EC2 instances that are in individual target groups behind an Application Load Balancer (ALB). Users can reach the application through a public website. The solutions architect wants to allow engineers to use a development version of the website to access one specific development EC2 instance to test new features for the application. The solutions architect wants to use an Amazon Route 53 hosted zone to give the engineers access to the development instance. The solution must automatically route to the development instance even if the development instance is replaced. Which solution will meet these requirements?",
+    "options": {
+      "A": "Create an A record for the development website that has the value set to the ALB. Create a listener rule on the ALB that forwards requests for the development website to the target group that contains the development instance.",
+      "B": "Recreate the development instance with a public IP address. Create an A record for the development website that has the value set to the public IP address of the development instance.",
+      "C": "Create an A record for the development website that has the value set to the ALB. Create a listener rule on the ALB to redirect requests for the development website to the public IP address of the development instance.",
+      "D": "Place all the instances in the same target group. Create an A record for the development website. Set the value to the ALB. Create a listener rule on the ALB that forwards requests for the development website to the target group."
+    },
+    "correct_answer": "A",
+    "explanation": {
+      "why_correct": "Route 53 A record points development hostname to ALB (stable endpoint). ALB listener rule matches development hostname and forwards to dedicated target group containing development instance. When instance replaced, target group simply registers new instance. DNS unchanged, automatic routing continuity.",
+      "why_wrong": {
+        "B": "Public IP changes when instance replaced, breaking DNS resolution. Requires manual DNS update.",
+        "C": "ALB can't redirect to instance public IP directly. Architectural mismatch.",
+        "D": "All instances in same target group means all receive development traffic, not just development instance."
+      },
+      "exam_tips": "For stable DNS to specific instance: Route 53 to ALB + listener rule + dedicated target group. Target group handles instance replacement automatically. Don't use public IPs (change on replacement).",
+      "memorize": "Stable dev access + instance replacement = A record + ALB + listener rule + target group",
+      "aws_services": [
+        "Amazon Route 53",
+        "Application Load Balancer",
+        "Target Groups"
+      ],
+      "architectural_concept": "Stable Endpoint Routing"
+    }
+  },
+  {
+    "question_id": 890,
+    "domain": "Secure Architectures",
+    "multi_select": false,
+    "question_en": "A company needs a solution to prevent photos with unwanted content from being uploaded to the company’s web application. The solution must not involve training a machine learning (ML) model. Which solution will meet these requirements?",
+    "options": {
+      "A": "Create and deploy a model by using Amazon SageMaker Autopilot. Create a real-time endpoint that the web application invokes when new photos are uploaded.",
+      "B": "Create an AWS Lambda function that uses Amazon Rekognition to detect unwanted content. Create a Lambda function URL that the web application invokes when new photos are uploaded.",
+      "C": "Create an Amazon CloudFront function that uses Amazon Comprehend to detect unwanted content. Associate the function with the web application.",
+      "D": "Create an AWS Lambda function that uses Amazon Rekognition Video to detect unwanted content. Create a Lambda function URL that the web application invokes when new photos are uploaded."
+    },
+    "correct_answer": "B",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados.",
+      "why_wrong": {
+        "A": "No usa servicio óptimo para el caso de uso.",
+        "C": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "Lambda + CloudFront para Secure Architectures",
+      "aws_services": [
+        "Lambda",
+        "CloudFront"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 25,
+    "domain": "Secure Architectures",
+    "multi_select": false,
+    "question_en": "A company is creating a payment processing application that supports TLS connections from IPv4 clients. The application requires outbound access to the public internet. The application must allow users to access the application from a single entry point while maintaining the lowest possible attack surface. The company wants to use Amazon ECS tasks to deploy the application. The company wants to enable awsvpc network mode. Which solution will meet these requirements?",
+    "options": {
+      "A": "Create a VPC that has an internet gateway, public subnets, and private subnets. Deploy a Network Load Balancer (NLB) and a NAT gateway in the public subnets. Deploy the ECS tasks in the private subnets.",
+      "B": "Create a VPC that has an egress-only internet gateway, public subnets, and private subnets. Deploy an Application Load Balancer (ALB) and a NAT gateway in the public subnets. Deploy the ECS tasks in the private subnets.",
+      "C": "Create a VPC that has an internet gateway, public subnets, and private subnets. Deploy an Application Load Balancer (ALB) in the public subnets. Deploy the ECS tasks in the public subnets.",
+      "D": "Create a VPC that has an egress-only internet gateway, public subnets, and private subnets. Deploy a Network Load Balancer (NLB) in the public subnets. Deploy the ECS tasks in the public subnets."
+    },
+    "correct_answer": "A",
+    "explanation": {
+      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de secure architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_wrong": {
+        "B": "No cumple requisitos clave del escenario o usa servicio subóptimo.",
+        "C": "No cumple requisitos clave del escenario o usa servicio subóptimo.",
+        "D": "No cumple requisitos clave del escenario o usa servicio subóptimo."
+      },
+      "exam_tips": "Identifica keywords del dominio Secure Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
+      "memorize": "Seguridad + acceso = servicios managed AWS.",
+      "aws_services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 175,
+    "domain": "Secure Architectures",
+    "multi_select": false,
+    "question_en": "A company wants to restrict access to the content of its web application. The company needs to protect the content by using authorization techniques that are available on AWS. The company also wants to implement a serverless architecture for authorization and authentication that has low login latency. The solution must integrate with the web application and serve web content globally. The application currently has a small user base, but the company expects the application ' s user base to increase Which solution will meet these requirements?",
+    "options": {
+      "A": "Configure Amazon Cognito for authentication. Implement Lambda@Edge for authorization. Configure Amazon CloudFront to serve the web application globally",
+      "B": "Configure AWS Directory Service for Microsoft Active Directory for authentication. Implement AWS Lambda for authorization. Use an Application Load Balancer to serve the web application globally.",
+      "C": "Configure Amazon Cognito for authentication. Implement AWS Lambda for authorization Use Amazon S3 Transfer Acceleration to serve the web application globally.",
+      "D": "Configure AWS Directory Service for Microsoft Active Directory for authentication. Implement Lambda@Edge for authorization. Use AWS Elastic Beanstalk to serve the web application globally."
+    },
+    "correct_answer": "A",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados. Mejora rendimiento y reduce latencia.",
+      "why_wrong": {
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "C": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "S3 + Lambda + CloudFront para Performance",
+      "aws_services": [
+        "S3",
+        "Lambda",
+        "CloudFront",
+        "ALB",
+        "Elastic Beanstalk",
+        "Cognito"
+      ],
+      "architectural_concept": "Performance"
+    }
+  },
+  {
+    "question_id": 325,
+    "domain": "Secure Architectures",
+    "multi_select": false,
+    "question_en": "An international company needs to share data from an Amazon S3 bucket to employees who are located around the world. The company needs a secure solution to provide employees with access to the S3 bucket. The employees are already enrolled in AWS IAM Identity Center. Which solution will meet these requirements with the LEAST operational overhead?",
+    "options": {
+      "A": "Create a help desk application to generate an Amazon S3 presigned URL for each employee. Configure the presigned URLs to have short expirations. Instruct employees to contact the company help desk to receive a presigned URL to access the S3 bucket.",
+      "B": "Create a group for Amazon S3 access in IAM Identity Center. Add the employees who require access to the S3 bucket to the group. Create an IAM policy to allow Amazon S3 access from the group. Instruct employees to use the AWS access portal to access the AWS Management Console and navigate to the S3 bucket.",
+      "C": "Create an Amazon S3 File Gateway. Create one share for data uploads and a second share for data downloads. Set up an SFTP service on an Amazon EC2 instance. Mount the shares to the EC2 instance. Instruct employees to use the SFTP server.",
+      "D": "Configure AWS Transfer Family SFTP endpoints. Select the custom identity provider option. Use AWS Secrets Manager to manage the user credentials. Instruct employees to use Transfer Family SFTP."
+    },
+    "correct_answer": "C",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados. Implementa seguridad según best practices.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "S3 + EC2 + IAM para Security",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "IAM",
+        "Secrets Manager"
+      ],
+      "architectural_concept": "Security"
+    }
+  },
+  {
+    "question_id": 875,
+    "domain": "Secure Architectures",
+    "multi_select": false,
+    "question_en": "A company is building a cloud-based application on AWS that will handle sensitive customer data. The application uses Amazon RDS for the database. Amazon S3 for object storage, and S3 Event Notifications that invoke AWS Lambda for serverless processing. The company uses AWS IAM Identity Center to manage user credentials. The development, testing, and operations teams need secure access to Amazon RDS and Amazon S3 while ensuring the confidentiality of sensitive customer data. The solution must comply with the principle of least privilege. Which solution meets these requirements with the LEAST operational overhead?",
+    "options": {
+      "A": "Use IAM roles with least privilege to grant all the teams access. Assign IAM roles to each team with customized IAM policies defining specific permission for Amazon RDS and S3 object access based on team responsibilities.",
+      "B": "Enable IAM Identity Center with an Identity Center directory. Create and configure permission sets with granular access to Amazon RDS and Amazon S3. Assign all the teams to groups that have specific access with the permission sets.",
+      "C": "Create individual IAM users for each member in all the teams with role-based permissions. Assign the IAM roles with predefined policies for RDS and S3 access to each user based on user needs. Implement IAM Access Analyzer for periodic credential evaluation.",
+      "D": "Use AWS Organizations to create separate accounts for each team. Implement cross-account IAM roles with least privilege Grant specific permission for RDS and S3 access based on team roles and responsibilities."
+    },
+    "correct_answer": "B",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados. Implementa seguridad según best practices.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "C": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Least privilege = permisos mínimos necesarios. Elimina opciones claramente incorrectas primero.",
+      "memorize": "S3 + Lambda + RDS para Security",
+      "aws_services": [
+        "S3",
+        "Lambda",
+        "RDS",
+        "IAM",
+        "Organizations"
+      ],
+      "architectural_concept": "Security"
+    }
+  }
+]

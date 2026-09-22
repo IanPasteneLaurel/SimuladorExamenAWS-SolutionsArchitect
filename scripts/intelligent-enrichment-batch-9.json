@@ -1,0 +1,910 @@
+[
+  {
+    "question_id": 205,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and Lambda.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + Lambda pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "Lambda"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 207,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: IAM roles/policies enforce least privilege access.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (2 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "IAM + EKS pattern for Secure Architectures",
+      "aws_services": [
+        "IAM",
+        "EKS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 210,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and IAM.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + IAM pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 218,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and IAM.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + IAM + CloudTrail pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "IAM",
+        "CloudTrail"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 230,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: encryption protects data at rest and in transit. Reduces operational overhead: fully managed service eliminates infrastructure management.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "EC2 + KMS + EBS pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "KMS",
+        "EBS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 246,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using IAM.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "Key pattern: migration with ",
+      "aws_services": [
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 286,
+    "explanation": {
+      "why_correct": "This solution implements security best practices:",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "EC2 + VPC pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "VPC"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 332,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "Key pattern: architecture with disaster_recovery, compliance",
+      "aws_services": [
+        "S3"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 336,
+    "explanation": {
+      "why_correct": "Optimizes performance by:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + EFS pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "EFS",
+        "FSx"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 345,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using API Gateway and WAF.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "API Gateway + WAF pattern for Secure Architectures",
+      "aws_services": [
+        "API Gateway",
+        "WAF"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 357,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using RDS and IAM.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "RDS + IAM pattern for Secure Architectures",
+      "aws_services": [
+        "RDS",
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 386,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using IAM and CloudWatch.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "IAM + CloudWatch pattern for Secure Architectures",
+      "aws_services": [
+        "IAM",
+        "CloudWatch"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 394,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: IAM roles/policies enforce least privilege access.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "Key pattern: architecture with minimize_cost, security",
+      "aws_services": [
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 410,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: IAM roles/policies enforce least privilege access.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "Key pattern: architecture_design with security",
+      "aws_services": [
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 412,
+    "explanation": {
+      "why_correct": "Reduces operational overhead:",
+      "why_wrong": {
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "E": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (3 required). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "Key pattern: migration with minimize_cost, operational_efficiency",
+      "aws_services": [
+        "S3"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 415,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: IAM roles/policies enforce least privilege access.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + IAM + CloudTrail pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "IAM",
+        "CloudTrail"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 463,
+    "explanation": {
+      "why_correct": "Reduces operational overhead:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (2 required).",
+      "memorize": "Key pattern: architecture with minimize_cost, operational_efficiency",
+      "aws_services": [
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 481,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and EBS.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EBS pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "EBS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 495,
+    "explanation": {
+      "why_correct": "Reduces operational overhead:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + EFS pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "EFS",
+        "FSx"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 516,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and VPC.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + VPC + IAM pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "VPC",
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 517,
+    "explanation": {
+      "why_correct": "This solution implements security best practices:",
+      "why_wrong": {
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "F": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (3 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "EC2 + ALB pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "ALB"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 519,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: encryption protects data at rest and in transit. KMS provides centralized key management with audit trails. Reduces operational overhead:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "Key pattern: architecture with minimize_cost, security, operational_efficiency, compliance",
+      "aws_services": [
+        "KMS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 545,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: encryption protects data at rest and in transit. KMS provides centralized key management with audit trails.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + KMS pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "KMS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 549,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: Private network isolation prevents unauthorized access.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "VPC + SQS pattern for Secure Architectures",
+      "aws_services": [
+        "VPC",
+        "SQS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 560,
+    "explanation": {
+      "why_correct": "This solution implements security best practices:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + CloudFront pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "CloudFront"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 576,
+    "explanation": {
+      "why_correct": "This solution implements security best practices:",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "EC2 + ALB + WAF pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "ALB",
+        "WAF"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 586,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and IAM.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + IAM pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 591,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: IAM roles/policies enforce least privilege access. Reduces operational overhead:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency.",
+        "D": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "Key pattern: architecture with minimize_cost, security, operational_efficiency",
+      "aws_services": [
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 592,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using Lambda and API Gateway.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "Lambda + API Gateway pattern for Secure Architectures",
+      "aws_services": [
+        "Lambda",
+        "API Gateway"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 593,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and EBS.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + EBS + FSx pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "EBS",
+        "FSx"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 600,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: Private network isolation prevents unauthorized access.",
+      "why_wrong": {
+        "A": "Public exposure increases security risk. Resources should be private with controlled access through security groups/NACLs.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "Lambda + RDS + VPC pattern for Secure Architectures",
+      "aws_services": [
+        "Lambda",
+        "RDS",
+        "VPC"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 609,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and DynamoDB.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + DynamoDB pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "DynamoDB"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 630,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: Private network isolation prevents unauthorized access.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "Lambda + DynamoDB + VPC pattern for Secure Architectures",
+      "aws_services": [
+        "Lambda",
+        "DynamoDB",
+        "VPC"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 637,
+    "explanation": {
+      "why_correct": "Reduces operational overhead:",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + Lambda pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "Lambda"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 638,
+    "explanation": {
+      "why_correct": "Reduces operational overhead:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + IAM pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 639,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: KMS provides centralized key management with audit trails. Reduces operational overhead:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + KMS pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "KMS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 649,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: Private network isolation prevents unauthorized access.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "EC2 + VPC pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "VPC"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 670,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and IAM.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + IAM + Glue pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "IAM",
+        "Glue"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 678,
+    "explanation": {
+      "why_correct": "This solution implements security best practices:",
+      "why_wrong": {
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "E": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "F": "Public exposure increases security risk. Resources should be private with controlled access through security groups/NACLs."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (3 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + CloudFront pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "CloudFront"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 688,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: encryption protects data at rest and in transit. KMS provides centralized key management with audit trails.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "E": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (2 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + KMS pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "KMS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 696,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and EC2.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + VPC pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "VPC"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 698,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: Reduces operational overhead:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "EC2 + ALB pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "ALB"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 715,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and IAM.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + IAM pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 719,
+    "explanation": {
+      "why_correct": "Cost-effective because: S3 storage costs are lower than compute-based alternatives.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "For cost questions: compare pricing models (On-Demand vs Reserved vs Spot vs Serverless). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + EBS pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "EBS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 723,
+    "explanation": {
+      "why_correct": "This solution implements security best practices:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + IAM pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 731,
+    "explanation": {
+      "why_correct": "This solution implements security best practices:",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "EC2 + VPC pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "VPC"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 736,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: encryption protects data at rest and in transit. KMS provides centralized key management with audit trails.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (2 required). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC).",
+      "memorize": "KMS + CloudTrail + Config pattern for Secure Architectures",
+      "aws_services": [
+        "KMS",
+        "CloudTrail",
+        "Config"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 738,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: IAM roles/policies enforce least privilege access.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "Public exposure increases security risk. Resources should be private with controlled access through security groups/NACLs.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + IAM pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 747,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: encryption protects data at rest and in transit. KMS provides centralized key management with audit trails.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + KMS pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "KMS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 755,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: IAM roles/policies enforce least privilege access.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "Lambda + IAM pattern for Secure Architectures",
+      "aws_services": [
+        "Lambda",
+        "IAM"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  }
+]

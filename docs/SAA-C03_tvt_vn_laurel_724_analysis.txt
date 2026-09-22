@@ -1,0 +1,66 @@
+ANÁLISIS DE PREGUNTAS SAA-C03
+================================================================================
+
+Total de preguntas analizadas: 923
+Preguntas de selección simple: 923
+Preguntas de selección múltiple: 0
+
+PREGUNTAS DE SELECCIÓN MÚLTIPLE
+================================================================================
+
+
+
+PREGUNTAS DE SELECCIÓN SIMPLE
+================================================================================
+
+Pregunta #1: A
+Pregunta #2: A
+Pregunta #3: B
+Pregunta #4: B
+Pregunta #5: B
+Pregunta #6: D
+Pregunta #7: D
+Pregunta #8: A
+Pregunta #9: A
+Pregunta #10: A
+Pregunta #11: D
+Pregunta #12: A
+Pregunta #13: C
+Pregunta #14: A
+Pregunta #15: D
+Pregunta #16: B
+Pregunta #17: B
+Pregunta #18: B
+Pregunta #19: B
+Pregunta #20: A
+Pregunta #21: C
+Pregunta #22: C
+Pregunta #23: C
+Pregunta #24: B
+Pregunta #25: A
+Pregunta #26: B
+Pregunta #27: B
+Pregunta #28: A
+Pregunta #29: A
+Pregunta #30: B
+Pregunta #31: A
+Pregunta #32: C
+Pregunta #33: B
+Pregunta #34: A
+Pregunta #35: C
+Pregunta #36: C
+Pregunta #37: A
+Pregunta #38: B
+Pregunta #39: D
+Pregunta #40: B
+Pregunta #41: A
+Pregunta #42: A
+Pregunta #43: A
+Pregunta #44: D
+Pregunta #45: D
+Pregunta #46: B
+Pregunta #47: B
+Pregunta #48: A
+Pregunta #49: B
+Pregunta #50: C
+... y 873 más

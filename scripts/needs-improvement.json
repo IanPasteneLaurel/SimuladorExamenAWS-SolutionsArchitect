@@ -1,0 +1,361 @@
+[
+  {
+    "question_id": 71,
+    "domain": "High-Performing Architectures",
+    "score": 2,
+    "services": [
+      "SQS"
+    ],
+    "why_correct_length": 49,
+    "memorize": "SQS para High-Performing Architectures"
+  },
+  {
+    "question_id": 95,
+    "domain": "High-Performing Architectures",
+    "score": 2,
+    "services": [
+      "Aurora"
+    ],
+    "why_correct_length": 49,
+    "memorize": "Aurora para Real-time Processing"
+  },
+  {
+    "question_id": 186,
+    "domain": "High-Performing Architectures",
+    "score": 2,
+    "services": [
+      "Glue"
+    ],
+    "why_correct_length": 49,
+    "memorize": "Glue para High-Performing Architectures"
+  },
+  {
+    "question_id": 341,
+    "domain": "High-Performing Architectures",
+    "score": 2,
+    "services": [
+      "RDS"
+    ],
+    "why_correct_length": 49,
+    "memorize": "RDS para High-Performing Architectures"
+  },
+  {
+    "question_id": 346,
+    "domain": "High-Performing Architectures",
+    "score": 2,
+    "services": [
+      "Athena"
+    ],
+    "why_correct_length": 49,
+    "memorize": "Athena para High-Performing Architectures"
+  },
+  {
+    "question_id": 101,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "S3",
+      "ECS",
+      "IAM"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 + ECS + IAM para Security"
+  },
+  {
+    "question_id": 110,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "S3",
+      "KMS"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 + KMS para Security"
+  },
+  {
+    "question_id": 114,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "S3",
+      "KMS"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 + KMS para Security"
+  },
+  {
+    "question_id": 126,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "S3",
+      "KMS"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 + KMS para Security"
+  },
+  {
+    "question_id": 210,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "S3",
+      "IAM"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 + IAM para Security"
+  },
+  {
+    "question_id": 280,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "Step Functions"
+    ],
+    "why_correct_length": 49,
+    "memorize": "Step Functions para Secure Architectures"
+  },
+  {
+    "question_id": 357,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "RDS",
+      "IAM"
+    ],
+    "why_correct_length": 49,
+    "memorize": "RDS + IAM para Security"
+  },
+  {
+    "question_id": 386,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "CloudWatch",
+      "IAM"
+    ],
+    "why_correct_length": 49,
+    "memorize": "CloudWatch + IAM para Security"
+  },
+  {
+    "question_id": 407,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "API Gateway"
+    ],
+    "why_correct_length": 49,
+    "memorize": "API Gateway para Secure Architectures"
+  },
+  {
+    "question_id": 414,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "Route 53"
+    ],
+    "why_correct_length": 49,
+    "memorize": "Route 53 para Secure Architectures"
+  },
+  {
+    "question_id": 516,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "S3",
+      "VPC",
+      "IAM"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 + VPC + IAM para Security"
+  },
+  {
+    "question_id": 549,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "VPC",
+      "SQS"
+    ],
+    "why_correct_length": 49,
+    "memorize": "VPC + SQS para Serverless"
+  },
+  {
+    "question_id": 586,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "EC2",
+      "IAM"
+    ],
+    "why_correct_length": 49,
+    "memorize": "EC2 + IAM para Security"
+  },
+  {
+    "question_id": 670,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "S3",
+      "IAM",
+      "Glue"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 + IAM + Glue para Security"
+  },
+  {
+    "question_id": 688,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "S3",
+      "KMS"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 + KMS para Security"
+  },
+  {
+    "question_id": 698,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "EC2",
+      "ALB"
+    ],
+    "why_correct_length": 49,
+    "memorize": "EC2 + ALB para Security"
+  },
+  {
+    "question_id": 841,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "EC2",
+      "RDS",
+      "IAM"
+    ],
+    "why_correct_length": 49,
+    "memorize": "EC2 + RDS + IAM para Security"
+  },
+  {
+    "question_id": 900,
+    "domain": "Secure Architectures",
+    "score": 2,
+    "services": [
+      "S3",
+      "KMS"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 + KMS para Security"
+  },
+  {
+    "question_id": 434,
+    "domain": "High-Performing Architectures",
+    "score": 1,
+    "services": [
+      "S3"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 para Real-time Processing"
+  },
+  {
+    "question_id": 550,
+    "domain": "High-Performing Architectures",
+    "score": 1,
+    "services": [
+      "S3"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 para Performance"
+  },
+  {
+    "question_id": 80,
+    "domain": "Secure Architectures",
+    "score": 1,
+    "services": [
+      "EC2"
+    ],
+    "why_correct_length": 49,
+    "memorize": "EC2 para Secure Architectures"
+  },
+  {
+    "question_id": 106,
+    "domain": "Secure Architectures",
+    "score": 1,
+    "services": [
+      "IAM"
+    ],
+    "why_correct_length": 49,
+    "memorize": "IAM para Secure Architectures"
+  },
+  {
+    "question_id": 183,
+    "domain": "Secure Architectures",
+    "score": 1,
+    "services": [
+      "IAM"
+    ],
+    "why_correct_length": 49,
+    "memorize": "IAM para Security"
+  },
+  {
+    "question_id": 263,
+    "domain": "Secure Architectures",
+    "score": 1,
+    "services": [
+      "Kinesis"
+    ],
+    "why_correct_length": 49,
+    "memorize": "Kinesis para Performance"
+  },
+  {
+    "question_id": 466,
+    "domain": "Secure Architectures",
+    "score": 1,
+    "services": [
+      "KMS"
+    ],
+    "why_correct_length": 49,
+    "memorize": "KMS para Security"
+  },
+  {
+    "question_id": 568,
+    "domain": "Secure Architectures",
+    "score": 1,
+    "services": [
+      "S3"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 para Secure Architectures"
+  },
+  {
+    "question_id": 581,
+    "domain": "Secure Architectures",
+    "score": 1,
+    "services": [
+      "S3"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 para Secure Architectures"
+  },
+  {
+    "question_id": 585,
+    "domain": "Secure Architectures",
+    "score": 1,
+    "services": [
+      "S3"
+    ],
+    "why_correct_length": 49,
+    "memorize": "S3 para Secure Architectures"
+  },
+  {
+    "question_id": 673,
+    "domain": "Secure Architectures",
+    "score": 1,
+    "services": [
+      "KMS"
+    ],
+    "why_correct_length": 49,
+    "memorize": "KMS para Security"
+  }
+]

@@ -16,11 +16,30 @@ export function useScoring(questions) {
     () =>
       questions
         .filter((q) => answers[q.question_id] !== undefined)
-        .map((q) => ({
-          question: q,
-          selected: answers[q.question_id],
-          isCorrect: answers[q.question_id] === q.correct_answer,
-        })),
+        .map((q) => {
+          const selected = answers[q.question_id];
+          const correctAnswer = q.correct_answer;
+          
+          // Compare answers correctly for both single-select and multi-select
+          let isCorrect = false;
+          
+          if (Array.isArray(selected) && Array.isArray(correctAnswer)) {
+            // Multi-select: both must be arrays with same elements (order doesn't matter)
+            isCorrect = selected.length === correctAnswer.length &&
+                       selected.every(item => correctAnswer.includes(item)) &&
+                       correctAnswer.every(item => selected.includes(item));
+          } else if (!Array.isArray(selected) && !Array.isArray(correctAnswer)) {
+            // Single-select: simple equality
+            isCorrect = selected === correctAnswer;
+          }
+          // If types don't match, isCorrect remains false
+          
+          return {
+            question: q,
+            selected: selected,
+            isCorrect: isCorrect,
+          };
+        }),
     [questions, answers]
   );
 

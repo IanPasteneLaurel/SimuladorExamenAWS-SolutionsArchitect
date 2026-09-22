@@ -1,0 +1,1016 @@
+[
+  {
+    "question_id": 805,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using DynamoDB and SQS.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (2 required).",
+      "memorize": "DynamoDB + SQS + Kinesis pattern for Secure Architectures",
+      "aws_services": [
+        "DynamoDB",
+        "SQS",
+        "Kinesis"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 810,
+    "explanation": {
+      "why_correct": "Reduces operational overhead: Fargate removes need to manage EC2 instances for containers.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "Lambda has 15-minute maximum execution limit. Long-running processes require EC2, ECS, or Fargate instead.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "EC2 + Lambda + EKS pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "Lambda",
+        "EKS",
+        "Auto Scaling"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 811,
+    "explanation": {
+      "why_correct": "This solution implements security best practices:",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + Lambda + RDS pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "Lambda",
+        "RDS",
+        "IAM",
+        "KMS",
+        "Secrets Manager"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 838,
+    "explanation": {
+      "why_correct": "Optimizes performance by:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + Auto Scaling + EBS pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "Auto Scaling",
+        "EBS",
+        "EFS",
+        "FSx"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 863,
+    "explanation": {
+      "why_correct": "Reduces operational overhead:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "IAM + CloudTrail + Config pattern for Secure Architectures",
+      "aws_services": [
+        "IAM",
+        "CloudTrail",
+        "Config",
+        "EBS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 876,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and RDS.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + RDS + Auto Scaling pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "RDS",
+        "Auto Scaling",
+        "EBS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 896,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and ALB.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + ALB + NLB pattern for Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "ALB",
+        "NLB",
+        "Route 53"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 911,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using Lambda and RDS.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "Lambda + RDS + DynamoDB pattern for Secure Architectures",
+      "aws_services": [
+        "Lambda",
+        "RDS",
+        "DynamoDB",
+        "ECS",
+        "SNS",
+        "SQS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 916,
+    "explanation": {
+      "why_correct": "This solution implements security best practices:",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + Lambda + Kinesis pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "Lambda",
+        "Kinesis"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 921,
+    "explanation": {
+      "why_correct": "This solution implements security best practices: encryption protects data at rest and in transit. Cost-effective because: S3 storage costs are lower than compute-based alternatives.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "For cost questions: compare pricing models (On-Demand vs Reserved vs Spot vs Serverless). Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + KMS + Athena pattern for Secure Architectures",
+      "aws_services": [
+        "S3",
+        "KMS",
+        "Athena"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 766,
+    "explanation": {
+      "why_correct": "Cost-effective because: Spot Instances provide up to 90% savings vs On-Demand.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "E": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (3 required). For cost questions: compare pricing models (On-Demand vs Reserved vs Spot vs Serverless).",
+      "memorize": "EC2 + Auto Scaling pattern for Cost-Optimized Architectures",
+      "aws_services": [
+        "EC2",
+        "Auto Scaling"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures"
+    }
+  },
+  {
+    "question_id": 814,
+    "explanation": {
+      "why_correct": "Cost-effective because:",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "For cost questions: compare pricing models (On-Demand vs Reserved vs Spot vs Serverless). Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "Lambda + EKS + ALB pattern for Cost-Optimized Architectures",
+      "aws_services": [
+        "Lambda",
+        "EKS",
+        "ALB",
+        "NLB",
+        "API Gateway"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures"
+    }
+  },
+  {
+    "question_id": 843,
+    "explanation": {
+      "why_correct": "This solution implements security best practices:",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Security questions: think encryption (at rest + transit), least privilege (IAM), network isolation (VPC). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + EBS pattern for Cost-Optimized Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "EBS",
+        "EFS"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures"
+    }
+  },
+  {
+    "question_id": 847,
+    "explanation": {
+      "why_correct": "Cost-effective because: Spot Instances provide up to 90% savings vs On-Demand. Reserved capacity provides significant discounts for predictable workloads.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "For cost questions: compare pricing models (On-Demand vs Reserved vs Spot vs Serverless).",
+      "memorize": "EC2 + Auto Scaling + SQS pattern for Cost-Optimized Architectures",
+      "aws_services": [
+        "EC2",
+        "Auto Scaling",
+        "SQS"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures"
+    }
+  },
+  {
+    "question_id": 849,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and EC2.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + Lambda pattern for Cost-Optimized Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "Lambda",
+        "Glue"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures"
+    }
+  },
+  {
+    "question_id": 877,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and DynamoDB.",
+      "why_wrong": {
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + DynamoDB pattern for Cost-Optimized Architectures",
+      "aws_services": [
+        "S3",
+        "DynamoDB"
+      ],
+      "architectural_concept": "Cost-Optimized Architectures"
+    }
+  },
+  {
+    "question_id": 9,
+    "explanation": {
+      "why_correct": "Reduces operational overhead: serverless compute requires no server provisioning or patching.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + Lambda + DynamoDB pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "Lambda",
+        "DynamoDB",
+        "API Gateway",
+        "Kinesis"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 18,
+    "explanation": {
+      "why_correct": "Optimizes performance by:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (2 required). S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + Auto Scaling pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "Auto Scaling",
+        "EFS",
+        "FSx"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 29,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and EC2.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + CloudFront pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "CloudFront",
+        "ALB",
+        "Auto Scaling",
+        "Route 53"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 30,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and Lambda.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "EC2 + Lambda + ALB pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "Lambda",
+        "ALB",
+        "API Gateway"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 41,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using ALB and Route 53.",
+      "why_wrong": {
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "ALB + Route 53 pattern for High-Performing Architectures",
+      "aws_services": [
+        "ALB",
+        "Route 53"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 48,
+    "explanation": {
+      "why_correct": "Optimizes performance by: caching reduces latency for frequently accessed data.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "Lambda has 15-minute maximum execution limit. Long-running processes require EC2, ECS, or Fargate instead.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + Lambda pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "Lambda",
+        "RDS",
+        "CloudFront",
+        "ECS",
+        "Auto Scaling"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 72,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and EC2.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + IAM pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "IAM",
+        "EBS"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 88,
+    "explanation": {
+      "why_correct": "Optimizes performance by:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + Athena pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "Athena"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 92,
+    "explanation": {
+      "why_correct": "Optimizes performance by: DynamoDB provides single-digit millisecond latency at scale. Reduces operational overhead: serverless compute requires no server provisioning or patching.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + Lambda pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "Lambda",
+        "RDS",
+        "DynamoDB",
+        "ALB",
+        "SQS",
+        "API Gateway"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 109,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and ECS.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + ECS + ALB pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "ECS",
+        "ALB",
+        "NLB",
+        "Auto Scaling",
+        "CloudWatch"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 113,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and CloudWatch.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + CloudWatch + Systems Manager pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "CloudWatch",
+        "Systems Manager",
+        "EBS"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 133,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and EBS.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EBS + EFS pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "EBS",
+        "EFS"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 140,
+    "explanation": {
+      "why_correct": "Optimizes performance by:",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "EC2 + Lambda + EKS pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "Lambda",
+        "EKS",
+        "ALB",
+        "SQS",
+        "API Gateway"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 161,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and Lambda.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "EC2 + Lambda + ECS pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "Lambda",
+        "ECS",
+        "ALB",
+        "Auto Scaling",
+        "SNS",
+        "API Gateway",
+        "Kinesis"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 164,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and ALB.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + ALB + NLB pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "ALB",
+        "NLB",
+        "Auto Scaling"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 177,
+    "explanation": {
+      "why_correct": "Optimizes performance by: caching reduces latency for frequently accessed data. in-memory caching delivers sub-millisecond response times.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + RDS + DynamoDB pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "RDS",
+        "DynamoDB",
+        "SNS"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 191,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and Lambda.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "EC2 + Lambda + DynamoDB pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "Lambda",
+        "DynamoDB"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 200,
+    "explanation": {
+      "why_correct": "Reduces operational overhead: fully managed service eliminates infrastructure management. serverless compute requires no server provisioning or patching.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "EC2 + Lambda + SNS pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "Lambda",
+        "SNS",
+        "SQS",
+        "API Gateway"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 211,
+    "explanation": {
+      "why_correct": "Optimizes performance by:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "EC2 + Lambda + ECS pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "Lambda",
+        "ECS",
+        "ALB",
+        "API Gateway"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 222,
+    "explanation": {
+      "why_correct": "Reduces operational overhead:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "Manual process increases operational overhead and risk of human error. Automation required for operational efficiency.",
+        "C": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "Key pattern: migration with minimize_cost, operational_efficiency, disaster_recovery",
+      "aws_services": [
+        "RDS"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 227,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and VPC.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + VPC + EKS pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "VPC",
+        "EKS"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 229,
+    "explanation": {
+      "why_correct": "Optimizes performance by:",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "E": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (2 required).",
+      "memorize": "EC2 + CloudFront + ALB pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "CloudFront",
+        "ALB",
+        "NLB",
+        "Route 53"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 241,
+    "explanation": {
+      "why_correct": "Optimizes performance by:",
+      "why_wrong": {
+        "A": "Lambda has 15-minute maximum execution limit. Long-running processes require EC2, ECS, or Fargate instead.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "Lambda has 15-minute maximum execution limit. Long-running processes require EC2, ECS, or Fargate instead."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + Lambda pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "Lambda",
+        "ECS",
+        "EFS"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 244,
+    "explanation": {
+      "why_correct": "Optimizes performance by: caching reduces latency for frequently accessed data.",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + CloudFront pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "CloudFront",
+        "ALB",
+        "Route 53"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 248,
+    "explanation": {
+      "why_correct": "Optimizes performance by: caching reduces latency for frequently accessed data. in-memory caching delivers sub-millisecond response times.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + RDS + DynamoDB pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "RDS",
+        "DynamoDB",
+        "SNS"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 267,
+    "explanation": {
+      "why_correct": "Ensures high availability through: Multi-AZ deployment survives entire AZ failures. Auto Scaling maintains capacity during failures or demand spikes. Optimizes performance by:",
+      "why_wrong": {
+        "A": "Single-AZ deployment has no redundancy—entire application fails if AZ goes down. Multi-AZ required for high availability.",
+        "B": "Single-AZ deployment has no redundancy—entire application fails if AZ goes down. Multi-AZ required for high availability.",
+        "D": "Spot Instances can be interrupted with 2-minute notice—violates high availability requirement. Use On-Demand or Reserved for critical workloads."
+      },
+      "exam_tips": "HA requires: Multi-AZ, load balancing, auto scaling, and stateless design.",
+      "memorize": "EC2 + RDS + ALB pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "RDS",
+        "ALB",
+        "Auto Scaling"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 276,
+    "explanation": {
+      "why_correct": "Optimizes performance by:",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "Key pattern: architecture_design with performance",
+      "aws_services": [
+        "VPC"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 277,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and CloudFront.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Read question carefully. Identify key requirements. Eliminate options that violate constraints.",
+      "memorize": "EC2 + CloudFront + ALB pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "CloudFront",
+        "ALB",
+        "Auto Scaling",
+        "API Gateway"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 291,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and EC2.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + ECS pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "ECS",
+        "SNS",
+        "SQS"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 293,
+    "explanation": {
+      "why_correct": "Reduces operational overhead:",
+      "why_wrong": {
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "E": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Multi-select question—select ALL correct answers (2 required).",
+      "memorize": "EC2 + EBS + EFS pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "EBS",
+        "EFS",
+        "FSx"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 295,
+    "explanation": {
+      "why_correct": "Optimizes performance by: Reduces operational overhead: serverless compute requires no server provisioning or patching.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "Lambda + ECS + EKS pattern for High-Performing Architectures",
+      "aws_services": [
+        "Lambda",
+        "ECS",
+        "EKS",
+        "ALB",
+        "API Gateway"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 301,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and Lambda.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage. S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + Lambda + ECS pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "Lambda",
+        "ECS",
+        "SQS",
+        "Kinesis"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 315,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using EC2 and Lambda.",
+      "why_wrong": {
+        "A": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "D": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "Remember Lambda limits: 15 min max, 10GB memory max, 512MB /tmp storage.",
+      "memorize": "EC2 + Lambda + ECS pattern for High-Performing Architectures",
+      "aws_services": [
+        "EC2",
+        "Lambda",
+        "ECS",
+        "EKS",
+        "SNS",
+        "SQS"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  },
+  {
+    "question_id": 321,
+    "explanation": {
+      "why_correct": "This solution addresses the requirements by using S3 and EC2.",
+      "why_wrong": {
+        "A": "This option uses incorrect or suboptimal service for the use case. Does not align with scenario requirements.",
+        "B": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost.",
+        "C": "This approach does not fully satisfy the requirements or introduces unnecessary complexity/cost."
+      },
+      "exam_tips": "S3 considerations: storage classes, lifecycle policies, versioning, replication.",
+      "memorize": "S3 + EC2 + FSx pattern for High-Performing Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "FSx"
+      ],
+      "architectural_concept": "High-Performing Architectures"
+    }
+  }
+]

@@ -1,0 +1,632 @@
+[
+  {
+    "question_id": 12,
+    "domain": "Secure Architectures",
+    "multi_select": true,
+    "question_en": "A healthcare company is developing an AWS Lambda function that publishes notifications to an encrypted Amazon Simple Notification Service (Amazon SNS) topic. The notifications contain protected health information (PHI). The SNS topic uses AWS Key Management Service (AWS KMS) customer-managed keys for encryption. The company must ensure that the application has the necessary permissions to publish messages securely to the SNS topic. Which combination of steps will meet these requirements? (Select THREE.)",
+    "options": {
+      "A": "Create a resource policy for the SNS topic that allows the Lambda function to publish messages to the topic.",
+      "B": "Use server-side encryption with AWS KMS keys (SSE-KMS) for the SNS topic instead of customermanaged keys.",
+      "C": "Create a resource policy for the encryption key that the SNS topic uses that has the necessary AWS KMS permissions.",
+      "D": "Specify the Lambda function ' s Amazon Resource Name (ARN) in the SNS topic ' s resourcepolicy.",
+      "E": "Associate an Amazon API Gateway HTTP API with the SNS topic to control access to the topic by using API Gateway resource policies.",
+      "F": "Configure a Lambda execution role that has the necessary IAM permissions to use a customer-managed key in AWS KMS."
+    },
+    "correct_answer": [
+      "A",
+      "C",
+      "F"
+    ],
+    "explanation": {
+      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de secure architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_wrong": {
+        "B": "No cumple requisitos clave del escenario o usa servicio subóptimo.",
+        "D": "No cumple requisitos clave del escenario o usa servicio subóptimo.",
+        "E": "No cumple requisitos clave del escenario o usa servicio subóptimo."
+      },
+      "exam_tips": "Identifica keywords del dominio Secure Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
+      "memorize": "Seguridad + acceso = servicios managed AWS.",
+      "aws_services": [
+        "AWS WAF",
+        "AWS IAM",
+        "AWS KMS",
+        "Amazon Cognito"
+      ],
+      "architectural_concept": "Secure Architectures"
+    },
+    "required_selections": 3
+  },
+  {
+    "question_id": 87,
+    "domain": "High-Performing Architectures",
+    "multi_select": false,
+    "question_en": "A finance company uses an on-premises search application to collect streaming data from various producers. The application provides real-time updates to search and visualization features. The company is planning to migrate to AWS and wants to use an AWS native solution. Which solution will meet these requirements?",
+    "options": {
+      "A": "Use Amazon EC2 instances to ingest and process the data streams to Amazon S3 buckets for storage. Use Amazon Athena to search the data. Use Amazon Managed Grafana to create visualizations.",
+      "B": "Use Amazon EMR to ingest and process the data streams to Amazon Redshift for storage. Use Amazon Redshift Spectrum to search the data. Use Amazon QuickSight to create visualizations.",
+      "C": "Use Amazon Elastic Kubernetes Service (Amazon EKS) to ingest and process the data streams to Amazon DynamoDB for storage. Use Amazon CloudWatch to create graphical dashboards to search and visualize the data.",
+      "D": "Use Amazon Kinesis Data Streams to ingest and process the data streams to Amazon OpenSearch Service. Use OpenSearch Service to search the data. Use Amazon QuickSight to create visualizations."
+    },
+    "correct_answer": "D",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "C": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "S3 + EC2 + DynamoDB para Real-time Processing",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "DynamoDB",
+        "EKS",
+        "CloudWatch",
+        "Kinesis",
+        "Redshift",
+        "Athena",
+        "EMR"
+      ],
+      "architectural_concept": "Real-time Processing"
+    }
+  },
+  {
+    "question_id": 144,
+    "domain": "Secure Architectures",
+    "multi_select": false,
+    "question_en": "A company wants to create an API to authorize users by using JSON Web Tokens (JWTs). The company needs to support dynamic access to multiple AWS services by using path-based routing. Which solution will meet these requirements?",
+    "options": {
+      "A": "Deploy an Application Load Balancer behind an Amazon API Gateway REST API. Configure IAM authorization.",
+      "B": "Deploy an Application Load Balancer behind an Amazon API Gateway HTTP API. Use Amazon Cognito for authorization.",
+      "C": "Deploy a Network Load Balancer behind an Amazon API Gateway REST API. Use an AWS Lambda function as a custom authorizer.",
+      "D": "Deploy a Network Load Balancer behind an Amazon API Gateway HTTP API. Use Amazon Cognito for authorization."
+    },
+    "correct_answer": "C",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "Lambda + ALB + NLB para Secure Architectures",
+      "aws_services": [
+        "Lambda",
+        "ALB",
+        "NLB",
+        "IAM",
+        "API Gateway",
+        "Cognito"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 211,
+    "domain": "High-Performing Architectures",
+    "multi_select": false,
+    "question_en": "A company is building a mobile gaming app. The company wants to serve users from around the world with low latency. The company needs a scalable solution to host the application and to route user requests to the location that is nearest to each user. Which solution will meet these requirements?",
+    "options": {
+      "A": "Use an Application Load Balancer to route requests to Amazon EC2 instances that are deployed across multiple Availability Zones.",
+      "B": "Use a Regional Amazon API Gateway REST API to route requests to AWS Lambda functions.",
+      "C": "Use an edge-optimized Amazon API Gateway REST API to route requests to AWS Lambda functions.",
+      "D": "Use an Application Load Balancer to route requests to containers in an Amazon ECS cluster."
+    },
+    "correct_answer": "C",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados. Mejora rendimiento y reduce latencia.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "EC2 + Lambda + ECS para Scalability",
+      "aws_services": [
+        "EC2",
+        "Lambda",
+        "ECS",
+        "ALB",
+        "API Gateway"
+      ],
+      "architectural_concept": "Scalability"
+    }
+  },
+  {
+    "question_id": 289,
+    "domain": "High-Performing Architectures",
+    "multi_select": false,
+    "question_en": "A company uses AWS Cost Explorer to monitor its AWS costs. The company notices that Amazon Elastic Block Store (Amazon EBS) storage and snapshot costs increase every month. However, the company does not purchase additional EBS storage every month. The company wants to optimize monthly costs for its current storage usage. Which solution will meet these requirements with the LEAST operational overhead?",
+    "options": {
+      "A": "Use logs in Amazon CloudWatch Logs to monitor the storage utilization of Amazon EBS. Use Amazon EBS Elastic Volumes to reduce the size of the EBS volumes.",
+      "B": "Use a custom script to monitor space usage. Use Amazon EBS Elastic Volumes to reduce the size of the EBS volumes.",
+      "C": "Delete all expired and unused snapshots to reduce snapshot costs.",
+      "D": "Delete all nonessential snapshots. Use Amazon Data Lifecycle Manager to create and manage the snapshots according to the company ' s snapshot policy requirements."
+    },
+    "correct_answer": "D",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados. Optimiza costos usando servicios apropiados. Proporciona escalabilidad automática.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "C": "No usa servicio óptimo para el caso de uso."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "CloudWatch + EBS para Scalability",
+      "aws_services": [
+        "CloudWatch",
+        "EBS"
+      ],
+      "architectural_concept": "Scalability"
+    }
+  },
+  {
+    "question_id": 367,
+    "domain": "High-Performing Architectures",
+    "multi_select": false,
+    "question_en": "A company uses Amazon RDS (or PostgreSQL to run its applications in the us-east-1 Region. The company also uses machine learning (ML) models to forecast annual revenue based on neat real-time reports. The reports are generated by using the same RDS for PostgreSQL database. The database performance slows during business hours. The company needs to improve database performance. Which solution will meet these requirements MOST cost-effectively?",
+    "options": {
+      "A": "Create a cross-Region read replica. Configure the reports to be generated from the read replica.",
+      "B": "Activate Multi-AZ DB instance deployment for RDS for PostgreSQL. Configure the reports to be generated from the standby database.",
+      "C": "Use AWS Data Migration Service (AWS DMS) to logically replicate data lo a new database. Configure the reports to be generated from the new database.",
+      "D": "Create a read replica in us-east-1. Configure the reports to be generated from the read replica."
+    },
+    "correct_answer": "D",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados. Optimiza costos usando servicios apropiados. Mejora rendimiento y reduce latencia.",
+      "why_wrong": {
+        "A": "No usa servicio óptimo para el caso de uso.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "C": "No usa servicio óptimo para el caso de uso."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Compara costos entre servicios similares. Elimina opciones claramente incorrectas primero.",
+      "memorize": "RDS para Cost Optimization",
+      "aws_services": [
+        "RDS"
+      ],
+      "architectural_concept": "Cost Optimization"
+    }
+  },
+  {
+    "question_id": 421,
+    "domain": "High-Performing Architectures",
+    "multi_select": false,
+    "question_en": "A company is developing a rating system for its ecommerce web application. The company needs a solution to save ratings that users submit in an Amazon DynamoDB table. The company wants to ensure that developers do not need to interact directly with the DynamoDB table. The solution must be scalable and reusable. Which solution will meet these requirements with the LEAST operational overhead?",
+    "options": {
+      "A": "Create an Application Load Balancer ALB. Create an AWS Lambda function, and set the function as a target group in the ALB. Invoke the Lambda function by using the PutItem method through the ALB.",
+      "B": "Create an AWS Lambda function. Configure the Lambda function to interact with the DynamoDB table by using the PutItem method from Boto3. Invoke the Lambda function from the web application.",
+      "C": "Create an Amazon SQS queue and an AWS Lambda function that has an SQS trigger type. Instruct the developers to add customer ratings to the SQS queue as JSON messages. Configure the Lambda function to fetch the ratings from the queue and store the ratings in DynamoDB.",
+      "D": "Create an Amazon API Gateway REST API. Define a resource and create a new POST method. Choose AWS as the integration type, and select DynamoDB as the service. Set the action to PutItem."
+    },
+    "correct_answer": "D",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "C": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "Lambda + DynamoDB + ALB para Scalability",
+      "aws_services": [
+        "Lambda",
+        "DynamoDB",
+        "ALB",
+        "SQS",
+        "API Gateway"
+      ],
+      "architectural_concept": "Scalability"
+    }
+  },
+  {
+    "question_id": 509,
+    "domain": "Cost-Optimized Architectures",
+    "multi_select": false,
+    "question_en": "A company recently migrated its application to AWS. The application runs on Amazon EC2 Linux instances in an Auto Scaling group across multiple Availability Zones. The application stores data in an Amazon Elastic File System (Amazon EFS) file system that uses EFS Standard-Infrequent Access storage. The application indexes the company ' s files, and the index is stored in an Amazon RDS database. The company needs to optimize storage costs with some application and services changes. Which solution will meet these requirements MOST cost-effectively?",
+    "options": {
+      "A": "Create an Amazon S3 bucket that uses an Intelligent-Tiering lifecycle policy. Copy all files to the S3 bucket. Update the application to use Amazon S3 API to store and retrieve files.",
+      "B": "Deploy Amazon FSx for Windows File Server file shares. Update the application to use CIFS protocol to store and retrieve files.",
+      "C": "Deploy Amazon FSx for OpenZFS file system shares. Update the application to use the new mount point to store and retrieve files.",
+      "D": "Create an Amazon S3 bucket that uses S3 Glacier Flexible Retrieval. Copy all files to the S3 bucket. Update the application to use Amazon S3 API to store and retrieve files as standard retrievals."
+    },
+    "correct_answer": "A",
+    "explanation": {
+      "full_text": "Migrate from EFS to S3 Intelligent-Tiering. Update application to use S3 APIs. Automated cost optimization for varying access patterns.",
+      "why_correct": "S3 Intelligent-Tiering = automatic storage class transitions based on access. No retrieval fees. Tiers: Frequent ($0.023/GB), Infrequent ($0.0125/GB), Archive Instant ($0.004/GB), Deep Archive ($0.00099/GB). EFS Standard-IA = $0.025/GB vs S3 Intelligent best tier $0.00099/GB. Application change = S3 SDK calls instead of file I/O.",
+      "why_wrong": {
+        "B": "FSx for Windows = SMB file server, Active Directory integration. More expensive than S3: $0.013-0.20/GB/month. Unnecessary features (Windows, AD) for Linux application. Doesn't optimize costs—similar or higher than EFS.",
+        "C": "FSx for OpenZFS = high-performance NFS, snapshots, compression. Cost: $0.15-0.54/GB/month. Good for low-latency workloads but more expensive than S3. Doesn't provide tiering like S3 Intelligent-Tiering.",
+        "D": "Glacier Flexible Retrieval = manual storage class, not automatic. Retrieval = 3-5 hours, not suitable for application serving files. Would need application redesign to handle async retrieval. S3 API changes required anyway—Intelligent-Tiering better."
+      },
+      "exam_tips": "'Optimize storage costs' + 'unpredictable access' = S3 Intelligent-Tiering. EFS = shared file system for EC2. FSx = managed file servers (Windows/Lustre/NetApp/OpenZFS). S3 = object storage, lowest cost at scale. File to object = application changes required.",
+      "memorize": [
+        "S3 Intelligent-Tiering: automatic tiering, $0.0025/1K objects monitoring",
+        "EFS Standard: $0.30/GB, EFS IA: $0.025/GB",
+        "FSx Windows: $0.013-0.20/GB/month (Multi-AZ higher)",
+        "FSx OpenZFS: $0.15-0.54/GB/month",
+        "S3 API: PutObject, GetObject, ListObjects (REST/SDK)"
+      ],
+      "aws_services": [
+        "S3 Intelligent-Tiering",
+        "S3",
+        "EFS"
+      ],
+      "architectural_concept": "Cost Optimization"
+    }
+  },
+  {
+    "question_id": 612,
+    "domain": "Secure Architectures",
+    "multi_select": false,
+    "question_en": "A company plans to deploy an application that uses an Amazon CloudFront distribution. The company will set an Application Load Balancer (ALB) as the origin for the distribution. The company wants to ensure that users access the ALB only through the CloudFront distribution. The company plans to deploy the solution in a new VPC. Which solution will meet these requirements?",
+    "options": {
+      "A": "Configure the network ACLs in the subnet where the ALB is deployed to allow inbound traf-fic only from the public IP addresses of the CloudFront edge locations.",
+      "B": "Create a VPC origin for the CloudFront distribution. Set the VPC origin Amazon Resource Name (ARN) to the ARN of the ALB.",
+      "C": "Create a security group that allows only inbound traffic from the public IP addresses of the CloudFront edge locations. Associate the security group with the ALB.",
+      "D": "Create a VPC origin for the CloudFront distribution. Configure an ALB rule. Set the source IP condition to allow traffic only from the public IP addresses of the CloudFront edge locations."
+    },
+    "correct_answer": "C",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "CloudFront + VPC + ALB para Secure Architectures",
+      "aws_services": [
+        "CloudFront",
+        "VPC",
+        "ALB"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 701,
+    "domain": "Secure Architectures",
+    "multi_select": false,
+    "question_en": "A media company has an ecommerce website to sell music. Each music file is stored as an MP3 file. Premium users of the website purchase music files and download the files. The company wants to store music files on AWS. The company wants to provide access only to the premium users. The company wants to use the same URL for all premium users. Which solution will meet these requirements?",
+    "options": {
+      "A": "Store the MP3 files on a set of Amazon EC2 instances that have Amazon Elastic Block Store (Amazon EBS) volumes attached. Manage access to the files by creating an IAM user and an IAM policy for each premium user.",
+      "B": "Store all the MP3 files in an Amazon S3 bucket. Create a presigned URL for each MP3 file. Share the presigned URLs with the premium users.",
+      "C": "Store all the MP3 files in an Amazon S3 bucket. Create an Amazon CloudFront distribution that uses the S3 bucket as the origin. Generate CloudFront signed cookies for the music files. Share the signed cookies with the premium users.",
+      "D": "Store all the MP3 files in an Amazon S3 bucket. Create an Amazon CloudFront distribution that uses the S3 bucket as the origin. Use a CloudFront signed URL for each music file. Share the signed URLs with the premium users."
+    },
+    "correct_answer": "C",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "S3 + EC2 + CloudFront para Secure Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "CloudFront",
+        "IAM",
+        "EBS"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 33,
+    "domain": "Resilient Architectures",
+    "multi_select": false,
+    "question_en": "An ecommerce company is redesigning a web application to run on the AWS Cloud. The application needs to store static website content and must use a Microsoft SQL Server database to store customer data. The company needs to deploy the application in a resilient way across multiple Availability Zones. Which solution will meet these requirements?",
+    "options": {
+      "A": "Use an Amazon S3 bucket to store static content. Deploy an Amazon RDS Custom for SQL Server DB instance for the database.",
+      "B": "Use an Amazon S3 bucket to store static content. Create an Amazon RDS for SQL Server Multi-AZ deployment for the database.",
+      "C": "Create an Amazon Elastic Block Store (Amazon EBS) Multi-Attach volume to store static content. Deploy an Amazon RDS for SQL Server DB instance for the database.",
+      "D": "Create an Amazon Elastic Block Store (Amazon EBS) Multi-Attach volume to store static content. Deploy SQL Server on two Amazon EC2 instances in separate Availability Zones."
+    },
+    "correct_answer": "B",
+    "explanation": {
+      "why_correct": "S3 provides durable, highly available static content storage with 99.999999999% durability. RDS for SQL Server Multi-AZ maintains standby replica in different AZ with automatic failover. Both services natively support multi-AZ resilience with minimal manual intervention.",
+      "why_wrong": {
+        "A": "RDS Custom requires OS-level management, increasing operational overhead vs. standard RDS Multi-AZ for simple HA requirement.",
+        "C": "EBS Multi-Attach not designed for static website content—limited functionality, wrong tool. Lacks object storage semantics.",
+        "D": "EBS Multi-Attach wrong for static content. Self-managed SQL Server on EC2 requires manual clustering, patching, backup configuration—high operational overhead."
+      },
+      "exam_tips": "For static website content: S3 (not EBS). For SQL Server Multi-AZ HA: RDS Multi-AZ (not RDS Custom or EC2). RDS Custom is for deep OS/DB customization, not basic HA.",
+      "memorize": "Multi-AZ web app = S3 (static) + RDS Multi-AZ (database resilience)",
+      "aws_services": [
+        "Amazon S3",
+        "Amazon RDS for SQL Server",
+        "RDS Multi-AZ"
+      ],
+      "architectural_concept": "Multi-AZ Web Application"
+    }
+  },
+  {
+    "question_id": 99,
+    "domain": "Operationally Excellent Architectures",
+    "multi_select": true,
+    "question_en": "A company runs a multi-tier application on premises by using virtual machines (VMs). The application tiers communicate asynchronously through third-party middleware that guarantees exactly-once delivery. The company is planning to migrate the application to AWS and needs to replace the middleware solution. The solution must provide exactly-once delivery for messages from the application. Which combination of actions will meet these requirements with the LEAST infrastructure management? (Select TWO.)",
+    "options": {
+      "A": "Use AWS Lambda functions to provide compute layers in the architecture.",
+      "B": "Use Amazon EC2 instances to provide compute layers in the architecture.",
+      "C": "Use Amazon SNS as a messaging component between the compute layers.",
+      "D": "Use Amazon SQS FIFO queues as a messaging component between the compute layers.",
+      "E": "Run containers on Amazon EKS to provide compute layers in the architecture."
+    },
+    "correct_answer": [
+      "A",
+      "D"
+    ],
+    "explanation": {
+      "why_correct": "SQS FIFO queues guarantee exactly-once delivery with ordered processing. Lambda provides fully managed compute without infrastructure management (no VMs, OS, or clusters). Perfect for asynchronous multi-tier communication.",
+      "why_wrong": {
+        "B": "EC2 instances require managing provisioning, patching, scaling, and availability—violating least management requirement.",
+        "C": "Amazon SNS provides pub/sub but lacks exactly-once delivery guarantees required for this migration.",
+        "E": "Amazon EKS introduces Kubernetes management overhead, not the lowest-management option."
+      },
+      "exam_tips": "For exactly-once message delivery: use SQS FIFO (not SNS). For least infrastructure management: Lambda (not EC2 or EKS). FIFO guarantees order + exactly-once.",
+      "memorize": "Exactly-once + least management = SQS FIFO + Lambda",
+      "aws_services": [
+        "Amazon SQS",
+        "SQS FIFO",
+        "AWS Lambda"
+      ],
+      "architectural_concept": "Asynchronous Messaging"
+    },
+    "required_selections": 2
+  },
+  {
+    "question_id": 188,
+    "domain": "Secure Architectures",
+    "multi_select": true,
+    "question_en": "A company uses Amazon EC2 instances behind an Application Load Balancer ALB to serve content to users. The company uses Amazon EBS volumes to store data. The company needs to encrypt data in transit and at rest. Which combination of services will meet these requirements? Select TWO.",
+    "options": {
+      "A": "Amazon GuardDuty",
+      "B": "AWS Shield",
+      "C": "AWS Certificate Manager ACM",
+      "D": "AWS Secrets Manager",
+      "E": "AWS KMS"
+    },
+    "correct_answer": [
+      "C",
+      "E"
+    ],
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Pregunta multi-select - selecciona TODAS las correctas. Elimina opciones claramente incorrectas primero.",
+      "memorize": "EC2 + ALB + KMS para Secure Architectures",
+      "aws_services": [
+        "EC2",
+        "ALB",
+        "KMS",
+        "EBS",
+        "Shield",
+        "GuardDuty",
+        "Secrets Manager"
+      ],
+      "architectural_concept": "Secure Architectures"
+    },
+    "required_selections": 2
+  },
+  {
+    "question_id": 266,
+    "domain": "High-Performing Architectures",
+    "multi_select": false,
+    "question_en": "A company runs a web application that stores user-generated images. The application currently stores 500 GB of images. The average file size of the images is 2 MB. The company expects the total amount of images to grow to 2 TB within 6 months. The application needs to serve all stored images with low latency to users from around the world.\n\n\n\nWhich storage solution will meet these requirements MOST cost-effectively?",
+    "options": {
+      "A": "Store images in Amazon EBS volumes that are attached to multiple Amazon EC2 instances across multiple AWS Regions. Serve the content locally based on each user ' s location.",
+      "B": "Store images in an Amazon S3 bucket. Integrate the S3 bucket with Amazon CloudFront. Integrate the web application with a CloudFront endpoint to provide global access.",
+      "C": "Store the images in an Amazon EFS file system. Use the Standard storage class with Regional access. Enable cross-Region replication to provide high availability and global access.",
+      "D": "Deploy Amazon FSx for Windows File Server in two AWS Regions. Set up Windows File Server Replication across Regions to provide global access."
+    },
+    "correct_answer": "B",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados. Optimiza costos usando servicios apropiados. Mejora rendimiento y reduce latencia.",
+      "why_wrong": {
+        "A": "No cumple todos los requisitos o usa approach subóptimo.",
+        "C": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No usa servicio óptimo para el caso de uso."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Compara costos entre servicios similares. Elimina opciones claramente incorrectas primero.",
+      "memorize": "S3 + EC2 + CloudFront para Cost Optimization",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "CloudFront",
+        "EBS",
+        "EFS"
+      ],
+      "architectural_concept": "Cost Optimization"
+    }
+  },
+  {
+    "question_id": 344,
+    "domain": "Cost-Optimized Architectures",
+    "multi_select": false,
+    "question_en": "A company needs a solution to process customer orders from a global ecommerce platform. The solution must automatically start processing new orders immediately and must maintain a history of all order processing attempts. Which solution will meet these requirements in the MOST cost-effective way?",
+    "options": {
+      "A": "Create an Amazon EventBridge rule that invokes an AWS Lambda function once every minute to check for new orders. Configure the Lambda function to process orders and store results in Amazon Aurora.",
+      "B": "Create an Amazon EventBridge event pattern that monitors the ecommerce platform ' s order events. Configure an EventBridge rule to invoke an AWS Lambda function when the platform receives a new order. Configure the function to store the results in Amazon DynamoDB.",
+      "C": "Use an Amazon EC2 instance to poll the ecommerce platform for new orders. Configure the instance to invoke an AWS Lambda function to process new orders. Configure the function to log results to Amazon CloudWatch.",
+      "D": "Use an Amazon SQS queue to invoke an AWS Lambda function when the platform receives a new order. Configure the function to process batches of orders and to store results in an Amazon EFS file system."
+    },
+    "correct_answer": "B",
+    "explanation": {
+      "full_text": "EventBridge event-driven pattern invokes Lambda immediately when order arrives. Lambda processes and stores in DynamoDB. Most cost-effective serverless solution.",
+      "why_correct": "EventBridge = monitors ecommerce platform events in real-time. Lambda invoked only on actual orders—no polling waste. DynamoDB = NoSQL, scales automatically, stores processing history with low latency. Fully serverless = no idle costs, auto-scales to global traffic.",
+      "why_wrong": {
+        "A": "Lambda every minute polling = 1,440 invocations/day even with zero orders. Polling introduces latency (up to 60s delay). Aurora = relational DB overkill and more expensive than DynamoDB for event logs.",
+        "C": "EC2 polling = 24/7 instance costs (~$180/mo minimum t3.small). Manual scaling needed. CloudWatch Logs = not queryable database, lacks structured storage for history.",
+        "D": "SQS doesn't 'invoke' Lambda—Lambda polls SQS (different model). EFS = file storage not suited for structured order processing history. More expensive than DynamoDB for this use case."
+      },
+      "exam_tips": "'Immediately' + 'event-driven' + 'history' = EventBridge + Lambda + DynamoDB. Polling (cron, EC2 checking) = anti-pattern for event-driven. DynamoDB = event/activity logging. Aurora = complex transactional queries. CloudWatch Logs = monitoring, not app database.",
+      "memorize": [
+        "EventBridge: 14M invocations/month free, then $1/million",
+        "Lambda: 1M requests/month free, 400K GB-sec/month free",
+        "DynamoDB: 25GB storage free, 25 WCU/25 RCU free tier",
+        "Polling vs push: push = immediate, polling = delay + waste",
+        "Event-driven: EventBridge, SNS, SQS; avoid cron for real-time"
+      ],
+      "aws_services": [
+        "EventBridge",
+        "Lambda",
+        "DynamoDB"
+      ],
+      "architectural_concept": "Event-Driven Architecture"
+    }
+  },
+  {
+    "question_id": 455,
+    "domain": "Operationally Excellent Architectures",
+    "multi_select": false,
+    "question_en": "A company runs its applications on both Amazon EKS clusters and on-premises Kubernetes clusters. The company wants to view all clusters and workloads from a central location. Which solution will meet these requirements with the LEAST operational overhead?",
+    "options": {
+      "A": "Use Amazon CloudWatch Container Insights to collect and group the cluster information.",
+      "B": "Use Amazon EKS Connector to register and connect all Kubernetes clusters.",
+      "C": "Use AWS Systems Manager to collect and view the cluster information.",
+      "D": "Use Amazon EKS Anywhere as the primary cluster to view the other clusters with native Kubernetes commands."
+    },
+    "correct_answer": "B",
+    "explanation": {
+      "why_correct": "EKS Connector registers external Kubernetes clusters (on-prem or other clouds) to AWS, enabling centralized visibility in EKS console. Displays clusters and workloads from multiple locations with minimal operational overhead. Purpose-built for hybrid Kubernetes management.",
+      "why_wrong": {
+        "A": "CloudWatch Container Insights provides metrics/logs but doesn't centrally register and display cluster inventory across environments.",
+        "C": "Systems Manager doesn't provide Kubernetes cluster centralized management or workload visibility.",
+        "D": "EKS Anywhere runs Kubernetes on-prem but isn't designed for centralized viewing of existing clusters—requires migration."
+      },
+      "exam_tips": "For hybrid Kubernetes visibility (EKS + on-prem): use EKS Connector. Don't confuse with Container Insights (monitoring only) or EKS Anywhere (run K8s on-prem).",
+      "memorize": "Centralized K8s view (EKS + on-prem) = EKS Connector",
+      "aws_services": [
+        "Amazon EKS",
+        "EKS Connector"
+      ],
+      "architectural_concept": "Hybrid Kubernetes Management"
+    }
+  },
+  {
+    "question_id": 533,
+    "domain": "Operationally Excellent Architectures",
+    "multi_select": false,
+    "question_en": "A company hosts dozens of multi-tier applications on AWS. The presentation layer and logic layer are Amazon EC2 Linux instances that use Amazon EBS volumes. The company needs a solution to ensure that operating system vulnerabilities are not introduced to the EC2 instances when the company deploys new features. The company uses custom AMIs to deploy EC2 instances in an Auto Scaling group. The solution must scale to handle all applications that the company hosts. Which solution will meet these requirements?",
+    "options": {
+      "A": "Use Amazon Inspector to patch operating system vulnerabilities. Invoke Amazon Inspector when a new AMI is deployed.",
+      "B": "Use AWS Backup to back up the EBS volume of each updated instance. Use the EBS backup volumes to create new AMIs. Use the existing Auto Scaling group to deploy the new AMIs.",
+      "C": "Use AWS Systems Manager Patch Manager to patch operating system vulnerabilities in the custom AMIs.",
+      "D": "Use EC2 Image Builder to create new AMIs when the company deploys new features. Include the update-linux component in the build components of the new AMIs. Use the existing Auto Scaling group to deploy the new AMIs."
+    },
+    "correct_answer": "D",
+    "explanation": {
+      "why_correct": "EC2 Image Builder automates AMI creation with patching, testing, and hardening. Update-linux component applies OS security patches during image build. Creates golden AMIs preventing vulnerabilities at deployment time. Scales across applications via reusable pipelines with minimal operational overhead.",
+      "why_wrong": {
+        "A": "Inspector identifies vulnerabilities but doesn't patch AMIs. Cannot be invoked to patch images during creation.",
+        "B": "AWS Backup backs up data, doesn't patch or create AMIs. Wrong tool for vulnerability management.",
+        "C": "Patch Manager patches running instances, not base AMIs. Doesn't prevent vulnerabilities in new deployments."
+      },
+      "exam_tips": "For patched AMI creation at scale: EC2 Image Builder with update-linux component. Inspector scans (doesn't patch), Patch Manager patches live instances (not AMIs).",
+      "memorize": "Patched golden AMIs at scale = EC2 Image Builder + update-linux component",
+      "aws_services": [
+        "Amazon EC2 Image Builder"
+      ],
+      "architectural_concept": "Golden Image Management"
+    }
+  },
+  {
+    "question_id": 622,
+    "domain": "Secure Architectures",
+    "multi_select": false,
+    "question_en": "A company is designing an IPv6 application that is hosted on Amazon EC2 instances in a private subnet within a VPC. The application will store user-uploaded content in Amazon S3 buckets. The application will save each S3 object ' s URL link and metadata in Amazon DynamoDB. The company must not use public internet connections to transmit user-uploaded content or metadata. Which solution will meet these requirements?",
+    "options": {
+      "A": "Implement a gateway VPC endpoint for Amazon S3 and an interface VPC endpoint for Amazon DynamoDB.",
+      "B": "Implement interface VPC endpoints for both Amazon S3 and Amazon DynamoDB.",
+      "C": "Implement gateway VPC endpoints for both Amazon S3 and Amazon DynamoDB.",
+      "D": "Implement a gateway VPC endpoint for Amazon DynamoDB and an interface VPC endpoint for Amazon S3."
+    },
+    "correct_answer": "A",
+    "explanation": {
+      "why_correct": "Solución que cumple los requisitos especificados.",
+      "why_wrong": {
+        "B": "No cumple todos los requisitos o usa approach subóptimo.",
+        "C": "No cumple todos los requisitos o usa approach subóptimo.",
+        "D": "No cumple todos los requisitos o usa approach subóptimo."
+      },
+      "exam_tips": "Lee cuidadosamente los requisitos clave. Elimina opciones claramente incorrectas primero.",
+      "memorize": "S3 + EC2 + DynamoDB para Secure Architectures",
+      "aws_services": [
+        "S3",
+        "EC2",
+        "DynamoDB",
+        "VPC"
+      ],
+      "architectural_concept": "Secure Architectures"
+    }
+  },
+  {
+    "question_id": 744,
+    "domain": "Resilient Architectures",
+    "multi_select": false,
+    "question_en": "A shipping company wants to run a Kubernetes container-based web application in disconnected mode while the company ' s ships are in transit at sea. The application must provide local users with high availability.",
+    "options": {
+      "A": "Use AWS Snowball Edge as the primary and secondary sites.",
+      "B": "Use AWS Snowball Edge as the primary site, and use an AWS Local Zone as the secondary site.",
+      "C": "Use AWS Snowball Edge as the primary site, and use an AWS Outposts server as the secondary site.",
+      "D": "Use AWS Snowball Edge as the primary site, and use an AWS Wavelength Zone as the secondary site."
+    },
+    "correct_answer": "A",
+    "explanation": {
+      "why_correct": "Opción correcta porque usa servicios AWS apropiados cumpliendo requisitos específicos de resilient architectures: escalabilidad, disponibilidad y eficiencia operacional.",
+      "why_wrong": {
+        "B": "No cumple requisitos clave del escenario o usa servicio subóptimo.",
+        "C": "No cumple requisitos clave del escenario o usa servicio subóptimo.",
+        "D": "No cumple requisitos clave del escenario o usa servicio subóptimo."
+      },
+      "exam_tips": "Identifica keywords del dominio Resilient Architectures. Compara trade-offs entre servicios. Elimina opciones que no cumplen todos los requisitos.",
+      "memorize": "Alta disponibilidad + resiliencia = servicios managed AWS.",
+      "aws_services": [
+        "Auto Scaling",
+        "Application Load Balancer",
+        "Amazon RDS",
+        "Amazon Aurora"
+      ],
+      "architectural_concept": "Resilient Architectures"
+    }
+  },
+  {
+    "question_id": 888,
+    "domain": "High-Performing Architectures",
+    "multi_select": false,
+    "question_en": "A company has developed an API using an Amazon API Gateway REST API and AWS Lambda functions. The API serves static and dynamic content to users worldwide. The company wants to decrease the latency of transferring content for API requests. Options:",
+    "options": {
+      "A": "Deploy the REST API as an edge-optimized API endpoint. Enable caching. Enable content encoding in the API definition to compress the application data in transit.",
+      "B": "Deploy the REST API as a Regional API endpoint. Enable caching. Enable content encoding in the API definition to compress the application data in transit.",
+      "C": "Deploy the REST API as an edge-optimized API endpoint. Enable caching. Configure reserved concurrency for the Lambda functions.",
+      "D": "Deploy the REST API as a Regional API endpoint. Enable caching. Configure reserved concurrency for the Lambda functions."
+    },
+    "correct_answer": "A",
+    "explanation": {
+      "why_correct": "Edge-optimized API Gateway uses CloudFront edge locations globally. Caching reduces latency. Content encoding compresses data, reducing transfer time.",
+      "why_wrong": {
+        "B": "Regional API Gateway serves single region, no global edge optimization.",
+        "C": "Reserved concurrency ensures capacity, doesn't reduce content transfer latency.",
+        "D": "Regional API + reserved concurrency doesn't optimize global latency."
+      },
+      "exam_tips": "Edge-optimized = CloudFront edge locations. Regional = single region. Caching + compression = reduce latency.",
+      "memorize": "Edge-optimized API + caching + compression = minimize global latency.",
+      "aws_services": [
+        "API Gateway",
+        "Edge-Optimized",
+        "Caching",
+        "Compression"
+      ],
+      "architectural_concept": "Global API Latency Optimization"
+    }
+  }
+]

@@ -455,7 +455,10 @@
       "D": "Use Amazon EFS General Purpose performance mode to store the telemetry data. Use Amazon EventBridge to schedule an AWS Lambda function to scan the file system and delete files that are older than 360 days.",
       "E": "Store a company-defined encryption key in AWS Secrets Manager. Configure the secret to rotate every 90 days. Grant AWS Secrets Manager permission to access the storage service."
     },
-    "correct_answer": "A",
+    "correct_answer": [
+      "A",
+      "C"
+    ],
     "explanation": {
       "full_text": "S3 Standard-IA is appropriate for durable data that is accessed infrequently but still requires immediate retrieval during its initial 30-day period. After 30 days, an S3 Lifecycle rule can transition the objects to S3 Glacier Flexible Retrieval, which lowers long-term storage costs. A second lifecycle action can permanently\n\n\n\nexpire the objects after 360 days. A customer managed AWS KMS key with imported key material gives the company control over the cryptographic material and key policy. To satisfy the exact 90-day requirement, the company must establish an operational process that imports replacement material or performs supported ondemand rotation every 90 days. AWS Secrets Manager rotation is intended for secrets such as credentials, not S3 encryption keys. Amazon EFS and a custom Lambda deletion process would add unnecessary cost and operational complexity.",
       "why_correct": "S3 Standard-IA is appropriate for durable data that is accessed infrequently but still requires immediate retrieval during its initial 30-day period.  After 30 days, an S3 Lifecycle rule can transition the objects to S3 Glacier Flexible Retrieval, which lowers long-term storage costs.",
@@ -1023,7 +1026,10 @@
       "D": "Create a shared EBS volume. Connect the EC2 instances to the shared volume. Move the map and metadata files to the new volume. Detach and delete the original EBS volumes.",
       "E": "Create an Amazon FSx for Lustre file system that uses the SCRATCH_2 deployment type. Move the map and metadata files to the file system."
     },
-    "correct_answer": "A",
+    "correct_answer": [
+      "A",
+      "D"
+    ],
     "explanation": {
       "full_text": "Amazon EFS provides a regional, shared file system that EC2 instances in multiple Availability Zones can access concurrently. An EFS lifecycle policy can move files that have not been accessed recently to the lowercost EFS Infrequent Access storage class, eliminating duplicated EBS copies while retaining file-system semantics. Amazon S3 is another cost-effective solution for immutable map objects. The application can retrieve the objects directly, and an S3 Lifecycle rule can transition older, infrequently accessed maps to S3 Standard-IA. EBS volumes are Availability Zone resources and are not a general-purpose shared cross-AZ file system. FSx for Lustre is designed primarily for high-performance computing workloads, while FSx for OpenZFS would provide features and performance beyond the stated static-content requirement. Therefore, EFS and S3 are the two appropriate managed storage options.",
       "why_correct": "Amazon EFS provides a regional, shared file system that EC2 instances in multiple Availability Zones can access concurrently.  An EFS lifecycle policy can move files that have not been accessed recently to the lowercost EFS Infrequent Access storage class, eliminating duplicated EBS copies while retaining file-system semantics.",
@@ -6375,7 +6381,10 @@
       "D": "Use Mountpoint for Amazon S3 as a high-performance file system.",
       "E": "Create an Auto Scaling group of Amazon EC2 instances. Use a mix of On-Demand Instances, Reserved Instances, and Spot Instances. Configure a cluster placement group. Use Amazon EMR to run the analytics workloads."
     },
-    "correct_answer": "B",
+    "correct_answer": [
+      "C",
+      "E"
+    ],
     "explanation": {
       "full_text": "Option B (Amazon FSx for Lustre): FSx for Lustre is optimized for high-performance file systems required by HPC workloads, scaling to millions of IOPS and supporting parallelized data access.\n\n\n\nOption E (Cluster Placement Group with Auto Scaling): A cluster placement group ensures low-latency communication between EC2 instances, critical for HPC workloads. Amazon EMR simplifies running largescale analytics jobs. Amazon FSx for Lustre Documentation,AWS Placement Groups Documentation",
       "why_correct": "Option B (Amazon FSx for Lustre): FSx for Lustre is optimized for high-performance file systems required by HPC workloads, scaling to millions of IOPS and supporting parallelized data access. \n\n\n\nOption E (Cluster Placement Group with Auto Scaling): A cluster placement group ensures low-latency communication between EC2 instances, critical for HPC workloads.",
@@ -7802,7 +7811,10 @@
       "D": "Deploy two EC2 Reserved Instances behind an ALB and send requests to an SQS queue.",
       "E": "Set up an API Gateway REST API to receive work items. Send the work items to an SQS queue."
     },
-    "correct_answer": "B",
+    "correct_answer": [
+      "B",
+      "E"
+    ],
     "explanation": {
       "full_text": "AWS Step Functions is the recommended service for orchestrating multi-step, long-running workflows with state tracking, retries, and external API calls. It reduces operational overhead by eliminating the need for custom orchestration logic. API Gateway receiving work items and sending them to SQS (Option E) provides buffering, elasticity, and decoupling, ensuring immediate ingestion regardless of backend load.\n\n\n\nOption A forces Lambda to handle long execution paths, which is not optimal for 30-minute tasks and multistate workflows. Option C triggers Lambda directly without buffering. Option D uses fixed EC2 instances, which does not scale dynamically.",
       "why_correct": "AWS Step Functions is the recommended service for orchestrating multi-step, long-running workflows with state tracking, retries, and external API calls.  It reduces operational overhead by eliminating the need for custom orchestration logic.",
@@ -8749,7 +8761,10 @@
       "D": "Configure a Network Load Balancer in each Region to address the EC2 endpoints. Configure a Network Load Balancer in each Region that routes to the on-premises endpoints.",
       "E": "Configure a Network Load Balancer in each Region to address the EC2 endpoints. Configure an Application Load Balancer in each Region that routes to the on-premises endpoints."
     },
-    "correct_answer": "A",
+    "correct_answer": [
+      "A",
+      "E"
+    ],
     "explanation": {
       "full_text": "For improving availability and performance of the hybrid application, the following solutions are optimal: AWS Global Accelerator (Option A): Global Accelerator provides high availability and improves performance by using the AWS global network to route user traffic to the nearest healthy endpoint (across AWS Regions). By adding the Network Load Balancers as endpoints, Global Accelerator ensures that traffic is routed efficiently to the closest endpoint, improving both availability and performance. Network Load Balancer (Option D): Thestateful TCP-based workloadhosted on Amazon EC2 instances and thestateless UDP-based workloadhosted on-premises are best served by Network Load Balancers (NLBs).\n\n\n\nNLBs are designed to handle TCP and UDP traffic with ultra-low latency and can route traffic to both EC2 and on-premises endpoints. Option B (CloudFront and Route 53): CloudFront is better suited for HTTP/HTTPS workloads, not for TCP /UDP-based applications. Option C (ALB): Application Load Balancers do not support the stateless UDP-based workload, making NLBs the better choice for both TCP and UDP. AWS References: AWS Global Accelerator Network Load Balancer",
       "why_correct": "For improving availability and performance of the hybrid application, the following solutions are optimal: AWS Global Accelerator (Option A): Global Accelerator provides high availability and improves performance by using the AWS global network to route user traffic to the nearest healthy endpoint (across AWS Regions).  By adding the Network Load Balancers as endpoints, Global Accelerator ensures that traffic is routed efficiently to the closest endpoint, improving both availability and performance.",
@@ -9602,7 +9617,10 @@
       "D": "Create an Amazon FSx for Windows File Server file system.",
       "E": "Create an Amazon FSx for OpenZFS file system."
     },
-    "correct_answer": "A",
+    "correct_answer": [
+      "A",
+      "C"
+    ],
     "explanation": {
       "full_text": "A. Amazon EFS:Provides a scalable, shared file storage solution with minimal operational overhead. It ' s ideal for Linux-based workloads. B. Amazon FSx for NetApp ONTAP:More suited for workloads requiring NetApp-specific features. C. Amazon EBS:Requires manual management of file shares, which increases operational overhead. D. Amazon FSx for Windows File Server:Best suited for Windows SMB workloads with low operational overhead. E. Amazon FSx for OpenZFS:Better for Linux and Unix-based workloads. References:Amazon EFS,Amazon FSx",
       "why_correct": "A.  Amazon EFS:Provides a scalable, shared file storage solution with minimal operational overhead.",
@@ -10794,7 +10812,10 @@
       "D": "Amazon RDS",
       "E": "AWS Global Accelerator"
     },
-    "correct_answer": "B",
+    "correct_answer": [
+      "B",
+      "C"
+    ],
     "explanation": {
       "full_text": "Amazon Kinesis is the right streaming service because it ingests and processes data in real time. For the userdata store, Amazon DynamoDB is the correct database because AWS documents that DynamoDB is a serverless, fully managed, distributed NoSQL database with single-digit millisecond performance at any scale. That directly matches the durability, low-latency, and unknown-scale requirements in the question. RDS is not the most natural fit for unpredictable massive serverless scaling here, while CloudFront and Global Accelerator solve delivery and network-edge problems rather than real-time event ingestion plus lowlatency persistence. For a serverless analytics application with streaming game data and highly scalable user storage, Kinesis and DynamoDB are the best pair.",
       "why_correct": "Amazon Kinesis is the right streaming service because it ingests and processes data in real time.  For the userdata store, Amazon DynamoDB is the correct database because AWS documents that DynamoDB is a serverless, fully managed, distributed NoSQL database with single-digit millisecond performance at any scale.",
@@ -13545,7 +13566,10 @@
       "D": "D. Use Amazon RDS Proxy to connect the applications to Aurora PostgreSQL.",
       "E": "Use AWS DMS to rewrite SQL queries in the applications."
     },
-    "correct_answer": "B",
+    "correct_answer": [
+      "B",
+      "D"
+    ],
     "explanation": {
       "full_text": "Amazon Aurora PostgreSQL with Babelfish allows Aurora to understand SQL Server T-SQL and the SQL Server wire protocol. This enables applications to continue using SQL Server drivers, minimizing code changes (Option B). Migration of schema and data is performed using AWS Schema Conversion Tool (SCT) and AWS Database Migration Service (DMS) (Option C), which is the AWS-recommended migration pattern for heterogeneous database migrations. AWS DMS (Option E) does not rewrite application SQL. RDS Proxy (Option D) does not translate SQL Server protocols. Option A requires rewriting application queries, which contradicts the “minimal changes” requirement.",
       "why_correct": "Amazon Aurora PostgreSQL with Babelfish allows Aurora to understand SQL Server T-SQL and the SQL Server wire protocol.  This enables applications to continue using SQL Server drivers, minimizing code changes (Option B).",
@@ -14305,7 +14329,10 @@
       "D": "Use Mountpoint for Amazon S3 as a high-performance file system.",
       "E": "Create an Auto Scaling group of EC2 instances. Use mixed instance types and a cluster placement group. Use Amazon EMR for analytics."
     },
-    "correct_answer": "B",
+    "correct_answer": [
+      "A",
+      "D"
+    ],
     "explanation": {
       "full_text": "Option B: FSx for Lustre is designed for HPC workloads with high IOPS. Option E: A cluster placement group ensures low-latency networking for HPC analytics workloads. Option A: Amazon EFS is not optimized for HPC. Option D: Mountpoint for S3 does not meet high IOPS needs.",
       "why_correct": "Option B: FSx for Lustre is designed for HPC workloads with high IOPS.  Option E: A cluster placement group ensures low-latency networking for HPC analytics workloads.",
@@ -21505,7 +21532,10 @@
       "D": "Manually add more EC2 instances for the application.",
       "E": "Add a Gateway Load Balancer in front of the EC2 instances."
     },
-    "correct_answer": "A",
+    "correct_answer": [
+      "A",
+      "B"
+    ],
     "explanation": {
       "full_text": "For an application requiring TCP communication and high availability:\n\n\n\nNetwork Load Balancer (NLB)is the best choice for load balancing TCP traffic because it is designed for handling high-throughput, low-latency connections. Auto Scaling groupensures that the application can automatically scale based on demand, adding or removing EC2 instances as needed, which is crucial for handling user growth. Option C (Application Load Balancer): ALB is primarily for HTTP/HTTPS traffic, not ideal for TCP. Option D (Manual scaling): Manually adding instances does not provide the automation or scalability required. Option E (Gateway Load Balancer): GLB is used for third-party virtual appliances, not for direct application load balancing. AWS References: Network Load Balancer Auto Scaling Group",
       "why_correct": "For an application requiring TCP communication and high availability:\n\n\n\nNetwork Load Balancer (NLB)is the best choice for load balancing TCP traffic because it is designed for handling high-throughput, low-latency connections.  Auto Scaling groupensures that the application can automatically scale based on demand, adding or removing EC2 instances as needed, which is crucial for handling user growth.",
@@ -25377,7 +25407,10 @@
       "D": "Create an Amazon Elastic Container Service (Amazon ECS) cluster with a Fargate launch type to handle the dynamic application load.",
       "E": "Create an Amazon Elastic Container Service (Amazon ECS) cluster with an Amazon EC2 launch type to handle the dynamic application load."
     },
-    "correct_answer": "A",
+    "correct_answer": [
+      "A",
+      "B"
+    ],
     "explanation": {
       "full_text": "For the relational database tier, Amazon RDS Multi-AZ provides high availability with minimal manual intervention. In Multi-AZ mode, RDS maintains a synchronous standby in a different Availability Zone and provides automatic failover during certain failure scenarios. This reduces operational burden because the service handles replication, health monitoring, and failover orchestration. For the container-based application tier, Amazon ECS with the Fargate launch type minimizes operational overhead because it removes the need to provision, patch, and scale the underlying EC2 instances that host containers. With Fargate, AWS manages the compute infrastructure, and the team focuses on task definitions, scaling policies, and application configuration. This supports a highly available, load-balanced architecture because ECS services can run tasks across multiple Availability Zones behind an Application Load Balancer, and scaling is managed via ECS Service Auto Scaling. Option B describes read replicas, which are primarily used for scaling reads and, depending on configuration, may not provide the same automated failover characteristics as Multi-AZ for high availability. Read replicas are not a direct substitute for Multi-AZ HA. Option C (self-managed Docker cluster on EC2) is operationally heavy: you must manage node capacity, patching, cluster lifecycle, and scheduling. Option E (ECS on EC2) is a valid container platform but still requires managing EC2 instances, AMIs, and scaling/patching, which increases manual intervention compared to Fargate. Therefore, combining RDS Multi-AZ (A) for database resilience and ECS Fargate (D) for serverless container operations meets the HA requirement with the least manual effort.",
       "why_correct": "For the relational database tier, Amazon RDS Multi-AZ provides high availability with minimal manual intervention.  In Multi-AZ mode, RDS maintains a synchronous standby in a different Availability Zone and provides automatic failover during certain failure scenarios.",
@@ -34257,7 +34290,10 @@
       "D": "Amazon EC2 Auto Scaling",
       "E": "Amazon S3 website hosting"
     },
-    "correct_answer": "C",
+    "correct_answer": [
+      "C",
+      "D"
+    ],
     "explanation": {
       "full_text": "An Application Load Balancer supports path- and host-based routing, which makes it ideal for routing requests based on subdomains. EC2 Auto Scaling ensures that the number of instances adjusts dynamically based on traffic, which helps manage cost and performance during predictable peak hours. Reference: AWS Documentation – ALB with Auto Scaling for Web Applications",
       "why_correct": "An Application Load Balancer supports path- and host-based routing, which makes it ideal for routing requests based on subdomains.  EC2 Auto Scaling ensures that the number of instances adjusts dynamically based on traffic, which helps manage cost and performance during predictable peak hours.",
@@ -38139,7 +38175,10 @@
       "D": "Create root user access keys. Save the keys as a new parameter in AWS Systems Manager Parameter Store.",
       "E": "Update the IAM role for the root user to ensure the root user can use only approved services."
     },
-    "correct_answer": "A",
+    "correct_answer": [
+      "C",
+      "E"
+    ],
     "explanation": {
       "full_text": "Securing the root user account requires setting a strong password and enabling multi-factor authentication (MFA). AWS recommends never sharing the root user credentials, setting up individual IAM users for everyday operations, and always protecting the root user with MFA for maximum security. Reference Extract:\n\n\n\n\" AWS recommends securing the root user with a strong password and enabling multi-factor authentication (MFA). Do not use or share root credentials for everyday tasks. \" Source: AWS Certified Solutions Architect – Official Study Guide, IAM and Security Best Practices section.",
       "why_correct": "Securing the root user account requires setting a strong password and enabling multi-factor authentication (MFA).  AWS recommends never sharing the root user credentials, setting up individual IAM users for everyday operations, and always protecting the root user with MFA for maximum security.",
@@ -39822,7 +39861,10 @@
       "D": "Use AWS Key Management Service (AWS KMS) to create a new default AWS managed aws/rds key. Select this key as the encryption key for operations with Amazon RDS.",
       "E": "Use AWS Key Management Service (AWS KMS) to create a new customer managed key. Select this key as the encryption key for operations with Amazon RDS."
     },
-    "correct_answer": "B",
+    "correct_answer": [
+      "D",
+      "E"
+    ],
     "explanation": {
       "full_text": "Amazon RDS does not support enabling encryption at rest on an existing unencrypted DB instance. To encrypt an existing RDS instance’s data at rest, the recommended method is to: Take a snapshot of the unencrypted DB instance. Create an encrypted copy of the snapshot using AWS KMS. This encrypted snapshot contains the existing data encrypted at rest. Restore a new DB instance from the encrypted snapshot. This new instance will have encryption at rest enabled. Additionally, to manage encryption keys securely, companies can use customer managed keys (CMKs) in AWS Key Management Service (KMS). CMKs provide greater control over key management policies, rotation, and usage permissions compared to default AWS managed keys. Using a CMK allows customization of access control and auditability. Option A is incorrect because you cannot enable encryption directly on a snapshot; you must create an encrypted copy. Option C is invalid because encryption cannot be enabled by modifying an existing instance’s configuration. Option D refers to the default AWS managed key, which is less flexible than customer managed keys. References:\n\n\n\nEncrypting Amazon RDS Resources (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview. Encryption.html) Copying an Encrypted Snapshot (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide /USER_CopySnapshot.html) AWS KMS Customer Master Keys (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html) AWS Well-Architected Framework — Security Pillar (https://d1.awsstatic.com/whitepapers/architecture /AWS_Well-Architected_Framework.pdf)",
       "why_correct": "Amazon RDS does not support enabling encryption at rest on an existing unencrypted DB instance.  To encrypt an existing RDS instance’s data at rest, the recommended method is to: Take a snapshot of the unencrypted DB instance.",
@@ -41125,7 +41167,10 @@
       "D": "Use AWS KMS to create a new default AWS managed aws/rds key. Select this key as the encryption key for operations with Amazon RDS.",
       "E": "Use AWS KMS to create a new customer managed key. Select this key as the encryption key for operations with Amazon RDS."
     },
-    "correct_answer": "B",
+    "correct_answer": [
+      "D",
+      "E"
+    ],
     "explanation": {
       "full_text": "You cannot encrypt an existing unencrypted RDS DB instance in place. AWS guidance for encrypting an existing RDS PostgreSQL instance is totake a snapshot, create an encrypted copy of that snapshot, and restore a new DB instance from the encrypted snapshot. AWS also documents that encryption uses AWS KMS keys and that customer managed keys are the appropriate choice when you want explicit control over the key used for the new encrypted instance. That makesBthe required migration step andEthe correct key-management step. Option C is invalid because encryption cannot simply be turned on for the existing instance, and option D is not how you create a new AWS-managed default key.",
       "why_correct": "You cannot encrypt an existing unencrypted RDS DB instance in place.  AWS guidance for encrypting an existing RDS PostgreSQL instance is totake a snapshot, create an encrypted copy of that snapshot, and restore a new DB instance from the encrypted snapshot.",
